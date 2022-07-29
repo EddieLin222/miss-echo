@@ -1,0 +1,171 @@
+<template>
+  <div class="header">
+    <div class="brand">
+      <div class="img-box">
+        <img src="" alt="">
+      </div>
+    </div>
+    <div class="toggle-btn" @click="openMenu = !openMenu" :class="{show: openMenu}">
+      <div class="line top-line"></div>
+      <div class="line center-line"></div>
+      <div class="line bottom-line"></div>
+    </div>
+    <div class="nav" :class="{show: openMenu}">
+      <div class="nav-menu">
+        <a class="item" v-for="(item, index) in navItems" :href="item.link">{{ item.name }}</a>
+      </div>
+    </div>
+  </div>
+</template>
+<script setup lang="ts">
+import { ref, onMounted } from 'vue';
+const openMenu = ref(false)
+const logoUrl = ""
+const navItems = [
+  {
+    name: ' 環保外送',
+    link: ''
+  },
+  {
+    name: '活動訂餐',
+    link: ''
+  },
+  {
+    name: '有意識生活',
+    link: ''
+  },
+  {
+    name: '關於我們',
+    link: ''
+  },
+  {
+    name: '永續日記',
+    link: ''
+  },
+  {
+    name: '我要訂餐',
+    link: ''
+  }
+
+]
+const social = [
+  {
+    name: 'facebook',
+    url: '',
+    link: ''
+  },
+  {
+    name: 'instagram',
+    url: '',
+    link: ''
+  },
+  {
+    name: 'twitter',
+    url: '',
+    link: ''
+  },
+]
+// interface Props {
+//   label?: string;
+// }
+// const props = withDefaults(defineProps<Props>(), {
+//   label: '',
+// });
+
+// const emit = defineEmits<{
+//   (e: 'update:modelValue', value: string): void;
+// }>();
+</script>
+
+<style scoped lang="sass">
+.header
+  background-color: #fff
+  display: flex
+  align-items: center
+  justify-content: space-between
+  position: fixed
+  width: 100%
+  z-index: 9999
+  padding: 10px 25px
+  box-shadow: 0px 2px 6px 1px rgba(0,0,0,0.3)
+  .brand
+    width: 105px
+    display: flex
+    .img-box
+      height: 30px
+      width: 30px
+      border-radius: 5px
+      background-color: #C8EEC8
+      border: solid 2px #333
+  .toggle-btn
+    height: 34px
+    width: 28px
+    border-radius: 3px
+    justify-content: space-between
+    align-items: center
+    flex-direction: column
+    padding: 7px 6px
+    display: none
+    position: relative
+    .line
+      border-top: solid 3px #78A780
+      width: 100%
+      position: absolute
+      transform-origin: center
+      transition-duration: .5s
+      opacity: 1
+  .toggle-btn.show
+    .top-line
+      top: 15px
+      transform: rotate(45deg)
+    .center-line
+      opacity: 0
+    .bottom-line
+      top: 15px
+      transform: rotate(-45deg)
+  .toggle-btn:not(.show)
+    .top-line
+      top: 6px
+    .center-line
+      top: 15px
+    .bottom-line
+      top: 24px
+  .nav
+    .nav-menu
+      display: flex
+      color: #000
+      font-weight: 700
+      justify-content: center
+      align-items: center
+      .item
+        margin: 0px 5px 
+        padding: 3px 18px
+        font-size: 15px
+      .item:last-child
+        background-color: #C8EEC8
+        border-radius: 30px
+
+@media (max-width: 992px)
+  .header
+    flex-wrap: wrap
+    justify-content: space-between
+    .toggle-btn
+      display: flex
+    .nav
+      width: 100%
+      overflow: hidden
+      transition-duration: .5s
+      display: flex
+      justify-content: center
+      align-items: center
+      height: calc(100vh - 60px)
+      .nav-menu
+        flex-direction: column
+        .item
+          margin: 20px
+    .nav:not(.show)
+      height: 0
+    .social
+      display: none
+    
+</style>

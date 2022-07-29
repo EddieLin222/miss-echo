@@ -1,0 +1,79 @@
+<template>
+    <div class="list">
+        <div class="item" v-for="(item, index) in list">
+
+            <div class="img">
+                <q-responsive :ratio="16/12">
+                    <!-- <img src="" alt=""/> -->
+                </q-responsive>
+            </div>
+            <div class="content">
+                <p>{{item.content}}</p>
+                <a class="more" href="#">閱讀更多...</a>
+            </div>
+            <img class="sticker" src="/public/intro/sticker.svg" alt="">
+        </div>
+    </div>
+</template>
+<script setup lang="ts">
+import { ref, onMounted } from 'vue';
+const list = [
+    {
+        content: '內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字',
+        link: '',
+        img: ''
+    },
+    {
+        content: '內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字',
+        link: '',
+        img: ''
+    },
+    {
+        content: '內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字',
+        link: '',
+        img: ''
+    }
+]
+// interface Props {
+//   label?: string;
+// }
+// const props = withDefaults(defineProps<Props>(), {
+//   label: '',
+// });
+
+// const emit = defineEmits<{
+//   (e: 'update:modelValue', value: string): void;
+// }>();
+</script>
+
+<style scoped lang="sass">
+.list
+    background-color: #FFFBED
+    display: flex
+    justify-content: center
+    padding: 0px 8% 8% 8%
+    .item
+        flex: 1
+        text-align: center
+        margin: 0px 40px
+        border: solid 2px #646464
+        background-color: #fff
+        box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.25), 12px 12px 2px 3px #C8EEC8
+        .img
+            .q-responsive
+                background-color: #CFCFCF
+        .content
+            padding: 50px 20px
+            display: flex
+            flex-direction: column
+            align-items: flex-start
+            p
+                text-align: left
+                margin-bottom: 20px
+            .more
+                display: inline-block
+                color: #78A780
+        .sticker
+            
+    
+</style>
