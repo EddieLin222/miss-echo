@@ -124,12 +124,12 @@ onMounted(() => {
 <style scoped lang="sass">
 .carousel
   max-height: 100vh
-  height: 100vh
-  background-color: teal
+  background-color: #FFFBED
   position: relative
   display: flex
   justify-content: center
   align-items: center
+  padding: 8% 0%
   .arrow-left
     transform: rotate(90deg)
     .q-icon

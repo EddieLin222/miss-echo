@@ -22,8 +22,11 @@ const props = withDefaults(defineProps<Props>(), {
 .title-block
   font-weight: 700
   position: relative
-  display: inline-block
-  margin-bottom: 20px
+  display: inline-block !important
+  margin-bottom: 5px
+  font-weight: 900
+  font-family: 'Noto Serif TC', serif
+  width: auto !important
   .bg
     background-color: #C8EEC8
     position: absolute
@@ -34,5 +37,6 @@ const props = withDefaults(defineProps<Props>(), {
     position: relative
     font-size: 20px
     line-height: 20px
+    letter-spacing: 1px
 
 </style>

@@ -24,7 +24,7 @@ interface Props {
   unit?: string
 }
 const props = withDefaults(defineProps<Props>(), {
-  time: 0.5,
+  time: 1.5,
   number: 5000,
   title: '',
   unit: ''
@@ -80,14 +80,14 @@ onMounted(()=>{
         width: 100%
         display: flex
         justify-content: center
-        margin: 5px 0px 5px 0px
+        margin: 20px 0px 5px 0px
         .number-grow
             color: #78A780
+            font-family: 'Archivo Black', sans-serif
             display: flex
             justify-content: center
             align-items: center
             font-size: 50px
-            font-weight: 900
             line-height: 36px
             margin: 0px 25px
             

@@ -1,63 +1,31 @@
 <template>
   <div class="footer">
-    <div class="t-block">
-      <div class="logo">LOGO</div>
-      <div class="nav-block">
-        <div class="nav-item" v-for="(item, index) in navItems">{{item.name}}</div>
+    <div class="l-block">
+      <div class="logo">
+        <img src="/logo/logo-footer.png" alt="">
+      </div>
+      <div class="text">
+        Miss Eco 環保外送 打造永續新日常
       </div>
     </div>
-    <div class="line"></div>
-    <div class="b-block">
-      <div class="brand-name">Brand Name</div>
+    <div class="r-block">
+      <div class="mail">misseco.tw@gmail.com</div>
       <div class="social-block">
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
+        <div class="item">
+          <img src="/social/fb.svg">
+        </div>
+        <div class="item">
+          <img src="/social/ig.svg">
+        </div>
+        <div class="item">
+          <img src="/social/line.svg">
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-const navItems = [
-  {
-    name: 'Home',
-    link: ''
-  },
-  {
-    name: 'About',
-    link: ''
-  },
-  {
-    name: 'News',
-    link: ''
-  },
-  {
-    name: 'Product',
-    link: ''
-  },
-  {
-    name: 'Blog',
-    link: ''
-  }
-]
-const social = [
-  {
-    name: 'facebook',
-    url: '',
-    link: ''
-  },
-  {
-    name: 'instagram',
-    url: '',
-    link: ''
-  },
-  {
-    name: 'twitter',
-    url: '',
-    link: ''
-  },
-]
 // interface Props {
 //   label?: string;
 // }
@@ -72,50 +40,39 @@ const social = [
 
 <style scoped lang="sass">
 .footer
-  background-color: #000
+  background-color: #DDEFE0
   display: flex
   align-items: center
   justify-content: space-between
-  flex-direction: column
   width: 100%
   z-index: 9999
   padding: 25px
-  color: #fff
-  font-weight: 900
-  .t-block
+  font-weight: 700
+  .l-block
     display: flex
-    width: 100%
-    justify-content: space-between
-    .logo
-      font-size: 24px
-    .nav-block
-      display: flex
-      align-items: center
-      .nav-item
-        margin: 0px 10px
-        font-size: 18px
-      .nav-item:first-child
-        margin-left: 0px
-      .nav-item:last-child
-        margin-right: 0px
-  .line
-    border: solid 2px #fff
-    width: 100%
-    margin: 15px 0px
-  .b-block
-    display: flex
+    flex-direction: column
     align-items: center
-    justify-content: space-between
-    width: 100%
-    .brand-name
+    flex: 1
+    .logo
+      width: 240px
+      margin-bottom: 10px
+    .text
+      color: #778D7E
+      letter-spacing: 1px
+  .r-block
+    display: flex
+    flex-direction: column
+    align-items: center
+    flex: 1
+    .mail
       font-size: 16px
+      color: #778D7E
+      margin-bottom: 30px
     .social-block
       display: flex
       .item
-        border: solid 2px #fff
         border-radius: 30px
-        width: 30px
-        height: 30px
-        margin: 0px 5px
-        
+        width: 35px
+        height: 35px
+        margin: 0px 10px
 </style>

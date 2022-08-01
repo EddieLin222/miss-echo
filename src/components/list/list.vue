@@ -1,7 +1,6 @@
 <template>
     <div class="list">
         <div class="item" v-for="(item, index) in list">
-
             <div class="img">
                 <q-responsive :ratio="16/12">
                     <!-- <img src="" alt=""/> -->
@@ -11,7 +10,7 @@
                 <p>{{item.content}}</p>
                 <a class="more" href="#">閱讀更多...</a>
             </div>
-            <img class="sticker" src="/public/intro/sticker.svg" alt="">
+            <img class="sticker" src="/intro/sticker.svg" alt="">
         </div>
     </div>
 </template>
@@ -59,6 +58,7 @@ const list = [
         border: solid 2px #646464
         background-color: #fff
         box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.25), 12px 12px 2px 3px #C8EEC8
+        position: relative
         .img
             .q-responsive
                 background-color: #CFCFCF
@@ -74,6 +74,8 @@ const list = [
                 display: inline-block
                 color: #78A780
         .sticker
-            
-    
+            position: absolute
+            top: 0
+            height: 15%
+            transform: translate(-30%, -30%)
 </style>

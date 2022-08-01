@@ -1,22 +1,11 @@
 <template>
   <div class="collapse">
-    <div class="title">{{ listData.title }}</div>
     <div class="block">
         <div class="item" v-for="(list, index) in listData.items" :key="index" @click="() => toggleOpen(index)">
             <div class="item-title">
                 <h4>{{list.title}}</h4>
-                <!-- <span class="button"></span> -->
-                <!-- <span class="material-icons">
-                    sync_alt
-                </span> -->
-                <!-- <span class="material-icons">
-                    arrow_right_alt
-                </span> -->
-                <!-- <span class="material-icons">
-                    upgrade
-                </span> -->
                 <span class="material-icons">
-                    swap_horiz
+                    expand_more
                 </span>
             </div>
             <div class="item-content" :ref="setCollapse">
@@ -40,26 +29,20 @@ const setCollapse = (el: any) => {
     }
 }
 const listData = {
-  title: "Cool Title .",
   items: [
     {
-      title: 'Cool Item',
-      intro: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      title: '我要如何歸還循環餐盒呢？',
+      intro: '【方法1｜自行歸還】於訂餐網站之首頁列表 > 點選 餐盒回收 > 點選 抵達合作店家歸還餐盒 > 選擇歸還數目、品項 > 點選 產生回收驗證碼 > 出示您的回收驗證碼(QRCODE)給店家掃描 > 完成歸還餐盒，【方法2｜外送夥伴歸還】於訂餐網站下訂餐點 > 點選 結帳 > 點選 選擇這次要歸還的餐盒 > 選擇歸還數目、品項 > 點選 確認歸還 > 取餐時將餐盒歸還給外送夥伴 > 完成歸還餐盒',
       open: false
     },
     {
-      title: 'Cool Item',
+      title: '循環餐盒衛生安全怎麼把關？',
       intro: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
       open: false
     },
     {
-      title: 'Cool Item',
+      title: '循環餐盒衛生安全怎麼把關？',
       intro: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      open: false
-    },
-    {
-      title: 'Cool Item',
-      intro: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
       open: false
     }
   ]
@@ -104,27 +87,25 @@ onMounted(() => {
   justify-content: center
   align-items: center
   flex-direction: column
-  padding: 60px 10%
-  font-weight: 900
-  background-color: #f2f2f2
+  font-weight: 700
+  margin-top: 15px
   .title
     font-size: 28px
   .block
-    width: 90%
-    margin-top: 25px
+    width: 100%
     .item-title
-        background-color: #B6E1E3
         color: #000
-        padding: 5px 15px
+        padding: 5px
         display: flex
         justify-content: space-between
         align-items: center
         border-radius: 2px
-        border: solid 1px #f4f4f4
+        border-bottom: solid 2px #78A780
         h4
             margin-right: 20px
             pointer-events: none
             font-size: 16px 
+            font-weight: 400
         .button
             width: 30px
             height: 30px
@@ -133,11 +114,12 @@ onMounted(() => {
             transition-duration: .5s
         .material-icons
             font-size: 24px
-            transform: rotate(90deg)
+            color: #78A780
     .item-content
         overflow: hidden
         transition-duration: .5s
         // background-color: #eee
         .text
             padding: 20px 10px
+            font-weight: 400
 </style>

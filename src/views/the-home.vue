@@ -1,24 +1,23 @@
 <template>
   <div class="home">
-    <Header></Header>
     <Banner></Banner>
-    <intro></intro>
-    <list></list>
-    <Carousel2></Carousel2>
-    <Collapse></Collapse>
-    <Footer></Footer>
+    <Intro></Intro>
+    <List></List>
+    <Slide></Slide>
+    <!-- <Carousel2></Carousel2>
+    <Collapse></Collapse> -->
   </div>
 </template>
 
 <script setup lang="ts">
-import Header from "../components/header/header-1.vue"
 import Banner from "../components/banner/banner-1.vue"
-import intro from "../components/intro/intro.vue"
-import list from "../components/list/list.vue"
-import Carousel2 from "../components/carousel/demo_2/carousel.vue"
-import Collapse from "../components/collapse/collapse-1.vue"
-import Container1 from "../components/container/container-1.vue"
-import Footer from "../components/footer/footer-1.vue"
+import Intro from "../components/intro/intro.vue"
+import List from "../components/list/list.vue"
+import Slide from "../components/slide/slide.vue"
+
+// import Carousel2 from "../components/carousel/demo_2/carousel.vue"
+// import Collapse from "../components/collapse/collapse-1.vue"
+// import Container1 from "../components/container/container-1.vue"
 
 import { ref } from 'vue';
 

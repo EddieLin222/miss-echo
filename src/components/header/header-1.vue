@@ -1,9 +1,9 @@
 <template>
   <div class="header">
     <div class="brand">
-      <div class="img-box">
-        <img src="" alt="">
-      </div>
+      <a class="img-box" href="/">
+        <img src="/logo/logo.svg" alt="">
+      </a>
     </div>
     <div class="toggle-btn" @click="openMenu = !openMenu" :class="{show: openMenu}">
       <div class="line top-line"></div>
@@ -24,11 +24,11 @@ const logoUrl = ""
 const navItems = [
   {
     name: ' 環保外送',
-    link: ''
+    link: '/delivery'
   },
   {
     name: '活動訂餐',
-    link: ''
+    link: '/booking'
   },
   {
     name: '有意識生活',
@@ -86,17 +86,14 @@ const social = [
   position: fixed
   width: 100%
   z-index: 9999
-  padding: 10px 25px
+  padding: 5px 25px
   box-shadow: 0px 2px 6px 1px rgba(0,0,0,0.3)
   .brand
     width: 105px
     display: flex
     .img-box
-      height: 30px
-      width: 30px
-      border-radius: 5px
-      background-color: #C8EEC8
-      border: solid 2px #333
+      img
+        width: 100%
   .toggle-btn
     height: 34px
     width: 28px

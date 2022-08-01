@@ -35,7 +35,7 @@ const bannerData = {
   align-items: center
   height: 50vw
   min-height: 80vh
-  width: 100vw
+  width: 100%
   position: relative
   overflow: hidden
   .bg

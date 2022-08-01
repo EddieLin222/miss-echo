@@ -4,7 +4,7 @@
         <Title title="環保外送"></Title>
         <!-- <h1 class="title">環保外送</h1> -->
         <div class="content">
-            <img class="bg" src="/public/intro/bg.png" alt="">
+            <img class="bg" src="/intro/bg.png" alt="">
             <div class="text">
                 <p>
                     Miss Eco是全台首創的環保外送平台，與健康永續的餐飲業者合作，透過循環餐盒外送餐點，減少外送大量的一次性垃圾。
@@ -13,7 +13,7 @@
                 </p>
             </div>
             <div class="leaf">
-                <img src="/public/intro/leaf.svg" alt="">
+                <img src="/intro/leaf.svg" alt="">
             </div>
         </div>
     </div>
@@ -74,33 +74,34 @@ const growNumbers = [
     align-items: flex-start
     padding: 10px 40px
     .content
-        position: relative
+      position: relative
+      height: 100%
+      margin-top: 15px
+      .bg
+        display: block
+        position: absolute
+        top: 0
+        width: 100%
         height: 100%
-        .bg
-            display: block
-            position: absolute
-            top: 0
-            width: 100%
-            height: 100%
-            min-height: 100%
-            min-width: 100%
-        .text
-            height: 100%
-            display: flex
-            align-items: center
-            padding: 30px 40px
-            p
-                position: relative
-                letter-spacing: 1px
-                line-height: 30px
-                color: #fff
-        .leaf
-            position: absolute
-            height: 40%
-            right: 0
-            bottom: 0
-            transform: translateX(60%)
-            img
-                height: 100%
-                transform: rotate(5deg)
+        min-height: 100%
+        min-width: 100%
+      .text
+        height: 100%
+        display: flex
+        align-items: center
+        padding: 30px 40px
+        p
+          position: relative
+          letter-spacing: 1px
+          line-height: 30px
+          color: #fff
+      .leaf
+        position: absolute
+        height: 40%
+        right: 0
+        bottom: 0
+        transform: translateX(60%)
+        img
+          height: 100%
+          transform: rotate(5deg)
 </style>

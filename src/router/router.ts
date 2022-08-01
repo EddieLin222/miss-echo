@@ -11,13 +11,21 @@ const routes: Array<RouteRecordRaw> = [
       name: 'home',
     }
   },
-
   {
     path: `/home`,
     name: 'home',
     component: () => import('../views/the-home.vue')
   },
-
+  {
+    path: `/delivery`,
+    name: 'delivery',
+    component: () => import('../views/the-delivery.vue')
+  },
+  {
+    path: `/booking`,
+    name: 'booking',
+    component: () => import('../views/the-booking.vue')
+  },
   {
     path: '/:pathMatch(.*)*',
     redirect: '/'
