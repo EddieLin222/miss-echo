@@ -75,4 +75,14 @@ import { ref, onMounted } from 'vue';
         width: 35px
         height: 35px
         margin: 0px 10px
+@media (max-width: 580px)
+  .footer
+    flex-direction: column
+    padding: 25px 25px 40px 25px
+    .r-block
+      flex-direction: column-reverse
+      .social-block
+        margin-top: 30px
+      .mail
+        margin-top: 20px
 </style>

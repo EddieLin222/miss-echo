@@ -52,9 +52,8 @@ const list = [
     justify-content: center
     padding: 0px 8% 8% 8%
     .item
-        flex: 1
         text-align: center
-        margin: 0px 40px
+        margin: 0px 3%
         border: solid 2px #646464
         background-color: #fff
         box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.25), 12px 12px 2px 3px #C8EEC8
@@ -78,4 +77,17 @@ const list = [
             top: 0
             height: 15%
             transform: translate(-30%, -30%)
+
+@media(max-width: 960px)
+    .list
+        flex-wrap: wrap
+        gap: 50px 0px
+        justify-content: flex-start
+        .item
+            width: 44%
+
+@media(max-width: 600px)
+     .list
+        .item
+            width: 94%
 </style>

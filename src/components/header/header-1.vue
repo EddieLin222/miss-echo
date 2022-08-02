@@ -88,6 +88,7 @@ const social = [
   z-index: 9999
   padding: 5px 25px
   box-shadow: 0px 2px 6px 1px rgba(0,0,0,0.3)
+  top: 0
   .brand
     width: 105px
     display: flex

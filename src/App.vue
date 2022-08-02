@@ -33,5 +33,5 @@ html, body, #app
   display: flex
   flex-direction: column
   .header-space
-    min-height: 50px
+    min-height: 55px
 </style>

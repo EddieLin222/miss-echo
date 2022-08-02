@@ -25,17 +25,17 @@ const listData = {
     {
       img: '../img.png',
       title: '企業名稱',
-      intro: '“推薦文字推薦文字推薦文字推薦”'
+      intro: '推薦文字推薦文字推薦文字推薦'
     },
     {
       img: '../img.png',
       title: '企業名稱',
-      intro: '“推薦文字推薦文字推薦文字推薦推薦文字推薦文字推薦文字推薦”'
+      intro: '推薦文字推薦文字推薦文字推薦推薦文字推薦文字推薦文字推薦'
     },
     {
       img: '../img.png',
       title: '企業名稱',
-      intro: '“推薦文字推薦文字推薦文字推薦推薦文字推薦文字推薦文字推薦推薦文字推薦文字推薦文字推薦”'
+      intro: '推薦文字推薦文字推薦文字推薦推薦文字推薦文字推薦文字推薦推薦文字推薦文字推薦文字推薦'
     }
   ]
 }
@@ -93,7 +93,7 @@ const listData = {
         font-size: 14px
         display: flex
         flex-wrap: wrap
-        width: 150px
+        width: 200px
         div
           height: 30px
           span

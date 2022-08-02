@@ -97,13 +97,14 @@ const dataList = ref([
   align-items: stretch
   padding: 0px 8% 80px 8%
   background-color: #FFFBED
+  gap: 40px
   .intro-box
     flex: 1
     display: flex
     flex-direction: column
     align-items: flex-start
     justify-content: center
-    padding: 10px 40px
+    // padding: 10px 40px
     .content
       position: relative
       margin-top: 15px
@@ -125,19 +126,7 @@ const dataList = ref([
           line-height: 28px
     .slide-block
       display: flex
-      width: 42vw
-      .prev-btn
-        display: flex
-        align-items: center
-        .q-icon
-          font-size: 35px
-          transform: rotate(90deg)
-      .next-btn
-        display: flex
-        align-items: center
-        .q-icon
-          font-size: 35px
-          transform: rotate(-90deg)
+      width: 40vw
       .swiper
         --swiper-navigation-size: 30px
         width: 100%
@@ -169,4 +158,10 @@ const dataList = ref([
         :deep() .swiper-pagination-bullet-active
           width: 15px
           border-radius: 5px
+@media (max-width: 800px)
+  .intro-container
+    flex-direction: column
+    .intro-box
+      .slide-block
+        width: 84vw
 </style>

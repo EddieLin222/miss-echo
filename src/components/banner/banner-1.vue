@@ -33,15 +33,15 @@ const bannerData = {
   display: flex
   justify-content: center
   align-items: center
-  height: 50vw
-  min-height: 80vh
-  width: 100%
+  min-height: calc(100vh - 55px)
+  min-width: 100%
   position: relative
   overflow: hidden
   .bg
     position: absolute
     min-height: 100%
     min-width: 100%
+    object-fit: cover
   .banner-box
     position: relative
     display: flex

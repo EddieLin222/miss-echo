@@ -39,4 +39,19 @@ import { ref, onMounted } from 'vue';
             img
                 min-height: 100%
                 min-width: 100%
+
+@media (max-width: 960px)
+    .book
+        padding: 30px 14% 100px 14%
+        .book-container
+            justify-content: space-between
+            gap: 10%
+        // border: solid 3px
+
+@media (max-width: 600px)
+    .book
+        .book-container
+            flex-direction: column
+            gap: 50px
+
 </style>

@@ -1,24 +1,24 @@
 <template>
   <div class="intro-container">
     <div class="intro-box">
-        <Title title="環保外送"></Title>
-        <!-- <h1 class="title">環保外送</h1> -->
-        <div class="content">
-            <img class="bg" src="/intro/bg.png" alt="">
-            <div class="text">
-                <p>
-                    Miss Eco是全台首創的環保外送平台，與健康永續的餐飲業者合作，透過循環餐盒外送餐點，減少外送大量的一次性垃圾。
-                    <br>我們相信人們，其實不是不環保、不愛海龜、討厭北極熊，或喜歡製造垃圾，而是生活中缺少自由選擇的權利。
-                    <br>環境議題不該總是站在便利生活的對立面。Miss Eco期待打造兼顧環保與便利的新選擇，與您一起共創永續新日常！
-                </p>
-            </div>
-            <div class="leaf">
-                <img src="/intro/leaf.svg" alt="">
-            </div>
+      <Title title="環保外送"></Title>
+      <!-- <h1 class="title">環保外送</h1> -->
+      <div class="content">
+        <img class="bg" src="/intro/bg.png" alt="">
+        <div class="text">
+          <p>
+            Miss Eco是全台首創的環保外送平台，與健康永續的餐飲業者合作，透過循環餐盒外送餐點，減少外送大量的一次性垃圾。
+            <br>我們相信人們，其實不是不環保、不愛海龜、討厭北極熊，或喜歡製造垃圾，而是生活中缺少自由選擇的權利。
+            <br>環境議題不該總是站在便利生活的對立面。Miss Eco期待打造兼顧環保與便利的新選擇，與您一起共創永續新日常！
+          </p>
         </div>
+        <div class="leaf">
+          <img src="/intro/leaf.svg" alt="">
+        </div>
+      </div>
     </div>
-    <div class="intro-box">
-        <NumberGrow v-for="(item, index) in growNumbers" :key="index" :number="item.number" :title="item.title" :unit="item.unit"></NumberGrow>
+    <div class="intro-box number-grow">
+      <NumberGrow v-for="(item, index) in growNumbers" :key="index" :number="item.number" :title="item.title" :unit="item.unit"></NumberGrow>
     </div>
   </div>
 </template>
@@ -104,4 +104,29 @@ const growNumbers = [
         img
           height: 100%
           transform: rotate(5deg)
+
+@media(max-width: 960px)
+  .intro-container
+    flex-direction: column
+    .intro-box
+      padding: 20px 40px
+      .content
+        padding: 20px 0px
+        .leaf
+          height: auto
+          width: 25%
+          max-width: 80px
+          transform: translateX(40%)
+    .number-grow
+      display: flex
+      flex-direction: row
+      justify-content: center
+      margin-top: 30px
+
+@media(max-width: 720px)
+  .intro-container
+    padding: 8% 2%
+    .number-grow
+      flex-direction: column
+      align-items: center
 </style>
