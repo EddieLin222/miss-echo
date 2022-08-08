@@ -3,6 +3,7 @@
   <div class="header-space"></div>
   <router-view />
   <Book></Book>
+  <Bubbles></Bubbles>
   <Footer></Footer>
 </template>
 
@@ -11,6 +12,7 @@ import { ref } from 'vue';
 import { useMainStore } from './stores/main.store';
 import Header from "./components/header/header-1.vue"
 import Book from "./components/book/book.vue"
+import Bubbles from "./components/bubbles/bubbles.vue"
 import Footer from "./components/footer/footer-1.vue"
 
 // import slider1 from './components/slider-1.vue'

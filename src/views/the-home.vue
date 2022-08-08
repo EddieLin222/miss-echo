@@ -3,7 +3,7 @@
     <Banner></Banner>
     <Intro></Intro>
     <List></List>
-    <Slide></Slide>
+    <Slide title="您想像的永續日常，聽名人說" :list="personList"></Slide>
     <!-- <Carousel2></Carousel2>
     <Collapse></Collapse> -->
   </div>
@@ -51,6 +51,24 @@ const growNumbers = [
     title: '減少碳排量',
     number: 5000,
     unit: '公斤'
+  }
+]
+
+const personList = [
+  {
+    img: '',
+    name: '唐鳳',
+    text: '推薦文字推薦文字推薦文字推薦文字文字'
+  },
+  {
+    img: '',
+    name: '唐鳳',
+    text: '推薦文字推薦文字推薦文字推薦文字'
+  },
+  {
+    img: '',
+    name: '唐鳳',
+    text: '推薦文字推薦文字推薦文字推薦文字'
   }
 ]
 

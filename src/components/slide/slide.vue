@@ -1,7 +1,7 @@
 <template>
   <div class="slide">
     <div class="title-block">
-        <Title title="您想像的永續日常，聽名人說"></Title>
+        <Title :title="props.title"></Title>
     </div>
     <div class="slide-block">
         <div class="prev-btn">
@@ -17,9 +17,9 @@
             <swiper-slide v-for="(list, index) in dataList" :key="index">
                 <div class="img-block"></div>
                 <div class="intro">
-                    <div class="title">唐鳳</div>
+                    <div class="title">{{list['name']}}</div>
                     <div class="content">
-                        <div v-for="(word, index) in list.text">
+                        <div v-for="(word, index) in list['text']" :key="index">
                             <span>{{word}}</span>
                         </div>
                     </div>
@@ -41,28 +41,27 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { ref, onMounted } from 'vue';
 
-const dataList = ref([
+interface Props {
+  title?: string,
+  list?: any
+}
+const props = withDefaults(defineProps<Props>(), {
+  title: '',
+  list: [
     {
-        img: '',
-        name: '唐鳳',
-        text: '推薦文字推薦文字推薦文字推薦文字'
-    },
-    {
-        img: '',
-        name: '唐鳳',
-        text: '推薦文字推薦文字推薦文字推薦文字'
-    },
-    {
-        img: '',
-        name: '唐鳳',
-        text: '推薦文字推薦文字推薦文字推薦文字'
-    },
-    {
-        img: '',
-        name: '唐鳳',
-        text: '推薦文字推薦文字推薦文字推薦文字'
+      img: '',
+      name: '',
+      text: ''
     }
-])
+  ]
+});
+
+const dataList = ref([])
+
+
+onMounted(()=>{
+    dataList.value = props.list
+})
 
 // const text = ref('推薦文字推薦文字推薦文字推薦文字')
 
@@ -117,6 +116,7 @@ const dataList = ref([
                     .title
                         font-size: 20px
                         margin-bottom: 15px
+                        font-weight: 700
                     .content
                         display: flex
                         flex-wrap: wrap
@@ -126,7 +126,8 @@ const dataList = ref([
                             span
                                 height: 10px
                                 background: #F2E7CE
-                                padding: 0px 1px 
+                                padding: 0px 1px
+                                font-weight: 500
 
             :deep() .swiper-button-prev
                 padding: 20px

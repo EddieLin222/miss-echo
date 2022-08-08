@@ -1,44 +1,50 @@
 <template>
   <div class="list">
     <Title title="企業好評推薦"></Title>
-    <div class="list-block">
-      <div class="list-item" v-for="(item, index) in listData.items" :key="index">
-        <div class="img-block">
-          <div class="img"></div>
-        </div>
-        <div class="list-title">{{item.title}}</div>
+    <div class="list-block" v-if="width>=840">
+      <div class="list-item" v-for="(item, index) in listData" :key="index">
+        <q-responsive :ratio="1">
+          <div class="img-block">
+            <div class="img"></div>
+          </div>
+        </q-responsive>
+        <div class="list-title">{{item.name}}</div>
         <div class="list-intro">
-          <div v-for="(word, index) in item.intro">
+          <div v-for="(word, index) in item.text">
             <span>{{word}}</span>
           </div>
         </div>
       </div>
+    </div>
+    <div class="swiper-block" v-else>
+      <Slide :list="listData"></Slide>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import Title from "../title/title-1.vue"
-const listData = {
-  title: "Cool Title .",
-  items: [
-    {
-      img: '../img.png',
-      title: '企業名稱',
-      intro: '推薦文字推薦文字推薦文字推薦'
-    },
-    {
-      img: '../img.png',
-      title: '企業名稱',
-      intro: '推薦文字推薦文字推薦文字推薦推薦文字推薦文字推薦文字推薦'
-    },
-    {
-      img: '../img.png',
-      title: '企業名稱',
-      intro: '推薦文字推薦文字推薦文字推薦推薦文字推薦文字推薦文字推薦推薦文字推薦文字推薦文字推薦'
-    }
-  ]
-}
+import Slide from "../slide/slide.vue"
+import { useWindowSize } from '@vueuse/core'
+const { width } = useWindowSize()
+
+const listData = [
+  {
+    img: '../img.png',
+    name: '企業名稱',
+    text: '推薦文字推薦文字推薦文字推薦'
+  },
+  {
+    img: '../img.png',
+    name: '企業名稱',
+    text: '推薦文字推薦文字推薦文字推薦推薦文字推薦文字推薦文字推薦'
+  },
+  {
+    img: '../img.png',
+    name: '企業名稱',
+    text: '推薦文字推薦文字推薦文字推薦推薦文字推薦文字推薦文字推薦推薦文字推薦文字推薦文字推薦'
+  }
+]
 // interface Props {
 //   label?: string;
 // }
@@ -73,18 +79,19 @@ const listData = {
       align-items: center
       list-style: none
       margin: 0px 15px
-
-      .img-block
-        width: 180px
-        height: 180px
-        border-radius: 100%
-        padding: 5px
+      .q-responsive
+        width: 100%
         margin-bottom: 15px
-        .img
-          background-color: #ddd
-          width: 100%
-          height: 100%
+        .img-block
+          width: 180px
           border-radius: 100%
+          padding: 5px
+
+          .img
+            background-color: #ddd
+            width: 100%
+            height: 100%
+            border-radius: 100%
       .list-title
         font-size: 16px
         font-weight: 700
@@ -101,19 +108,29 @@ const listData = {
             background: #F2E7CE
             padding: 0px 1px
             font-weight: 400
+  .swiper-block
+    width: 100%
 @media (max-width: 1190px)
   .list
+    // padding: 0px 15% 80px 15%
     .list-block
       flex-wrap: wrap
       .list-item
-        width: 45%
+        width: calc(50% - 30px)
         margin: 30px 15px
         .list-intro
           max-width: 300px
-
-@media (max-width: 580px)
+@media (max-width: 980px)
+  .list
+    padding: 0px 10% 80px 10%
+@media (max-width: 840px)
+  .list
+    padding: 0px 0% 80px 0%
+@media (max-width: 600px)
   .list
     .list-block
+      flex-direction: column
       .list-item
-        width: 80%
+        width: 100%
+        margin: 30px 0px
 </style>

@@ -95,7 +95,7 @@ const dataList = ref([
   width: 100%
   display: flex
   align-items: stretch
-  padding: 0px 8% 80px 8%
+  padding: 0px 10% 80px 10%
   background-color: #FFFBED
   gap: 40px
   .intro-box

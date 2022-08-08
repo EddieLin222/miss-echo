@@ -2,6 +2,7 @@
   <div class="delivery">
     <Boxs></Boxs>
     <Intro></Intro>
+    <Step></Step>
     <Faq></Faq>
   </div>
 </template>
@@ -9,6 +10,7 @@
 <script setup lang="ts">
 import Boxs from "../components/boxs/boxs.vue"
 import Intro from "../components/intro/intro2.vue"
+import Step from "../components/step/step.vue"
 import Faq from "../components/faq/faq.vue"
 
 import { ref } from 'vue';

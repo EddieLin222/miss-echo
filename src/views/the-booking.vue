@@ -3,6 +3,7 @@
     <Service></Service>
     <Intro></Intro>
     <List></List>
+
   </div>
 </template>
 
@@ -10,9 +11,6 @@
 import Service from "../components/service/service.vue"
 import Intro from "../components/intro/intro3.vue"
 import List from "../components/list/list2.vue"
-
-import { ref } from 'vue';
-
 
 // interface Props {
 //   label?: string;

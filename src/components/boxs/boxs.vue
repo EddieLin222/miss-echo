@@ -43,7 +43,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-const { width, height } = useWindowSize()
+const { width } = useWindowSize()
 
 const data = ref([
     {

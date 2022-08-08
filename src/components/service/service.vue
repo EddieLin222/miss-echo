@@ -67,6 +67,7 @@ import { ref, onMounted } from 'vue';
     .text
       font-size: 16px
       margin: 0px 20px
+      white-space: nowrap
   .items
     width: 100%
     display: flex
@@ -80,4 +81,15 @@ import { ref, onMounted } from 'vue';
         text-align: center
         margin-top: 20px
         font-size: 16px
+@media (max-width: 980px)
+  .service
+    padding: 40px 10% 100px 10%
+@media (max-width: 540px)
+  .service
+    .items
+      flex-direction: column
+      gap: 50px
+      .item
+        width: 100%
+
 </style>

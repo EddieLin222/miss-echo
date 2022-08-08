@@ -45,7 +45,6 @@ import { ref, onMounted } from 'vue';
   align-items: center
   justify-content: space-between
   width: 100%
-  z-index: 9999
   padding: 25px
   font-weight: 700
   .l-block

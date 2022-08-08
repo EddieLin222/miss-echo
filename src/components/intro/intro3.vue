@@ -72,50 +72,63 @@ const dataList = ref([
     justify-content: center
     width: 100%
     .lists
-        width: 100%
-        margin-top: 20px
-        .list
+      width: 100%
+      margin-top: 20px
+      .list
+        display: flex
+        background-color: #DDEFE0
+        padding: 30px
+        gap: 20px
+        .left
+          flex: 1
+          width: 100%
+          .q-responsive
+            height: 100%
+            background-color: #B8B8B8
+        .right
+          flex: 1.5
+          display: flex
+          flex-direction: column
+          align-items: flex-start
+          justify-content: space-between
+          .list-title
+            background-color: #fff
+            padding: 0px 20px
+            font-weight: 900
+            font-size: 18px
+            border-radius: 30px
+            width: 100%
+            font-family: 'Noto Serif TC', serif
+          .list-content
+            width: 100%
+            padding: 20px
+            line-height: 25px
+          .list-btn
+            width: 100%
             display: flex
-            background-color: #DDEFE0
-            padding: 30px
-            gap: 20px
-            .left
-                flex: 1
-                width: 100%
-                .q-responsive
-                    width: 100%
-                    background-color: #B8B8B8
-            .right
-                flex: 1.5
-                display: flex
-                flex-direction: column
-                align-items: flex-start
-                justify-content: space-between
-                .list-title
-                    background-color: #fff
-                    padding: 0px 20px
-                    font-weight: 900
-                    font-size: 18px
-                    border-radius: 30px
-                    width: 100%
-                    font-family: 'Noto Serif TC', serif
-                .list-content
-                    width: 100%
-                    padding: 0px 20px
-                    line-height: 25px
-                .list-btn
-                    width: 100%
-                    display: flex
-                    justify-content: flex-end
-                    gap: 15px
-                    .btn
-                        background-color: #78A780
-                        color: #fff
-                        padding: 5px 15px
-                        border-radius: 30px
+            justify-content: flex-end
+            gap: 15px
+            .btn
+              background-color: #78A780
+              color: #fff
+              padding: 5px 15px
+              border-radius: 30px
+      .list:not(:last-child)
+          margin-bottom: 30px
 
+@media (max-width: 980px)
+  .intro-container
+    padding: 0px 10% 80px 10%
 
-        .list:not(:last-child)
-            margin-bottom: 30px
+@media (max-width: 840px)
+  .intro-container
+    .intro-box
+      .lists
+        .list
+          flex-direction: column
+          .right
+            align-items: center
+            .list-title, .list-content, .list-btn
+              width: auto
 
 </style>
