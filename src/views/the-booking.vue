@@ -3,7 +3,6 @@
     <Service></Service>
     <Intro></Intro>
     <List></List>
-
   </div>
 </template>
 

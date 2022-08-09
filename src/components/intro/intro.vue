@@ -4,7 +4,7 @@
       <Title title="環保外送"></Title>
       <!-- <h1 class="title">環保外送</h1> -->
       <div class="content">
-        <img class="bg" src="/intro/bg.png" alt="">
+        <img class="bg" src="/intro/bg2.png" alt="">
         <div class="text">
           <p>
             Miss Eco是全台首創的環保外送平台，與健康永續的餐飲業者合作，透過循環餐盒外送餐點，減少外送大量的一次性垃圾。
@@ -77,10 +77,13 @@ const growNumbers = [
       position: relative
       height: 100%
       margin-top: 15px
+      padding: 15px
       .bg
         display: block
         position: absolute
-        top: 0
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
         width: 100%
         height: 100%
         min-height: 100%
@@ -111,7 +114,7 @@ const growNumbers = [
     .intro-box
       padding: 20px 40px
       .content
-        padding: 20px 0px
+        padding: 20px
         .leaf
           height: auto
           width: 25%

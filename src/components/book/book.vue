@@ -34,7 +34,6 @@ import { ref, onMounted } from 'vue';
         gap: 20%
         .img-shape
             flex: 1
-            border-radius: 50%
             overflow: hidden
             img
                 min-height: 100%

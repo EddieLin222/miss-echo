@@ -4,8 +4,7 @@
     <div class="boxs-container" v-if="width>=840">
         <a href="" v-for="(item, index) in data" :key="index">
             <q-responsive :ratio="1">
-                <!-- <img src="" alt=""> -->
-                <div class="title">{{item.name}}</div>
+                <img :src="item.img" alt="">
             </q-responsive>
         </a>
     </div>
@@ -22,7 +21,9 @@
         >
           <swiper-slide v-for="(list, index) in data" :key="index">
             <q-responsive ratio="1">
-              <div class="img-block">{{list.name}}</div>
+              <div class="img-block">
+                <img :src="list.img" alt="">
+              </div>
             </q-responsive>
           </swiper-slide>
         </swiper>
@@ -47,32 +48,32 @@ const { width } = useWindowSize()
 
 const data = ref([
     {
-        img: '',
+        img: '/promotion/promotion1.jpg',
         name: '餐點宣傳1',
         link: ''
     },
     {
-        img: '',
+        img: '/promotion/promotion2.jpg',
         name: '餐點宣傳2',
         link: ''
     },
     {
-        img: '',
+        img: '/promotion/promotion3.jpg',
         name: '餐點宣傳3',
         link: ''
     },
     {
-        img: '',
+        img: '/promotion/promotion4.jpg',
         name: '餐點宣傳4',
         link: ''
     },
     {
-        img: '',
+        img: '/promotion/promotion5.jpg',
         name: '餐點宣傳5',
         link: ''
     },
     {
-        img: '',
+        img: '/promotion/promotion6.jpg',
         name: '餐點宣傳6',
         link: ''
     }
@@ -108,6 +109,14 @@ const data = ref([
             background-color: #d9d9d9
         .q-responsive
             width: 100%
+            position: relative
+            overflow: hidden
+            img
+                position: absolute
+                top: 50%
+                left: 50%
+                transform: translate(-50%, -50%)
+                object-fit: cover
     .slide-block
         display: flex
         width: 100%
@@ -140,9 +149,14 @@ const data = ref([
                 .q-responsive
                     width: 100%
                     .img-block
-                        height: 200px
-                        width: 100%
+                        min-width: 100%
+                        min-height: 100%
                         background-color: #d9d9d9
+                        overflow: hidden
+                        img
+                            min-width: 100%
+                            min-height: 100%
+                            object-fit: cover
             :deep() .swiper-pagination
                 position: relative
                 bottom: 0px
