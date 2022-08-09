@@ -12,7 +12,7 @@
           <img src="" alt="">
         </q-responsive>
         <div class="content">
-          合作夥伴：27+
+          合作夥伴： {{props.serviceData.partner.info}}
         </div>
       </div>
       <div class="item">
@@ -20,7 +20,7 @@
           <img src="" alt="">
         </q-responsive>
         <div class="content">
-          場次：87
+          場次： {{props.serviceData.event.info}}
         </div>
       </div>
       <div class="item">
@@ -28,7 +28,7 @@
           <img src="" alt="">
         </q-responsive>
         <div class="content">
-          減碳：24
+          減碳： {{props.serviceData.reduce.info}}
         </div>
       </div>
     </div>
@@ -37,12 +37,25 @@
 <script setup lang="ts">
 import Title from '../title/title-1.vue'
 import { ref, onMounted } from 'vue';
-// interface Props {
-//   label?: string;
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   label: '',
-// });
+interface Props {
+  serviceData?: any;
+}
+const props = withDefaults(defineProps<Props>(), {
+  serviceData: {
+    partner: {
+      img: '',
+      info: ''
+    },
+    event: {
+      img: '',
+      info: ''
+    },
+    reduce: {
+      img: '',
+      info: ''
+    }
+  },
+});
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;

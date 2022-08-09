@@ -2,7 +2,7 @@
   <div class="list">
     <Title title="企業好評推薦"></Title>
     <div class="list-block" v-if="width>=840">
-      <div class="list-item" v-for="(item, index) in listData" :key="index">
+      <div class="list-item" v-for="(item, index) in props.companyList" :key="index">
         <q-responsive :ratio="1">
           <div class="img-block">
             <div class="img"></div>
@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="swiper-block" v-else>
-      <Slide :list="listData"></Slide>
+      <Slide :list="props.companyList"></Slide>
     </div>
   </div>
 </template>
@@ -28,29 +28,19 @@ import Slide from "../slide/slide.vue"
 import { useWindowSize } from '@vueuse/core'
 const { width } = useWindowSize()
 
-const listData = [
-  {
-    img: '../img.png',
-    name: '企業名稱',
-    text: '推薦文字推薦文字推薦文字推薦'
-  },
-  {
-    img: '../img.png',
-    name: '企業名稱',
-    text: '推薦文字推薦文字推薦文字推薦推薦文字推薦文字推薦文字推薦'
-  },
-  {
-    img: '../img.png',
-    name: '企業名稱',
-    text: '推薦文字推薦文字推薦文字推薦推薦文字推薦文字推薦文字推薦推薦文字推薦文字推薦文字推薦'
-  }
-]
-// interface Props {
-//   label?: string;
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   label: '',
-// });
+
+interface Props {
+  companyList?: any;
+}
+const props = withDefaults(defineProps<Props>(), {
+  companyList: [
+    {
+      img: '',
+      name: '',
+      text: ''
+    }
+  ]
+});
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;

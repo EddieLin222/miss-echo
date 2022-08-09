@@ -3,7 +3,7 @@
     <div class="intro-box">
       <Title title="服務介紹"></Title>
       <div class="lists">
-        <div class="list" v-for="(item, index) in dataList" :key="index">
+        <div class="list" v-for="(item, index) in props.serviceIntro" :key="index">
            <div class="box left">
                 <q-responsive :ratio="16/10"></q-responsive>
            </div>
@@ -25,32 +25,19 @@
 import Title from "../title/title-1.vue"
 import { ref, onMounted } from 'vue';
 
-const dataList = ref([
-  {
-    title: '蔬食無肉日',
-    content: '為您提供減碳數據<br>養成員工環保習慣',
-    link: ''
-  },
-  {
-    title: '企業訂餐',
-    content: '為您提供減碳數據<br>養成員工環保習慣',
-    link: ''
-  },
-  {
-    title: '永續論壇/活動',
-    content: '為您提供減碳數據<br>養成員工環保習慣',
-    link: ''
-  }
-])
-
-// interface Props {
-//   time?: number,
-//   value?: number
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   time: 2,
-//   value: 5000
-// });
+interface Props {
+  serviceIntro?: any
+}
+const props = withDefaults(defineProps<Props>(), {
+  serviceIntro: [
+    {
+      title: '',
+      content: '',
+      img: '',
+      link: ''
+    },
+  ]
+});
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;
