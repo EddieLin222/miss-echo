@@ -56,18 +56,18 @@ const growNumbers = [
 
 const personList = [
   {
-    img: '',
+    img: '/person/person1.jpg',
     name: '唐鳳',
     text: '推薦文字推薦文字推薦文字推薦文字文字'
   },
   {
-    img: '',
-    name: '唐鳳',
+    img: '/person/person2.jpg',
+    name: '鄭涵睿',
     text: '推薦文字推薦文字推薦文字推薦文字'
   },
   {
-    img: '',
-    name: '唐鳳',
+    img: '/person/person3.jpg',
+    name: '黃昭勇',
     text: '推薦文字推薦文字推薦文字推薦文字'
   }
 ]

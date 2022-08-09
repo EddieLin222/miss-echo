@@ -3,7 +3,7 @@
         <div class="item" v-for="(item, index) in list">
             <div class="img">
                 <q-responsive :ratio="16/12">
-                    <!-- <img src="" alt=""/> -->
+                    <img :src="item.img" alt=""/>
                 </q-responsive>
             </div>
             <div class="content">
@@ -20,17 +20,17 @@ const list = [
     {
         content: '內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字',
         link: '',
-        img: ''
+        img: '/link/link1.jpg'
     },
     {
         content: '內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字',
         link: '',
-        img: ''
+        img: '/link/link2.jpg'
     },
     {
         content: '內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字',
         link: '',
-        img: ''
+        img: '/link/link3.jpg'
     }
 ]
 // interface Props {
@@ -60,7 +60,10 @@ const list = [
         position: relative
         .img
             .q-responsive
-                background-color: #CFCFCF
+                img
+                    object-fit: cover
+                    min-height: 100%
+                    min-width: 100%
         .content
             padding: 50px 20px
             display: flex

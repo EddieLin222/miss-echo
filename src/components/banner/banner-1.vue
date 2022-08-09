@@ -1,20 +1,25 @@
 <template>
   <div class="banner">
-    <img class="bg" :src="bannerData.img" alt="">
-    <div class="banner-box">
+    <img class="bg" :src="bannerData.webImg" alt="" v-if="width>=480">
+    <img class="bg" :src="bannerData.mobileImg" alt="" v-else>
+    <!-- <div class="banner-box">
       <div class="title">{{ bannerData.title }}</div>
       <div class="divider"></div>
       <div class="content">{{ bannerData.content }}</div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import { useWindowSize } from '@vueuse/core'
+
+const { width } = useWindowSize()
 const bannerData = {
   title: "Cool Title",
   content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   link: "",
-  img: "/banner/banner.png"
+  webImg: "/banner/banner.jpg",
+  mobileImg: "/banner/banner-m.jpg"
 }
 // interface Props {
 //   label?: string;

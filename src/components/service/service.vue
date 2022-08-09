@@ -28,7 +28,7 @@
           <img src="" alt="">
         </q-responsive>
         <div class="content">
-          減碳：
+          減碳：24
         </div>
       </div>
     </div>
@@ -62,7 +62,7 @@ import { ref, onMounted } from 'vue';
     align-items: center
     .symbol
       font-size: 60px
-      color: #F2E7CE
+      color: #78a780
       line-height: 60px
     .text
       font-size: 16px

@@ -1,7 +1,7 @@
 <template>
   <div class="collapse">
     <div class="block">
-        <div class="item" v-for="(list, index) in listData.items" :key="index" @click="() => toggleOpen(index)">
+        <div class="item" v-for="(list, index) in listData" :key="index" @click="() => toggleOpen(index)">
             <div class="item-title">
                 <h4>{{list.title}}</h4>
                 <span class="material-icons">
@@ -9,9 +9,7 @@
                 </span>
             </div>
             <div class="item-content" :ref="setCollapse">
-                <div class="text">
-                    {{list.intro}}
-                </div>
+                <div class="text" v-html="list.intro"></div>
             </div>
         </div>
     </div>
@@ -28,27 +26,20 @@ const setCollapse = (el: any) => {
        collapseRefs.push(el) 
     }
 }
-const listData = {
-  items: [
+const listData = [
     {
       title: '我要如何歸還循環餐盒呢？',
-      intro: '【方法1｜自行歸還】於訂餐網站之首頁列表 > 點選 餐盒回收 > 點選 抵達合作店家歸還餐盒 > 選擇歸還數目、品項 > 點選 產生回收驗證碼 > 出示您的回收驗證碼(QRCODE)給店家掃描 > 完成歸還餐盒，【方法2｜外送夥伴歸還】於訂餐網站下訂餐點 > 點選 結帳 > 點選 選擇這次要歸還的餐盒 > 選擇歸還數目、品項 > 點選 確認歸還 > 取餐時將餐盒歸還給外送夥伴 > 完成歸還餐盒',
+      intro: '<p>【方法1｜自行歸還】於訂餐網站之首頁列表 > 點選 餐盒回收 > 點選 抵達合作店家歸還餐盒 > 選擇歸還數目、品項 > 點選 產生回收驗證碼 > 出示您的回收驗證碼(QRCODE)給店家掃描 > 完成歸還餐盒<br><br>【方法2｜外送夥伴歸還】於訂餐網站下訂餐點 > 點選 結帳 > 點選 選擇這次要歸還的餐盒 > 選擇歸還數目、品項 > 點選 確認歸還 > 取餐時將餐盒歸還給外送夥伴 > 完成歸還餐盒</p>',
       open: false
     },
     {
       title: '循環餐盒衛生安全怎麼把關？',
-      intro: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      open: false
-    },
-    {
-      title: '循環餐盒衛生安全怎麼把關？',
-      intro: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      intro: '<p>平台依循衛福部食藥署的餐具良好清洗作業指引規範，與北市認證合格之廠商合作，並定期抽查合格清消餐廳之狀態，送驗SGS以把關衛生安全，維護循環餐具的清消環節。<br><br>參考資料<br>衛福部規範：<a href="https://www.fda.gov.tw/tc/siteContent.aspx?sid=3179">https://www.fda.gov.tw/tc/siteContent.aspx?sid=3179</a><br>合作清洗廠商：<a href="http://www.songwei2015.com">http://www.songwei2015.com</a></p>',
       open: false
     }
-  ]
-}
+]
 const toggleOpen = (index: any) => {
-    listData.items.map((list, i) => {
+    listData.map((list, i) => {
         if(index === i) {
             list.open = !list.open
             if(list.open){
@@ -122,4 +113,6 @@ onMounted(() => {
         .text
             padding: 20px 10px
             font-weight: 400
+            :deep() a
+                color: #78A780
 </style>

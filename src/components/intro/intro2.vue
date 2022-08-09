@@ -21,25 +21,27 @@
     </div>
     <div class="intro-box">
       <div class="slide-block">
-        <!-- <div class="prev-btn">
-            <q-icon name="expand_circle_down"/>
-        </div> -->
+        <div class="prev-btn">
+          <img src="/arrow/left.svg" alt="">
+        </div>
         <swiper
           :modules="[Navigation, Pagination]"
-          :pagination="{ clickable: true }"
-          navigation
+          :pagination="{clickable: true}"
+          :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn'}"
           :slides-per-view="1"
           :space-between="30"
         >
           <swiper-slide v-for="(list, index) in dataList" :key="index">
             <q-responsive ratio="1">
-              <div class="img-block"></div>
+              <div class="img-block">
+                <img :src="list.img" alt="">
+              </div>
             </q-responsive>
           </swiper-slide>
         </swiper>
-        <!-- <div class="next-btn">
-            <q-icon name="expand_circle_down"/>
-        </div> -->
+        <div class="next-btn">
+            <img src="/arrow/right.svg" alt="">
+        </div>
       </div>
     </div>
   </div>
@@ -55,24 +57,16 @@ import { ref, onMounted } from 'vue';
 
 const dataList = ref([
   {
-    img: '',
-    name: '唐鳳',
-    text: '推薦文字推薦文字推薦文字推薦文字'
+    img: '/always/always1.jpg'
   },
   {
-    img: '',
-    name: '唐鳳',
-    text: '推薦文字推薦文字推薦文字推薦文字'
+    img: '/always/always2.jpg'
   },
   {
-    img: '',
-    name: '唐鳳',
-    text: '推薦文字推薦文字推薦文字推薦文字'
+    img: '/always/always3.jpg'
   },
   {
-    img: '',
-    name: '唐鳳',
-    text: '推薦文字推薦文字推薦文字推薦文字'
+    img: '/always/always4.jpg'
   }
 ])
 
@@ -127,9 +121,22 @@ const dataList = ref([
     .slide-block
       display: flex
       width: 40vw
+      .prev-btn
+        display: flex
+        align-items: center
+        .q-icon
+          font-size: 35px
+          transform: rotate(90deg)
+      .next-btn
+        display: flex
+        align-items: center
+        .q-icon
+          font-size: 35px
+          transform: rotate(-90deg)
       .swiper
         --swiper-navigation-size: 30px
         width: 100%
+        margin: 0px 15px
         .swiper-slide
           display: flex
           flex-direction: column
@@ -138,9 +145,11 @@ const dataList = ref([
           .q-responsive
             width: 100%
             .img-block
-              height: 200px
+              height: 100%
               width: 100%
-              background-color: #d9d9d9
+              img
+                object-fit: cover
+                min-height: 100%
         :deep() .swiper-button-prev
           padding: 20px
           color: #ACBEAF

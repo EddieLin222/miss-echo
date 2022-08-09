@@ -5,7 +5,7 @@
     </div>
     <div class="slide-block">
         <div class="prev-btn">
-            <q-icon name="expand_circle_down"/>
+            <q-icon name="chevron_left"/>
         </div>
         <swiper
             :modules="[Navigation]"
@@ -15,7 +15,9 @@
             :scrollbar="{ draggable: true }"
         >
             <swiper-slide v-for="(list, index) in dataList" :key="index">
-                <div class="img-block"></div>
+                <div class="img-block">
+                    <img :src="list['img']" alt="">
+                </div>
                 <div class="intro">
                     <div class="title">{{list['name']}}</div>
                     <div class="content">
@@ -27,7 +29,7 @@
             </swiper-slide>
         </swiper>
         <div class="next-btn">
-            <q-icon name="expand_circle_down"/>
+            <q-icon name="navigate_next"/>
         </div>
     </div>
   </div>
@@ -86,14 +88,14 @@ onMounted(()=>{
             display: flex
             align-items: center
             .q-icon
-                font-size: 35px
-                transform: rotate(90deg)
+                color: #acbeaf
+                font-size: 50px
         .next-btn
             display: flex
             align-items: center
             .q-icon
-                font-size: 35px
-                transform: rotate(-90deg)
+                color: #acbeaf
+                font-size: 50px
         .swiper
             --swiper-navigation-size: 30px
             padding: 50px 0px
@@ -106,8 +108,14 @@ onMounted(()=>{
                     height: 200px
                     width: 200px
                     border-radius: 100%
-                    background-color: #d9d9d9
+                    overflow: hidden
                     margin-bottom: 20px
+                    background-color: #d2d2d2
+                    img
+                        min-width: 100%
+                        min-height: 100%
+                        object-fit: cover
+
                 .intro
                     display: flex
                     flex-direction: column

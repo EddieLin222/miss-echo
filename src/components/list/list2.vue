@@ -10,7 +10,7 @@
         </q-responsive>
         <div class="list-title">{{item.name}}</div>
         <div class="list-intro">
-          <div v-for="(word, index) in item.text">
+          <div v-for="(word, index) in item.text.split('')">
             <span>{{word}}</span>
           </div>
         </div>
