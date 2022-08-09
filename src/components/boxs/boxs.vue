@@ -2,11 +2,18 @@
   <div class="boxs">
     <Title title="環保外送"></Title>
     <div class="boxs-container" v-if="width>=840">
-        <a href="" v-for="(item, index) in data" :key="index">
-            <q-responsive :ratio="1">
-                <img :src="item.img" alt="">
-            </q-responsive>
-        </a>
+        <div class="box" v-for="(item, index) in props.list" :key="index">
+            <a :href="item.link" v-if="item.link != ''">
+                <q-responsive :ratio="1">
+                    <img :src="item.img" alt="">
+                </q-responsive>
+            </a>
+            <div v-else>
+                <q-responsive :ratio="1">
+                    <img :src="item.img" alt="">
+                </q-responsive>
+            </div>
+        </div>
     </div>
     <div class="slide-block" v-else>
         <div class="prev-btn">
@@ -19,7 +26,7 @@
           :slides-per-view="2"
           :space-between="30"
         >
-          <swiper-slide v-for="(list, index) in data" :key="index">
+          <swiper-slide v-for="(list, index) in props.list" :key="index">
             <q-responsive ratio="1">
               <div class="img-block">
                 <img :src="list.img" alt="">
@@ -50,40 +57,46 @@ const data = ref([
     {
         img: '/promotion/promotion1.jpg',
         name: '餐點宣傳1',
-        link: ''
+        link: '/'
     },
     {
         img: '/promotion/promotion2.jpg',
         name: '餐點宣傳2',
-        link: ''
+        link: '/'
     },
     {
         img: '/promotion/promotion3.jpg',
         name: '餐點宣傳3',
-        link: ''
+        link: '/'
     },
     {
         img: '/promotion/promotion4.jpg',
         name: '餐點宣傳4',
-        link: ''
+        link: '/'
     },
     {
         img: '/promotion/promotion5.jpg',
         name: '餐點宣傳5',
-        link: ''
+        link: '/'
     },
     {
         img: '/promotion/promotion6.jpg',
         name: '餐點宣傳6',
-        link: ''
+        link: '/'
     }
 ])
-// interface Props {
-//   label?: string;
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   label: '',
-// });
+interface Props {
+  list?: any;
+}
+const props = withDefaults(defineProps<Props>(), {
+    list: [
+        {
+            img: '',
+            name: '',
+            link: ''
+        }
+    ]
+});
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;
@@ -104,7 +117,7 @@ const data = ref([
         justify-content: space-between
         gap: 10px
         margin-top: 30px
-        a
+        .box
             width: calc(33% - 5px)
             background-color: #d9d9d9
         .q-responsive

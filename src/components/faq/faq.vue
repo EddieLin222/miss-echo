@@ -1,7 +1,7 @@
 <template>
   <div class="faq">
     <Title title="常見問題"></Title>
-    <Collapse></Collapse>
+    <Collapse :faqData="props.faqData"></Collapse>
   </div>
 </template>
 <script setup lang="ts">
@@ -9,12 +9,18 @@ import Title from "../title/title-1.vue"
 import Collapse from "../collapse/collapse-1.vue"
 import { ref, onMounted } from 'vue';
 
-// interface Props {
-//   label?: string;
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   label: '',
-// });
+interface Props {
+  faqData?: any;
+}
+const props = withDefaults(defineProps<Props>(), {
+  faqData: [
+    {
+      title: '',
+      intro: '',
+      open: false
+    }
+  ],
+});
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;
