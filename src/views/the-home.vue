@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <Banner></Banner>
-    <Intro></Intro>
-    <List></List>
+    <Banner :bannerData="bannerData"></Banner>
+    <Intro :intro="intro" :growNumbers="growNumbers"></Intro>
+    <List :list="list"></List>
     <Slide title="您想像的永續日常，聽名人說" :list="personList"></Slide>
     <!-- <Carousel2></Carousel2>
     <Collapse></Collapse> -->
@@ -21,20 +21,12 @@ import Slide from "../components/slide/slide.vue"
 
 import { ref } from 'vue';
 
-const carouselItems = [
-  {
-    name: "bg-1",
-    location: "./public/sliders/bg-1.jpeg"
-  }, 
-  { 
-    name: "bg-2",
-    location: "./public/sliders/bg-2.jpeg"
-  },
-  {
-    name: "bg-3",
-    location: "./public/sliders/bg-3.jpeg"
-  }
-];
+const bannerData = {
+  webImg: '/banner/banner.jpg',
+  mobileImg: '/banner/banner-m.jpg'
+}
+
+const intro = 'Miss Eco是全台首創的環保外送平台，與健康永續的餐飲業者合作，透過循環餐盒外送餐點，減少外送大量的一次性垃圾。<br>我們相信人們，其實不是不環保、不愛海龜、討厭北極熊，或喜歡製造垃圾，而是生活中缺少自由選擇的權利。<br>環境議題不該總是站在便利生活的對立面。Miss Eco期待打造兼顧環保與便利的新選擇，與您一起共創永續新日常！'
 
 const growNumbers = [
   {
@@ -51,6 +43,24 @@ const growNumbers = [
     title: '減少碳排量',
     number: 5000,
     unit: '公斤'
+  }
+]
+
+const list = [
+  {
+    content: '內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字',
+    link: '/',
+    img: '/link/link1.jpg'
+  },
+  {
+    content: '內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字',
+    link: '/',
+    img: '/link/link2.jpg'
+  },
+  {
+    content: '內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字',
+    link: '/',
+    img: '/link/link3.jpg'
   }
 ]
 

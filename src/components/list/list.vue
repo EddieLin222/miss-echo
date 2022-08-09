@@ -1,6 +1,6 @@
 <template>
     <div class="list">
-        <div class="item" v-for="(item, index) in list">
+        <div class="item" v-for="(item, index) in props.list">
             <div class="img">
                 <q-responsive :ratio="16/12">
                     <img :src="item.img" alt=""/>
@@ -16,29 +16,18 @@
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-const list = [
-    {
-        content: '內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字',
-        link: '',
-        img: '/link/link1.jpg'
-    },
-    {
-        content: '內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字',
-        link: '',
-        img: '/link/link2.jpg'
-    },
-    {
-        content: '內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字',
-        link: '',
-        img: '/link/link3.jpg'
-    }
-]
-// interface Props {
-//   label?: string;
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   label: '',
-// });
+interface Props {
+    list?: any;
+}
+const props = withDefaults(defineProps<Props>(), {
+    list: [
+        {
+            content: '',
+            link: '',
+            img: ''
+        }
+    ]
+});
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;
