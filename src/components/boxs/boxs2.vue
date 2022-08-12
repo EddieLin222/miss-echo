@@ -1,17 +1,17 @@
 <template>
   <div class="boxs">
-    <Title title="環保外送"></Title>
     <div class="boxs-container" v-if="width>=840">
-        <div class="box" v-for="(item, index) in props.list" :key="index">
-            <a :href="item.link" v-if="item.link != ''">
-                <q-responsive :ratio="1">
-                    <img :src="item.img" alt="">
-                </q-responsive>
-            </a>
-            <div v-else>
-                <q-responsive :ratio="1">
-                    <img :src="item.img" alt="">
-                </q-responsive>
+        <div class="box" v-for="(item, index) in data" :key="index">
+            <q-responsive :ratio="(index == 0 || index == 3 || index == 4) ? 16/18 : 16/10">
+            </q-responsive>
+            <div class="card-bottom">
+                <div class="text">
+                    {{item.name}}
+                </div>
+                <a href="" class="more">
+                    閱讀更多
+                    <q-icon name="arrow_circle_right" class="material-icons-outlined"></q-icon>
+                </a>
             </div>
         </div>
     </div>
@@ -56,32 +56,32 @@ const { width } = useWindowSize()
 const data = ref([
     {
         img: '/promotion/promotion1.jpg',
-        name: '餐點宣傳1',
+        name: '替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字文字替代文字替代文字替代文字替代文字',
         link: '/'
     },
     {
         img: '/promotion/promotion2.jpg',
-        name: '餐點宣傳2',
+        name: '替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字',
         link: '/'
     },
     {
         img: '/promotion/promotion3.jpg',
-        name: '餐點宣傳3',
+        name: '替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字文字替代文字替代文字替代代文字替代文字替代文字文字替代文字替代文字替代',
         link: '/'
     },
     {
         img: '/promotion/promotion4.jpg',
-        name: '餐點宣傳4',
+        name: '替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字',
         link: '/'
     },
     {
         img: '/promotion/promotion5.jpg',
-        name: '餐點宣傳5',
+        name: '替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字',
         link: '/'
     },
     {
         img: '/promotion/promotion6.jpg',
-        name: '餐點宣傳6',
+        name: '替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字文字替代文字替代文字替代文字替代文字',
         link: '/'
     }
 ])
@@ -105,31 +105,54 @@ const props = withDefaults(defineProps<Props>(), {
 
 <style scoped lang="sass">
 .boxs
-    padding: 40px 20% 100px 20%
+    padding: 40px 15% 40px 15%
     background-color: #FFFBED
     display: flex
     flex-direction: column
     align-items: center
+    // height: calc(100vh - 56px)
     .boxs-container
-        display: flex
+        display: grid
         width: 100%
-        flex-wrap: wrap
-        justify-content: space-between
-        gap: 10px
+        height: 100%
+        gap: 15px
         margin-top: 30px
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr
+        grid-template-columns: 1fr 1fr 1fr
         .box
-            width: calc(33% - 5px)
-            background-color: #d9d9d9
-        .q-responsive
-            width: 100%
-            position: relative
+            background-color: #fff
+            border-radius: 3px
             overflow: hidden
-            img
-                position: absolute
-                top: 50%
-                left: 50%
-                transform: translate(-50%, -50%)
-                object-fit: cover
+            .q-responsive
+                background-color: #d2d2d2
+                width: 100%
+            .card-bottom
+                padding: 15px
+                .text
+                    margin-bottom: 10px
+                    display: -webkit-box
+                    -webkit-box-orient: vertical
+                    -webkit-line-clamp: 2
+                    overflow: hidden
+                    font-size: 16px
+                .more
+                    color: #78A780
+                    font-size: 16px
+                
+        .box:first-child, .box:nth-child(4), .box:nth-child(5)
+            grid-row: auto / span 3
+        .box:nth-child(2), .box:nth-child(3), .box:nth-child(6)
+            grid-row: auto / span 2
+        // .q-responsive
+        //     width: 100%
+        //     position: relative
+        //     overflow: hidden
+        //     img
+        //         position: absolute
+        //         top: 50%
+        //         left: 50%
+        //         transform: translate(-50%, -50%)
+        //         object-fit: cover
     .slide-block
         display: flex
         width: 100%

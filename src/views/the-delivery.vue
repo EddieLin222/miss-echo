@@ -66,19 +66,19 @@ const dataList = [
 const stepData = [
   {
     img: '/step/step1.png',
-    intro: '<p>前一天至 miss eco 網站訂餐<br>外送範圍 : 距離店家7km<br>線上付款 : 信用卡、Line Pay</p>'
+    intro: '前一天至 miss eco 網站訂餐\n外送範圍 : 距離店家7km\n線上付款 : 信用卡、Line Pay'
   },
   {
     img: '/step/step2.png',
-    intro: '<p>等待外送夥伴送達餐點<br>全程 "0接觸" 取餐</p>'
+    intro: '等待外送夥伴送達餐點\n全程 "0接觸" 取餐'
   },
   {
     img: '/step/step3.png',
-    intro: '<p>食用完畢清洗餐盒<br>放置陰涼處風乾</p>'
+    intro: '食用完畢清洗餐盒\n放置陰涼處風乾'
   },
   {
     img: '/step/step4.png',
-    intro: '<p>➊ 四週內歸還上次的餐盒<br>➋ 於下次訂餐歸還給外送夥伴或自行到合作店家歸還。</p>'
+    intro: '➊ 四週內歸還上次的餐盒\n➋ 於下次訂餐歸還給外送夥伴或自行到合作店家歸還。'
   }
 ]
 

@@ -9,7 +9,7 @@
            </div>
            <div class="box right">
                 <h4 class="list-title">{{item.title}}</h4>
-                <div class="list-content" v-html="item.content"></div>
+                <div class="list-content" v-text="item.content"></div>
                 <div class="list-btn">
                     <a class="btn" href="">我要預約</a>
                     <a class="btn" href="">了解更多</a>
@@ -86,10 +86,11 @@ const props = withDefaults(defineProps<Props>(), {
             border-radius: 30px
             width: 100%
             font-family: 'Noto Serif TC', serif
-          .list-content
+          :deep() .list-content
             width: 100%
             padding: 20px
             line-height: 25px
+            white-space: pre-line
           .list-btn
             width: 100%
             display: flex

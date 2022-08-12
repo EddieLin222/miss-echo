@@ -12,7 +12,7 @@
                   <img :src="item.img" alt=""/>
                 </div>
             </q-responsive>
-            <p class="intro" v-html="item.intro"></p>
+            <p class="intro" v-text="item.intro"></p>
         </div>
     </div>
   </div>
@@ -92,6 +92,7 @@ const props = withDefaults(defineProps<Props>(), {
         font-weight: 700
         letter-spacing: 1px
         color: #79A980
+        white-space: pre-line
 @media (max-width: 890px)
   .step
     .list

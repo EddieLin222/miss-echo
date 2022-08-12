@@ -32,7 +32,7 @@ const navItems = [
   },
   {
     name: '有意識生活',
-    link: ''
+    link: '/life'
   },
   {
     name: '關於我們',
@@ -40,7 +40,7 @@ const navItems = [
   },
   {
     name: '永續日記',
-    link: ''
+    link: '/journal'
   },
   {
     name: '我要訂餐',
