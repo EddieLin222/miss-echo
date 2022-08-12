@@ -44,6 +44,16 @@ const routes: Array<RouteRecordRaw> = [
   },
   AdminRouter.routes,
   {
+    path: `/journal`,
+    name: 'journal',
+    component: () => import('../views/the-journal.vue')
+  },
+  {
+    path: `/life`,
+    name: 'lift',
+    component: () => import('../views/the-life.vue')
+  },
+  {
     path: '/:pathMatch(.*)*',
     redirect: '/'
   },

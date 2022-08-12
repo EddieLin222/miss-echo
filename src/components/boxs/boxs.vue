@@ -36,13 +36,13 @@
             v-else
         >
             <div class="prev-btn">
-                <q-icon name="expand_circle_down" />
+                <q-icon name="chevron_left" />
             </div>
             <swiper
                 :modules="[Navigation, Pagination]"
                 :pagination="{ clickable: true }"
                 :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
-                :slides-per-view="2"
+                :slides-per-view="$q.screen.lt.sm ? 1 : $q.screen.lt.md ? 2 : 3"
                 :space-between="30"
             >
                 <swiper-slide
@@ -60,7 +60,7 @@
                 </swiper-slide>
             </swiper>
             <div class="next-btn">
-                <q-icon name="expand_circle_down" />
+                <q-icon name="chevron_right" />
             </div>
         </div>
     </div>
@@ -161,13 +161,13 @@ const props = withDefaults(defineProps<Props>(), {
             align-items: center
             .q-icon
                 font-size: 35px
-                transform: rotate(90deg)
+                color: #acbeaf
         .next-btn
             display: flex
             align-items: center
             .q-icon
                 font-size: 35px
-                transform: rotate(-90deg)
+                color: #acbeaf
 
         .swiper
             --swiper-navigation-size: 30px

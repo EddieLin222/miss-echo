@@ -6,7 +6,7 @@
       <div class="content">
         <img class="bg" src="/intro/bg2.png" alt="">
         <div class="text">
-          <p v-html="props.intro"></p>
+          <p v-text="props.intro"></p>
         </div>
         <div class="leaf">
           <img src="/intro/leaf.svg" alt="">
@@ -99,6 +99,7 @@ const props = withDefaults(defineProps<Props>(), {
           letter-spacing: 1px
           line-height: 30px
           color: #fff
+          white-space: pre-line
       .leaf
         position: absolute
         height: 40%

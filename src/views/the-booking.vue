@@ -29,19 +29,19 @@ const serviceData = {
 const serviceIntro = [
   {
     title: '蔬食無肉日',
-    content: '為您提供減碳數據<br>養成員工環保習慣',
+    content: '為您提供減碳數據\n養成員工環保習慣',
     img: '',
     link: ''
   },
   {
     title: '企業訂餐',
-    content: '為您提供減碳數據<br>養成員工環保習慣',
+    content: '為您提供減碳數據\n養成員工環保習慣',
     img: '',
     link: ''
   },
   {
     title: '永續論壇/活動',
-    content: '為您提供減碳數據<br>養成員工環保習慣',
+    content: '為您提供減碳數據\n養成員工環保習慣',
     img: '',
     link: ''
   }
