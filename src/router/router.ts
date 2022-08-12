@@ -35,6 +35,15 @@ const routes: Array<RouteRecordRaw> = [
     ]
   },
   {
+    name: 'Login',
+    path: '/Login',
+    meta: {
+      title: '登入',
+    },
+    component: () => import('@/views/admin/Login.vue'),
+  },
+  AdminRouter.routes,
+  {
     path: '/:pathMatch(.*)*',
     redirect: '/'
   },
