@@ -18,32 +18,26 @@ import { ref } from 'vue';
 const list = [
   {
     img: '/promotion/promotion1.jpg',
-    name: '',
     link: '/'
   },
   {
     img: '/promotion/promotion2.jpg',
-    name: '',
     link: '/'
   },
   {
     img: '/promotion/promotion3.jpg',
-    name: '',
     link: '/'
   },
   {
     img: '/promotion/promotion4.jpg',
-    name: '',
     link: '/'
   },
   {
     img: '/promotion/promotion5.jpg',
-    name: '',
     link: '/'
   },
   {
     img: '/promotion/promotion6.jpg',
-    name: '',
     link: ''
   }
 ]

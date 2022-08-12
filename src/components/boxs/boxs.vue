@@ -1,44 +1,69 @@
 <template>
-  <div class="boxs">
-    <Title title="環保外送"></Title>
-    <div class="boxs-container" v-if="width>=840">
-        <div class="box" v-for="(item, index) in props.list" :key="index">
-            <a :href="item.link" v-if="item.link != ''">
-                <q-responsive :ratio="1">
-                    <img :src="item.img" alt="">
-                </q-responsive>
-            </a>
-            <div v-else>
-                <q-responsive :ratio="1">
-                    <img :src="item.img" alt="">
-                </q-responsive>
+    <div class="boxs">
+        <Title title="環保外送"></Title>
+        <div
+            class="boxs-container"
+            v-if="width >= 840"
+        >
+            <div
+                class="box"
+                v-for="(item, index) in props.list"
+                :key="index"
+            >
+                <a
+                    :href="item.link"
+                    v-if="item.link != ''"
+                >
+                    <q-responsive :ratio="1">
+                        <img
+                            :src="item.img"
+                            alt=""
+                        >
+                    </q-responsive>
+                </a>
+                <div v-else>
+                    <q-responsive :ratio="1">
+                        <img
+                            :src="item.img"
+                            alt=""
+                        >
+                    </q-responsive>
+                </div>
+            </div>
+        </div>
+        <div
+            class="slide-block"
+            v-else
+        >
+            <div class="prev-btn">
+                <q-icon name="chevron_left" />
+            </div>
+            <swiper
+                :modules="[Navigation, Pagination]"
+                :pagination="{ clickable: true }"
+                :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
+                :slides-per-view="$q.screen.lt.sm ? 1 : $q.screen.lt.md ? 2 : 3"
+                :space-between="30"
+            >
+                <swiper-slide
+                    v-for="(list, index) in props.list"
+                    :key="index"
+                >
+                    <q-responsive ratio="1">
+                        <div class="img-block">
+                            <img
+                                :src="list.img"
+                                alt=""
+                            >
+                        </div>
+                    </q-responsive>
+                </swiper-slide>
+            </swiper>
+            <div class="next-btn">
+                <q-icon name="chevron_right" />
             </div>
         </div>
     </div>
-    <div class="slide-block" v-else>
-        <div class="prev-btn">
-            <q-icon name="chevron_left"/>
-        </div>
-        <swiper
-          :modules="[Navigation, Pagination]"
-          :pagination="{ clickable: true }"
-          :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn'}"
-          :slides-per-view="$q.screen.lt.sm ? 1 : $q.screen.lt.md ? 2 : 3"
-          :space-between="30"
-        >
-          <swiper-slide v-for="(list, index) in props.list" :key="index">
-            <q-responsive ratio="1">
-              <div class="img-block">
-                <img :src="list.img" alt="">
-              </div>
-            </q-responsive>
-          </swiper-slide>
-        </swiper>
-        <div class="next-btn">
-            <q-icon name="chevron_right"/>
-        </div>
-    </div>
-  </div>
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
@@ -86,16 +111,13 @@ const data = ref([
     }
 ])
 interface Props {
-  list?: any;
+    list?: {
+        img: string,
+        link: string
+    }[];
 }
 const props = withDefaults(defineProps<Props>(), {
-    list: [
-        {
-            img: '',
-            name: '',
-            link: ''
-        }
-    ]
+    list: () => []
 });
 
 // const emit = defineEmits<{
