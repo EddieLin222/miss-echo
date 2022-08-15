@@ -32,6 +32,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'booking',
         component: () => import('../views/the-booking.vue')
       },
+      {
+        path: '/comming-soon',
+        name: 'comming-soon',
+        component: () => import('../views/the-comming-soon.vue')
+      }
     ]
   },
   {
@@ -62,11 +67,6 @@ const routes: Array<RouteRecordRaw> = [
     path: '/post/:postId',
     name: 'post',
     component: () => import('../views/the-post.vue')
-  },
-  {
-    path: '/comming-soon',
-    name: 'comming-soon',
-    component: () => import('../views/the-comming-soon.vue')
   },
   {
     path: '/:pathMatch(.*)*',
