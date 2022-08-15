@@ -85,7 +85,6 @@ const category_id = useRouteQuery('category_id')
 const route = useRoute()
 const postDB = db().collection('Sites/travel-tbb/Posts');
 const Notify = useNotify()
-const { formatDate } = useFilter()
 const postStore = usePostStore()
 const formDefault = {
     available: true,
