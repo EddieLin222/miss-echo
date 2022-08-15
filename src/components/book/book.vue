@@ -1,12 +1,12 @@
 <template>
   <div class="book">
     <div class="book-container">
-        <div class="img-shape">
+        <a class="img-shape" href="https://misseco-customer.web.app" target="_blank">
             <img src="/book/book_left.png" alt="">
-        </div>
-        <div class="img-shape">
+        </a>
+        <a class="img-shape" href="https://forms.gle/cE73TMwrm5byNT7UA" target="_blank">
             <img src="/book/book_right.png" alt="">
-        </div>
+        </a>
     </div>
   </div>
 </template>

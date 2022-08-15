@@ -68,6 +68,7 @@ const props = withDefaults(defineProps<Props>(), {
             justify-content: center
             align-items: flex-start
             .title-block
+                width: 100%
                 .s-title
                     font-size: 13px
                     margin-bottom: 5px
@@ -77,6 +78,7 @@ const props = withDefaults(defineProps<Props>(), {
             .content
                 color: #888787
                 margin: 20px 0px
+                width: 100%
                 p
                     white-space: pre-line
 
@@ -89,4 +91,14 @@ const props = withDefaults(defineProps<Props>(), {
                 color: #fff
                 font-weight: 700
                 letter-spacing: 1px
+                margin-top: 10px
+@media (max-width: 980px)
+    .list
+        .item
+            flex-direction: column
+            .left
+                padding: 0px
+                margin-top: 20px
+            .right
+                align-items: center
 </style>

@@ -14,6 +14,20 @@
       <div class="nav-menu">
         <a class="item" v-for="(item, index) in navItems" :href="item.link">{{ item.name }}</a>
       </div>
+      <div class="s-block">
+        <div class="social-block">
+          <a class="item" href="https://www.facebook.com/misseco.tw" target="_blank">
+            <img src="/social/fb.svg">
+          </a>
+          <a class="item" href="https://www.instagram.com/misseco.tw/" target="_blank">
+            <img src="/social/ig.svg">
+          </a>
+          <a class="item" href="https://lin.ee/35kz9K7" target="_blank">
+            <img src="/social/line.svg">
+          </a>
+        </div>
+        <div class="mail">misseco.tw@gmail.com</div>
+      </div>
     </div>
   </div>
 </template>
@@ -32,19 +46,19 @@ const navItems = [
   },
   {
     name: '有意識生活',
-    link: '/life'
+    link: '/comming-soon'
   },
   {
     name: '關於我們',
-    link: ''
+    link: '/comming-soon'
   },
   {
     name: '永續日記',
-    link: '/journal'
+    link: '/comming-soon'
   },
   {
     name: '我要訂餐',
-    link: ''
+    link: 'https://misseco-customer.web.app'
   }
 
 ]
@@ -129,6 +143,8 @@ const social = [
     .bottom-line
       top: 24px
   .nav
+    display: flex
+    flex-direction: column
     .nav-menu
       display: flex
       color: #000
@@ -142,6 +158,24 @@ const social = [
       .item:last-child
         background-color: #C8EEC8
         border-radius: 30px
+    .s-block
+      // display: flex
+      flex-direction: column
+      align-items: center
+      margin-top: 50px
+      display: none
+      .mail
+        font-size: 16px
+        color: #778D7E
+      .social-block
+        display: flex
+        justify-content: center
+        margin-bottom: 10px
+        .item
+          border-radius: 30px
+          width: 30px
+          height: 30px
+          margin: 0px 10px
 
 @media (max-width: 992px)
   .header
@@ -157,6 +191,8 @@ const social = [
       justify-content: center
       align-items: center
       height: calc(100vh - 60px)
+      .s-block
+        display: flex
       .nav-menu
         flex-direction: column
         .item

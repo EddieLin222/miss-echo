@@ -3,7 +3,7 @@
     <Banner :bannerData="bannerData"></Banner>
     <Intro :intro="intro" :growNumbers="growNumbers"></Intro>
     <List :list="list"></List>
-    <Slide title="您想像的永續日常，聽名人說" :list="personList"></Slide>
+    <Slide title="聽名人說，你想像的永續日常" :list="personList"></Slide>
     <!-- <Carousel2></Carousel2>
     <Collapse></Collapse> -->
   </div>
@@ -26,39 +26,42 @@ const bannerData = {
   mobileImg: '/banner/banner-m.jpg'
 }
 
-const intro = 'Miss Eco是全台首創的環保外送平台，與健康永續的餐飲業者合作，透過循環餐盒外送餐點，減少外送大量的一次性垃圾。\n我們相信人們，其實不是不環保、不愛海龜、討厭北極熊，或喜歡製造垃圾，而是生活中缺少自由選擇的權利。\n環境議題不該總是站在便利生活的對立面。Miss Eco期待打造兼顧環保與便利的新選擇，與您一起共創永續新日常！'
+const intro = 'Miss Eco是全台首創的環保外送平台，與健康永續的餐飲業者合作，透過循環餐盒外送餐點，減少外送大量的一次性垃圾。\n我們相信人們，其實不是不環保、不愛海龜、討厭北極熊，或喜歡製造垃圾，而是生活中缺少自由選擇的權利。\nMiss Eco期待打造兼顧環保與便利的新選擇，與你共度永續新日常！'
 
 const growNumbers = [
   {
     title: '減少一次性垃圾',
-    number: 10000,
+    number: 30000,
     unit: '件'
   },
   {
     title: '減少紙容器包裝',
-    number: 3000,
+    number: 10000,
     unit: '個'
   },
   {
     title: '減少碳排量',
-    number: 5000,
+    number: 8000,
     unit: '公斤'
   }
 ]
 
 const list = [
   {
-    content: '內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字',
+    title: '兩個醫學生的永續之路',
+    content: '嗨大家好，我們今年從實習醫院畢業了！並且順利考過國考取得醫師執照了。我們是Miss Eco環保外送的共同創辦人',
     link: '/',
     img: '/link/link1.jpg'
   },
   {
-    content: '內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字',
+    title: '舉辦一場零廢棄的低碳饗宴吧！',
+    content: '什麼是低碳饗宴呢?永續當道之時，每場活動最重要的指標之一就是如何減碳、減廢，讓活動',
     link: '/',
     img: '/link/link2.jpg'
   },
   {
-    content: '內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字',
+    title: '全台首創環保外送',
+    content: 'Miss Eco是全台首創的環保外送平台，透過循環餐盒外送餐點，減少外送產生的大量一次性垃圾',
     link: '/',
     img: '/link/link3.jpg'
   }
@@ -67,18 +70,18 @@ const list = [
 const personList = [
   {
     img: '/person/person1.jpg',
-    name: '唐鳳',
-    text: '推薦文字推薦文字推薦文字推薦文字文字'
+    name: '唐鳳｜數位發展部 部長',
+    text: 'Be a good enough ancestor'
   },
   {
     img: '/person/person2.jpg',
-    name: '鄭涵睿',
-    text: '推薦文字推薦文字推薦文字推薦文字'
+    name: '鄭涵睿｜綠藤生機共同創辦人暨CEO',
+    text: '有意識的選擇'
   },
   {
     img: '/person/person3.jpg',
-    name: '黃昭勇',
-    text: '推薦文字推薦文字推薦文字推薦文字'
+    name: '黃昭勇｜CSR@天下總編輯',
+    text: '永續不難，做就對了'
   }
 ]
 

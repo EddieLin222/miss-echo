@@ -7,6 +7,7 @@
                 </q-responsive>
             </div>
             <div class="content">
+                <div class="title">{{item.title}}</div>
                 <p>{{item.content}}</p>
                 <a class="more" href="#">閱讀更多...</a>
             </div>
@@ -22,6 +23,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
     list: [
         {
+            title: '',
             content: '',
             link: '',
             img: ''
@@ -47,6 +49,7 @@ const props = withDefaults(defineProps<Props>(), {
         background-color: #fff
         box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.25), 12px 12px 2px 3px #C8EEC8
         position: relative
+        width: 30%
         .img
             .q-responsive
                 img
@@ -54,13 +57,21 @@ const props = withDefaults(defineProps<Props>(), {
                     min-height: 100%
                     min-width: 100%
         .content
-            padding: 50px 20px
+            padding: 30px 20px
             display: flex
             flex-direction: column
             align-items: flex-start
+            .title
+                font-weight: 700
+                margin-bottom: 10px
+                font-size: 17px
             p
                 text-align: left
                 margin-bottom: 20px
+                display: -webkit-box
+                -webkit-box-orient: vertical
+                -webkit-line-clamp: 2
+                overflow: hidden
             .more
                 display: inline-block
                 color: #78A780

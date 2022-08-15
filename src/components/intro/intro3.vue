@@ -5,11 +5,19 @@
       <div class="lists">
         <div class="list" v-for="(item, index) in props.serviceIntro" :key="index">
            <div class="box left">
-                <q-responsive :ratio="16/10"></q-responsive>
+                <q-responsive :ratio="16/10">
+                  <img :src="item.img" alt="">
+                </q-responsive>
            </div>
            <div class="box right">
                 <h4 class="list-title">{{item.title}}</h4>
-                <div class="list-content" v-text="item.content"></div>
+                <div class="list-content">
+                  <div class="inner-container">
+                    <div class="tag-container" v-for="(tag, i) in item.tags" :key="i">
+                      <div class="tag">{{tag}}</div>
+                    </div>
+                  </div>
+                </div>
                 <div class="list-btn">
                     <a class="btn" href="">我要預約</a>
                     <a class="btn" href="">了解更多</a>
@@ -32,7 +40,7 @@ const props = withDefaults(defineProps<Props>(), {
   serviceIntro: [
     {
       title: '',
-      content: '',
+      tags: [''],
       img: '',
       link: ''
     },
@@ -72,6 +80,8 @@ const props = withDefaults(defineProps<Props>(), {
           .q-responsive
             height: 100%
             background-color: #B8B8B8
+            img
+              object-fit: cover
         .right
           flex: 1.5
           display: flex
@@ -86,11 +96,27 @@ const props = withDefaults(defineProps<Props>(), {
             border-radius: 30px
             width: 100%
             font-family: 'Noto Serif TC', serif
-          :deep() .list-content
+          .list-content
             width: 100%
             padding: 20px
             line-height: 25px
-            white-space: pre-line
+            display: flex
+            justify-content: center
+            .inner-container
+              display: flex
+              width: 300px
+              flex-wrap: wrap
+              .tag-container
+                display: flex
+                padding: 5px
+                width: 50%
+                .tag
+                  text-align: center
+                  white-space: nowrap
+            .tag-container:nth-child(odd)
+              justify-content: flex-start
+            .tag-container:nth-child(even)
+              justify-content: flex-start
           .list-btn
             width: 100%
             display: flex

@@ -1,19 +1,20 @@
 <template>
   <div class="video-block">
     <Title title="Youtube"></Title>
-    <q-responsive class="video" :ratio="25/11">
+    <q-responsive class="video" :ratio="width >= 980 ? 25/11 : 12/16">
       <q-responsive :ratio="16/11" class="left">
-        <iframe src="https://www.youtube.com/embed/tm61rp4juoY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe :src="currentVideo.iframeLink" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </q-responsive>
       <div class="right">
         <div class="main-title">
           播放列表
         </div>
         <div class="list-container">
-          <div class="list" v-for="(item, index) in data" :index="index">
+          <div class="list" v-for="(item, index) in transList" :index="index" @click="listClick(index)">
             <q-icon name="play_arrow"></q-icon>
             <q-responsive :ratio="16/11">
-              <iframe :src="item.iframeLink" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <img :src="`https://img.youtube.com/vi/${item.iframeLink}/1.jpg`" alt="">
+              <!-- <iframe :src="item.iframeLink" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
             </q-responsive>
             <div class="info">
               <div class="title">
@@ -31,9 +32,14 @@
 </template>
 <script setup lang="ts">
 import Title from "../title/title-1.vue"
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
+import { useWindowSize } from '@vueuse/core'
 
-const data = ref([
+const { width } = useWindowSize()
+
+const index = ref(0)
+
+const data = [
   {
     iframeLink: 'https://www.youtube.com/embed/yTM0WH8pV2U',
     link: '',
@@ -76,7 +82,28 @@ const data = ref([
     title: '[ 我還繞著你在旋轉 Expired ] Official Music Video',
     person: '宇宙人'
   }
-])
+]
+
+const transList = computed(() => {
+  let newData = data.map(e=>{
+    return {
+      iframeLink: e.iframeLink.replace('https://www.youtube.com/embed/', ''),
+      link: e.link,
+      title: e.title,
+      person: e.person
+    }
+  })
+  return newData
+})
+
+const currentVideo = computed(() => {
+  let video = data.filter((e, i)=>i==index.value)
+  return video[0]
+})
+
+const listClick = (i:number)=>{
+  index.value = i
+}
 // interface Props {
 //   title?: string;
 // }
@@ -126,6 +153,7 @@ const data = ref([
             margin: 10px 0px
             align-items: center
             width: 100%
+            cursor: pointer
             .q-icon
               font-size: 25px
               margin-right: 10px
@@ -149,4 +177,18 @@ const data = ref([
                 -webkit-box-orient: vertical
                 -webkit-line-clamp: 2
                 overflow: hidden
+
+@media (max-width: 980px)
+  .video-block
+    .video
+      :deep() .q-responsive__content
+        flex-direction: column
+        .q-responsive.left
+          width: 100% !important
+          height: 40% !important
+          // display: none
+        .right
+          width: 100% !important
+          height: calc(60% - 20px) !important
+          background-color: #fff
 </style>

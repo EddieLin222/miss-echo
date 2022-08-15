@@ -3,13 +3,13 @@
     <Title title="服務簡介"></Title>
     <div class="second-title">
       <span class="symbol">“</span>
-      <span class="text">減廢 減碳 活動次數</span>
+      <span class="text">舉辦一場零廢棄的低碳饗宴吧</span>
       <span class="symbol">”</span>
     </div>
     <div class="items">
       <div class="item">
         <q-responsive ratio="1">
-          <img src="" alt="">
+          <img :src="props.serviceData.partner.img" alt="">
         </q-responsive>
         <div class="content">
           合作夥伴： {{props.serviceData.partner.info}}
@@ -17,7 +17,7 @@
       </div>
       <div class="item">
         <q-responsive ratio="1">
-          <img src="" alt="">
+          <img :src="props.serviceData.event.img" alt="">
         </q-responsive>
         <div class="content">
           場次： {{props.serviceData.event.info}}
@@ -25,7 +25,7 @@
       </div>
       <div class="item">
         <q-responsive ratio="1">
-          <img src="" alt="">
+          <img :src="props.serviceData.reduce.img" alt="">
         </q-responsive>
         <div class="content">
           減碳： {{props.serviceData.reduce.info}}
@@ -94,6 +94,7 @@ const props = withDefaults(defineProps<Props>(), {
         text-align: center
         margin-top: 20px
         font-size: 16px
+        display: none
 @media (max-width: 980px)
   .service
     padding: 40px 10% 100px 10%

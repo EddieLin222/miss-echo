@@ -5,7 +5,7 @@
       <div class="list-item" v-for="(item, index) in props.companyList" :key="index">
         <q-responsive :ratio="1">
           <div class="img-block">
-            <div class="img"></div>
+            <img :src="item.img" alt="">
           </div>
         </q-responsive>
         <div class="list-title">{{item.name}}</div>
@@ -76,12 +76,13 @@ const props = withDefaults(defineProps<Props>(), {
           width: 180px
           border-radius: 100%
           padding: 5px
-
-          .img
+          overflow: hidden
+          img
             background-color: #ddd
             width: 100%
             height: 100%
             border-radius: 100%
+            object-fit: cover
       .list-title
         font-size: 16px
         font-weight: 700
@@ -102,7 +103,6 @@ const props = withDefaults(defineProps<Props>(), {
     width: 100%
 @media (max-width: 1190px)
   .list
-    // padding: 0px 15% 80px 15%
     .list-block
       flex-wrap: wrap
       .list-item
@@ -112,10 +112,10 @@ const props = withDefaults(defineProps<Props>(), {
           max-width: 300px
 @media (max-width: 980px)
   .list
-    padding: 0px 10% 80px 10%
+    padding: 0px 10% 0px 10%
 @media (max-width: 840px)
   .list
-    padding: 0px 0% 80px 0%
+    padding: 0px 0% 0px 0%
 @media (max-width: 600px)
   .list
     .list-block

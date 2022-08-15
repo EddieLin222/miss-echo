@@ -9,7 +9,7 @@
           <p v-text="props.intro"></p>
         </div>
         <div class="leaf">
-          <img src="/intro/leaf.svg" alt="">
+          <img src="/intro/leaf2.svg" alt="">
         </div>
       </div>
     </div>
@@ -95,6 +95,7 @@ const props = withDefaults(defineProps<Props>(), {
         align-items: center
         padding: 30px 40px
         p
+          font-size: 15px
           position: relative
           letter-spacing: 1px
           line-height: 30px
@@ -105,7 +106,7 @@ const props = withDefaults(defineProps<Props>(), {
         height: 40%
         right: 0
         bottom: 0
-        transform: translateX(60%)
+        transform: translate(40%, -10px)
         img
           height: 100%
           transform: rotate(5deg)
@@ -121,7 +122,6 @@ const props = withDefaults(defineProps<Props>(), {
           height: auto
           width: 25%
           max-width: 80px
-          transform: translateX(40%)
     .number-grow
       display: flex
       flex-direction: row

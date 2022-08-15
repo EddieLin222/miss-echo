@@ -1,0 +1,65 @@
+<template>
+  <div class="banner">
+    <img class="bg" :src="bannerData.webImg" alt="">
+    <!-- <img class="bg" :src="props.bannerData.webImg" alt="" v-if="width>=480">
+    <img class="bg" :src="props.bannerData.mobileImg" alt="" v-else> -->
+    <div class="banner-box">
+        <Title title="關於我們"></Title>
+    </div>
+  </div>
+</template>
+<script setup lang="ts">
+import Title from '../title/title-1.vue'
+import { ref, onMounted } from 'vue';
+import { useWindowSize } from '@vueuse/core'
+
+const { width } = useWindowSize()
+const bannerData = {
+  webImg: "/banner/banner2.jpg",
+}
+// interface Props {
+//   bannerData?: any;
+// }
+// const props = withDefaults(defineProps<Props>(), {
+//   bannerData: {
+//     webImg: '',
+//     mobileImg: ''
+//   },
+// });
+
+// const emit = defineEmits<{
+//   (e: 'update:modelValue', value: string): void;
+// }>();
+</script>
+
+<style scoped lang="sass">
+.banner
+  display: flex
+  justify-content: center
+  align-items: center
+  min-height: calc(100vh - 55px)
+  min-width: 100%
+  position: relative
+  overflow: hidden
+  .bg
+    position: absolute
+    width: 100%
+    height: 100%
+    min-height: 100%
+    min-width: 100%
+    object-fit: cover
+  .banner-box
+    position: absolute
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    top: 40px
+    left: 80px
+@media (max-width: 1280px)
+  .banner
+    min-height: calc(60vh - 55px)
+@media (max-width: 780px)
+    .banner
+      min-height: calc(30vh - 55px)
+</style>

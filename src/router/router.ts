@@ -37,6 +37,21 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/the-life.vue')
   },
   {
+    path: `/about`,
+    name: 'about',
+    component: () => import('../views/the-about.vue')
+  },
+  {
+    path: '/post/:postId',
+    name: 'post',
+    component: () => import('../views/the-post.vue')
+  },
+  {
+    path: '/comming-soon',
+    name: 'comming-soon',
+    component: () => import('../views/the-comming-soon.vue')
+  },
+  {
     path: '/:pathMatch(.*)*',
     redirect: '/'
   },
