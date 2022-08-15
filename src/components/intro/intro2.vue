@@ -157,5 +157,5 @@ const props = withDefaults(defineProps<Props>(), {
     flex-direction: column
     .intro-box
       .slide-block
-        width: 84vw
+        width: 100%
 </style>

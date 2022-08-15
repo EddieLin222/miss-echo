@@ -21,18 +21,24 @@
         </div>
         <swiper
           :modules="[Navigation, Pagination]"
-          :pagination="{ clickable: true }"
+          :pagination="{clickable: true}"
           :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn'}"
-          :slides-per-view="$q.screen.lt.sm ? 1 : $q.screen.lt.md ? 2 : 3"
+          :slides-per-view="1"
           :space-between="30"
         >
-          <swiper-slide v-for="(list, index) in props.list" :key="index">
-            <q-responsive ratio="1">
+          <swiper-slide v-for="(list, index) in data" :key="index">
+            <q-responsive :ratio="16/8">
               <div class="img-block">
                 <img :src="list.img" alt="">
               </div>
             </q-responsive>
+            <div class="title">
+                <p class="text">
+                  TESTTESTTESTTESTTESTTEST
+                </p>
+            </div>
           </swiper-slide>
+
         </swiper>
         <div class="next-btn">
             <q-icon name="chevron_right"/>
@@ -161,42 +167,39 @@ const props = withDefaults(defineProps<Props>(), {
             display: flex
             align-items: center
             .q-icon
-                font-size: 35px
-                color: #acbeaf
+                font-size: 40px
+                color: #78A780
         .next-btn
             display: flex
             align-items: center
             .q-icon
-                font-size: 35px
-                color: #acbeaf
-
+                font-size: 40px
+                color: #78A780
         .swiper
             --swiper-navigation-size: 30px
             width: 100%
-            display: flex
-            flex-direction: column
             margin: 0px 15px
+            // overflow: visible
+            overflow-x: hidden
+            padding-bottom: 40px 
             .swiper-slide
                 display: flex
                 flex-direction: column
-                justify-content: flex-start
-                align-items: center
-            
                 .q-responsive
                     width: 100%
                     .img-block
-                        min-width: 100%
-                        min-height: 100%
-                        background-color: #d9d9d9
-                        overflow: hidden
                         img
-                            min-width: 100%
-                            min-height: 100%
                             object-fit: cover
-            :deep() .swiper-pagination
-                position: relative
-                bottom: 0px
-                margin-top: 5px
+                            width: 100%
+                            height: 100%
+                .title
+                    width: 100%
+                    text-align: center
+                    font-size: 18px
+                    margin-top: 15px
+                    .text
+                        width: 100%
+                        word-break: break-all
             :deep() .swiper-button-prev
                 padding: 20px
                 color: #ACBEAF
@@ -217,5 +220,10 @@ const props = withDefaults(defineProps<Props>(), {
 @media (max-width: 840px)
     .boxs
         padding: 40px 8% 100px 8%
+        .slide-block
+            .prev-btn, .next-btn
+                display: none
+            .swiper
+                margin: 0px
 
 </style>

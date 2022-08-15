@@ -1,40 +1,21 @@
 <template>
     <div class="boxs">
         <Title title="環保外送"></Title>
-        <div
-            class="boxs-container"
-            v-if="width >= 840"
-        >
-            <div
-                class="box"
-                v-for="(item, index) in props.list"
-                :key="index"
-            >
-                <a
-                    :href="item.link"
-                    v-if="item.link != ''"
-                >
+        <div class="boxs-container" v-if="width >= 840">
+            <div class="box" v-for="(item, index) in props.list" :key="index">
+                <a :href="item.link" v-if="item.link != ''">
                     <q-responsive :ratio="1">
-                        <img
-                            :src="item.img"
-                            alt=""
-                        >
+                        <img :src="item.img" alt="">
                     </q-responsive>
                 </a>
                 <div v-else>
                     <q-responsive :ratio="1">
-                        <img
-                            :src="item.img"
-                            alt=""
-                        >
+                        <img :src="item.img" alt="">
                     </q-responsive>
                 </div>
             </div>
         </div>
-        <div
-            class="slide-block"
-            v-else
-        >
+        <div class="slide-block" v-else>
             <div class="prev-btn">
                 <q-icon name="chevron_left" />
             </div>
@@ -45,16 +26,10 @@
                 :slides-per-view="$q.screen.lt.sm ? 1 : $q.screen.lt.md ? 2 : 3"
                 :space-between="30"
             >
-                <swiper-slide
-                    v-for="(list, index) in props.list"
-                    :key="index"
-                >
+                <swiper-slide v-for="(list, index) in props.list" :key="index">
                     <q-responsive ratio="1">
                         <div class="img-block">
-                            <img
-                                :src="list.img"
-                                alt=""
-                            >
+                            <img :src="list.img" alt="">
                         </div>
                     </q-responsive>
                 </swiper-slide>

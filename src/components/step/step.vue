@@ -53,6 +53,7 @@ const props = withDefaults(defineProps<Props>(), {
     align-items: flex-end
     color: #79A980
     margin-top: 20px
+    display: none
     .brand
       border-bottom: solid 2px #79A980
       line-height: 40px

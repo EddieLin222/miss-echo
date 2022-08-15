@@ -1,7 +1,5 @@
 <template>
-
   <router-view />
-
 </template>
 
 <script setup lang="ts">
@@ -20,7 +18,7 @@ document.title += ` v${import.meta.env.PACKAGE_VERSION}`
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+TC:wght@500;700;900&family=Noto+Serif+TC:wght@500;600;700;900&display=swap')
 html, body, #app
   width: 100%
-  height: 100%
+  // height: 100%
   padding: 0
   margin: 0
   box-sizing: border-box
