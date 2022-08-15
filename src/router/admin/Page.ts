@@ -26,7 +26,16 @@ const routes: RouteRecordRaw =
             },
             component: () => import('@/views/admin/page/HomeSet.vue'),
         },
-        
+        {
+            name: 'BookingSet',
+            path: 'setbooking',
+            meta: {
+                title: '訂餐設定',
+                icon: 'home',
+                showInMenu: true
+            },
+            component: () => import('@/views/admin/page/BookingSet.vue'),
+        },
        
        
         {

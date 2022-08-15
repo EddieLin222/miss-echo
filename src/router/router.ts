@@ -32,6 +32,16 @@ const routes: Array<RouteRecordRaw> = [
         name: 'booking',
         component: () => import('../views/the-booking.vue')
       },
+      {
+        path: `/journal`,
+        name: 'journal',
+        component: () => import('../views/the-journal.vue')
+      },
+      {
+        path: `/life`,
+        name: 'lift',
+        component: () => import('../views/the-life.vue')
+      },
     ]
   },
   {
@@ -43,16 +53,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/admin/Login.vue'),
   },
   AdminRouter.routes,
-  {
-    path: `/journal`,
-    name: 'journal',
-    component: () => import('../views/the-journal.vue')
-  },
-  {
-    path: `/life`,
-    name: 'lift',
-    component: () => import('../views/the-life.vue')
-  },
+
   {
     path: '/:pathMatch(.*)*',
     redirect: '/'
