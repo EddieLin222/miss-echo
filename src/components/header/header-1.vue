@@ -30,6 +30,8 @@
       </div>
     </div>
   </div>
+  <div class="header-space"></div>
+
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
