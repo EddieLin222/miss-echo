@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div class="hidden">PAGEHOMEDB</div>
 </template>
 
@@ -9,7 +9,7 @@ import { PostCategoryType, PostType } from '@/types/post.type';
 import { ref, watchEffect } from 'vue';
 import { find, findIndex } from 'lodash';
 import { usePageHomeStore } from '@/stores/page-home.store';
-import { ActivityType, AreaType, BannerListType, CityType } from '@/types/home.type';
+import { BannerType, IntroductionType, GrowType, PostType, PersonType } from '@/types/home.type'
 
 
 
@@ -38,4 +38,4 @@ watchEffect(() => {
 </script>
 
 <style scoped>
-</style>
+</style> -->
