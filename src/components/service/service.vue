@@ -3,32 +3,32 @@
     <Title title="服務簡介"></Title>
     <div class="second-title">
       <span class="symbol">“</span>
-      <span class="text">減廢 減碳 活動次數</span>
+      <span class="text">舉辦一場零廢棄的低碳饗宴吧</span>
       <span class="symbol">”</span>
     </div>
     <div class="items">
       <div class="item">
         <q-responsive ratio="1">
-          <img src="" alt="">
+          <img :src="props.serviceData.partner.img" alt="">
         </q-responsive>
         <div class="content">
-          合作夥伴：27+
+          合作夥伴： {{props.serviceData.partner.info}}
         </div>
       </div>
       <div class="item">
         <q-responsive ratio="1">
-          <img src="" alt="">
+          <img :src="props.serviceData.event.img" alt="">
         </q-responsive>
         <div class="content">
-          場次：87
+          場次： {{props.serviceData.event.info}}
         </div>
       </div>
       <div class="item">
         <q-responsive ratio="1">
-          <img src="" alt="">
+          <img :src="props.serviceData.reduce.img" alt="">
         </q-responsive>
         <div class="content">
-          減碳：24
+          減碳： {{props.serviceData.reduce.info}}
         </div>
       </div>
     </div>
@@ -37,12 +37,25 @@
 <script setup lang="ts">
 import Title from '../title/title-1.vue'
 import { ref, onMounted } from 'vue';
-// interface Props {
-//   label?: string;
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   label: '',
-// });
+interface Props {
+  serviceData?: any;
+}
+const props = withDefaults(defineProps<Props>(), {
+  serviceData: {
+    partner: {
+      img: '',
+      info: ''
+    },
+    event: {
+      img: '',
+      info: ''
+    },
+    reduce: {
+      img: '',
+      info: ''
+    }
+  },
+});
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;
@@ -81,6 +94,7 @@ import { ref, onMounted } from 'vue';
         text-align: center
         margin-top: 20px
         font-size: 16px
+        display: none
 @media (max-width: 980px)
   .service
     padding: 40px 10% 100px 10%

@@ -11,11 +11,7 @@
           </p>
         </div>
         <div class="text">
-          <p>
-            Miss Eco是全台首創的環保外送平台，與健康永續的餐飲業者合作，透過循環餐盒外送餐點，減少外送大量的一次性垃圾。
-            <br>我們相信人們，其實不是不環保、不愛海龜、討厭北極熊，或喜歡製造垃圾，而是生活中缺少自由選擇的權利。
-            <br>環境議題不該總是站在便利生活的對立面。Miss Eco期待打造兼顧環保與便利的新選擇，與您一起共創永續新日常！
-          </p>
+          <p v-html="props.intro"></p>
         </div>
       </div>
     </div>
@@ -31,7 +27,7 @@
           :slides-per-view="1"
           :space-between="30"
         >
-          <swiper-slide v-for="(list, index) in dataList" :key="index">
+          <swiper-slide v-for="(list, index) in props.dataList" :key="index">
             <q-responsive ratio="1">
               <div class="img-block">
                 <img :src="list.img" alt="">
@@ -55,29 +51,18 @@ import 'swiper/css/pagination';
 import Title from "../title/title-1.vue"
 import { ref, onMounted } from 'vue';
 
-const dataList = ref([
-  {
-    img: '/always/always1.jpg'
-  },
-  {
-    img: '/always/always2.jpg'
-  },
-  {
-    img: '/always/always3.jpg'
-  },
-  {
-    img: '/always/always4.jpg'
-  }
-])
-
-// interface Props {
-//   time?: number,
-//   value?: number
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   time: 2,
-//   value: 5000
-// });
+interface Props {
+  intro?: string,
+  dataList?: any
+}
+const props = withDefaults(defineProps<Props>(), {
+  intro: '',
+  dataList: [
+    {
+      img: ''
+    }
+  ]
+});
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;
@@ -172,5 +157,5 @@ const dataList = ref([
     flex-direction: column
     .intro-box
       .slide-block
-        width: 84vw
+        width: 100%
 </style>

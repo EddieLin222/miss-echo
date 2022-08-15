@@ -1,37 +1,44 @@
 <template>
-  <div class="boxs">
-    <Title title="環保外送"></Title>
-    <div class="boxs-container" v-if="width>=840">
-        <a href="" v-for="(item, index) in data" :key="index">
-            <q-responsive :ratio="1">
-                <img :src="item.img" alt="">
-            </q-responsive>
-        </a>
-    </div>
-    <div class="slide-block" v-else>
-        <div class="prev-btn">
-            <q-icon name="expand_circle_down"/>
+    <div class="boxs">
+        <Title title="環保外送"></Title>
+        <div class="boxs-container" v-if="width >= 840">
+            <div class="box" v-for="(item, index) in props.list" :key="index">
+                <a :href="item.link" v-if="item.link != ''">
+                    <q-responsive :ratio="1">
+                        <img :src="item.img" alt="">
+                    </q-responsive>
+                </a>
+                <div v-else>
+                    <q-responsive :ratio="1">
+                        <img :src="item.img" alt="">
+                    </q-responsive>
+                </div>
+            </div>
         </div>
-        <swiper
-          :modules="[Navigation, Pagination]"
-          :pagination="{ clickable: true }"
-          :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn'}"
-          :slides-per-view="2"
-          :space-between="30"
-        >
-          <swiper-slide v-for="(list, index) in data" :key="index">
-            <q-responsive ratio="1">
-              <div class="img-block">
-                <img :src="list.img" alt="">
-              </div>
-            </q-responsive>
-          </swiper-slide>
-        </swiper>
-        <div class="next-btn">
-            <q-icon name="expand_circle_down"/>
+        <div class="slide-block" v-else>
+            <div class="prev-btn">
+                <q-icon name="chevron_left" />
+            </div>
+            <swiper
+                :modules="[Navigation, Pagination]"
+                :pagination="{ clickable: true }"
+                :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
+                :slides-per-view="$q.screen.lt.sm ? 1 : $q.screen.lt.md ? 2 : 3"
+                :space-between="30"
+            >
+                <swiper-slide v-for="(list, index) in props.list" :key="index">
+                    <q-responsive ratio="1">
+                        <div class="img-block">
+                            <img :src="list.img" alt="">
+                        </div>
+                    </q-responsive>
+                </swiper-slide>
+            </swiper>
+            <div class="next-btn">
+                <q-icon name="chevron_right" />
+            </div>
         </div>
     </div>
-  </div>
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
@@ -50,40 +57,43 @@ const data = ref([
     {
         img: '/promotion/promotion1.jpg',
         name: '餐點宣傳1',
-        link: ''
+        link: '/'
     },
     {
         img: '/promotion/promotion2.jpg',
         name: '餐點宣傳2',
-        link: ''
+        link: '/'
     },
     {
         img: '/promotion/promotion3.jpg',
         name: '餐點宣傳3',
-        link: ''
+        link: '/'
     },
     {
         img: '/promotion/promotion4.jpg',
         name: '餐點宣傳4',
-        link: ''
+        link: '/'
     },
     {
         img: '/promotion/promotion5.jpg',
         name: '餐點宣傳5',
-        link: ''
+        link: '/'
     },
     {
         img: '/promotion/promotion6.jpg',
         name: '餐點宣傳6',
-        link: ''
+        link: '/'
     }
 ])
-// interface Props {
-//   label?: string;
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   label: '',
-// });
+interface Props {
+    list?: {
+        img: string,
+        link: string
+    }[];
+}
+const props = withDefaults(defineProps<Props>(), {
+    list: () => []
+});
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;
@@ -104,7 +114,7 @@ const data = ref([
         justify-content: space-between
         gap: 10px
         margin-top: 30px
-        a
+        .box
             width: calc(33% - 5px)
             background-color: #d9d9d9
         .q-responsive
@@ -126,13 +136,13 @@ const data = ref([
             align-items: center
             .q-icon
                 font-size: 35px
-                transform: rotate(90deg)
+                color: #acbeaf
         .next-btn
             display: flex
             align-items: center
             .q-icon
                 font-size: 35px
-                transform: rotate(-90deg)
+                color: #acbeaf
 
         .swiper
             --swiper-navigation-size: 30px

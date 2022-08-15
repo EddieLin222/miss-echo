@@ -1,12 +1,13 @@
 <template>
     <div class="list">
-        <div class="item" v-for="(item, index) in list">
+        <div class="item" v-for="(item, index) in props.list">
             <div class="img">
                 <q-responsive :ratio="16/12">
                     <img :src="item.img" alt=""/>
                 </q-responsive>
             </div>
             <div class="content">
+                <div class="title">{{item.title}}</div>
                 <p>{{item.content}}</p>
                 <a class="more" href="#">閱讀更多...</a>
             </div>
@@ -16,29 +17,19 @@
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-const list = [
-    {
-        content: '內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字',
-        link: '',
-        img: '/link/link1.jpg'
-    },
-    {
-        content: '內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字',
-        link: '',
-        img: '/link/link2.jpg'
-    },
-    {
-        content: '內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字區內文文字',
-        link: '',
-        img: '/link/link3.jpg'
-    }
-]
-// interface Props {
-//   label?: string;
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   label: '',
-// });
+interface Props {
+    list?: any;
+}
+const props = withDefaults(defineProps<Props>(), {
+    list: [
+        {
+            title: '',
+            content: '',
+            link: '',
+            img: ''
+        }
+    ]
+});
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;
@@ -58,6 +49,7 @@ const list = [
         background-color: #fff
         box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.25), 12px 12px 2px 3px #C8EEC8
         position: relative
+        width: 30%
         .img
             .q-responsive
                 img
@@ -65,13 +57,21 @@ const list = [
                     min-height: 100%
                     min-width: 100%
         .content
-            padding: 50px 20px
+            padding: 30px 20px
             display: flex
             flex-direction: column
             align-items: flex-start
+            .title
+                font-weight: 700
+                margin-bottom: 10px
+                font-size: 17px
             p
                 text-align: left
                 margin-bottom: 20px
+                display: -webkit-box
+                -webkit-box-orient: vertical
+                -webkit-line-clamp: 2
+                overflow: hidden
             .more
                 display: inline-block
                 color: #78A780

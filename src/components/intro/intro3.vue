@@ -3,13 +3,21 @@
     <div class="intro-box">
       <Title title="服務介紹"></Title>
       <div class="lists">
-        <div class="list" v-for="(item, index) in dataList" :key="index">
+        <div class="list" v-for="(item, index) in props.serviceIntro" :key="index">
            <div class="box left">
-                <q-responsive :ratio="16/10"></q-responsive>
+                <q-responsive :ratio="16/10">
+                  <img :src="item.img" alt="">
+                </q-responsive>
            </div>
            <div class="box right">
                 <h4 class="list-title">{{item.title}}</h4>
-                <div class="list-content" v-html="item.content"></div>
+                <div class="list-content">
+                  <div class="inner-container">
+                    <div class="tag-container" v-for="(tag, i) in item.tags" :key="i">
+                      <div class="tag">{{tag}}</div>
+                    </div>
+                  </div>
+                </div>
                 <div class="list-btn">
                     <a class="btn" href="">我要預約</a>
                     <a class="btn" href="">了解更多</a>
@@ -25,32 +33,19 @@
 import Title from "../title/title-1.vue"
 import { ref, onMounted } from 'vue';
 
-const dataList = ref([
-  {
-    title: '蔬食無肉日',
-    content: '為您提供減碳數據<br>養成員工環保習慣',
-    link: ''
-  },
-  {
-    title: '企業訂餐',
-    content: '為您提供減碳數據<br>養成員工環保習慣',
-    link: ''
-  },
-  {
-    title: '永續論壇/活動',
-    content: '為您提供減碳數據<br>養成員工環保習慣',
-    link: ''
-  }
-])
-
-// interface Props {
-//   time?: number,
-//   value?: number
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   time: 2,
-//   value: 5000
-// });
+interface Props {
+  serviceIntro?: any
+}
+const props = withDefaults(defineProps<Props>(), {
+  serviceIntro: [
+    {
+      title: '',
+      tags: [''],
+      img: '',
+      link: ''
+    },
+  ]
+});
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;
@@ -85,6 +80,8 @@ const dataList = ref([
           .q-responsive
             height: 100%
             background-color: #B8B8B8
+            img
+              object-fit: cover
         .right
           flex: 1.5
           display: flex
@@ -103,6 +100,23 @@ const dataList = ref([
             width: 100%
             padding: 20px
             line-height: 25px
+            display: flex
+            justify-content: center
+            .inner-container
+              display: flex
+              width: 300px
+              flex-wrap: wrap
+              .tag-container
+                display: flex
+                padding: 5px
+                width: 50%
+                .tag
+                  text-align: center
+                  white-space: nowrap
+            .tag-container:nth-child(odd)
+              justify-content: flex-start
+            .tag-container:nth-child(even)
+              justify-content: flex-start
           .list-btn
             width: 100%
             display: flex

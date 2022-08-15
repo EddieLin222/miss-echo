@@ -21,8 +21,8 @@
                 <div class="intro">
                     <div class="title">{{list['name']}}</div>
                     <div class="content">
-                        <div v-for="(word, index) in list['text']" :key="index">
-                            <span>{{word}}</span>
+                        <div v-for="(word, index) in textFilter(list['text'])" :key="index">
+                            <span :style="isEnglish(word)?`padding:0 2px;`:''">{{word}}</span>
                         </div>
                     </div>
                 </div>
@@ -41,8 +41,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { ref, onMounted } from 'vue';
-
+import { ref, onMounted, computed } from 'vue';
 interface Props {
   title?: string,
   list?: any
@@ -57,16 +56,37 @@ const props = withDefaults(defineProps<Props>(), {
     }
   ]
 });
-
 const dataList = ref([])
-
-
 onMounted(()=>{
     dataList.value = props.list
 })
+// const data = computed(()=>{
+//     let newData = props.list.map((e: { img: any; name: any; text: string; })=>{
+//         return {
+//             img: e.img,
+//             name: e.name,
+//             text: e.text.split('')
+//         }
+//     })
+//     return newData
+// })
+const isEnglish = (text:string)=>{
+    const isEnglishRex = new RegExp("[A-Za-z]+");
+    return isEnglishRex.test(text)
+}
+const textFilter = (text:string)=>{
+    const _text:string[] = [];
+    text.split(' ').forEach(item=>{
+        if(isEnglish(item)){
+            _text.push(item)
+        }else{
+            _text.push(...item.split(''))
+        }
+    })    
+    return _text
+}
 
 // const text = ref('推薦文字推薦文字推薦文字推薦文字')
-
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;
 // }>();
@@ -115,20 +135,19 @@ onMounted(()=>{
                         min-width: 100%
                         min-height: 100%
                         object-fit: cover
-
                 .intro
                     display: flex
                     flex-direction: column
                     justify-content: center
                     align-items: center
                     .title
-                        font-size: 20px
+                        font-size: 18px
                         margin-bottom: 15px
                         font-weight: 700
                     .content
                         display: flex
                         flex-wrap: wrap
-                        width: 180px
+                        max-width: 190px
                         div
                             height: 30px
                             span
@@ -136,7 +155,6 @@ onMounted(()=>{
                                 background: #F2E7CE
                                 padding: 0px 1px
                                 font-weight: 500
-
             :deep() .swiper-button-prev
                 padding: 20px
                 color: #000

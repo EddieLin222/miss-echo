@@ -1,12 +1,12 @@
 <template>
     <div class="bubbles">
-        <div class="bubble" v-for="(item, index) in bubbles" :key="index">
+        <a class="bubble" v-for="(item, index) in bubbles" :key="index" :href="item.link" target="_blank">
             <q-responsive :ratio="1">
                 <p>
                     {{item.name}}
                 </p>
             </q-responsive>
-        </div>
+        </a>
     </div>
 </template>
 <style scoped lang="sass">
@@ -16,6 +16,7 @@
     bottom: 20px
     z-index: 9999
     .bubble
+        display: block
         background-color: #78A780
         border-radius: 100%
         padding: 10px
@@ -37,11 +38,11 @@ import { ref } from 'vue';
 const bubbles = ref([
     {
         name: '我要訂餐',
-        link: '/'
+        link: 'https://misseco-customer.web.app'
     },
     {
         name: '企業合作',
-        link: '/'
+        link: 'https://forms.gle/cE73TMwrm5byNT7UA'
     }
 ])
 </script>

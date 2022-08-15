@@ -11,15 +11,15 @@
     <div class="r-block">
       <div class="mail">misseco.tw@gmail.com</div>
       <div class="social-block">
-        <div class="item">
+        <a class="item" href="https://www.facebook.com/misseco.tw" target="_blank">
           <img src="/social/fb.svg">
-        </div>
-        <div class="item">
+        </a>
+        <a class="item" href="https://www.instagram.com/misseco.tw/" target="_blank">
           <img src="/social/ig.svg">
-        </div>
-        <div class="item">
+        </a>
+        <a class="item" href="https://lin.ee/35kz9K7" target="_blank">
           <img src="/social/line.svg">
-        </div>
+        </a>
       </div>
     </div>
   </div>
@@ -58,6 +58,7 @@ import { ref, onMounted } from 'vue';
     .text
       color: #778D7E
       letter-spacing: 1px
+      font-family: 'Noto Serif TC', serif
   .r-block
     display: flex
     flex-direction: column

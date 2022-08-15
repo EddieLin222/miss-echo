@@ -6,19 +6,15 @@
       <div class="content">
         <img class="bg" src="/intro/bg2.png" alt="">
         <div class="text">
-          <p>
-            Miss Eco是全台首創的環保外送平台，與健康永續的餐飲業者合作，透過循環餐盒外送餐點，減少外送大量的一次性垃圾。
-            <br>我們相信人們，其實不是不環保、不愛海龜、討厭北極熊，或喜歡製造垃圾，而是生活中缺少自由選擇的權利。
-            <br>環境議題不該總是站在便利生活的對立面。Miss Eco期待打造兼顧環保與便利的新選擇，與您一起共創永續新日常！
-          </p>
+          <p v-text="props.intro"></p>
         </div>
         <div class="leaf">
-          <img src="/intro/leaf.svg" alt="">
+          <img src="/intro/leaf2.svg" alt="">
         </div>
       </div>
     </div>
     <div class="intro-box number-grow">
-      <NumberGrow v-for="(item, index) in growNumbers" :key="index" :number="item.number" :title="item.title" :unit="item.unit"></NumberGrow>
+      <NumberGrow v-for="(item, index) in props.growNumbers" :key="index" :number="item.number" :title="item.title" :unit="item.unit"></NumberGrow>
     </div>
   </div>
 </template>
@@ -27,33 +23,38 @@ import NumberGrow from "../effect/number-grow.vue"
 import Title from "../title/title-1.vue"
 import { ref, onMounted } from 'vue';
 
-const growNumbers = [
-  {
-    title: '減少一次性垃圾',
-    number: 25000,
-    unit: '件'
-  },
-  {
-    title: '減少紙容器包裝',
-    number: 8000,
-    unit: '個'
-  },
-  {
-    title: '減少碳排量',
-    number: 5000,
-    unit: '公斤'
-  }
-]
+// const growNumbers = [
+//   {
+//     title: '減少一次性垃圾',
+//     number: 25000,
+//     unit: '件'
+//   },
+//   {
+//     title: '減少紙容器包裝',
+//     number: 8000,
+//     unit: '個'
+//   },
+//   {
+//     title: '減少碳排量',
+//     number: 5000,
+//     unit: '公斤'
+//   }
+// ]
 
-
-// interface Props {
-//   time?: number,
-//   value?: number
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   time: 2,
-//   value: 5000
-// });
+interface Props {
+  intro?: string,
+  growNumbers?: any
+}
+const props = withDefaults(defineProps<Props>(), {
+  intro: '',
+  growNumbers: [
+    {
+      title: '',
+      number: 0,
+      unit: ''
+    }
+  ],
+});
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;
@@ -94,16 +95,18 @@ const growNumbers = [
         align-items: center
         padding: 30px 40px
         p
+          font-size: 15px
           position: relative
           letter-spacing: 1px
           line-height: 30px
           color: #fff
+          white-space: pre-line
       .leaf
         position: absolute
         height: 40%
         right: 0
         bottom: 0
-        transform: translateX(60%)
+        transform: translate(40%, -10px)
         img
           height: 100%
           transform: rotate(5deg)
@@ -119,7 +122,6 @@ const growNumbers = [
           height: auto
           width: 25%
           max-width: 80px
-          transform: translateX(40%)
     .number-grow
       display: flex
       flex-direction: row

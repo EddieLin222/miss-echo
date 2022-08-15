@@ -2,10 +2,10 @@
   <div class="list">
     <Title title="企業好評推薦"></Title>
     <div class="list-block" v-if="width>=840">
-      <div class="list-item" v-for="(item, index) in listData" :key="index">
+      <div class="list-item" v-for="(item, index) in props.companyList" :key="index">
         <q-responsive :ratio="1">
           <div class="img-block">
-            <div class="img"></div>
+            <img :src="item.img" alt="">
           </div>
         </q-responsive>
         <div class="list-title">{{item.name}}</div>
@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="swiper-block" v-else>
-      <Slide :list="listData"></Slide>
+      <Slide :list="props.companyList"></Slide>
     </div>
   </div>
 </template>
@@ -28,29 +28,19 @@ import Slide from "../slide/slide.vue"
 import { useWindowSize } from '@vueuse/core'
 const { width } = useWindowSize()
 
-const listData = [
-  {
-    img: '../img.png',
-    name: '企業名稱',
-    text: '推薦文字推薦文字推薦文字推薦'
-  },
-  {
-    img: '../img.png',
-    name: '企業名稱',
-    text: '推薦文字推薦文字推薦文字推薦推薦文字推薦文字推薦文字推薦'
-  },
-  {
-    img: '../img.png',
-    name: '企業名稱',
-    text: '推薦文字推薦文字推薦文字推薦推薦文字推薦文字推薦文字推薦推薦文字推薦文字推薦文字推薦'
-  }
-]
-// interface Props {
-//   label?: string;
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   label: '',
-// });
+
+interface Props {
+  companyList?: any;
+}
+const props = withDefaults(defineProps<Props>(), {
+  companyList: [
+    {
+      img: '',
+      name: '',
+      text: ''
+    }
+  ]
+});
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;
@@ -86,12 +76,13 @@ const listData = [
           width: 180px
           border-radius: 100%
           padding: 5px
-
-          .img
+          overflow: hidden
+          img
             background-color: #ddd
             width: 100%
             height: 100%
             border-radius: 100%
+            object-fit: cover
       .list-title
         font-size: 16px
         font-weight: 700
@@ -112,7 +103,6 @@ const listData = [
     width: 100%
 @media (max-width: 1190px)
   .list
-    // padding: 0px 15% 80px 15%
     .list-block
       flex-wrap: wrap
       .list-item
@@ -122,10 +112,10 @@ const listData = [
           max-width: 300px
 @media (max-width: 980px)
   .list
-    padding: 0px 10% 80px 10%
+    padding: 0px 10% 0px 10%
 @media (max-width: 840px)
   .list
-    padding: 0px 0% 80px 0%
+    padding: 0px 0% 0px 0%
 @media (max-width: 600px)
   .list
     .list-block

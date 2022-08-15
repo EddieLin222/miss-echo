@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import AdminRouter from './admin';
 
 export interface RouteMeta {
   name: string;
@@ -12,20 +13,63 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: `/home`,
-    name: 'home',
-    component: () => import('../views/the-home.vue')
+    path: `/`,
+    name: 'userview',
+    component: () => import('../views/layout.vue'),
+    children: [
+      {
+        path: `/home`,
+        name: 'home',
+        component: () => import('../views/the-home.vue')
+      },
+      {
+        path: `/delivery`,
+        name: 'delivery',
+        component: () => import('../views/the-delivery.vue')
+      },
+      {
+        path: `/booking`,
+        name: 'booking',
+        component: () => import('../views/the-booking.vue')
+      },
+      {
+        path: `/journal`,
+        name: 'journal',
+        component: () => import('../views/the-journal.vue')
+      },
+      {
+        path: `/life`,
+        name: 'lift',
+        component: () => import('../views/the-life.vue')
+      },
+      {
+        path: '/comming-soon',
+        name: 'comming-soon',
+        component: () => import('../views/the-comming-soon.vue')
+      },
+      {
+        path: `/about`,
+        name: 'about',
+        component: () => import('../views/the-about.vue')
+      },
+      {
+        path: '/post/:postId',
+        name: 'post',
+        component: () => import('../views/the-post.vue')
+      },
+    ]
   },
   {
-    path: `/delivery`,
-    name: 'delivery',
-    component: () => import('../views/the-delivery.vue')
+    name: 'Login',
+    path: '/Login',
+    meta: {
+      title: '登入',
+    },
+    component: () => import('@/views/admin/Login.vue'),
   },
-  {
-    path: `/booking`,
-    name: 'booking',
-    component: () => import('../views/the-booking.vue')
-  },
+  AdminRouter.routes,
+
+
   {
     path: '/:pathMatch(.*)*',
     redirect: '/'
