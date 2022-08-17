@@ -78,7 +78,7 @@ const props = withDefaults(defineProps<Props>(), {
         .sticker
             position: absolute
             top: 0
-            height: 15%
+            height: 20%
             transform: translate(-30%, -30%)
 
 @media(max-width: 960px)

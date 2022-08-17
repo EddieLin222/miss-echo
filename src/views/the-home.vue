@@ -22,8 +22,8 @@ import Slide from "../components/slide/slide.vue"
 import { ref } from 'vue';
 
 const bannerData = {
-  webImg: '/banner/banner.jpg',
-  mobileImg: '/banner/banner-m.jpg'
+  webImg: '/banner/banner.png',
+  mobileImg: '/banner/banner-m.png'
 }
 
 const intro = 'Miss Eco是全台首創的環保外送平台，與健康永續的餐飲業者合作，透過循環餐盒外送餐點，減少外送大量的一次性垃圾。\n我們相信人們，其實不是不環保、不愛海龜、討厭北極熊，或喜歡製造垃圾，而是生活中缺少自由選擇的權利。\nMiss Eco期待打造兼顧環保與便利的新選擇，與你共度永續新日常！'
@@ -47,18 +47,21 @@ const growNumbers = [
 ]
 
 const list = [
+  // 第四篇
   {
     title: '兩個醫學生的永續之路',
     content: '嗨大家好，我們今年從實習醫院畢業了！並且順利考過國考取得醫師執照了。我們是Miss Eco環保外送的共同創辦人',
     link: '/',
     img: '/link/link1.jpg'
   },
+  // 第三篇
   {
     title: '舉辦一場零廢棄的低碳饗宴吧！',
     content: '什麼是低碳饗宴呢?永續當道之時，每場活動最重要的指標之一就是如何減碳、減廢，讓活動',
     link: '/',
     img: '/link/link2.jpg'
   },
+  // 第二篇
   {
     title: '全台首創環保外送',
     content: 'Miss Eco是全台首創的環保外送平台，透過循環餐盒外送餐點，減少外送產生的大量一次性垃圾',

@@ -1,6 +1,6 @@
 <template>
   <div class="banner">
-    <img class="bg" :src="props.bannerData.webImg" alt="" v-if="width>=480">
+    <img class="bg" :src="props.bannerData.webImg" alt="" v-if="width>960">
     <img class="bg" :src="props.bannerData.mobileImg" alt="" v-else>
     <!-- <div class="banner-box">
       <div class="title">{{ bannerData.title }}</div>

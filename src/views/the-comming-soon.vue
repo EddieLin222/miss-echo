@@ -1,6 +1,6 @@
 <template>
   <div class="comming-soon">
-    <h4 class="title">Comming Soon...</h4>
+    <h4 class="title">Coming Soon...</h4>
     <img src="/logo/logo-footer.png" alt="">
     <a class="btn" href="/">返回首頁</a>
     <div class="block">

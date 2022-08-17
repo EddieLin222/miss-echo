@@ -2,9 +2,13 @@
   <div class="service">
     <Title title="服務簡介"></Title>
     <div class="second-title">
-      <span class="symbol">“</span>
+      <span class="symbol">
+        <img src="/symbol/left.svg" alt="">
+      </span>
       <span class="text">舉辦一場零廢棄的低碳饗宴吧</span>
-      <span class="symbol">”</span>
+      <span class="symbol">
+        <img src="/symbol/right.svg" alt="">
+      </span>
     </div>
     <div class="items">
       <div class="item">
@@ -73,13 +77,12 @@ const props = withDefaults(defineProps<Props>(), {
   .second-title
     display: flex
     align-items: center
+    margin-top: 20px
     .symbol
-      font-size: 60px
-      color: #78a780
-      line-height: 60px
+      transform: translateY(-50%)
     .text
       font-size: 16px
-      margin: 0px 20px
+      margin: 0px 10px
       white-space: nowrap
   .items
     width: 100%
@@ -89,7 +92,6 @@ const props = withDefaults(defineProps<Props>(), {
       width: 30%
       .q-responsive
         width: 100%
-        background-color: #D9D9D9
       .content
         text-align: center
         margin-top: 20px
@@ -102,7 +104,6 @@ const props = withDefaults(defineProps<Props>(), {
   .service
     .items
       flex-direction: column
-      gap: 50px
       .item
         width: 100%
 

@@ -27,18 +27,21 @@ const serviceData = {
 }
 
 const serviceIntro = [
+  // 第五篇
   {
     title: '蔬食無肉日',
     tags: ['#循環餐盒外送', '#多元潮流美味蔬食', '#訂閱服務', '#免清洗當日回收'],
     img: '/service/intro1.jpg',
     link: ''
   },
+  // 第一篇
   {
     title: '企業訂餐',
     tags: ['#循環餐盒外送', '#健康水煮餐盒', '#精緻會議餐盒', '#免清洗當日回收'],
     img: '/service/intro2.jpg',
     link: ''
   },
+  // 第三篇
   {
     title: '永續論壇/活動',
     tags: ['#循環餐盒外送', ' #下午茶輕食', '#工作坊午餐', '#免清洗當日回收'],

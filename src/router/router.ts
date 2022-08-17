@@ -36,6 +36,16 @@ const routes: Array<RouteRecordRaw> = [
         path: '/comming-soon',
         name: 'comming-soon',
         component: () => import('../views/the-comming-soon.vue')
+      },
+      {
+        path: '/post/:postId',
+        name: 'post',
+        component: () => import('../views/the-post.vue')
+      },
+      {
+        path: `/life`,
+        name: 'lift',
+        component: () => import('../views/the-life.vue')
       }
     ]
   },
@@ -53,20 +63,15 @@ const routes: Array<RouteRecordRaw> = [
     name: 'journal',
     component: () => import('../views/the-journal.vue')
   },
-  {
-    path: `/life`,
-    name: 'lift',
-    component: () => import('../views/the-life.vue')
-  },
+  // {
+  //   path: `/life`,
+  //   name: 'lift',
+  //   component: () => import('../views/the-life.vue')
+  // },
   {
     path: `/about`,
     name: 'about',
     component: () => import('../views/the-about.vue')
-  },
-  {
-    path: '/post/:postId',
-    name: 'post',
-    component: () => import('../views/the-post.vue')
   },
   {
     path: '/:pathMatch(.*)*',

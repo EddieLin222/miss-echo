@@ -24,7 +24,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import Title from "../title/title-1.vue"
-import Slide from "../slide/slide.vue"
+import Slide from "../slide/slide3.vue"
 import { useWindowSize } from '@vueuse/core'
 const { width } = useWindowSize()
 

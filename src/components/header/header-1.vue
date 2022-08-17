@@ -2,7 +2,8 @@
   <div class="header">
     <div class="brand">
       <a class="img-box" href="/">
-        <img src="/logo/logo.svg" alt="">
+        <img src="/logo/logo.png" alt="" v-if="width>992">
+        <img src="/logo/logo-m.png" alt="" v-else>
       </a>
     </div>
     <div class="toggle-btn" @click="openMenu = !openMenu" :class="{show: openMenu}">
@@ -35,8 +36,11 @@
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import { useWindowSize } from '@vueuse/core'
+
 const openMenu = ref(false)
-const logoUrl = ""
+const { width } = useWindowSize()
+
 const navItems = [
   {
     name: ' 環保外送',
@@ -183,6 +187,8 @@ const social = [
   .header
     flex-wrap: wrap
     justify-content: space-between
+    .brand
+      width: 130px
     .toggle-btn
       display: flex
     .nav
