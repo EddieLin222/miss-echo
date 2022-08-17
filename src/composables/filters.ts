@@ -8,11 +8,11 @@ export function useFilter() {
     date.setDate(date.getDate() + days);
     return date;
   }
-  const formatDate = (current_datetime: Date) => {
+  const formatDate2Local = (current_datetime: Date) => {
     return current_datetime.toISOString().split('T')[0]
   }
   const formatDateFromString = (current_datetime: string) => {
-    return formatDate(new Date(current_datetime)).replaceAll('-','/')
+    return formatDate2Local(new Date(current_datetime)).replaceAll('-','/')
   }
 
   const getHtmlText = (htmlCode: string) => {
@@ -33,7 +33,7 @@ export function useFilter() {
     toNumber,
     toLS,
     addDays,
-    formatDate,
+    formatDate2Local,
     getHtmlText,
     limitText,
     formatDateFromString
