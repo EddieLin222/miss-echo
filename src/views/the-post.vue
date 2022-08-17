@@ -283,6 +283,7 @@ onMounted(()=>{
         .fb-block
             filter: grayscale(80%)
             margin: 20px 0px 10px 0px
+            display: none
             .fb-like
                 filter: hue-rotate(290deg)
                 // filter: saturate(40%)
