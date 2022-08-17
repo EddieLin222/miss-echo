@@ -2,18 +2,18 @@
   <div class="post">
     <div class="post-container">
         <div class="title-block">
-            <div class="tag">{{data5.tag}}</div>
-            <div class="title">{{data5.title}}</div>
-            <div class="date">{{data5.date}}</div>
+            <div class="tag">{{currentPost.tag}}</div>
+            <div class="title">{{currentPost.title}}</div>
+            <div class="date">{{currentPost.date}}</div>
         </div>
         <div class="fb-block">
             <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/s" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true" data-colorscheme="dark"></div>
         </div>
         <div class="img-block">
-            <img :src="data5.img" alt="">
+            <img :src="currentPost.img" alt="">
         </div>
-        <div class="intro">{{data5.intro}}</div>
-        <div class="content" v-html="data5.content"></div>
+        <div class="intro">{{currentPost.intro}}</div>
+        <div class="content" v-html="currentPost.content"></div>
         <div class="epilogue">
             <div class="symbol-left">
                 <div class="dot">“</div>
@@ -21,7 +21,7 @@
             <div class="symbol-right">
                 <div class="dot">”</div>
             </div>
-            {{data5.epilogue}}
+            {{currentPost.epilogue}}
         </div>
         <div class="next"></div>
     </div>
@@ -33,6 +33,18 @@ import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
+
+const currentPost = ref({
+    tag: '',
+    title: '',
+    date: '',
+    img: '',
+    intro: '',
+    content: ``,
+    epilogue: '',
+    nextPostTitle: '',
+    nextPostLink: ''
+})
 
 const data1 = ref({
     tag: '服務介紹',
@@ -224,7 +236,17 @@ const data5 = ref({
 
 onMounted(()=>{
     const id = route.params.postId
-    console.log(id)
+    if(id == '關於兩個醫學生的創業'){
+        currentPost.value = data4.value
+    }else if(id == '舉辦一場永續活動，零廢棄的低碳饗宴吧！'){
+        currentPost.value = data3.value
+    }else if(id == 'Miss Eco 企業服務簡介'){
+        currentPost.value = data1.value
+    }else if(id == '全台首創，環保外送！'){
+        currentPost.value = data2.value
+    }else if(id == '周一無肉日，用蔬食救地球！'){
+        currentPost.value = data5.value
+    }
 })
 
 

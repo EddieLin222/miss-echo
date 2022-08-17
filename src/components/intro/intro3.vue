@@ -20,7 +20,7 @@
                 </div>
                 <div class="list-btn">
                     <a class="btn" href="https://forms.gle/cE73TMwrm5byNT7UA" target="_blank">我要預約</a>
-                    <a class="btn" href="">了解更多</a>
+                    <a class="btn" :href="item.link">了解更多</a>
                 </div>
            </div>
         </div>

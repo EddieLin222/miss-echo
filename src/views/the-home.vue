@@ -51,21 +51,21 @@ const list = [
   {
     title: '兩個醫學生的永續之路',
     content: '嗨大家好，我們今年從實習醫院畢業了！並且順利考過國考取得醫師執照了。我們是Miss Eco環保外送的共同創辦人',
-    link: '/',
+    link: '/post/關於兩個醫學生的創業',
     img: '/link/link1.jpg'
   },
   // 第三篇
   {
     title: '舉辦一場零廢棄的低碳饗宴吧！',
     content: '什麼是低碳饗宴呢?永續當道之時，每場活動最重要的指標之一就是如何減碳、減廢，讓活動',
-    link: '/',
+    link: '/post/舉辦一場永續活動，零廢棄的低碳饗宴吧！',
     img: '/link/link2.jpg'
   },
   // 第二篇
   {
     title: '全台首創環保外送',
     content: 'Miss Eco是全台首創的環保外送平台，透過循環餐盒外送餐點，減少外送產生的大量一次性垃圾',
-    link: '/',
+    link: '/post/全台首創，環保外送！',
     img: '/link/link3.jpg'
   }
 ]
