@@ -65,7 +65,7 @@ const handleSave = () => {
     console.log(postCategoryArray.value);
     const data = map(postCategoryArray.value, (o) => ({ postCategory_id: `${o['id']}`, postCategory_name: o['postCategory_name'] }))
     console.log(data);
-    const postCategoryDB = db().collection('Sites/travel-tbb/Posts').doc('Setting');
+    const postCategoryDB = db().collection('Post').doc('Setting');
     postCategoryDB.set({
         postCategoryArray: data
     }).then(() => {

@@ -81,21 +81,14 @@ const Notify = useNotify()
 const postStore = usePostStore();
 
 const columns = ref([
-    { name: 'createDate', label: '建立時間', field: 'createDate' },
+    { name: 'date', label: '建立時間', field: 'date' },
     { name: 'post_id', label: '文章編號', field: 'post_id' },
     { name: 'title', label: '文章標題', field: 'title' },
     {
         name: 'category_id', label: '文章分類', field: 'category_id',
         format: (val: string) => postStore.postCategoryArray.find(pc => (pc.postCategory_id == val))?.postCategory_name,
     },
-    {
-        name: 'isTopPost', label: '置頂', field: 'isTopPost',
-        format: (val: boolean) => `${val ? '是' : '否'}`,
-    },
-    {
-        name: 'showOnBoard', label: '在看板顯示', field: 'showOnBoard',
-        format: (val: boolean) => `${val ? '是' : '否'}`,
-    },
+   
 
 ])
 

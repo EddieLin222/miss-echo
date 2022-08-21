@@ -37,50 +37,47 @@
             <post-category-list-with-editor class="w-32" />
         </div>
 
-        <div class="flex justify-between mt-4 mb-3">
-            <div class="flex">
-                <q-toggle
-                    label="置頂"
-                    v-model="formData.isTopPost"
-                />
-                <q-toggle
-                    label="在看板上顯示"
-                    v-model="formData.showOnBoard"
-                />
-            </div>
-
-        </div>
-
     </div>
     <div class="p-5 shadow-md">
-        <div class="font-bold text-lg mt-4 text-gray-600">文章標題</div>
+       <div class="font-bold text-lg mt-4 text-gray-600">文章標題</div>
+
         <q-input
             v-model="formData.title"
             outlined
         />
 
-        <div class="font-bold text-lg mt-4 text-gray-600">文章次標題</div>
+        <div class="font-bold text-lg mt-4 text-gray-600">相關文章標題</div>
         <q-input
-            v-model="formData.subTitle"
+            v-model="formData.nextPostTitle"
             outlined
-            hint="僅電腦可見"
+        />
+
+        <div class="font-bold text-lg mt-4 text-gray-600">相關文章連結</div>
+        <q-input
+            v-model="formData.nextPostLink"
+            outlined
         />
 
 
+
         <e-image-uploader
-            v-model="formData.image"
+            v-model="formData.img"
             name="文章主圖片"
         />
 
         <!---->
 
+     <e-q-editor
+            v-model="formData.intro"
+            name="簡介編輯器"
+        />
         <e-q-editor
             v-model="formData.content"
             name="內文編輯器"
         />
         <e-q-editor
-            v-model="formData.note"
-            name="注意事項編輯器"
+            v-model="formData.epilogue"
+            name="結語編輯器"
         />
     </div>
 </template>
@@ -106,7 +103,7 @@ const Notify = useNotify()
 const adminStore = useAdminStore()
 
 // DB
-const postDB = db().collection('Sites/travel-tbb/Posts').doc(String(route.params.id));
+const postDB = db().collection('Post').doc(String(route.params.id));
 const postData = ref((useFirestore(postDB)) as any)
 const TimeNote = ref<Array<any | null>>((useFirestore(postDB.collection('TimeNote').orderBy('timestamp', 'desc').limit(1))) as any)
 const DBLock = ref<boolean>(false)
@@ -162,16 +159,15 @@ const handleSave = () => {
 
 const postStore = usePostStore()
 const formDefault = {
-    available: true,
-    isTopPost: false,
-    showOnBoard: true,
-    category_id: '',
+     category_id: '',
     title: '',
-    subTitle: '',
-    createDate: '',
-    content: '',
-    image: '',
-    note: '',
+    date: '',
+    img: '',
+    intro: '',
+    content: ``,
+    epilogue: '',
+    nextPostTitle: '',
+    nextPostLink: ''
 }
 const formData = ref(cloneDeep(formDefault))
 const categoryItem = ref<PostCategoryType>()

@@ -1,16 +1,16 @@
 export type PostType = {
     available:boolean;
-    isTopPost?:boolean;
-    showOnBoard: boolean;
     post_id: string;
     category_id: string;
     category?: string;
     title: string;
-    subTitle: string;
-    createDate: string;
+    date: string;
+    img: string;
+    intro: string;
     content: string;
-    image: string;
-    note: string;
+    epilogue: string;
+    nextPostTitle: string;
+    nextPostLink: string;
 }
 
 export type PostCategoryType = {
