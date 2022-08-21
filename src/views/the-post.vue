@@ -111,9 +111,9 @@ useHead({
     title: computed(() => {
         const title = currentPost.value?.title;
         if (currentPost.value?.title) {
-            return title + '｜Midd Echo'
+            return title + '｜Miss Echo'
         }
-        return 'Midd Echo'
+        return 'Miss Echo'
     }),
     meta: [
         {
