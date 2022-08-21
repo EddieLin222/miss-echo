@@ -21,52 +21,33 @@
     <!-- 服務簡介 -->
     <div class="p-3 border-b ">
         <div class="font-bold text-2xl">服務簡介</div>
-        <div class="px-3 w-full">
+        <div class="mt-5 font-bold text-lg">簡介</div>
+        <q-input
+            filled
+            v-model="serviceData.introduction"
+        />
+        <div class="px-3 w-full flex ">
             <e-image-uploader
                 v-if="serviceData"
                 path="home/booking"
-                class="w-[49%]"
+                class="w-[30%]"
                 v-model="serviceData.partner.img"
-                :name="`合作夥伴`"
+                :name="`企業夥伴`"
             />
-            <div class="font-bold text-lg text-gray-600">數量</div>
-            <q-input
-                class="w-[49%]"
-                filled
-                v-model="serviceData.partner.info"
-            />
-        </div>
-        <div class="px-3 w-full">
             <e-image-uploader
                 v-if="serviceData"
                 path="home/booking"
-                class="w-[49%]"
+                class="w-[30%] mx-[3%]"
                 v-model="serviceData.event.img"
-                :name="`場次`"
+                :name="`活動累積`"
             />
-            <div class="font-bold text-lg text-gray-600">數量</div>
-            <q-input
-                class="w-[49%]"
-                filled
-                v-model="serviceData.event.info"
-            />
-
-        </div>
-        <div class="px-3 w-full">
-            <e-image-uploader
+              <e-image-uploader
                 v-if="serviceData"
                 path="home/booking"
-                class="w-[49%]"
+                class="w-[30%]"
                 v-model="serviceData.reduce.img"
-                :name="`減碳`"
+                :name="`減少減碳`"
             />
-            <div class="font-bold text-lg text-gray-600">數量</div>
-            <q-input
-                class="w-[49%]"
-                filled
-                v-model="serviceData.reduce.info"
-            />
-
         </div>
     </div>
 
@@ -147,12 +128,18 @@
                                         filled
                                         v-model="element.link"
                                     />
-                                    <div class="mt-5 font-bold text-lg">第{{ index + 1 }}項內文</div>
-                                    <q-input
-                                        type="textarea"
-                                        filled
-                                        v-model="element.content"
-                                    />
+                                    <div class="mt-5 font-bold text-lg">第{{ index + 1 }}項標籤</div>
+                                    <q-select
+        filled
+        v-model="element.tags"
+        use-input
+        use-chips
+        multiple
+        hide-dropdown-icon
+        input-debounce="0"
+        new-value-mode="add-unique"
+      />
+
                                     <e-image-uploader
                                         path="home/booking"
                                         class="w-48"
@@ -345,6 +332,7 @@ const handleSave = () => {
 
 // 服務簡介
 const ServiceDataDefault: ServiceDataType = {
+    introduction: '',
     partner: {
         img: '',
         info: ''
@@ -363,7 +351,7 @@ const serviceData = ref<ServiceDataType>(cloneDeep(ServiceDataDefault))
 // 服務介紹
 const ServiceIntroDefault: ServiceIntroType = {
     title: '',
-    content: '',
+    tags: [],
     img: '',
     link: ''
 }

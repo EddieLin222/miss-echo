@@ -36,6 +36,16 @@ const routes: RouteRecordRaw =
             },
             component: () => import('@/views/admin/page/BookingSet.vue'),
         },
+        {
+            name: 'DeliverySet',
+            path: 'setdelivery',
+            meta: {
+                title: '外送設定',
+                icon: 'home',
+                showInMenu: true
+            },
+            component: () => import('@/views/admin/page/DeliverySet.vue'),
+        },
        
        
         {
