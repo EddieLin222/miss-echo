@@ -1,4 +1,6 @@
 <template>
+  <PostDB />
+
   <div class="journal">
     <Boxs :gridData="gridData"></Boxs>
     <div class="custom-container">
@@ -9,93 +11,69 @@
 
 <script setup lang="ts">
 import { useHead } from "@vueuse/head"
-import { computed } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 import Boxs from "../components/boxs/boxs2.vue"
 import Posts from "../components/posts/posts-filter.vue"
+import PostDB from '@/components/firestore/PostDB.vue';
+import { usePostStore } from "@/stores/post.store";
+import { isEmpty } from "lodash";
+import { PromotionType } from "@/types/journal.type";
+import { db } from "@/common/firebase";
+import { useFirestore } from "@vueuse/firebase";
+const PostStore = usePostStore()
 
-const gridData = [
-  {
-    img: '/promotion/promotion1.png',
-    name: '1替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字文字替代文字替代文字替代文字替代文字',
-    link: '/'
-  },
-  {
-    img: '/promotion/promotion2.png',
-    name: '替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字',
-    link: '/'
-  },
-  {
-    img: '/promotion/promotion3.png',
-    name: '替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字文字替代文字替代文字替代代文字替代文字替代文字文字替代文字替代文字替代',
-    link: '/'
-  },
-  {
-    img: '/promotion/promotion4.png',
-    name: '替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字',
-    link: '/'
-  },
-  {
-    img: '/promotion/promotion5.png',
-    name: '替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字',
-    link: '/'
-  },
-  {
-    img: '/promotion/promotion6.png',
-    name: '替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字文字替代文字替代文字替代文字替代文字',
-    link: '/'
+const gridData = ref<PromotionType[]>([])
+// Firestore
+const pageHomeDB = db().collection('Page').doc('Journal')
+const pageHomeData = ref<{
+  promotionList
+: PromotionType[],
+}>((useFirestore(pageHomeDB)) as any)
+watchEffect(() => {
+  if (pageHomeData.value) {
+    gridData.value = pageHomeData.value.promotionList;
   }
-]
+})
+const postsData = ref({
+  tags: [] as any[],
+  posts: [] as any[]
+})
+watchEffect(() => {
+  const postCategoryArray = PostStore.postCategoryArray
+  if (!isEmpty(postCategoryArray)) {
+    postsData.value.tags = [
+      {
+        name: 'All',
+        value: 0
+      },
+      ...postCategoryArray.map((o) => ({
+        name: o.postCategory_name,
+        value: o.postCategory_id
+      }))]
+  }
+})
+watchEffect(() => {
+  const postArray = PostStore.postArray
+  if (!isEmpty(postArray)) {
+    postsData.value.posts = postArray.map((o) => {
+      const imgSrc = o.img
+      const text = o.content ?? o.intro ?? o.epilogue ?? ''
+      const el = document.createElement("div");
+      el.innerHTML = text
+      const imgEl = el.querySelector('img') as HTMLImageElement
+      return {
+        img: imgSrc ? imgSrc : (imgEl ? imgEl.src : 'https://missecotw.com/logo/logo.png'),
+        link: `/post/${o.title}`,
+        date: o.date,
+        title: o.title,
+        content: (el.textContent ?? '').replaceAll('\n', '').replaceAll(' ', '').replaceAll(/\u00a0/g, ''),
+        tag: o.category_id
+      }
+    })
 
-const postsData = {
-  tags: [
-    {
-      name: 'All',
-      value: 0
-    },
-    {
-      name: 'Miss碎碎念',
-      value: 1
-    },
-    {
-      name: '永續日常',
-      value: 2
-    },
-    {
-      name: '健康意識',
-      value: 3
-    },
-    {
-      name: '活動花絮',
-      value: 4
-    }
-  ],
-  posts: [
-    {
-      img: '/promotion/promotion1.png',
-      link: '/',
-      date: '2022/05/30',
-      title: '機場搭防疫計程車我們付費，文章標題第二列-1',
-      content: '現在只要預訂「台北市的防疫旅館」您的計程車費我來出！內文現在只要預訂「台北市的防疫旅館」您的計程車費我來出！內文',
-      tag: 1
-    },
-    {
-      img: 'promotion/promotion2.png',
-      link: '/',
-      date: '2022/05/30',
-      title: '機場搭防疫計程車我們付費，文章標題第二列-2',
-      content: '現在只要預訂「台北市的防疫旅館」您的計程車費我來出！內文現在只要預訂「台北市的防疫旅館」您的計程車費我來出！內文',
-      tag: 2
-    },
-    {
-      img: 'promotion/promotion3.png',
-      link: '/',
-      date: '2022/05/30',
-      title: '機場搭防疫計程車我們付費，文章標題第二列-3',
-      content: '現在只要預訂「台北市的防疫旅館」您的計程車費我來出！內文現在只要預訂「台北市的防疫旅館」您的計程車費我來出！內文',
-      tag: 3
-    }
-  ]
-}
+  }
+})
+
 
 // SEO
 useHead({
@@ -117,7 +95,7 @@ useHead({
     {
       name: `description`,
       content: computed(() => {
-        return  'Miss Eco環保外送平台與健康永續的餐飲業者合作，推廣低碳飲食，讓您輕鬆實踐永續飲食態度。包含在地小農餐點、醜蔬果、格外品；以原型食物入菜，健康水煮呈現，最純粹的料理方式；更棒的是，平台提供豐富多元的潮流蔬食，讓愛吃肉的你也能體驗美味新境界。希望在您照顧地球健康的同時也能吃得好，吃得健康！'
+        return 'Miss Eco環保外送平台與健康永續的餐飲業者合作，推廣低碳飲食，讓您輕鬆實踐永續飲食態度。包含在地小農餐點、醜蔬果、格外品；以原型食物入菜，健康水煮呈現，最純粹的料理方式；更棒的是，平台提供豐富多元的潮流蔬食，讓愛吃肉的你也能體驗美味新境界。希望在您照顧地球健康的同時也能吃得好，吃得健康！'
       }),
     },
     {

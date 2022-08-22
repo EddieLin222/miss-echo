@@ -26,28 +26,47 @@ const routes: RouteRecordRaw =
             },
             component: () => import('@/views/admin/page/HomeSet.vue'),
         },
+      
+        {
+            name: 'DeliverySet',
+            path: 'setdelivery',
+            meta: {
+                title: '環保外送設定',
+                icon: 'home',
+                showInMenu: true
+            },
+            component: () => import('@/views/admin/page/DeliverySet.vue'),
+        },
         {
             name: 'BookingSet',
             path: 'setbooking',
             meta: {
-                title: '訂餐設定',
+                title: '活動訂餐設定',
                 icon: 'home',
                 showInMenu: true
             },
             component: () => import('@/views/admin/page/BookingSet.vue'),
         },
         {
-            name: 'DeliverySet',
-            path: 'setdelivery',
+            name: 'AboutSet',
+            path: 'setabout',
             meta: {
-                title: '外送設定',
+                title: '關於我們設定',
                 icon: 'home',
                 showInMenu: true
             },
-            component: () => import('@/views/admin/page/DeliverySet.vue'),
+            component: () => import('@/views/admin/page/AboutSet.vue'),
         },
-       
-       
+        {
+            name: 'JournalSet',
+            path: 'setjournal',
+            meta: {
+                title: '永續日記設定',
+                icon: 'home',
+                showInMenu: true
+            },
+            component: () => import('@/views/admin/page/JournalSet.vue'),
+        },
         {
             name: 'AdminSet',
             path: 'setAdmin',

@@ -10,88 +10,74 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { db } from '@/common/firebase';
+import { BannerType, IntroType, PostType, StoryType } from '@/types/about.type';
+import { useFirestore } from '@vueuse/firebase';
+import { useHead } from '@vueuse/head';
+import { ref, watchEffect, computed } from 'vue';
 import Banner from "../components/banner/banner-3.vue"
 import Intro from "../components/intro/intro4.vue"
 import Posts from "../components/posts/posts.vue"
 import Story from "../components/slide/slide2.vue"
 
-const bannerData = ref({
-  webImg: '/banner/banner2.jpg',
-  mobileImg: '/banner/banner2.jpg'
+const bannerData = ref<BannerType>({
+  webImg: '',
+  mobileImg: ''
 })
-
-const introData = ref({
-  firstText: 'Helping people help themselves Helping people help themselves',
-  introText: '內文內文內文內文內文內文內文\n\n內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文'
+const introData = ref<IntroType>({
+  firstText: '',
+  introText: ''
 })
-
-const postList = ref([
-  {
-    img: '/post/post1.jpg',
-    link: '',
-    title: '標題標題標題標題',
-    content: '內文內文內文內文'
-  },
-  {
-    img: '/post/post1.jpg',
-    link: '',
-    title: '標題標題標題標題',
-    content: '內文內文內文內文'
-  },
-  {
-    img: '/post/post1.jpg',
-    link: '',
-    title: '標題標題標題標題',
-    content: '內文內文內文內文'
-  },
-  {
-    img: '/post/post1.jpg',
-    link: '',
-    title: '標題標題標題標題',
-    content: '內文內文內文內文'
-  },
-  {
-    img: '/post/post1.jpg',
-    link: '',
-    title: '標題標題標題標題',
-    content: '內文內文內文內文'
-  },
-  {
-    img: '/post/post1.jpg',
-    link: '',
-    title: '標題標題標題標題',
-    content: '內文內文內文內文'
+const postList = ref<PostType[]>([])
+const storyList = ref<StoryType[]>([])
+// Firestore
+const pageHomeDB = db().collection('Page').doc('About')
+const pageHomeData = ref<{
+  bannerData: BannerType,
+  introData: IntroType,
+  postList: PostType[],
+  storyList: StoryType[],
+}>((useFirestore(pageHomeDB)) as any)
+watchEffect(() => {
+  if (pageHomeData.value) {
+    bannerData.value = pageHomeData.value.bannerData;
+    introData.value = pageHomeData.value.introData;
+    postList.value = pageHomeData.value.postList;
+    storyList.value = pageHomeData.value.storyList;
   }
-])
-
-const storyList = ref([
-  {
-    img: '/sliders/bg-1.jpeg',
-    text: '影片標題影片標題影片標題影片標題影片標題影片標題',
-    link: '/'
-  },
-  {
-    img: '/sliders/bg-1.jpeg',
-    text: '影片標題影片標題影片標題影片標題影片標題影片標題',
-    link: '/'
-  },
-  {
-    img: '/sliders/bg-1.jpeg',
-    text: '影片標題影片標題影片標題影片標題影片標題影片標題',
-    link: '/'
-  }
-])
-// interface Props {
-//   label?: string;
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   label: '',
-// });
-
-// const emit = defineEmits<{
-//   (e: 'update:modelValue', value: string): void;
-// }>();
+})
+// SEO
+useHead({
+  // Can be static or computed
+  title: computed(() => {
+    return '關於我們｜Miss Echo｜搭配健康永續餐點，舉辦一場零廢棄的低碳饗宴吧'
+  }),
+  meta: [
+    {
+      property: `og:title`,
+      content: computed(() => {
+        return '關於我們｜Miss Echo｜搭配健康永續餐點，舉辦一場零廢棄的低碳饗宴吧'
+      }),
+    },
+    {
+      property: `og:type`,
+      content: 'website',
+    },
+    {
+      name: `description`,
+      content: computed(() => {
+        const introduction = introData.value.introText ?? 'Miss Eco是全台首創零廢棄環保外送服務，與健康永續的餐飲業者合作，透過循環餐具外送餐點，減少外送製造的大量一次性垃圾。'
+        return introduction
+      }),
+    },
+    {
+      property: `og:image`,
+      content: computed(() => {
+        return 'https://missecotw.com/logo/logo.png'
+      }),
+    },
+  ],
+})
 </script>
 
 <style scoped lang="sass">
