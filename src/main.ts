@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import router from './router/router'
 import { createPinia } from 'pinia'
 
-import { Quasar, Notify, Dialog} from 'quasar'
+import { Quasar, Notify, Dialog } from 'quasar'
 import quasarLang from 'quasar/lang/zh-TW'
 
 // Import icon libraries
@@ -22,7 +22,11 @@ import { createHead } from "@vueuse/head"
 const head = createHead()
 
 
+import QRouterLink from '@/components//QRouterLink.vue';
+
+
 createApp(App)
+  .component('QRouterLink', QRouterLink)
   .use(Quasar, {
     plugins: {
       Notify,
