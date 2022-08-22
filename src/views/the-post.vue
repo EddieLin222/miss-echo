@@ -324,14 +324,14 @@ useHead({
 }
 
 :deep() .articleTextArea blockquote {
-    background: #f9f9f9;
-    border-left: 10px solid #ccc;
+    background: #C8EEC8;
+    border-left: 10px solid #78A780;
     margin: 1.5em 10px;
     padding: 0.5em 10px;
 }
 
 :deep() .articleTextArea blockquote:before {
-    color: #ccc;
+    color: #78A780;
     content: ',,';
     font-size: 4em;
     line-height: 0.1em;
