@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="brand">
-      <QRouterLink class="img-box" to="/">
+      <QRouterLink class="img-box" to="/" @click="openMenu = false">
         <img src="/logo/logo.png" alt="" v-if="width>992">
         <img src="/logo/logo-m.png" alt="" v-else>
       </QRouterLink>
