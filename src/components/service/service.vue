@@ -12,25 +12,28 @@
     </div>
     <div class="items">
       <div class="item">
-        <q-responsive ratio="1">
+        <!-- <q-responsive ratio="1">
           <img :src="props.serviceData.partner.img" alt="">
-        </q-responsive>
+        </q-responsive> -->
+        <img :src="props.serviceData.partner.img" alt="">
         <div class="content">
           合作夥伴： {{props.serviceData.partner.info}}
         </div>
       </div>
       <div class="item">
-        <q-responsive ratio="1">
+        <!-- <q-responsive ratio="1">
           <img :src="props.serviceData.event.img" alt="">
-        </q-responsive>
+        </q-responsive> -->
+        <img :src="props.serviceData.event.img" alt="">
         <div class="content">
           場次： {{props.serviceData.event.info}}
         </div>
       </div>
       <div class="item">
-        <q-responsive ratio="1">
+        <!-- <q-responsive ratio="1">
           <img :src="props.serviceData.reduce.img" alt="">
-        </q-responsive>
+        </q-responsive> -->
+        <img :src="props.serviceData.reduce.img" alt="">
         <div class="content">
           減碳： {{props.serviceData.reduce.info}}
         </div>
@@ -94,7 +97,9 @@ const props = withDefaults(defineProps<Props>(), {
     margin-top: 10px
     .item
       width: 33.33%
-      .q-responsive
+      // .q-responsive
+      //   width: 100%
+      img
         width: 100%
       .content
         text-align: center

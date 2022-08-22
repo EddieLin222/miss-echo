@@ -31,7 +31,6 @@
                 font-size: 16px
                 line-height: 22px
                 color: #fff
-
 </style>
 <script setup lang="ts">
 import { ref } from 'vue';
