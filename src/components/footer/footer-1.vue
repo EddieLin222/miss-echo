@@ -68,6 +68,7 @@ import { ref, onMounted } from 'vue';
       font-size: 16px
       color: #778D7E
       margin-bottom: 30px
+      font-family: 'Times New Roman'
     .social-block
       display: flex
       .item

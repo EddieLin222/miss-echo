@@ -45,9 +45,11 @@ const data = {
             .bg
                 position: absolute
                 top: 0
-                left: 0
+                left: 50%
+                transform: translateX(-50%)
                 height: 100%
-                width: 100%
+                width: 110%
+                max-width: 110%
             .word
                 position: relative
         .intro-text

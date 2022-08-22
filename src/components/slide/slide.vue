@@ -147,7 +147,7 @@ const textFilter = (text:string)=>{
                     .content
                         display: flex
                         flex-wrap: wrap
-                        max-width: 190px
+                        // max-width: 300px
                         div
                             height: 30px
                             span

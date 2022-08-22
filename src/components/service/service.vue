@@ -5,7 +5,7 @@
       <span class="symbol">
         <img src="/symbol/left.svg" alt="">
       </span>
-      <span class="text">舉辦一場零廢棄的低碳饗宴吧</span>
+      <span class="text">健康永續餐點循搭配環餐盒外送，輕鬆舉辦一場零廢棄的低碳饗宴吧</span>
       <span class="symbol">
         <img src="/symbol/right.svg" alt="">
       </span>
@@ -76,20 +76,22 @@ const props = withDefaults(defineProps<Props>(), {
   padding: 40px 20% 100px 20%
   .second-title
     display: flex
-    align-items: center
+    align-items: flex-start
     margin-top: 20px
     .symbol
       transform: translateY(-50%)
+      img
+        width: 30px
+        max-width: 30px !important
     .text
       font-size: 16px
       margin: 0px 10px
-      white-space: nowrap
   .items
     width: 100%
     display: flex
     justify-content: space-between
     .item
-      width: 30%
+      width: 33.33%
       .q-responsive
         width: 100%
       .content

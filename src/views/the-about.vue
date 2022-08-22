@@ -37,5 +37,9 @@ import Story from "../components/slide/slide2.vue"
     width: 100%
     display: flex
     flex-direction: column
-    gap: 40px 
+    gap: 40px
+@media (max-width: 540px)
+  .about
+    .custom-container
+      padding: 70px 10% 40px 10%
 </style>

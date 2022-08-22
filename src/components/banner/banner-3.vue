@@ -4,7 +4,7 @@
     <!-- <img class="bg" :src="props.bannerData.webImg" alt="" v-if="width>=480">
     <img class="bg" :src="props.bannerData.mobileImg" alt="" v-else> -->
     <div class="banner-box">
-        <Title title="關於我們"></Title>
+      <Title title="關於我們"></Title>
     </div>
   </div>
 </template>
@@ -60,6 +60,17 @@ const bannerData = {
   .banner
     min-height: calc(60vh - 55px)
 @media (max-width: 780px)
-    .banner
-      min-height: calc(30vh - 55px)
+  .banner
+    min-height: calc(80vh - 55px)
+    
+@media (max-width: 540px)
+  .banner
+    .banner-box
+      left: 10%
+      :deep() .title-block
+        .bg
+          background-color: #749279
+        //   display: none
+        .title
+          color: #fff
 </style>

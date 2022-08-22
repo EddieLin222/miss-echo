@@ -111,8 +111,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 <style scoped lang="sass">
 .boxs
-    padding: 40px 15% 40px 15%
-    background-color: #FFFBED
     display: flex
     flex-direction: column
     align-items: center

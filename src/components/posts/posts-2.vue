@@ -25,7 +25,7 @@ import Title from "../title/title-1.vue"
 import List from "../list/list3.vue"
 
 const podcastData = {
-  intro: 'Podcast 簡介文字簡介文字簡介文簡介文字簡介文字簡介文字簡介文字簡介文介文簡介文字簡介文簡介文字簡介文。',
+  intro: '歡迎來到Health impact意識生活，讓Summer與Solomon用5分鐘的時間與您分享醫學知識、飲食生活、環境自然、正念態度，各種建構健康藍圖的方法。',
   list: [
     {
       date: '2022年6月30日',
@@ -73,6 +73,8 @@ const podcastData = {
         width: 100%
         border-bottom: solid 1px #A9A9A9
         margin: 30px 0px
+      .intro
+        line-height: 25px
     .right
       flex: 2
       border-top: solid 1px #A9A9A9

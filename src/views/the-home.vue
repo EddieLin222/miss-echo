@@ -50,7 +50,7 @@ const list = [
   // 第四篇
   {
     title: '兩個醫學生的永續之路',
-    content: '嗨大家好，我們今年從實習醫院畢業了！並且順利考過國考取得醫師執照了。我們是Miss Eco環保外送的共同創辦人',
+    content: '今年六月，我們剛從中醫系(Summer)、中西醫雙修畢業(妍廷)，並在七月時考取了醫師執照，考前可讓我們緊張焦慮到極點',
     link: '/post/關於兩個醫學生的創業',
     img: '/link/link1.jpg'
   },
@@ -79,7 +79,7 @@ const personList = [
   {
     img: '/person/person2.jpg',
     name: '鄭涵睿｜綠藤生機共同創辦人暨CEO',
-    text: '有意識的選擇'
+    text: '有意識的選擇，永遠有更好的選擇'
   },
   {
     img: '/person/person3.jpg',

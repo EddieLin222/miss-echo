@@ -1,27 +1,13 @@
 <template>
   <div class="journal">
     <Boxs></Boxs>
+    <Posts></Posts>
   </div>
 </template>
 
 <script setup lang="ts">
 import Boxs from "../components/boxs/boxs2.vue"
-
-const serviceData = {
-  partner: {
-    img: '',
-    info: '27+'
-  },
-  event: {
-    img: '',
-    info: '87'
-  },
-  reduce: {
-    img: '',
-    info: '??'
-  }
-}
-
+import Posts from "../components/posts/posts-filter.vue"
 
 // interface Props {
 //   label?: string;
@@ -36,4 +22,7 @@ const serviceData = {
 </script>
 
 <style scoped lang="sass">
+.journal
+  padding: 40px 15% 40px 15%
+  background-color: #FFFBED
 </style>

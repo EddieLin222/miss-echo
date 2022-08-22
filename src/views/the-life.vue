@@ -17,7 +17,7 @@ import Salon from "../components/list/list4.vue"
 
 const list ={
   img: '',
-  title: '演講工作坊：循環經濟日常、健康意識生活',
+  title: '講座分享：環保與便利共存，打造永續新日常',
   intro: 'Miss Eco已經到達＿地方，與＿人分享，身為醫學生的我們....\n演講主題包含：健康、循環經濟...\n形式包含：企業會員料理工作坊、校園工作坊、企業內部健康促進講座...',
   link: ''
 }
@@ -41,4 +41,9 @@ const list ={
   .custom-container
     padding: 40px 15% 40px 15%
     width: 100%
+@media (max-width: 540px)
+  .journal
+    .custom-container
+      padding: 40px 10% 40px 10%
+
 </style>
