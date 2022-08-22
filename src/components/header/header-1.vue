@@ -13,7 +13,11 @@
     </div>
     <div class="nav" :class="{show: openMenu}">
       <div class="nav-menu">
-        <router-link class="item" v-for="(item, index) in navItems" :to="item.link">{{ item.name }}</router-link>
+        <!-- 新 -->
+        <QRouterLink class="item" v-for="(item, index) in navItems" :to="item.link">{{ item.name }}</QRouterLink>
+        <!-- 舊 -->
+        <!-- <a class="item" v-for="(item, index) in navItems" :href="item.link">{{ item.name }}</a> -->
+
       </div>
       <div class="s-block">
         <div class="social-block">
