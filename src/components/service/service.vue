@@ -5,7 +5,7 @@
       <span class="symbol">
         <img src="/symbol/left.svg" alt="">
       </span>
-      <span class="text">健康永續餐點循搭配環餐盒外送，輕鬆舉辦一場零廢棄的低碳饗宴吧</span>
+      <span class="text">{{props.serviceData.introduction}}</span>
       <span class="symbol">
         <img src="/symbol/right.svg" alt="">
       </span>
@@ -46,6 +46,7 @@ interface Props {
 }
 const props = withDefaults(defineProps<Props>(), {
   serviceData: {
+    introduction: '',
     partner: {
       img: '',
       info: ''

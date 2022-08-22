@@ -1,4 +1,5 @@
 export type ServiceDataType = {
+    introduction:string;
     partner: {
         img: string;
         info: string;
@@ -15,7 +16,7 @@ export type ServiceDataType = {
 
 export type ServiceIntroType = {  //array
     title: string;
-    content:string;
+    tags:string[];
     img: string;
     link: string;
 }

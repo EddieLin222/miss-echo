@@ -18,6 +18,9 @@ import './style/animate.sass'
 
 import './index.css'
 
+import { createHead } from "@vueuse/head"
+const head = createHead()
+
 
 createApp(App)
   .use(Quasar, {
@@ -29,5 +32,6 @@ createApp(App)
   })
   .use(createPinia())
   .use(router)
+  .use(head)
   .mount('#app')
 

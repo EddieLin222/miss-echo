@@ -11,6 +11,7 @@
     "@types/md5": "^2.3.2",
     "@vueuse/core": "^8.9.4",
     "@vueuse/firebase": "^8.9.4",
+    "@vueuse/head": "^0.7.9",
     "@vueuse/router": "^8.9.4",
     "firebase": "^8.10.1",
     "gsap": "^3.10.4",

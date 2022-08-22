@@ -18,49 +18,12 @@
         </div>
 
     </q-page-sticky>
-    <!-- 封面 -->
-    <div class="p-3 border-b ">
-        <div class="font-bold text-2xl">封面</div>
-        <div class="px-3 w-full flex justify-between">
-            <e-image-uploader
-                path="home/banner"
-                class="w-[49%]"
-                v-model="bannerData.webImg"
-                :name="`電腦版圖片`"
-            />
-            <e-image-uploader
-                path="home/banner"
-                class="w-[49%]"
-                v-model="bannerData.mobileImg"
-                :name="`手機版圖片`"
-            />
 
-        </div>
 
-    </div>
-
-    <!-- 關於我們 -->
+    <!-- 外送種類 -->
     <div class="p-3 border-b ">
         <div class="flex items-center gap-3">
-            <div class="font-bold text-2xl">關於我們</div>
-
-        </div>
-
-        <div class="p-3 w-[63vw] max-w-[1000px]">
-            <q-input
-                filled
-                v-model="intro"
-                type="textarea"
-            />
-
-        </div>
-
-    </div>
-    <!-- 成長數字 -->
-    <div class="p-3 border-b ">
-        <div class="flex items-center gap-3">
-            <div class="font-bold text-2xl">成長數字</div>
-
+            <div class="font-bold text-2xl">外送種類</div>
         </div>
         <div class="p-3 w-full ">
 
@@ -69,7 +32,7 @@
                 <div class="font-bold text-lg">列點</div>
                 <div>
                     <q-btn
-                        @click="addGrowNumberListItem()"
+                        @click="addPromotionListItem()"
                         round
                         color="primary"
                         icon="add"
@@ -78,7 +41,7 @@
                 </div>
             </div>
             <div
-                v-if="growNumberList.length == 0"
+                v-if="promotionList.length == 0"
                 class=" mt-1 p-3"
             >
                 無資料
@@ -91,7 +54,7 @@
 
                         <draggable
                             class="flex gap-3 ml-3 flex-nowrap"
-                            v-model="growNumberList"
+                            v-model="promotionList"
                             item-key="index"
                             handle=".handle"
                         >
@@ -100,7 +63,7 @@
                                 <div class="relative mt-1 w-[30vw] max-w-[500px]">
 
                                     <q-btn
-                                        @click="removeGrowNumberListItem(index)"
+                                        @click="removePromotionListItem(index)"
                                         class="absolute right-0 -top-[1px]"
                                         color="red"
                                         size="xs"
@@ -121,123 +84,17 @@
                                         >
                                             <q-tooltip>拖曳移動</q-tooltip>
                                         </q-btn>
-                                        第{{ index + 1 }}項標題
+                                        第{{ index + 1 }}項連結
                                     </div>
-                                    <q-input
-                                        filled
-                                        v-model="element.title"
-                                    />
-                                    <div class="mt-5 font-bold text-lg">第{{ index + 1 }}項數量</div>
-                                    <q-input
-                                        filled
-                                        v-model.number="element.number"
-                                    />
-                                    <div class="mt-5 font-bold text-lg">第{{ index + 1 }}項單位</div>
-                                    <q-input
-                                        filled
-                                        v-model="element.unit"
-                                    />
-                                </div>
-                            </template>
-                        </draggable>
-
-                    </q-scroll-area>
-
-                </div>
-
-
-            </template>
-        </div>
-
-
-
-    </div>
-    <!-- 精選文案 -->
-    <div class="p-3 border-b ">
-        <div class="flex items-center gap-3">
-            <div class="font-bold text-2xl">精選文案</div>
-        </div>
-        <div class="p-3 w-full ">
-
-
-            <div class="mt-3 flex items-center gap-3">
-                <div class="font-bold text-lg">列點</div>
-                <div>
-                    <q-btn
-                        @click="addPostListItem()"
-                        round
-                        color="primary"
-                        icon="add"
-                        size="sm"
-                    />
-                </div>
-            </div>
-            <div
-                v-if="postList.length == 0"
-                class=" mt-1 p-3"
-            >
-                無資料
-            </div>
-            <template v-else>
-
-                <div class="p-3 w-full overflow-y-auto">
-                    <q-scroll-area class="h-[30rem] max-w-[100vw]">
-
-
-                        <draggable
-                            class="flex gap-3 ml-3 flex-nowrap"
-                            v-model="postList"
-                            item-key="index"
-                            handle=".handle"
-                        >
-                            <template #item="{ element, index }">
-
-                                <div class="relative mt-1 w-[30vw] max-w-[500px]">
-
-                                    <q-btn
-                                        @click="removePostListItem(index)"
-                                        class="absolute right-0 -top-[1px]"
-                                        color="red"
-                                        size="xs"
-                                        icon="close"
-                                        round
-                                    >
-                                        <q-tooltip>刪除第{{ index + 1 }}項</q-tooltip>
-                                    </q-btn>
-
-
-
-                                    <div class="font-bold text-lg">
-                                        <q-btn
-                                            class="handle -mt-2"
-                                            size="xs"
-                                            icon="drag_handle"
-                                            round
-                                        >
-                                            <q-tooltip>拖曳移動</q-tooltip>
-                                        </q-btn>
-                                        第{{ index + 1 }}項標題
-                                    </div>
-                                    <q-input
-                                        filled
-                                        v-model="element.title"
-                                    />
-                                    <div class="mt-5 font-bold text-lg">第{{ index + 1 }}項內文</div>
-                                    <q-input
-                                        type="textarea"
-                                        filled
-                                        v-model="element.content"
-                                    />
-                                    <div class="mt-5 font-bold text-lg">第{{ index + 1 }}項連結</div>
                                     <q-input
                                         filled
                                         v-model="element.link"
                                     />
                                     <e-image-uploader
-                                        path="home/post"
+                                        path="page/delivery"
                                         class="w-48"
                                         v-model="element.img"
-                                        :name="`第${index + 1}點圖片`"
+                                        :name="`第${index + 1}項圖片`"
                                     />
                                 </div>
                             </template>
@@ -254,19 +111,23 @@
 
 
     </div>
-    <!-- 名人說 -->
+    <!-- 永續健康餐點 -->
     <div class="p-3 border-b ">
         <div class="flex items-center gap-3">
-            <div class="font-bold text-2xl">名人說</div>
+            <div class="font-bold text-2xl">永續健康餐點</div>
         </div>
         <div class="p-3 w-full ">
 
-
+            <div class="mt-5 font-bold text-lg">簡介</div>
+            <q-input
+                filled
+                v-model="alwaysIntroduction"
+            />
             <div class="mt-3 flex items-center gap-3">
                 <div class="font-bold text-lg">列點</div>
                 <div>
                     <q-btn
-                        @click="addPersonListItem()"
+                        @click="addAlwaysListItem()"
                         round
                         color="primary"
                         icon="add"
@@ -275,7 +136,7 @@
                 </div>
             </div>
             <div
-                v-if="personList.length == 0"
+                v-if="alwaysList.length == 0"
                 class=" mt-1 p-3"
             >
                 無資料
@@ -288,7 +149,7 @@
 
                         <draggable
                             class="flex gap-3 ml-3 flex-nowrap"
-                            v-model="personList"
+                            v-model="alwaysList"
                             item-key="index"
                             handle=".handle"
                         >
@@ -297,7 +158,7 @@
                                 <div class="relative mt-1 w-[30vw] max-w-[500px]">
 
                                     <q-btn
-                                        @click="removePersonListItem(index)"
+                                        @click="removeAlwaysListItem(index)"
                                         class="absolute right-0 -top-[1px]"
                                         color="red"
                                         size="xs"
@@ -318,22 +179,205 @@
                                         >
                                             <q-tooltip>拖曳移動</q-tooltip>
                                         </q-btn>
-                                        第{{ index + 1 }}項姓名
                                     </div>
-                                    <q-input
-                                        filled
-                                        v-model="element.name"
-                                    />
-                                    <div class="mt-5 font-bold text-lg">第{{ index + 1 }}項推薦文字</div>
-                                    <q-input
-                                        filled
-                                        v-model="element.text"
-                                    />
+
                                     <e-image-uploader
-                                        path="home/post"
+                                        path="page/delivery"
                                         class="w-48"
                                         v-model="element.img"
-                                        :name="`第${index + 1}點圖片`"
+                                        :name="`第${index + 1}項圖片`"
+                                    />
+                                </div>
+                            </template>
+                        </draggable>
+
+                    </q-scroll-area>
+
+                </div>
+
+
+            </template>
+        </div>
+
+
+
+    </div>
+    <!-- 訂餐流程 -->
+    <div class="p-3 border-b ">
+        <div class="flex items-center gap-3">
+            <div class="font-bold text-2xl">訂餐流程</div>
+        </div>
+        <div class="p-3 w-full ">
+
+
+            <div class="mt-3 flex items-center gap-3">
+                <div class="font-bold text-lg">列點</div>
+                <div>
+                    <q-btn
+                        @click="addStepListItem()"
+                        round
+                        color="primary"
+                        icon="add"
+                        size="sm"
+                    />
+                </div>
+            </div>
+            <div
+                v-if="stepList.length == 0"
+                class=" mt-1 p-3"
+            >
+                無資料
+            </div>
+            <template v-else>
+
+                <div class="p-3 w-full overflow-y-auto">
+                    <q-scroll-area class="h-[30rem] max-w-[100vw]">
+
+
+                        <draggable
+                            class="flex gap-3 ml-3 flex-nowrap"
+                            v-model="stepList"
+                            item-key="index"
+                            handle=".handle"
+                        >
+                            <template #item="{ element, index }">
+
+                                <div class="relative mt-1 w-[30vw] max-w-[500px]">
+
+                                    <q-btn
+                                        @click="removeStepListItem(index)"
+                                        class="absolute right-0 -top-[1px]"
+                                        color="red"
+                                        size="xs"
+                                        icon="close"
+                                        round
+                                    >
+                                        <q-tooltip>刪除第{{ index + 1 }}項</q-tooltip>
+                                    </q-btn>
+
+
+
+                                    <div class="font-bold text-lg">
+                                        <q-btn
+                                            class="handle -mt-2"
+                                            size="xs"
+                                            icon="drag_handle"
+                                            round
+                                        >
+                                            <q-tooltip>拖曳移動</q-tooltip>
+                                        </q-btn>
+                                        第{{ index + 1 }}項簡介
+                                    </div>
+                                    <q-input
+                                        type="textarea"
+                                        filled
+                                        v-model="element.intro"
+                                    />
+                                    <e-image-uploader
+                                        path="page/delivery"
+                                        class="w-48"
+                                        v-model="element.img"
+                                        :name="`第${index + 1}項圖片`"
+                                    />
+                                </div>
+                            </template>
+                        </draggable>
+
+                    </q-scroll-area>
+
+                </div>
+
+
+            </template>
+        </div>
+
+
+
+    </div>
+    <!-- 常見問題 -->
+    <div class="p-3 border-b ">
+        <div class="flex items-center gap-3">
+            <div class="font-bold text-2xl">常見問題</div>
+        </div>
+        <div class="p-3 w-full ">
+
+
+            <div class="mt-3 flex items-center gap-3">
+                <div class="font-bold text-lg">列點</div>
+                <div>
+                    <q-btn
+                        @click="addFaqListItem()"
+                        round
+                        color="primary"
+                        icon="add"
+                        size="sm"
+                    />
+                </div>
+            </div>
+            <div
+                v-if="faqList.length == 0"
+                class=" mt-1 p-3"
+            >
+                無資料
+            </div>
+            <template v-else>
+
+                <div class="p-3 w-full overflow-y-auto">
+                    <q-scroll-area class="h-[30rem] max-w-[100vw]">
+
+
+                        <draggable
+                            class="flex gap-3 ml-3 flex-nowrap"
+                            v-model="faqList"
+                            item-key="index"
+                            handle=".handle"
+                        >
+                            <template #item="{ element, index }">
+
+                                <div class="relative mt-1 w-[30vw] max-w-[500px]">
+
+                                    <q-btn
+                                        @click="removeFaqListItem(index)"
+                                        class="absolute right-0 -top-[1px]"
+                                        color="red"
+                                        size="xs"
+                                        icon="close"
+                                        round
+                                    >
+                                        <q-tooltip>刪除第{{ index + 1 }}項</q-tooltip>
+                                    </q-btn>
+
+
+
+                                    <div class="font-bold text-lg">
+                                        <q-btn
+                                            class="handle -mt-2"
+                                            size="xs"
+                                            icon="drag_handle"
+                                            round
+                                        >
+                                            <q-tooltip>拖曳移動</q-tooltip>
+                                        </q-btn>
+                                        第{{ index + 1 }}項預設閉合
+                                    </div>
+                                    <q-toggle
+                                        :label="element.open?'開':'關'"
+                   
+                                        v-model="element.open"
+                                    />
+                                    <div class="mt-5 font-bold text-lg">第{{ index + 1 }}項問題</div>
+                                    <q-input
+                                        filled
+                                        v-model="element.title"
+                                    />
+                                    <div class="mt-5 font-bold text-lg">第{{ index + 1 }}項回答</div>
+                                    <q-editor
+                                        v-model="element.intro"
+                                        min-height="10rem"
+                                        :toolbar="[
+                                            ['bold', 'italic', 'strike', 'underline'],
+                                            ['link'],
+                                        ]"
                                     />
                                 </div>
                             </template>
@@ -364,22 +408,22 @@ import { cloneDeep, isEmpty } from 'lodash';
 import md5 from 'md5';
 import { computed, ref, watchEffect } from 'vue';
 import draggable from 'vuedraggable'
-import { BannerType, IntroductionType, GrowType, PostType, PersonType } from '@/types/home.type'
+import { AlwaysIntroduction, AlwaysType, FaqType, PromotionType, StepType } from "@/types/delivery.type";
 
 const Notify = useNotify()
 const adminStore = useAdminStore()
 
 // DB
-const PageHomeDB = db().collection('Page').doc('Home')
+const PageHomeDB = db().collection('Page').doc('Delivery')
 const PageHomeData = ref((useFirestore(PageHomeDB)) as any)
 const TimeNote = ref<Array<any | null>>((useFirestore(PageHomeDB.collection('TimeNote').orderBy('timestamp', 'desc').limit(1))) as any)
 watchEffect(() => {
     if (PageHomeData.value) {
-        bannerData.value = PageHomeData.value.bannerData
-        intro.value = PageHomeData.value.intro
-        growNumberList.value = PageHomeData.value.growNumberList
-        postList.value = PageHomeData.value.postList
-        personList.value = PageHomeData.value.personList
+        promotionList.value = PageHomeData.value.promotionList
+        alwaysIntroduction.value = PageHomeData.value.alwaysIntroduction
+        alwaysList.value = PageHomeData.value.alwaysList
+        stepList.value = PageHomeData.value.stepList??[]
+        faqList.value = PageHomeData.value.faqList??[]
 
     }
 })
@@ -387,11 +431,11 @@ watchEffect(() => {
 const preSaveData = computed(() => {
     if (PageHomeData.value === null || PageHomeData.value) {
         return {
-            bannerData: bannerData.value,
-            intro: intro.value,
-            growNumberList: growNumberList.value,
-            postList: postList.value,
-            personList: personList.value,
+            promotionList: promotionList.value,
+            alwaysIntroduction: alwaysIntroduction.value,
+            alwaysList: alwaysList.value,
+            stepList: stepList.value,
+            faqList: faqList.value,
         }
     }
     return {}
@@ -427,28 +471,20 @@ const handleSave = () => {
 }
 
 
-// 封面
-const BannerDefault: BannerType = {
-    webImg: "",
-    mobileImg: "",
-}
-const bannerData = ref<BannerType>(cloneDeep(BannerDefault))
-//  關於我們
-const intro = ref<IntroductionType>("")
 
-// 成長數字
-const GrowNumberDefault: GrowType = {
-    title: "",
-    number: 0,
-    unit: ""
+// 外送種類
+const PromotionDefault: PromotionType = {
+    img: '',
+    link: ''
 }
-const growNumberList = ref<GrowType[]>([])
-const addGrowNumberListItem = () => {
-    growNumberList.value.push(cloneDeep(GrowNumberDefault))
+const promotionList = ref<PromotionType[]>([])
+const addPromotionListItem = () => {
+    promotionList.value.push(cloneDeep(PromotionDefault))
 }
-const removeGrowNumberListItem = async (index: number) => {
+const removePromotionListItem = async (index: number) => {
     try {
-        growNumberList.value.splice(index, 1)
+        await removeStorage(promotionList.value[index].img)
+        promotionList.value.splice(index, 1)
         Notify.handleSuccess('刪除成功')
     } catch (error) {
         console.log(error);
@@ -456,21 +492,38 @@ const removeGrowNumberListItem = async (index: number) => {
 }
 
 
-//  精選文案 
-const PostListItemDefault: PostType = {
-    title: "",
-    img: "",
-    link: "",
-    content: "",
+//  永續健康餐點 
+const alwaysIntroduction = ref<AlwaysIntroduction>('')
+const AlwaysListItemDefault: AlwaysType = {
+    img: '',
 }
-const postList = ref<PostType[]>([])
-const addPostListItem = () => {
-    postList.value.push(cloneDeep(PostListItemDefault))
+const alwaysList = ref<AlwaysType[]>([])
+const addAlwaysListItem = () => {
+    alwaysList.value.push(cloneDeep(AlwaysListItemDefault))
 }
-const removePostListItem = async (index: number) => {
+const removeAlwaysListItem = async (index: number) => {
     try {
-        await removeStorage(postList.value[index].img)
-        postList.value.splice(index, 1)
+        await removeStorage(alwaysList.value[index].img)
+        alwaysList.value.splice(index, 1)
+        Notify.handleSuccess('刪除成功')
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//  訂餐流程 
+const StepListItemDefault: StepType = {
+    img: '',
+    intro: ''
+}
+const stepList = ref<StepType[]>([])
+const addStepListItem = () => {
+    stepList.value.push(cloneDeep(StepListItemDefault))
+}
+const removeStepListItem = async (index: number) => {
+    try {
+        await removeStorage(stepList.value[index].img)
+        stepList.value.splice(index, 1)
         Notify.handleSuccess('刪除成功')
     } catch (error) {
         console.log(error);
@@ -478,25 +531,26 @@ const removePostListItem = async (index: number) => {
 }
 
 
-//  名人說 
-const PersonListItemDefault: PersonType = {
-    img: "",
-    name: "",
-    text: "",
+//  常見問題 
+const FaqListItemDefault: FaqType = {
+    title: '',
+    intro: '',
+    open: false,
 }
-const personList = ref<PersonType[]>([])
-const addPersonListItem = () => {
-    personList.value.push(cloneDeep(PersonListItemDefault))
+const faqList = ref<FaqType[]>([])
+const addFaqListItem = () => {
+    faqList.value.push(cloneDeep(FaqListItemDefault))
 }
-const removePersonListItem = async (index: number) => {
+const removeFaqListItem = async (index: number) => {
     try {
-        await removeStorage(personList.value[index].img)
-        personList.value.splice(index, 1)
+        faqList.value.splice(index, 1)
         Notify.handleSuccess('刪除成功')
     } catch (error) {
         console.log(error);
     }
 }
+
+
 
 </script>
 

@@ -12,6 +12,7 @@ export type GrowType = {  //array
 }
 
 export type PostType = {  //array
+    title: string;
     content: string;
     link: string;
     img: string;
