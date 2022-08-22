@@ -13,7 +13,7 @@
 .bubbles
     position: fixed
     right: 20px
-    bottom: 20px
+    bottom: 80px
     z-index: 9999
     .bubble
         display: block
@@ -31,6 +31,10 @@
                 font-size: 16px
                 line-height: 22px
                 color: #fff
+@media (max-width: 580px)
+    .bubbles
+        display: none
+
 </style>
 <script setup lang="ts">
 import { ref } from 'vue';
