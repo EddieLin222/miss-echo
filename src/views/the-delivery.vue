@@ -53,13 +53,13 @@ useHead({
   }),
   meta: [
     {
-      type: `og:title`,
+      property: `og:title`,
       content: computed(() => {
         return '環保外送｜Miss Echo｜點一份您的餐點，一份地球的健康'
       }),
     },
     {
-      type: `og:type`,
+      property: `og:type`,
       content: 'website',
     },
     {
@@ -70,7 +70,7 @@ useHead({
       }),
     },
     {
-      type: `og:image`,
+      property: `og:image`,
       content: computed(() => {
         return 'https://missecotw.com/logo/logo.png'
       }),

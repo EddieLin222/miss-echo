@@ -66,13 +66,13 @@ useHead({
   }),
   meta: [
     {
-      type: `og:title`,
+      property: `og:title`,
       content: computed(() => {
         return 'Miss Echo｜有意識的生活，讓生活更有意思'
       }),
     },
     {
-      type: `og:type`,
+      property: `og:type`,
       content: 'website',
     },
     {
@@ -82,7 +82,7 @@ useHead({
       }),
     },
     {
-      type: `og:image`,
+      property: `og:image`,
       content: computed(() => {
         return 'https://missecotw.com/logo/logo.png'
       }),

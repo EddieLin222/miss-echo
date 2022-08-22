@@ -58,13 +58,13 @@ useHead({
   }),
   meta: [
     {
-      type: `og:title`,
+      property: `og:title`,
       content: computed(() => {
         return '活動訂餐｜Miss Echo｜搭配健康永續餐點，舉辦一場零廢棄的低碳饗宴吧'
       }),
     },
     {
-      type: `og:type`,
+      property: `og:type`,
       content: 'website',
     },
     {
@@ -75,7 +75,7 @@ useHead({
       }),
     },
     {
-      type: `og:image`,
+      property: `og:image`,
       content: computed(() => {
         return 'https://missecotw.com/logo/logo.png'
       }),

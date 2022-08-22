@@ -127,7 +127,7 @@ useHead({
     }),
     meta: [
         {
-            type: `og:title`,
+            property: `og:title`,
             content: computed(() => {
                 const title = currentPost.value?.title;
                 if (currentPost.value?.title) {
@@ -137,7 +137,7 @@ useHead({
             }),
         },
         {
-            type: `og:type`,
+            property: `og:type`,
             content: 'website',
         },
         {
@@ -150,7 +150,7 @@ useHead({
             }),
         },
         {
-            type: `og:image`,
+            property: `og:image`,
             content: computed(() => {
                 const img = currentPost.value?.img
                 const text = currentPost.value?.content ?? currentPost.value?.intro ?? currentPost.value?.epilogue ?? ''
