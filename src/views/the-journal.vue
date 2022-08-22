@@ -8,6 +8,8 @@
 </template>
 
 <script setup lang="ts">
+import { useHead } from "@vueuse/head"
+import { computed } from 'vue';
 import Boxs from "../components/boxs/boxs2.vue"
 import Posts from "../components/posts/posts-filter.vue"
 
@@ -95,16 +97,37 @@ const postsData = {
   ]
 }
 
-// interface Props {
-//   label?: string;
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   label: '',
-// });
-
-// const emit = defineEmits<{
-//   (e: 'update:modelValue', value: string): void;
-// }>();
+// SEO
+useHead({
+  // Can be static or computed
+  title: computed(() => {
+    return '永續日記｜Miss Echo｜點一份您的餐點，一份地球的健康'
+  }),
+  meta: [
+    {
+      property: `og:title`,
+      content: computed(() => {
+        return '永續日記｜Miss Echo｜點一份您的餐點，一份地球的健康'
+      }),
+    },
+    {
+      property: `og:type`,
+      content: 'website',
+    },
+    {
+      name: `description`,
+      content: computed(() => {
+        return  'Miss Eco環保外送平台與健康永續的餐飲業者合作，推廣低碳飲食，讓您輕鬆實踐永續飲食態度。包含在地小農餐點、醜蔬果、格外品；以原型食物入菜，健康水煮呈現，最純粹的料理方式；更棒的是，平台提供豐富多元的潮流蔬食，讓愛吃肉的你也能體驗美味新境界。希望在您照顧地球健康的同時也能吃得好，吃得健康！'
+      }),
+    },
+    {
+      property: `og:image`,
+      content: computed(() => {
+        return 'https://missecotw.com/logo/logo.png'
+      }),
+    },
+  ],
+})
 </script>
 
 <style scoped lang="sass">

@@ -1,6 +1,5 @@
 <template>
   <div class="life">
-    <Banner :bannerData="bannerData"></Banner>
     <div class="custom-container">
       <Podcast :podcastData="podcastData"></Podcast>
       <Youtube :youtubeData="youtubeData"></Youtube>
@@ -10,16 +9,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import Banner from "../components/banner/banner-2.vue"
+import { ref, computed } from 'vue';
 import Podcast from "../components/posts/posts-2.vue"
 import Youtube from "../components/video/video.vue"
 import Salon from "../components/list/list4.vue"
+import { useHead } from "@vueuse/head"
 
-const bannerData = ref({
-  webImg: '/banner/banner.png',
-  mobileImg: '/banner/banner-m.png'
-})
 
 const podcastData = ref({
   mainImg: '/podcast/podcast.svg',
@@ -80,16 +75,38 @@ const salonData ={
 }
 
 
-// interface Props {
-//   label?: string;
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   label: '',
-// });
-
-// const emit = defineEmits<{
-//   (e: 'update:modelValue', value: string): void;
-// }>();
+// SEO
+useHead({
+  // Can be static or computed
+  title: computed(() => {
+    return '有意識生活｜Miss Echo｜Health impact意識生活與您分享醫學知識、飲食生活、環境自然、正念態度，各種建構健康藍圖的方法'
+  }),
+  meta: [
+    {
+      property: `og:title`,
+      content: computed(() => {
+        return '有意識生活｜Miss Echo｜Health impact意識生活與您分享醫學知識、飲食生活、環境自然、正念態度，各種建構健康藍圖的方法'
+      }),
+    },
+    {
+      property: `og:type`,
+      content: 'website',
+    },
+    {
+      name: `description`,
+      content: computed(() => {
+        const introduction = podcastData.value.intro ?? '歡迎來到Health impact意識生活，讓Summer與Solomon用5分鐘的時間與您分享醫學知識、飲食生活、環境自然、正念態度，各種建構健康藍圖的方法。'
+        return introduction
+      }),
+    },
+    {
+      property: `og:image`,
+      content: computed(() => {
+        return 'https://missecotw.com/logo/logo.png'
+      }),
+    },
+  ],
+})
 </script>
 
 <style scoped lang="sass">

@@ -110,7 +110,7 @@ const social = [
   box-shadow: 0px 2px 6px 1px rgba(0,0,0,0.3)
   top: 0
   .brand
-    width: 105px
+    width: 120px
     display: flex
     .img-box
       img
@@ -188,7 +188,7 @@ const social = [
     flex-wrap: wrap
     justify-content: space-between
     .brand
-      width: 130px
+      width: 150px
     .toggle-btn
       display: flex
     .nav
