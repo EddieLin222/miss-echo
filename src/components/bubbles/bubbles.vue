@@ -13,7 +13,7 @@
 .bubbles
     position: fixed
     right: 20px
-    bottom: 80px
+    bottom: 85px
     z-index: 9999
     .bubble
         display: block
