@@ -9,13 +9,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   </head>
   <body>
+    <script> window.prerenderReady = false; </script>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v14.0" nonce="Zc9isjiH"></script>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
-    <script
+    <!-- <script
       src="https://unpkg.com/spacingjs"
       defer
-    ></script>
+    ></script> -->
+    <script>
+      setTimeout(() => {
+        window.prerenderReady = true;
+      }, 15000);
+    </script>
   </body>
 </html>
