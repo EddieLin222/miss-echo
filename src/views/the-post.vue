@@ -8,7 +8,7 @@
         <div class="post-container">
             <div class="title-block">
                 <div class="category">{{ currentPost.category }}</div>
-                <div class="title">{{ currentPost.title }}</div>
+                <h1 class="title leading-8">{{ currentPost.title }}</h1>
                 <div class="date">{{ currentPost.date }}</div>
             </div>
             <div class="fb-block">
@@ -29,20 +29,29 @@
                     alt=""
                 >
             </div>
-                <div class="intro articleTextArea" v-html="currentPost.intro"></div>
+            <div
+                class="intro articleTextArea"
+                v-html="currentPost.intro"
+            ></div>
 
             <div
                 class="content articleTextArea"
                 v-html="currentPost.content"
             ></div>
-            <div v-show="currentPost.epilogue" class="epilogue" >
+            <div
+                v-show="currentPost.epilogue"
+                class="epilogue"
+            >
                 <div class="symbol-left">
                     <div class="dot">“</div>
                 </div>
                 <div class="symbol-right">
                     <div class="dot">”</div>
                 </div>
-                <div class="articleTextArea" v-html="currentPost.epilogue"></div>
+                <div
+                    class="articleTextArea"
+                    v-html="currentPost.epilogue"
+                ></div>
             </div>
             <div class="next"></div>
         </div>
@@ -118,12 +127,42 @@ useHead({
     }),
     meta: [
         {
+            type: `og:title`,
+            content: computed(() => {
+                const title = currentPost.value?.title;
+                if (currentPost.value?.title) {
+                    return title + '｜Miss Echo'
+                }
+                return 'Miss Echo'
+            }),
+        },
+        {
+            type: `og:type`,
+            content: 'website',
+        },
+        {
             name: `description`,
             content: computed(() => {
                 const text = currentPost.value?.intro ?? currentPost.value?.content ?? currentPost.value?.epilogue ?? ''
                 const el = document.createElement("div");
                 el.innerHTML = text
                 return (el.textContent ?? '').replaceAll('\n', '').replaceAll(' ', '').replaceAll(/\u00a0/g, '')
+            }),
+        },
+        {
+            type: `og:image`,
+            content: computed(() => {
+                const img = currentPost.value?.img
+                const text = currentPost.value?.content ?? currentPost.value?.intro ?? currentPost.value?.epilogue ?? ''
+                const el = document.createElement("div");
+                el.innerHTML = text
+                const imgEl = el.querySelector('img') as HTMLImageElement
+                if (img) {
+                    return img
+                } else if (imgEl) {
+                    return imgEl.src
+                }
+                return 'https://missecotw.com/logo/logo.png'
             }),
         },
     ],
