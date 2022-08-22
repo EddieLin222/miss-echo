@@ -1,10 +1,10 @@
 <template>
   <div class="header">
     <div class="brand">
-      <a class="img-box" href="/">
+      <router-link class="img-box" to="/">
         <img src="/logo/logo.png" alt="" v-if="width>992">
         <img src="/logo/logo-m.png" alt="" v-else>
-      </a>
+      </router-link>
     </div>
     <div class="toggle-btn" @click="openMenu = !openMenu" :class="{show: openMenu}">
       <div class="line top-line"></div>
@@ -13,7 +13,7 @@
     </div>
     <div class="nav" :class="{show: openMenu}">
       <div class="nav-menu">
-        <a class="item" v-for="(item, index) in navItems" :href="item.link">{{ item.name }}</a>
+        <router-link class="item" v-for="(item, index) in navItems" :to="item.link">{{ item.name }}</router-link>
       </div>
       <div class="s-block">
         <div class="social-block">
