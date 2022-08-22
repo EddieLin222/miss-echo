@@ -1,12 +1,12 @@
 <template>
   <div class="book">
     <div class="book-container">
-        <a class="img-shape" href="https://misseco-customer.web.app" target="_blank">
+        <QRouterLink class="img-shape" to="https://misseco-customer.web.app">
             <img src="/book/book_left.png" alt="">
-        </a>
-        <a class="img-shape" href="https://forms.gle/cE73TMwrm5byNT7UA" target="_blank">
+        </QRouterLink>
+        <QRouterLink class="img-shape" to="https://forms.gle/cE73TMwrm5byNT7UA">
             <img src="/book/book_right.png" alt="">
-        </a>
+        </QRouterLink>
     </div>
   </div>
 </template>

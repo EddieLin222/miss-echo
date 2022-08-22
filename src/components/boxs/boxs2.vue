@@ -1,17 +1,18 @@
 <template>
   <div class="boxs">
     <div class="boxs-container" v-if="width>=840">
-        <div class="box" v-for="(item, index) in data" :key="index">
+        <div class="box" v-for="(item, index) in props.gridData" :key="index">
             <q-responsive :ratio="(index == 0 || index == 3 || index == 4) ? 16/18 : 16/10">
+                <img :src="item.img" alt="">
             </q-responsive>
             <div class="card-bottom">
                 <div class="text">
                     {{item.name}}
                 </div>
-                <a href="" class="more">
+                <QRouterLink :to="item.link" class="more">
                     閱讀更多
                     <q-icon name="arrow_circle_right" class="material-icons-outlined"></q-icon>
-                </a>
+                </QRouterLink>
             </div>
         </div>
     </div>
@@ -26,19 +27,20 @@
           :slides-per-view="1"
           :space-between="30"
         >
-          <swiper-slide v-for="(list, index) in data" :key="index">
-            <q-responsive :ratio="16/8">
-              <div class="img-block">
-                <img :src="list.img" alt="">
-              </div>
-            </q-responsive>
-            <div class="title">
-                <p class="text">
-                  TESTTESTTESTTESTTESTTEST
-                </p>
-            </div>
+          <swiper-slide v-for="(list, index) in props.gridData" :key="index">
+            <QRouterLink :to="list.link">
+                <q-responsive :ratio="16/8">
+                <div class="img-block">
+                    <img :src="list.img" alt="">
+                </div>
+                </q-responsive>
+                <div class="title">
+                    <p class="text">
+                    {{list.name}}
+                    </p>
+                </div>
+            </QRouterLink>
           </swiper-slide>
-
         </swiper>
         <div class="next-btn">
             <q-icon name="chevron_right"/>
@@ -59,43 +61,11 @@ import 'swiper/css/pagination';
 
 const { width } = useWindowSize()
 
-const data = ref([
-    {
-        img: '/promotion/promotion1.jpg',
-        name: '替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字文字替代文字替代文字替代文字替代文字',
-        link: '/'
-    },
-    {
-        img: '/promotion/promotion2.jpg',
-        name: '替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字',
-        link: '/'
-    },
-    {
-        img: '/promotion/promotion3.jpg',
-        name: '替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字文字替代文字替代文字替代代文字替代文字替代文字文字替代文字替代文字替代',
-        link: '/'
-    },
-    {
-        img: '/promotion/promotion4.jpg',
-        name: '替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字',
-        link: '/'
-    },
-    {
-        img: '/promotion/promotion5.jpg',
-        name: '替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字',
-        link: '/'
-    },
-    {
-        img: '/promotion/promotion6.jpg',
-        name: '替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字替代文字文字替代文字替代文字替代文字替代文字',
-        link: '/'
-    }
-])
 interface Props {
-  list?: any;
+  gridData?: any;
 }
 const props = withDefaults(defineProps<Props>(), {
-    list: [
+    gridData: [
         {
             img: '',
             name: '',
@@ -130,6 +100,10 @@ const props = withDefaults(defineProps<Props>(), {
             .q-responsive
                 background-color: #d2d2d2
                 width: 100%
+                img
+                    object-fit: cover
+                    min-height: 100%
+                    min-width: 100%
             .card-bottom
                 padding: 15px
                 .text
@@ -198,6 +172,10 @@ const props = withDefaults(defineProps<Props>(), {
                     .text
                         width: 100%
                         word-break: break-all
+                        display: -webkit-box
+                        -webkit-box-orient: vertical
+                        -webkit-line-clamp: 2
+                        overflow: hidden
             :deep() .swiper-button-prev
                 padding: 20px
                 color: #ACBEAF
@@ -217,7 +195,7 @@ const props = withDefaults(defineProps<Props>(), {
                 border-radius: 5px
 @media (max-width: 840px)
     .boxs
-        padding: 40px 8% 100px 8%
+        padding: 0px 8% 0px 8%
         .slide-block
             .prev-btn, .next-btn
                 display: none

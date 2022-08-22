@@ -9,7 +9,7 @@
             <div class="content">
                 <div class="title">{{item.title}}</div>
                 <p>{{item.content}}</p>
-                <a class="more" :href="item.link">閱讀更多...</a>
+                <QRouterLink class="more" :to="item.link">閱讀更多...</QRouterLink>
             </div>
             <img class="sticker" src="/intro/sticker.svg" alt="">
         </div>

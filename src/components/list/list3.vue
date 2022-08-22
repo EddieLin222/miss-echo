@@ -6,12 +6,12 @@
                 <div class="title">{{item.title}}</div>
             </div>
             <div class="content">
-                <p>{{item.intro}}</p>
+                <p>{{item.content}}</p>
             </div>
-            <div class="play">
+            <QRouterLink class="play" :to="item.link">
                 <q-icon name="arrow_drop_down"></q-icon>
                 播放
-            </div>
+            </QRouterLink>
         </div>
     </div>
 </template>
@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<Props>(), {
         {
             date: '',
             title: '',
-            intro: '',
+            content: '',
             link: ''
         }
     ]

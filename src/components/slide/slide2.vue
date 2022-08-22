@@ -1,20 +1,21 @@
 <template>
   <div class="slide">
     <div class="title-block">
-        <Title title="影音故事"></Title>
+      <Title title="影音故事"></Title>
     </div>
     <div class="slide-block">
-        <div class="prev-btn">
-            <q-icon name="chevron_left"/>
-        </div>
-        <swiper
-          :modules="[Navigation, Pagination]"
-          :pagination="{clickable: true}"
-          :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn'}"
-          :slides-per-view="1"
-          :space-between="30"
-        >
-          <swiper-slide v-for="(list, index) in dataList" :key="index">
+      <div class="prev-btn">
+        <q-icon name="chevron_left"/>
+      </div>
+      <swiper
+        :modules="[Navigation, Pagination]"
+        :pagination="{clickable: true}"
+        :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn'}"
+        :slides-per-view="1"
+        :space-between="30"
+      >
+        <swiper-slide v-for="(list, index) in props.storyList" :key="index">
+          <QRouterLink class="img-box" :to="list.link">
             <q-responsive :ratio="16/8">
               <div class="img-block">
                 <img :src="list.img" alt="">
@@ -22,15 +23,15 @@
             </q-responsive>
             <div class="title">
                 <p class="text">
-                  TESTTESTTESTTESTTESTTEST
+                  {{list.text}}
                 </p>
             </div>
-          </swiper-slide>
-
-        </swiper>
-        <div class="next-btn">
-            <q-icon name="chevron_right"/>
-        </div>
+          </QRouterLink>
+        </swiper-slide>
+      </swiper>
+      <div class="next-btn">
+        <q-icon name="chevron_right"/>
+      </div>
     </div>
   </div>
 </template>
@@ -43,40 +44,18 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { ref, onMounted } from 'vue';
 
-// interface Props {
-//   title?: string,
-//   list?: any
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   title: '',
-//   list: [
-//     {
-//       img: '',
-//       name: '',
-//       text: ''
-//     }
-//   ]
-// });
-
-const dataList = [
+interface Props {
+  storyList?: any
+}
+const props = withDefaults(defineProps<Props>(), {
+  storyList: [
     {
-      img: '/sliders/bg-1.jpeg',
-      name: '',
-      text: ''
-    },
-    {
-      img: '/sliders/bg-1.jpeg',
-      name: '',
-      text: ''
-    },
-    {
-      img: '/sliders/bg-1.jpeg',
-      name: '',
-      text: ''
+      img: '',
+      text: '',
+      link: ''
     }
-]
-
-// const text = ref('推薦文字推薦文字推薦文字推薦文字')
+  ]
+});
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;

@@ -1,10 +1,10 @@
 <template>
   <div class="header">
     <div class="brand">
-      <router-link class="img-box" to="/">
+      <QRouterLink class="img-box" to="/">
         <img src="/logo/logo.png" alt="" v-if="width>992">
         <img src="/logo/logo-m.png" alt="" v-else>
-      </router-link>
+      </QRouterLink>
     </div>
     <div class="toggle-btn" @click="openMenu = !openMenu" :class="{show: openMenu}">
       <div class="line top-line"></div>
@@ -13,23 +13,19 @@
     </div>
     <div class="nav" :class="{show: openMenu}">
       <div class="nav-menu">
-        <!-- 新 -->
         <QRouterLink class="item" v-for="(item, index) in navItems" :to="item.link">{{ item.name }}</QRouterLink>
-        <!-- 舊 -->
-        <!-- <a class="item" v-for="(item, index) in navItems" :href="item.link">{{ item.name }}</a> -->
-
       </div>
       <div class="s-block">
         <div class="social-block">
-          <a class="item" href="https://www.facebook.com/misseco.tw" target="_blank">
+          <QRouterLink class="item" to="https://www.facebook.com/misseco.tw">
             <img src="/social/fb.svg">
-          </a>
-          <a class="item" href="https://www.instagram.com/misseco.tw/" target="_blank">
+          </QRouterLink>
+          <QRouterLink class="item" to="https://www.instagram.com/misseco.tw/">
             <img src="/social/ig.svg">
-          </a>
-          <a class="item" href="https://lin.ee/35kz9K7" target="_blank">
+          </QRouterLink>
+          <QRouterLink class="item" to="https://lin.ee/35kz9K7">
             <img src="/social/line.svg">
-          </a>
+          </QRouterLink>
         </div>
         <div class="mail">misseco.tw@gmail.com</div>
       </div>

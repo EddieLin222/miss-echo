@@ -5,23 +5,23 @@
       <div class="lists">
         <div class="list" v-for="(item, index) in props.serviceIntro" :key="index">
            <div class="box left">
-                <q-responsive :ratio="16/10">
-                  <img :src="item.img" alt="">
-                </q-responsive>
+              <q-responsive :ratio="16/10">
+                <img :src="item.img" alt="">
+              </q-responsive>
            </div>
            <div class="box right">
-                <h4 class="list-title">{{item.title}}</h4>
-                <div class="list-content">
-                  <div class="inner-container">
-                    <div class="tag-container" v-for="(tag, i) in item.tags" :key="i">
-                      <div class="tag">{{tag}}</div>
-                    </div>
+              <h4 class="list-title">{{item.title}}</h4>
+              <div class="list-content">
+                <div class="inner-container">
+                  <div class="tag-container" v-for="(tag, i) in item.tags" :key="i">
+                    <div class="tag">{{tag}}</div>
                   </div>
                 </div>
-                <div class="list-btn">
-                    <a class="btn" href="https://forms.gle/cE73TMwrm5byNT7UA" target="_blank">我要預約</a>
-                    <a class="btn" :href="item.link">了解更多</a>
-                </div>
+              </div>
+              <div class="list-btn">
+                <QRouterLink class="btn" to="https://forms.gle/cE73TMwrm5byNT7UA">我要預約</QRouterLink>
+                <QRouterLink class="btn" :to="item.link">了解更多</QRouterLink>
+              </div>
            </div>
         </div>
       </div>
@@ -98,13 +98,15 @@ const props = withDefaults(defineProps<Props>(), {
             font-family: 'Noto Serif TC', serif
           .list-content
             width: 100%
-            padding: 20px
+            padding: 20px 0px
             line-height: 25px
             display: flex
             justify-content: center
             .inner-container
               display: flex
-              width: 300px
+              justify-content: center
+              width: 100%
+              max-width: 250px
               flex-wrap: wrap
               .tag-container
                 display: flex

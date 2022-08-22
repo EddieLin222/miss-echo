@@ -10,7 +10,7 @@
           播放列表
         </div>
         <div class="list-container">
-          <div class="list" v-for="(item, index) in transList" :index="index" @click="listClick(index)">
+          <div class="list" v-for="(item, i) in transList" :index="i" @click="listClick(i)" :class="{active: index===i}">
             <q-icon name="play_arrow"></q-icon>
             <q-responsive :ratio="16/11">
               <img :src="`https://img.youtube.com/vi/${item.iframeLink}/1.jpg`" alt="">
@@ -39,81 +39,47 @@ const { width } = useWindowSize()
 
 const index = ref(0)
 
-const data = [
-  {
-    iframeLink: 'https://www.youtube.com/embed/yTM0WH8pV2U',
-    link: '',
-    title: '[ 顏社 ]- 自躁浪漫 (Official Music Video)',
-    person: '李英宏 aka DJ Didilong (ft.李權哲 Jerry Li)'
-  },
-  {
-    iframeLink: 'https://www.youtube.com/embed/zQGiiIMqisQ',
-    link: '',
-    title: '[ 台北紐約Taipei New York ] Official Music Video',
-    person: '馬念先'
-  },
-  {
-    iframeLink: 'https://www.youtube.com/embed/zbSW7aIzXRM',
-    link: '',
-    title: '[ 我還繞著你在旋轉 Expired ] Official Music Video',
-    person: '宇宙人'
-  },
-  {
-    iframeLink: 'https://www.youtube.com/embed/zQGiiIMqisQ',
-    link: '',
-    title: '[ 台北紐約Taipei New York ] Official Music Video',
-    person: '馬念先'
-  },
-  {
-    iframeLink: 'https://www.youtube.com/embed/zbSW7aIzXRM',
-    link: '',
-    title: '[ 我還繞著你在旋轉 Expired ] Official Music Video',
-    person: '宇宙人'
-  },
-  {
-    iframeLink: 'https://www.youtube.com/embed/zQGiiIMqisQ',
-    link: '',
-    title: '[ 台北紐約Taipei New York ] Official Music Video',
-    person: '馬念先'
-  },
-  {
-    iframeLink: 'https://www.youtube.com/embed/zbSW7aIzXRM',
-    link: '',
-    title: '[ 我還繞著你在旋轉 Expired ] Official Music Video',
-    person: '宇宙人'
-  }
-]
+interface Props {
+  youtubeData?: any;
+}
+const props = withDefaults(defineProps<Props>(), {
+  youtubeData: [
+    {
+      iframeLink: '',
+      watchTimes: '',
+      date: '',
+      title: '',
+      person: ')'
+    },
+  ]
+});
 
 const transList = computed(() => {
-  let newData = data.map(e=>{
-    return {
-      iframeLink: e.iframeLink.replace('https://www.youtube.com/embed/', ''),
-      link: e.link,
-      title: e.title,
-      person: e.person
-    }
-  })
-  return newData
+  if(props.youtubeData[0].iframeLink != ''){
+    let newData = props.youtubeData.map((e: { iframeLink: string; link: any; title: any; person: any; date: any})=>{
+      return {
+        iframeLink: e.iframeLink.replace('https://www.youtube.com/embed/', ''),
+        link: e.link,
+        title: e.title,
+        person: e.person,
+        date: e.date
+      }
+    })
+    return newData
+  }
 })
 
 const currentVideo = computed(() => {
-  let video = data.filter((e, i)=>i==index.value)
-  return video[0]
+  if(props.youtubeData[0].iframeLink != ''){
+    let video = props.youtubeData.filter((e: any, i: number)=>i==index.value)
+    return video[0]
+  }
 })
 
 const listClick = (i:number)=>{
   index.value = i
 }
-// interface Props {
-//   title?: string;
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   title: ''
-// });
 
-// const emit = defineEmits<{
-//   (e: 'update:modelValue', value: string): void;
-// }>();
 </script>
 
 <style scoped lang="sass">
@@ -154,6 +120,11 @@ const listClick = (i:number)=>{
             align-items: center
             width: 100%
             cursor: pointer
+            transition-duration: .5s
+            padding: 10px
+            border-radius: 3px
+            &:hover
+              background-color: #DDEFE0
             .q-icon
               font-size: 25px
               margin-right: 10px
@@ -177,7 +148,8 @@ const listClick = (i:number)=>{
                 -webkit-box-orient: vertical
                 -webkit-line-clamp: 2
                 overflow: hidden
-
+.active
+  background-color: #DDEFE0
 @media (max-width: 980px)
   .video-block
     .video

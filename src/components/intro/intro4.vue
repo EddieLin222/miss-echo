@@ -5,10 +5,10 @@
         <div class="first-text">
             <img src="/background/text-bg.png" class="bg"/>
             <div class="word">
-                {{data.firstText}}
+                {{props.introData.firstText}}
             </div>
         </div>
-        <div class="intro-text" v-text="data.introText"></div>
+        <div class="intro-text" v-text="props.introData.introText"></div>
     </div>
   </div>
 </template>
@@ -16,16 +16,15 @@
 import Title from '../title/title-1.vue'
 import { ref, onMounted } from 'vue';
 
-const data = {
-    firstText: 'Helping people help themselves Helping people help themselves',
-    introText: '內文內文內文內文內文內文內文\n\n內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文'
+interface Props {
+  introData?: any;
 }
-// interface Props {
-//   title?: string;
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   title: ''
-// });
+const props = withDefaults(defineProps<Props>(), {
+  introData: {
+    firstText: '',
+    introText: ''
+  }
+});
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;

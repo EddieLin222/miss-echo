@@ -2,25 +2,27 @@
     <div class="posts">
         <Title title="所有文章"></Title>
         <div class="tags">
-            <div class="tag" v-for="(tag, index) in tags" :key="index" @click="toggleTag(tag.value)" :class="{active: selectTag === tag.value}">
+            <div class="tag" v-for="(tag, index) in props.postsData.tags" :key="index" @click="toggleTag(tag.value)" :class="{active: selectTag === tag.value}">
                 {{tag.name}}
             </div>
         </div>
         <div class="list-container">
             <TransitionGroup name="posts">
                 <div class="post" v-for="(post, index) in filterPosts" :key="index">
-                    <div class="left">
-                        <q-responsive :ratio="1"></q-responsive>
-                    </div>
+                    <QRouterLink class="left" :to="post.link">
+                        <q-responsive :ratio="1">
+                            <img :src="post.img" alt="">
+                        </q-responsive>
+                    </QRouterLink>
                     <div class="right">
                         <div class="title">{{post.title}}</div>
                         <div class="content">{{post.content}}</div>
                         <div class="bottom">
                             <div class="date">{{post.date}}</div>
-                            <div class="more">
+                            <QRouterLink class="more" :to="post.link">
                                 閱讀更多
                                 <q-icon name="arrow_circle_right"></q-icon>
-                            </div>
+                            </QRouterLink>
                         </div>
                     </div>
                 </div>
@@ -30,65 +32,15 @@
 </template>
 <script setup lang="ts">
 import Title from '../title/title-1.vue'
-import { ref, onMounted, computed } from 'vue';
+import { ref, computed } from 'vue';
 
 const selectTag = ref(0)
 
-const tags = ref([
-    {
-        name: 'All',
-        value: 0
-    },
-    {
-        name: 'Miss碎碎念',
-        value: 1
-    },
-    {
-        name: '永續日常',
-        value: 2
-    },
-    {
-        name: '健康意識',
-        value: 3
-    },
-    {
-        name: '活動花絮',
-        value: 4
-    }
-])
-
-const list = ref([
-    {
-        img: '',
-        link: '',
-        date: '2022/05/30',
-        title: '機場搭防疫計程車我們付費，文章標題第二列-1',
-        content: '現在只要預訂「台北市的防疫旅館」您的計程車費我來出！內文現在只要預訂「台北市的防疫旅館」您的計程車費我來出！內文',
-        tag: 1
-    },
-    {
-        img: '',
-        link: '',
-        date: '2022/05/30',
-        title: '機場搭防疫計程車我們付費，文章標題第二列-2',
-        content: '現在只要預訂「台北市的防疫旅館」您的計程車費我來出！內文現在只要預訂「台北市的防疫旅館」您的計程車費我來出！內文',
-        tag: 2
-    },
-    {
-        img: '',
-        link: '',
-        date: '2022/05/30',
-        title: '機場搭防疫計程車我們付費，文章標題第二列-3',
-        content: '現在只要預訂「台北市的防疫旅館」您的計程車費我來出！內文現在只要預訂「台北市的防疫旅館」您的計程車費我來出！內文',
-        tag: 3
-    }
-])
-
 const filterPosts = computed(()=>{
     if(selectTag.value === 0) {
-        return list.value
+        return props.postsData.posts
     }else{
-        const result = list.value.filter(e=>e.tag === selectTag.value)
+        const result = props.postsData.posts.filter((e: { tag: number; })=>e.tag === selectTag.value)
         return result
     }
 })
@@ -96,18 +48,30 @@ const filterPosts = computed(()=>{
 const toggleTag = (value: any) => {
     selectTag.value = value
 }
-// interface Props {
-//     list?: any;
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//     list: [
-//         {
-//             content: '',
-//             link: '',
-//             img: ''
-//         }
-//     ]
-// });
+
+interface Props {
+    postsData?: any;
+}
+const props = withDefaults(defineProps<Props>(), {
+    postsData: {
+        tags: [
+            {
+                name: '',
+                value: 0
+            },
+        ],
+        posts: [
+            {
+                img: '',
+                link: '',
+                date: '',
+                title: '',
+                content: '',
+                tag: 1
+            }
+        ]
+    }
+});
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;
@@ -130,28 +94,35 @@ const toggleTag = (value: any) => {
         display: flex
         border-bottom: solid 2px #000
         gap: 10px
+        flex-wrap: wrap
+        padding: 5px 0px
         .tag
             transition-duration: .5s
             cursor: pointer
             padding: 5px 10px
             font-size: 16px
+            white-space: nowrap
             &:hover
-            //   background-color: #C8EEC8
               background-color: #000
               color: #C8EEC8
     .list-container
         display: flex
         flex-wrap: wrap
         margin-top: 20px
-        gap: 30px
+        gap: 40px
         .post
-            width: calc(50% - 15px)
+            width: calc(50% - 20px)
             display: flex
             gap: 20px
             .left
                 width: 35%
                 .q-responsive
+                    width: 100%
                     background-color: #D9D9D9
+                    img
+                        object-fit: cover
+                        min-height: 100%
+                        min-width: 100%
             .right
                 display: flex
                 flex-direction: column
@@ -176,4 +147,25 @@ const toggleTag = (value: any) => {
     // background-color: #C8EEC8
     background-color: #000
     color: #C8EEC8
+
+@media (max-width: 1300px)
+    .posts
+        .list-container
+            .post
+                width: 100%
+                .right
+                    gap: 20px
+                    justify-content: center
+
+@media (max-width: 625px)
+    .posts
+        .list-container
+            gap: 60px
+            .post
+                flex-direction: column
+                .left
+                    width: 100%
+                .right
+                    width: 100%
+
 </style>

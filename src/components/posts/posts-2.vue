@@ -3,10 +3,10 @@
     <Title title="Podcast"></Title>
     <div class="post-container">
       <div class="left">
-        <img src="/podcast/podcast.svg">
+        <img :src="props.podcastData.mainImg">
         <div class="divider"></div>
         <div class="intro">
-          {{podcastData.intro}}
+          {{props.podcastData.intro}}
         </div>
       </div>
       <div class="right">
@@ -14,7 +14,7 @@
           <div class="title">意識生活 Health Impact</div>
           <div class="s-title">Miss Eco</div>
         </div>
-        <List :list="podcastData.list"></List>
+        <List :list="props.podcastData.lists"></List>
       </div>
     </div>
   </div>
@@ -24,30 +24,17 @@
 import Title from "../title/title-1.vue"
 import List from "../list/list3.vue"
 
-const podcastData = {
-  intro: '歡迎來到Health impact意識生活，讓Summer與Solomon用5分鐘的時間與您分享醫學知識、飲食生活、環境自然、正念態度，各種建構健康藍圖的方法。',
-  list: [
-    {
-      date: '2022年6月30日',
-      title: '15｜【食補中藥小教室-2  黃耆🌱】',
-      intro: '我們製作了一系列【食補中藥小教室】，每集介紹一味藥，分享藥材的特色、功效以及入菜的食譜，希望讓健康飲食，中藥食補進入大家的生活！今天要跟大家分享的是 『黃耆』！',
-      link: ''
-    },
-    {
-      date: '2022年6月30日',
-      title: '15｜【食補中藥小教室-2  黃耆🌱】',
-      intro: '我們製作了一系列【食補中藥小教室】，每集介紹一味藥，分享藥材的特色、功效以及入菜的食譜，希望讓健康飲食，中藥食補進入大家的生活！今天要跟大家分享的是 『黃耆』！',
-      link: ''
-    }
-  ]
-}
 
-// interface Props {
-//   label?: string;
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   label: '',
-// });
+interface Props {
+  podcastData?: any;
+}
+const props = withDefaults(defineProps<Props>(), {
+  podcastData: {
+    mainImg: '',
+    intro: '',
+    lists: []
+  }
+});
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;

@@ -91,6 +91,7 @@ const props = withDefaults(defineProps<Props>(), {
     width: 100%
     display: flex
     justify-content: space-between
+    margin-top: 10px
     .item
       width: 33.33%
       .q-responsive
@@ -109,5 +110,4 @@ const props = withDefaults(defineProps<Props>(), {
       flex-direction: column
       .item
         width: 100%
-
 </style>

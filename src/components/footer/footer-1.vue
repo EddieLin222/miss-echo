@@ -1,9 +1,9 @@
 <template>
   <div class="footer">
     <div class="l-block">
-      <div class="logo">
+      <QRouterLink class="logo" to="/">
         <img src="/logo/logo-footer.png" alt="">
-      </div>
+      </QRouterLink>
       <div class="text">
         Miss Eco 環保外送 打造永續新日常
       </div>
@@ -11,15 +11,15 @@
     <div class="r-block">
       <div class="mail">misseco.tw@gmail.com</div>
       <div class="social-block">
-        <a class="item" href="https://www.facebook.com/misseco.tw" target="_blank">
+        <QRouterLink class="item" to="https://www.facebook.com/misseco.tw">
           <img src="/social/fb.svg">
-        </a>
-        <a class="item" href="https://www.instagram.com/misseco.tw/" target="_blank">
+        </QRouterLink>
+        <QRouterLink class="item" href="https://www.instagram.com/misseco.tw/">
           <img src="/social/ig.svg">
-        </a>
-        <a class="item" href="https://lin.ee/35kz9K7" target="_blank">
+        </QRouterLink>
+        <QRouterLink class="item" href="https://lin.ee/35kz9K7">
           <img src="/social/line.svg">
-        </a>
+        </QRouterLink>
       </div>
     </div>
   </div>
@@ -65,7 +65,7 @@ import { ref, onMounted } from 'vue';
     align-items: center
     flex: 1
     .mail
-      font-size: 16px
+      font-size: 18px
       color: #778D7E
       margin-bottom: 30px
       font-family: 'Times New Roman'

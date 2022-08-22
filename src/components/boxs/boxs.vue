@@ -3,11 +3,11 @@
         <Title title="環保外送"></Title>
         <div class="boxs-container" v-if="width >= 840">
             <div class="box" v-for="(item, index) in props.list" :key="index">
-                <a :href="item.link" v-if="item.link != ''">
+                <QRouterLink :to="item.link" v-if="item.link != ''">
                     <q-responsive :ratio="1">
                         <img :src="item.img" alt="">
                     </q-responsive>
-                </a>
+                </QRouterLink>
                 <div v-else>
                     <q-responsive :ratio="1">
                         <img :src="item.img" alt="">

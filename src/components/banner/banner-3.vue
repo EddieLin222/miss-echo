@@ -1,8 +1,7 @@
 <template>
   <div class="banner">
-    <img class="bg" :src="bannerData.webImg" alt="">
-    <!-- <img class="bg" :src="props.bannerData.webImg" alt="" v-if="width>=480">
-    <img class="bg" :src="props.bannerData.mobileImg" alt="" v-else> -->
+    <img class="bg" :src="props.bannerData.webImg" alt="" v-if="width>=480">
+    <img class="bg" :src="props.bannerData.mobileImg" alt="" v-else>
     <div class="banner-box">
       <Title title="關於我們"></Title>
     </div>
@@ -10,22 +9,21 @@
 </template>
 <script setup lang="ts">
 import Title from '../title/title-1.vue'
-import { ref, onMounted } from 'vue';
 import { useWindowSize } from '@vueuse/core'
 
 const { width } = useWindowSize()
 const bannerData = {
   webImg: "/banner/banner2.jpg",
 }
-// interface Props {
-//   bannerData?: any;
-// }
-// const props = withDefaults(defineProps<Props>(), {
-//   bannerData: {
-//     webImg: '',
-//     mobileImg: ''
-//   },
-// });
+interface Props {
+  bannerData?: any;
+}
+const props = withDefaults(defineProps<Props>(), {
+  bannerData: {
+    webImg: '',
+    mobileImg: ''
+  },
+});
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;

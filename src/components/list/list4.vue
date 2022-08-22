@@ -4,20 +4,20 @@
         <div class="item">
             <div class="left">
                 <q-responsive class="img-block" :ratio="1">
-                    <img :src="props.list.img" alt=""/>
+                    <img :src="props.salonData.img" alt=""/>
                 </q-responsive>
             </div>
             <div class="right">
                 <div class="title-block">
                     <div class="s-title">綠色沙龍</div>
-                    <div class="title">{{props.list.title}}</div>
+                    <div class="title">{{props.salonData.title}}</div>
                 </div>
                 <div class="content">
-                    <p v-text="props.list.intro"></p>
+                    <p v-text="props.salonData.intro"></p>
                 </div>
-                <div class="book">
+                <QRouterLink class="book" :to="props.salonData.link">
                     預約演講
-                </div>
+                </QRouterLink>
             </div>
         </div>
     </div>
@@ -26,10 +26,10 @@
 import Title from "../title/title-1.vue"
 import { ref, onMounted } from 'vue';
 interface Props {
-    list?: any;
+    salonData?: any;
 }
 const props = withDefaults(defineProps<Props>(), {
-    list: {
+    salonData: {
         img: '',
         title: '',
         intro: '',
