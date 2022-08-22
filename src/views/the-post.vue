@@ -29,19 +29,20 @@
                     alt=""
                 >
             </div>
-            <div class="intro">{{ currentPost.intro }}</div>
+                <div class="intro articleTextArea" v-html="currentPost.intro"></div>
+
             <div
-                class="content"
+                class="content articleTextArea"
                 v-html="currentPost.content"
             ></div>
-            <div class="epilogue">
+            <div v-show="currentPost.epilogue" class="epilogue" >
                 <div class="symbol-left">
                     <div class="dot">“</div>
                 </div>
                 <div class="symbol-right">
                     <div class="dot">”</div>
                 </div>
-                {{ currentPost.epilogue }}
+                <div class="articleTextArea" v-html="currentPost.epilogue"></div>
             </div>
             <div class="next"></div>
         </div>
@@ -255,4 +256,91 @@ useHead({
         .title
             font-size: 32px
 
+</style>
+
+<style scoped >
+:deep() .articleTextArea a {
+    @apply text-[#78A780] cursor-pointer
+}
+
+
+:deep() .articleTextArea ul {
+    padding: revert;
+    @apply list-disc
+}
+
+:deep() .articleTextArea ul li {
+    @apply list-disc
+}
+
+
+
+:deep() .articleTextArea ol {
+    list-style-type: decimal;
+    padding: revert;
+}
+
+:deep() .articleTextArea ol li {
+    list-style-type: decimal;
+}
+
+:deep() .articleTextArea blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+}
+
+:deep() .articleTextArea blockquote:before {
+    color: #ccc;
+    content: ',,';
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: 0.2em;
+    letter-spacing: -6px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+:deep() .articleTextArea h1 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+}
+
+:deep() .articleTextArea h2 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+
+}
+
+:deep() .articleTextArea h3 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+:deep() .articleTextArea h4 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+:deep() .articleTextArea h5 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+:deep() .articleTextArea h6 {
+    font-size: 0.75rem;
+    line-height: 1rem;
+}
+
+:deep() .articleTextArea pre {
+    overflow: auto;
+}
+
+:deep() .articleTextArea pre>code {
+    display: block;
+    padding: 1rem;
+    word-wrap: normal;
+}
 </style>
