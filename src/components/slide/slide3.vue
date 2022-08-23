@@ -14,14 +14,14 @@
             :space-between="30"
             :scrollbar="{ draggable: true }"
         >
-            <swiper-slide v-for="(list, index) in dataList" :key="index">
+            <swiper-slide v-for="(item, index) in list" :key="index">
                 <div class="img-block">
-                    <img :src="list['img']" alt="">
+                    <img :src="item['img']" alt="">
                 </div>
                 <div class="intro">
-                    <div class="title">{{list['name']}}</div>
+                    <div class="title">{{item['name']}}</div>
                     <div class="content">
-                        <div v-for="(word, index) in list['text']" :key="index">
+                        <div v-for="(word, index) in item['text']" :key="index">
                             <span>{{word}}</span>
                         </div>
                     </div>
@@ -93,7 +93,7 @@ onMounted(()=>{
                 font-size: 50px
         .swiper
             --swiper-navigation-size: 30px
-            padding: 50px 0px
+            // padding: 50px 0px
             .swiper-slide
                 display: flex
                 flex-direction: column
