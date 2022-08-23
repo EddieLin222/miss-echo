@@ -10,4 +10,16 @@ import Header from "../components/header/header-1.vue"
 import Book from "../components/book/book.vue"
 import Bubbles from "../components/bubbles/bubbles.vue"
 import Footer from "../components/footer/footer-1.vue"
+import { useScriptTag } from "@vueuse/core";
+
+useScriptTag(
+  '/script.js',
+  // on script tag loaded.
+  (el: HTMLScriptElement) => {
+    // do something
+    console.log('fb script',el);
+    
+  },
+)
 </script>
+
