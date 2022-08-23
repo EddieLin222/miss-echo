@@ -61,6 +61,10 @@ const props = withDefaults(defineProps<Props>(), {
                 background-color: #d9d9d9
                 border-radius: 10px
                 overflow: hidden
+                img
+                    object-fit: cover
+                    min-height: 100%
+                    min-width: 100%
         .right
             flex: 2
             display: flex
