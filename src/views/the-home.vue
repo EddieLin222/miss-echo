@@ -62,13 +62,13 @@ watchEffect(() => {
 useHead({
   // Can be static or computed
   title: computed(() => {
-    return 'Miss Echo｜有意識的生活，讓生活更有意思'
+    return 'Miss Eco｜有意識的生活，讓生活更有意思'
   }),
   meta: [
     {
       property: `og:title`,
       content: computed(() => {
-        return 'Miss Echo｜有意識的生活，讓生活更有意思'
+        return 'Miss Eco｜有意識的生活，讓生活更有意思'
       }),
     },
     {

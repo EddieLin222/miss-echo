@@ -121,9 +121,9 @@ useHead({
     title: computed(() => {
         const title = currentPost.value?.title;
         if (currentPost.value?.title) {
-            return title + '｜Miss Echo'
+            return title + '｜Miss Eco'
         }
-        return 'Miss Echo'
+        return 'Miss Eco'
     }),
     meta: [
         {
@@ -131,9 +131,9 @@ useHead({
             content: computed(() => {
                 const title = currentPost.value?.title;
                 if (currentPost.value?.title) {
-                    return title + '｜Miss Echo'
+                    return title + '｜Miss Eco'
                 }
-                return 'Miss Echo'
+                return 'Miss Eco'
             }),
         },
         {

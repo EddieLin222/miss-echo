@@ -50,13 +50,13 @@ watchEffect(() => {
 useHead({
   // Can be static or computed
   title: computed(() => {
-    return '關於我們｜Miss Echo｜搭配健康永續餐點，舉辦一場零廢棄的低碳饗宴吧'
+    return '關於我們｜Miss Eco｜搭配健康永續餐點，舉辦一場零廢棄的低碳饗宴吧'
   }),
   meta: [
     {
       property: `og:title`,
       content: computed(() => {
-        return '關於我們｜Miss Echo｜搭配健康永續餐點，舉辦一場零廢棄的低碳饗宴吧'
+        return '關於我們｜Miss Eco｜搭配健康永續餐點，舉辦一場零廢棄的低碳饗宴吧'
       }),
     },
     {
