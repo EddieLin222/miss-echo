@@ -48,6 +48,16 @@ const routes: RouteRecordRaw =
             component: () => import('@/views/admin/page/BookingSet.vue'),
         },
         {
+            name: 'LifeSet',
+            path: 'setlife',
+            meta: {
+                title: '意識生活設定',
+                icon: 'home',
+                showInMenu: true
+            },
+            component: () => import('@/views/admin/page/LifeSet.vue'),
+        },
+        {
             name: 'AboutSet',
             path: 'setabout',
             meta: {
