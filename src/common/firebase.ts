@@ -26,9 +26,8 @@ export const uploadStorage = (path: string, file: File,): Promise<string> => {
         uploadTask.on(storage.TaskEvent.STATE_CHANGED, {
             'complete': function () {
                 console.log('upload complete!');
-                uploadTask.snapshot.ref.getDownloadURL().then((downloadURL: string | PromiseLike<string>) => {
-                    console.log('File available at', downloadURL);
-                    resolve(downloadURL)
+                uploadTask.snapshot.ref.getDownloadURL().then((downloadURL: string ) => {
+                    resolve(downloadURL.replace('firebasestorage.googleapis.com', import.meta.env.VITE_DOMAIN))
                 });
             }
         });

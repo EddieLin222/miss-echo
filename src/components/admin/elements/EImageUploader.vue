@@ -5,11 +5,13 @@
     <div>
         <div class="font-bold text-lg mt-6 text-gray-600">{{ props.name }}</div>
 
-
         <template v-if="mvalue">
             <div class="relative">
 
-                <q-img :src="mvalue" @error="mvalue=''"  />
+                <q-img
+                    :src="mvalue"
+                    @error="mvalue = ''"
+                />
                 <q-btn
                     @click="removeFile()"
                     round
@@ -114,9 +116,8 @@ const convertFile = (file: File,): Promise<string> => {
         uploadTask.on(storage.TaskEvent.STATE_CHANGED, {
             'complete': function () {
                 console.log('upload complete!');
-                uploadTask.snapshot.ref.getDownloadURL().then((downloadURL: string | PromiseLike<string>) => {
-                    console.log('File available at', downloadURL);
-                    resolve(downloadURL)
+                uploadTask.snapshot.ref.getDownloadURL().then((downloadURL: string) => {
+                    resolve(downloadURL.replace('firebasestorage.googleapis.com', import.meta.env.VITE_DOMAIN))
                 });
             }
         });
