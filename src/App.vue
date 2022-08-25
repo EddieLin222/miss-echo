@@ -11,7 +11,6 @@ import { useMainStore } from './stores/main.store';
 
 const store = useMainStore();
 
-document.title += ` v${import.meta.env.PACKAGE_VERSION}`
 </script>
 
 <style lang="sass">

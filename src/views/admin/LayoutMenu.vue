@@ -127,6 +127,7 @@
 
 
 
+
 export default {
     name: 'AdminLayoutWithMenu',
 }
@@ -142,6 +143,7 @@ import { useNotify } from '@/composables/notify';
 import { useAdminStore } from '@/stores/admin.store';
 import { useAuth } from '@vueuse/firebase';
 import { setCssVar } from 'quasar';
+import { useHead } from '@vueuse/head';
 const { user } = useAuth(auth)
 
 const adminStore = useAdminStore()
@@ -190,6 +192,14 @@ const toggleLeftDrawer = () => {
 };
 
 setCssVar('primary', '#78A780')
+
+
+// SEO
+useHead({
+  // Can be static or computed
+  title:'Miss Eco｜管理後台'
+})
+
 
 </script>
 
