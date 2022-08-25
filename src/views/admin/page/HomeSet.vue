@@ -329,6 +329,11 @@
                                         filled
                                         v-model="element.text"
                                     />
+                                    <div class="mt-5 font-bold text-lg">第{{ index + 1 }}項連結</div>
+                                    <q-input
+                                        filled
+                                        v-model="element.link"
+                                    />
                                     <e-image-uploader
                                         path="home/post"
                                         class="w-48"
@@ -483,6 +488,7 @@ const PersonListItemDefault: PersonType = {
     img: "",
     name: "",
     text: "",
+    link: "",
 }
 const personList = ref<PersonType[]>([])
 const addPersonListItem = () => {

@@ -1,40 +1,52 @@
 <template>
-  <div class="slide">
-    <div class="title-block">
-        <Title :title="props.title"></Title>
-    </div>
-    <div class="slide-block">
-        <div class="prev-btn">
-            <q-icon name="chevron_left"/>
+    <div class="slide">
+        <div class="title-block">
+            <Title :title="props.title"></Title>
         </div>
-        <swiper
-            :modules="[Navigation]"
-            :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn'}"
-            :slides-per-view="$q.screen.lt.sm ? 1 : $q.screen.lt.md ? 2 : 3"
-            :space-between="30"
-            :scrollbar="{ draggable: true }"
-        >
-            <swiper-slide v-for="(list, index) in dataList" :key="index">
-                <QRouterLink class="img-box" :to="list.link">
-                    <div class="img-block">
-                        <img :src="list['img']" alt="">
-                    </div>
-                    <div class="intro">
-                        <div class="title">{{list['name']}}</div>
-                        <div class="content">
-                            <div v-for="(word, index) in textFilter(list['text'])" :key="index">
-                                <span :style="isEnglish(word)?`padding:0 2px;`:''">{{word}}</span>
+        <div class="slide-block">
+            <div class="prev-btn">
+                <q-icon name="chevron_left" />
+            </div>
+            <swiper
+                :modules="[Navigation]"
+                :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
+                :slides-per-view="$q.screen.lt.sm ? 1 : $q.screen.lt.md ? 2 : 3"
+                :space-between="30"
+                :scrollbar="{ draggable: true }"
+            >
+                <swiper-slide
+                    v-for="(list, index) in dataList"
+                    :key="index"
+                >
+                    <QRouterLink
+                        class="img-box"
+                        :to="list.link"
+                    >
+                        <div class="img-block">
+                            <img
+                                :src="list['img']"
+                                alt=""
+                            >
+                        </div>
+                        <div class="intro">
+                            <div class="title">{{ list['name'] }}</div>
+                            <div class="content">
+                                <div
+                                    v-for="(word, index) in textFilter(list['text'])"
+                                    :key="index"
+                                >
+                                    <span :style="isEnglish(word) ? `padding:0 2px;` : ''">{{ word }}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </QRouterLink>
-            </swiper-slide>
-        </swiper>
-        <div class="next-btn">
-            <q-icon name="navigate_next"/>
+                    </QRouterLink>
+                </swiper-slide>
+            </swiper>
+            <div class="next-btn">
+                <q-icon name="navigate_next" />
+            </div>
         </div>
     </div>
-  </div>
 </template>
 <script setup lang="ts">
 import Title from "../title/title-1.vue"
@@ -45,22 +57,25 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { ref, onMounted, computed } from 'vue';
 interface Props {
-  title?: string,
-  list?: any
+    title?: string,
+    list?: {
+        img: string;
+        name: string;
+        text: string;
+        link: string;
+    }[]
 }
 const props = withDefaults(defineProps<Props>(), {
-  title: '',
-  list: [
-    {
-      img: '',
-      name: '',
-      text: '',
-      link: ''
-    }
-  ]
+    title: '',
+    list: () => []
 });
-const dataList = ref([])
-onMounted(()=>{
+const dataList = ref<{
+    img: string;
+    name: string;
+    text: string;
+    link: string;
+}[]>([])
+onMounted(() => {
     dataList.value = props.list
 })
 // const data = computed(()=>{
@@ -73,19 +88,19 @@ onMounted(()=>{
 //     })
 //     return newData
 // })
-const isEnglish = (text:string)=>{
-    const isEnglishRex = new RegExp("[A-Za-z]+");
+const isEnglish = (text: string) => {
+    const isEnglishRex = new RegExp("[A-Za-z]+");
     return isEnglishRex.test(text)
 }
-const textFilter = (text:string)=>{
-    const _text:string[] = [];
-    text.split(' ').forEach(item=>{
-        if(isEnglish(item)){
+const textFilter = (text: string) => {
+    const _text: string[] = [];
+    text.split(' ').forEach(item => {
+        if (isEnglish(item)) {
             _text.push(item)
-        }else{
+        } else {
             _text.push(...item.split(''))
         }
-    })    
+    })
     return _text
 }
 
