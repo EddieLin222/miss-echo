@@ -22,4 +22,5 @@ export type PersonType = {  //array
     name: string;
     text: string;
     img: string;
+    link: string;
 }

@@ -15,17 +15,19 @@
             :scrollbar="{ draggable: true }"
         >
             <swiper-slide v-for="(list, index) in dataList" :key="index">
-                <div class="img-block">
-                    <img :src="list['img']" alt="">
-                </div>
-                <div class="intro">
-                    <div class="title">{{list['name']}}</div>
-                    <div class="content">
-                        <div v-for="(word, index) in textFilter(list['text'])" :key="index">
-                            <span :style="isEnglish(word)?`padding:0 2px;`:''">{{word}}</span>
+                <QRouterLink class="img-box" :to="list.link">
+                    <div class="img-block">
+                        <img :src="list['img']" alt="">
+                    </div>
+                    <div class="intro">
+                        <div class="title">{{list['name']}}</div>
+                        <div class="content">
+                            <div v-for="(word, index) in textFilter(list['text'])" :key="index">
+                                <span :style="isEnglish(word)?`padding:0 2px;`:''">{{word}}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </QRouterLink>
             </swiper-slide>
         </swiper>
         <div class="next-btn">
@@ -52,7 +54,8 @@ const props = withDefaults(defineProps<Props>(), {
     {
       img: '',
       name: '',
-      text: ''
+      text: '',
+      link: ''
     }
   ]
 });
