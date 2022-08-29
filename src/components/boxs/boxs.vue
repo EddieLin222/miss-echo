@@ -16,13 +16,13 @@
             </div>
         </div>
         <div class="slide-block" v-else>
-            <div class="prev-btn">
+            <div class="prev">
                 <q-icon name="chevron_left" />
             </div>
             <swiper
                 :modules="[Navigation, Pagination]"
                 :pagination="{ clickable: true }"
-                :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
+                :navigation="{ nextEl: '.next', prevEl: '.prev' }"
                 :slides-per-view="$q.screen.lt.sm ? 1 : $q.screen.lt.md ? 2 : 3"
                 :space-between="30"
             >
@@ -34,7 +34,7 @@
                     </q-responsive>
                 </swiper-slide>
             </swiper>
-            <div class="next-btn">
+            <div class="next">
                 <q-icon name="chevron_right" />
             </div>
         </div>
@@ -131,13 +131,13 @@ const props = withDefaults(defineProps<Props>(), {
         display: flex
         width: 100%
         margin-top: 30px
-        .prev-btn
+        .prev
             display: flex
             align-items: center
             .q-icon
                 font-size: 35px
                 color: #acbeaf
-        .next-btn
+        .next
             display: flex
             align-items: center
             .q-icon
