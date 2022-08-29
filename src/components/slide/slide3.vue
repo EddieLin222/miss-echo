@@ -69,7 +69,7 @@ onMounted(()=>{
 
 <style scoped lang="sass">
 .slide
-    padding: 30px 10%
+    padding: 30px 0%
     background-color: #FFFBED
     justify-content: center
     // --swiper-theme-color: red
@@ -79,6 +79,7 @@ onMounted(()=>{
         justify-content: center
     .slide-block
         display: flex
+        
         .prev-btn
             display: flex
             align-items: center
@@ -122,7 +123,7 @@ onMounted(()=>{
                     .content
                         display: flex
                         flex-wrap: wrap
-                        max-width: 190px
+                        max-width: 250px
                         div
                             height: 30px
                             span
@@ -140,4 +141,7 @@ onMounted(()=>{
                 padding: 20px
                 color: #000
                 font-weight: 900
+@media (max-width: 840px)
+    .slide
+        padding: 30px 10%
 </style>

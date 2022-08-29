@@ -1,7 +1,7 @@
 <template>
   <div class="list">
     <Title title="企業好評推薦"></Title>
-    <div class="list-block" v-if="width>=840">
+    <!-- <div class="list-block" v-if="width>=840">
       <div class="list-item" v-for="(item, index) in props.companyList" :key="index">
         <q-responsive :ratio="1">
           <div class="img-block">
@@ -15,8 +15,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="swiper-block" v-else>
+    </div> -->
+    <div class="swiper-block">
       <Slide :list="props.companyList"></Slide>
     </div>
   </div>
@@ -53,63 +53,63 @@ const props = withDefaults(defineProps<Props>(), {
   justify-content: center
   align-items: center
   flex-direction: column
-  padding: 50px 20% 80px 20%
+  padding: 50px 15% 80px 15%
   font-weight: 900
   background-color: #FFFBED
   .title
     font-size: 28px
-  .list-block
-    display: flex
-    width: 100%
-    margin: 50px 0px
-    justify-content: space-between
-    .list-item
-      display: flex
-      flex-direction: column
-      align-items: center
-      list-style: none
-      margin: 0px 15px
-      .q-responsive
-        width: 100%
-        margin-bottom: 15px
-        .img-block
-          width: 180px
-          border-radius: 100%
-          padding: 5px
-          overflow: hidden
-          img
-            background-color: #ddd
-            width: 100%
-            height: 100%
-            border-radius: 100%
-            object-fit: cover
-      .list-title
-        font-size: 16px
-        font-weight: 700
-      .list-intro
-        margin-top: 10px
-        font-size: 14px
-        display: flex
-        flex-wrap: wrap
-        width: 200px
-        div
-          height: 30px
-          span
-            height: 10px
-            background: #F2E7CE
-            padding: 0px 1px
-            font-weight: 400
+  // .list-block
+  //   display: flex
+  //   width: 100%
+  //   margin: 50px 0px
+  //   justify-content: space-between
+  //   .list-item
+  //     display: flex
+  //     flex-direction: column
+  //     align-items: center
+  //     list-style: none
+  //     margin: 0px 15px
+  //     .q-responsive
+  //       width: 100%
+  //       margin-bottom: 15px
+  //       .img-block
+  //         width: 180px
+  //         border-radius: 100%
+  //         padding: 5px
+  //         overflow: hidden
+  //         img
+  //           background-color: #ddd
+  //           width: 100%
+  //           height: 100%
+  //           border-radius: 100%
+  //           object-fit: cover
+  //     .list-title
+  //       font-size: 16px
+  //       font-weight: 700
+  //     .list-intro
+  //       margin-top: 10px
+  //       font-size: 14px
+  //       display: flex
+  //       flex-wrap: wrap
+  //       width: 200px
+  //       div
+  //         height: 30px
+  //         span
+  //           height: 10px
+  //           background: #F2E7CE
+  //           padding: 0px 1px
+  //           font-weight: 400
   .swiper-block
     width: 100%
-@media (max-width: 1190px)
-  .list
-    .list-block
-      flex-wrap: wrap
-      .list-item
-        width: calc(50% - 30px)
-        margin: 30px 15px
-        .list-intro
-          max-width: 300px
+// @media (max-width: 1190px)
+//   .list
+//     .list-block
+//       flex-wrap: wrap
+//       .list-item
+//         width: calc(50% - 30px)
+//         margin: 30px 15px
+//         .list-intro
+//           max-width: 300px
 @media (max-width: 980px)
   .list
     padding: 0px 10% 0px 10%
@@ -118,9 +118,9 @@ const props = withDefaults(defineProps<Props>(), {
     padding: 0px 0% 0px 0%
 @media (max-width: 600px)
   .list
-    .list-block
-      flex-direction: column
-      .list-item
-        width: 100%
-        margin: 30px 0px
+    // .list-block
+    //   flex-direction: column
+    //   .list-item
+    //     width: 100%
+    //     margin: 30px 0px
 </style>
