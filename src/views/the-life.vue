@@ -16,7 +16,7 @@ import Podcast from "../components/posts/posts-2.vue"
 import Youtube from "../components/video/video.vue"
 import Salon from "../components/list/list4.vue"
 import { useHead } from "@vueuse/head"
-import { PodcastType, SalonType, YoutubeType } from '@/types/life.type';
+import { BannerType, PodcastType, SalonType, YoutubeType } from '@/types/life.type';
 import { useFirestore } from '@vueuse/firebase';
 import { db } from '@/common/firebase';
 
