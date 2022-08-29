@@ -34,7 +34,7 @@ const props = withDefaults(defineProps<Props>(), {
 <style scoped lang="sass">
 .intro
     .content-container
-        padding: 30px
+        padding: 30px 0px
         .first-text
             position: relative
             font-weight: 900
@@ -53,6 +53,7 @@ const props = withDefaults(defineProps<Props>(), {
                 position: relative
         .intro-text
             white-space: pre-line
+            line-height: 28px
 
 @media (max-width: 780px)
     .intro

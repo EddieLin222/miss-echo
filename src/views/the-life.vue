@@ -1,5 +1,6 @@
 <template>
   <div class="life">
+    <Banner :bannerData="bannerData"></Banner>
     <div class="custom-container">
       <Podcast :podcastData="podcastData"></Podcast>
       <Youtube :youtubeData="youtubeData"></Youtube>
@@ -10,6 +11,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watchEffect } from 'vue';
+import Banner from "../components/banner/banner-2.vue"
 import Podcast from "../components/posts/posts-2.vue"
 import Youtube from "../components/video/video.vue"
 import Salon from "../components/list/list4.vue"
@@ -18,6 +20,10 @@ import { PodcastType, SalonType, YoutubeType } from '@/types/life.type';
 import { useFirestore } from '@vueuse/firebase';
 import { db } from '@/common/firebase';
 
+const bannerData = ref<BannerType>({
+  webImg: '/banner/banner.png',
+  mobileImg: '/banner/banner-m.png'
+})
 
 const podcastData = ref<PodcastType>({
   mainImg: '',
@@ -99,13 +105,13 @@ watchEffect(() => {
 useHead({
   // Can be static or computed
   title: computed(() => {
-    return 'Miss Eco｜有意識的生活，讓生活更有意思'
+    return 'Miss Eco｜有意識生活'
   }),
   meta: [
     {
       property: `og:title`,
       content: computed(() => {
-        return 'Miss Eco｜有意識的生活，讓生活更有意思'
+        return 'Miss Eco｜有意識生活'
       }),
     },
     {

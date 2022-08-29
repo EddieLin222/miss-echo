@@ -1,3 +1,7 @@
+export type BannerType = {
+    webImg: string;
+    mobileImg?: string;
+}
 
 export type PodcastType = {
     mainImg: string;

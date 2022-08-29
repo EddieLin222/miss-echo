@@ -41,7 +41,7 @@ const props = withDefaults(defineProps<Props>(), {
   display: flex
   justify-content: center
   align-items: center
-  min-height: 30vh
+  min-height: 45vh
   min-width: 100%
   position: relative
   overflow: hidden
@@ -66,4 +66,7 @@ const props = withDefaults(defineProps<Props>(), {
     .content
       font-size: 20px
       font-weight: 900
+@media (max-width: 840px)
+  .banner
+    display: none
 </style>

@@ -20,7 +20,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 <style scoped lang="sass">
 .title-block
-  font-weight: 700
   position: relative
   display: inline-block !important
   margin-bottom: 5px

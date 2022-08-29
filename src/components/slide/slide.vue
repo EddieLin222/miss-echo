@@ -142,17 +142,21 @@ const textFilter = (text: string) => {
                 flex-direction: column
                 justify-content: flex-start
                 align-items: center
-                .img-block
-                    height: 200px
-                    width: 200px
-                    border-radius: 100%
-                    overflow: hidden
-                    margin-bottom: 20px
-                    background-color: #d2d2d2
-                    img
-                        min-width: 100%
-                        min-height: 100%
-                        object-fit: cover
+                .img-box
+                    display: flex
+                    flex-direction: column
+                    align-items: center
+                    .img-block
+                        height: 200px
+                        width: 200px
+                        border-radius: 100%
+                        overflow: hidden
+                        margin-bottom: 20px
+                        background-color: #d2d2d2
+                        img
+                            min-width: 100%
+                            min-height: 100%
+                            object-fit: cover
                 .intro
                     display: flex
                     flex-direction: column

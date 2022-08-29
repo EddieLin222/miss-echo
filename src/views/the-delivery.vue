@@ -49,13 +49,13 @@ watchEffect(() => {
 useHead({
   // Can be static or computed
   title: computed(() => {
-    return '環保外送｜Miss Eco｜點一份您的餐點，一份地球的健康'
+    return 'Miss Eco｜環保外送'
   }),
   meta: [
     {
       property: `og:title`,
       content: computed(() => {
-        return '環保外送｜Miss Eco｜點一份您的餐點，一份地球的健康'
+        return 'Miss Eco｜環保外送'
       }),
     },
     {

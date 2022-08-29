@@ -62,13 +62,13 @@ watchEffect(() => {
 useHead({
   // Can be static or computed
   title: computed(() => {
-    return 'Miss Eco｜永續新日常'
+    return 'Miss Eco 環保外送｜打造永續新日常'
   }),
   meta: [
     {
       property: `og:title`,
       content: computed(() => {
-        return 'Miss Eco｜永續新日常'
+        return 'Miss Eco 環保外送｜打造永續新日常'
       }),
     },
     {

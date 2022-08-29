@@ -92,7 +92,7 @@ const props = withDefaults(defineProps<Props>(), {
     .tags
         margin-top: 20px
         display: flex
-        border-bottom: solid 2px #000
+        border-bottom: solid 2px #d9d9d9
         gap: 10px
         flex-wrap: wrap
         padding: 5px 0px
@@ -103,8 +103,8 @@ const props = withDefaults(defineProps<Props>(), {
             font-size: 16px
             white-space: nowrap
             &:hover
-              background-color: #000
-              color: #C8EEC8
+              background-color: #d9d9d9
+              color: #000
     .list-container
         display: flex
         flex-wrap: wrap
@@ -137,6 +137,7 @@ const props = withDefaults(defineProps<Props>(), {
                     -webkit-box-orient: vertical
                     -webkit-line-clamp: 3
                     overflow: hidden
+                    color: #696969
                 .bottom
                     display: flex
                     justify-content: space-between
@@ -145,8 +146,8 @@ const props = withDefaults(defineProps<Props>(), {
                         font-size: 16px
 .active
     // background-color: #C8EEC8
-    background-color: #000
-    color: #C8EEC8
+    background-color: #d9d9d9
+    color: #000
 
 @media (max-width: 1300px)
     .posts

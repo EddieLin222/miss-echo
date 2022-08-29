@@ -121,7 +121,7 @@ useHead({
     title: computed(() => {
         const title = currentPost.value?.title;
         if (currentPost.value?.title) {
-            return title + '｜Miss Eco'
+            return 'Miss Eco｜' + title
         }
         return 'Miss Eco'
     }),
@@ -131,7 +131,7 @@ useHead({
             content: computed(() => {
                 const title = currentPost.value?.title;
                 if (currentPost.value?.title) {
-                    return title + '｜Miss Eco'
+                    return 'Miss Eco｜' + title
                 }
                 return 'Miss Eco'
             }),

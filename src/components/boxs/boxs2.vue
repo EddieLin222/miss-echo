@@ -2,7 +2,7 @@
   <div class="boxs">
     <div class="boxs-container" v-if="width>=840">
         <div class="box" v-for="(item, index) in props.gridData" :key="index">
-            <q-responsive :ratio="(index == 0 || index == 3 || index == 4) ? 16/18 : 16/10">
+            <q-responsive :ratio="(index == 0 || index == 3 || index == 4) ? 16/14 : 16/10">
                 <img :src="item.img" alt="">
             </q-responsive>
             <div class="card-bottom">
@@ -84,14 +84,13 @@ const props = withDefaults(defineProps<Props>(), {
     display: flex
     flex-direction: column
     align-items: center
-    // height: calc(100vh - 56px)
     .boxs-container
         display: grid
         width: 100%
         height: 100%
         gap: 15px
         margin-top: 30px
-        grid-template-rows: 1fr 1fr 1fr 1fr 1fr
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
         grid-template-columns: 1fr 1fr 1fr
         .box
             background-color: #fff
@@ -118,9 +117,9 @@ const props = withDefaults(defineProps<Props>(), {
                     font-size: 16px
                 
         .box:first-child, .box:nth-child(4), .box:nth-child(5)
-            grid-row: auto / span 3
+            grid-row: auto / span 5
         .box:nth-child(2), .box:nth-child(3), .box:nth-child(6)
-            grid-row: auto / span 2
+            grid-row: auto / span 4
         // .q-responsive
         //     width: 100%
         //     position: relative
