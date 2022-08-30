@@ -43,7 +43,7 @@ export const removeStorage = (fileUrl: string) => {
 
         storage().ref().child(decodeURIComponent(last(fileUrl.split('/'))?.split('?')[0] ?? '')).delete()
             .then(() => resolve())
-            .catch(error => reject(error));
+            .catch(() => resolve());
     })
 }
 
