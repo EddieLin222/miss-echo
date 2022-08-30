@@ -20,7 +20,7 @@
     </q-page-sticky>
 
     <!-- 封面 -->
-    <div class="p-3 border-b ">
+    <!-- <div class="p-3 border-b ">
         <div class="font-bold text-2xl">封面</div>
         <div class="px-3 w-full flex justify-between">
             <e-image-uploader
@@ -29,16 +29,16 @@
                 v-model="bannerData.webImg"
                 :name="`電腦版圖片`"
             />
-            <!-- <e-image-uploader
+            <e-image-uploader
                 path="page/life"
                 class="w-[49%]"
                 v-model="bannerData.mobileImg"
                 :name="`手機版圖片`"
-            /> -->
+            />
 
         </div>
 
-    </div>
+    </div> -->
     <!-- Podcast -->
     <div class="p-3 border-b ">
         <div class="flex items-center gap-3">
