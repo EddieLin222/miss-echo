@@ -19,7 +19,26 @@
 
     </q-page-sticky>
 
+    <!-- 封面 -->
+    <div class="p-3 border-b ">
+        <div class="font-bold text-2xl">封面</div>
+        <div class="px-3 w-full flex justify-between">
+            <e-image-uploader
+                path="page/life"
+                class="w-[49%]"
+                v-model="bannerData.webImg"
+                :name="`電腦版圖片`"
+            />
+            <!-- <e-image-uploader
+                path="page/life"
+                class="w-[49%]"
+                v-model="bannerData.mobileImg"
+                :name="`手機版圖片`"
+            /> -->
 
+        </div>
+
+    </div>
     <!-- Podcast -->
     <div class="p-3 border-b ">
         <div class="flex items-center gap-3">
@@ -297,7 +316,7 @@ import { cloneDeep, isEmpty } from 'lodash';
 import md5 from 'md5';
 import { computed, ref, watchEffect } from 'vue';
 import draggable from 'vuedraggable'
-import { PodcastItemType, PodcastType, SalonType, YoutubeType } from '@/types/life.type';
+import { BannerType, PodcastItemType, PodcastType, SalonType, YoutubeType } from '@/types/life.type';
 
 const Notify = useNotify()
 const adminStore = useAdminStore()
@@ -308,6 +327,7 @@ const PageHomeData = ref((useFirestore(PageHomeDB)) as any)
 const TimeNote = ref<Array<any | null>>((useFirestore(PageHomeDB.collection('TimeNote').orderBy('timestamp', 'desc').limit(1))) as any)
 watchEffect(() => {
     if (PageHomeData.value) {
+        bannerData.value = PageHomeData.value.bannerData
         podcastData.value = PageHomeData.value.podcastData
         youtubeList.value = PageHomeData.value.youtubeData
         salonData.value = PageHomeData.value.salonData
@@ -318,6 +338,7 @@ watchEffect(() => {
 const preSaveData = computed(() => {
     if (PageHomeData.value === null || PageHomeData.value) {
         return {
+            bannerData: bannerData.value,
             podcastData: podcastData.value,
             youtubeData: youtubeList.value,
             salonData: salonData.value,
@@ -357,7 +378,12 @@ const handleSave = () => {
 
 
 
-
+// 封面
+const BannerDefault: BannerType = {
+    webImg: "",
+    mobileImg: "",
+}
+const bannerData = ref<BannerType>(cloneDeep(BannerDefault))
 //  Podcast
 const PodcastItemDefault: PodcastItemType = {
     title: "",

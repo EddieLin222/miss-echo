@@ -21,60 +21,17 @@ import { useFirestore } from '@vueuse/firebase';
 import { db } from '@/common/firebase';
 
 const bannerData = ref<BannerType>({
-  webImg: '/banner/banner.png',
-  mobileImg: '/banner/banner-m.png'
+  webImg: '',
+  mobileImg: ''
 })
 
 const podcastData = ref<PodcastType>({
   mainImg: '',
   intro: '',
-  lists: [
-    // {
-    //   title: '15｜【食補中藥小教室-2  黃耆🌱】',
-    //   date: '2022年6月30日',
-    //   content: '我們製作了一系列【食補中藥小教室】，每集介紹一味藥，分享藥材的特色、功效以及入菜的食譜，希望讓健康飲食，中藥食補進入大家的生活！今天要跟大家分享的是 『黃耆』！',
-    //   link: ''
-    // },
-    // {
-    //   title: '15｜【食補中藥小教室-2  黃耆🌱】',
-    //   date: '2022年6月30日',
-    //   content: '我們製作了一系列【食補中藥小教室】，每集介紹一味藥，分享藥材的特色、功效以及入菜的食譜，希望讓健康飲食，中藥食補進入大家的生活！今天要跟大家分享的是 『黃耆』！',
-    //   link: ''
-    // }
-  ]
+  lists: []
 })
 
-const youtubeData = ref<YoutubeType[]>([
-  // {
-  //   iframeLink: 'https://www.youtube.com/embed/yTM0WH8pV2U',
-  //   watchTimes: '',
-  //   date: '',
-  //   title: '[ 顏社 ]- 自躁浪漫 (Official Music Video)',
-  //   person: '李英宏 aka DJ Didilong (ft.李權哲 Jerry Li)'
-  // },
-  // {
-  //   iframeLink: 'https://www.youtube.com/embed/zQGiiIMqisQ',
-  //   watchTimes: '',
-  //   date: '',
-  //   title: '[ 台北紐約Taipei New York ] Official Music Video',
-  //   person: '馬念先'
-  // },
-  // {
-  //   iframeLink: 'https://www.youtube.com/embed/zbSW7aIzXRM',
-  //   watchTimes: '',
-  //   date: '',
-  //   title: '[ 我還繞著你在旋轉 Expired ] Official Music Video',
-  //   person: '宇宙人'
-
-  // },
-  // {
-  //   iframeLink: 'https://www.youtube.com/embed/zQGiiIMqisQ',
-  //   watchTimes: '',
-  //   date: '',
-  //   title: '[ 台北紐約Taipei New York ] Official Music Video',
-  //   person: '馬念先'
-  // },
-])
+const youtubeData = ref<YoutubeType[]>([])
 
 const salonData = ref<SalonType>({
   img: '',
@@ -91,9 +48,11 @@ const pageHomeData = ref<{
   podcastData: PodcastType,
   youtubeData: YoutubeType[],
   salonData: SalonType,
+  bannerData: BannerType,
 }>((useFirestore(pageHomeDB)) as any)
 watchEffect(() => {
   if (pageHomeData.value) {
+    bannerData.value = pageHomeData.value.bannerData;
     podcastData.value = pageHomeData.value.podcastData;
     youtubeData.value = pageHomeData.value.youtubeData;
     salonData.value = pageHomeData.value.salonData;
