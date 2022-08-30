@@ -1,6 +1,6 @@
 <template>
   <div class="life">
-    <Banner :bannerData="bannerData"></Banner>
+    <!-- <Banner :bannerData="bannerData"></Banner> -->
     <div class="custom-container">
       <Podcast :podcastData="podcastData"></Podcast>
       <Youtube :youtubeData="youtubeData"></Youtube>
