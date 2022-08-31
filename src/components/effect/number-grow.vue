@@ -2,10 +2,15 @@
   <div class="custom-block">
     <Title :title="props.title"></Title>
     <div class="number-info">
-      <div class="number-grow" ref="numberGrow" :data-time="time" :data-value="number">
-        {{props.number}}
+      <div
+        class="number-grow"
+        ref="numberGrow"
+        :data-time="time"
+        :data-value="number"
+      >
+        {{ props.number }}
       </div>
-      <div class="unit">{{props.unit}}</div>
+      <div class="unit">{{ props.unit }}</div>
     </div>
   </div>
 </template>
@@ -32,25 +37,27 @@ const props = withDefaults(defineProps<Props>(), {
 
 const numberGrow = ref(null)
 
-const growEffect = (ele:any) => {
+const growEffect = (ele: any) => {
   let step = (props.number * 10) / (props.time * 1000)
   let current = 0
   let start = 0
-  let t:any = setInterval(function(){
+  let t: any = setInterval(function () {
     start += step
-    if(start > props.number) {
+    if (start > props.number) {
       clearInterval(t);
       start = props.number
       t = null
     }
-    if(current === start) {
+    if (current === start) {
       return
     }
     current = start
-    ele.innerHTML = current.toFixed(0).toString() + '+'
+    if (ele && ele.innerHTML) {
+      ele.innerHTML = current.toFixed(0).toString() + '+'
+    }
   }, 10)
 }
-onMounted(()=>{
+onMounted(() => {
   ScrollTrigger.create({
     trigger: ".number-info",
     start: "top 70%",
