@@ -69,7 +69,7 @@ const props = withDefaults(defineProps<Props>(), {
             flex: 2
             display: flex
             flex-direction: column
-            justify-content: space-between
+            justify-content: center
             align-items: flex-start
             padding: 30px 0px
             .title-block
