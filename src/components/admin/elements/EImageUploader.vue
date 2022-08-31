@@ -117,7 +117,7 @@ const convertFile = (file: File,): Promise<string> => {
             'complete': function () {
                 console.log('upload complete!');
                 uploadTask.snapshot.ref.getDownloadURL().then((downloadURL: string) => {
-                    resolve(downloadURL.replace('firebasestorage.googleapis.com', import.meta.env.VITE_DOMAIN))
+                    resolve(downloadURL.replace('firebasestorage.googleapis.com', 'https://firestore.bgmotion.com.tw/'))
                 });
             }
         });

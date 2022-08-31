@@ -26,8 +26,8 @@ export const uploadStorage = (path: string, file: File,): Promise<string> => {
         uploadTask.on(storage.TaskEvent.STATE_CHANGED, {
             'complete': function () {
                 console.log('upload complete!');
-                uploadTask.snapshot.ref.getDownloadURL().then((downloadURL: string ) => {
-                    resolve(downloadURL.replace('firebasestorage.googleapis.com', import.meta.env.VITE_DOMAIN))
+                uploadTask.snapshot.ref.getDownloadURL().then((downloadURL: string) => {
+                    resolve(downloadURL.replace('firebasestorage.googleapis.com', 'https://firestore.bgmotion.com.tw/'))
                 });
             }
         });
@@ -45,6 +45,18 @@ export const removeStorage = (fileUrl: string) => {
             .then(() => resolve())
             .catch(() => resolve());
     })
+}
+export const handleCacheError = (payload: Event) => {
+    console.log("🚀 ~ file: firebase.ts ~ line 50 ~ handleCacheError ~ payload", payload)
+    const firestore_url = 'https://firebasestorage.googleapis.com/';
+    const imgElement = payload.target as HTMLImageElement
+    if (imgElement && imgElement.nodeName==='IMG' && imgElement.src.indexOf('v0') > -1) {
+        
+        const object_path = imgElement.src.split('v0')[1]
+        imgElement.src = `${firestore_url}v0${object_path}`
+    }
+
+
 }
 
 export const auth = firebase.auth

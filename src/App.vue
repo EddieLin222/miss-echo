@@ -6,10 +6,13 @@
 import { ref } from 'vue';
 import { useMainStore } from './stores/main.store';
 
+import { handleCacheError } from '@/common/firebase'
 
 // import slider1 from './components/slider-1.vue'
 
 const store = useMainStore();
+
+document.addEventListener('error', handleCacheError, true)
 
 </script>
 
