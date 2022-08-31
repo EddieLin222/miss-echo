@@ -52,15 +52,15 @@ const navItems = [
   },
   {
     name: '有意識生活',
-    link: '/comming-soon'
+    link: '/life'
   },
   {
     name: '關於我們',
-    link: '/comming-soon'
+    link: '/about'
   },
   {
     name: '永續日記',
-    link: '/comming-soon'
+    link: '/journal'
   },
   {
     name: '我要訂餐',
