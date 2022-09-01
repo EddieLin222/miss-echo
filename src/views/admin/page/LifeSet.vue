@@ -221,8 +221,8 @@
                                         第{{ index + 1 }}項崁入連結
                                     </div>
                                     <q-input
-                                    @focus="()=>element.iframeLink=''"
-                                        @update:model-value="(link)=>{handleYoutubeLinkFilter(link as string, element, 'iframeLink')}"
+                                        @focus="() => element.iframeLink = ''"
+                                        @update:model-value="(link) => { handleYoutubeLinkFilter(link as string, element, 'iframeLink') }"
                                         :model-value="element.iframeLink"
                                         filled
                                     />
@@ -412,18 +412,25 @@ const removePodcastItem = async (index: number) => {
 
 //  Youtube 
 
-const handleYoutubeLinkFilter = (link: string, element:any, key:string) => {
-    let youtubeId:undefined|null|string = null
+const handleYoutubeLinkFilter = (link: string, element: any, key: string) => {
+    const el = document.activeElement
+    if (el instanceof HTMLInputElement) {
+        el.blur()
+    }
+    let youtubeId: undefined | null | string = null;
     if (link.indexOf('v=') > -1) {
-     youtubeId = new URLSearchParams((new URL(link)).search).get('v')
-    }else if(link.indexOf('youtu.be') > -1){
-        youtubeId = reverse(link.split('/'))[0] 
+        youtubeId = new URLSearchParams((new URL(link)).search).get('v')
+    } else if (link.indexOf('youtu.be') > -1) {
+        youtubeId = reverse(link.split('/'))[0]
     }
-    if(youtubeId){
-        element[key] =  `https://www.youtube.com/embed/${youtubeId}`
-        return ;
+    if (youtubeId) {
+        element[key] = `https://www.youtube.com/embed/${youtubeId}`
+        return;
     }
-    element[key] = link
+    element[key] = link;
+
+
+
 
 }
 
