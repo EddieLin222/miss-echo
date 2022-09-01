@@ -53,7 +53,6 @@
                 :name="`介紹Podcast`"
             />
             <q-input
-
                 label="簡介"
                 filled
                 v-model="podcastData.intro"
@@ -222,8 +221,10 @@
                                         第{{ index + 1 }}項崁入連結
                                     </div>
                                     <q-input
+                                    @focus="()=>element.iframeLink=''"
+                                        @update:model-value="(link)=>{handleYoutubeLinkFilter(link as string, element, 'iframeLink')}"
+                                        :model-value="element.iframeLink"
                                         filled
-                                        v-model="element.iframeLink"
                                     />
                                     <div class="mt-5 font-bold text-lg">第{{ index + 1 }}項觀看次數</div>
                                     <q-input
@@ -263,7 +264,7 @@
     </div>
 
 
-        <!-- 綠色沙龍 -->
+    <!-- 綠色沙龍 -->
     <div class="p-3 border-b ">
         <div class="flex items-center gap-3">
             <div class="font-bold text-2xl">綠色沙龍</div>
@@ -283,7 +284,7 @@
                 v-model="salonData.intro"
                 type="textarea"
             />
-              <e-image-uploader
+            <e-image-uploader
                 path="page/life"
                 class="w-[30%] mb-3"
                 v-model="salonData.img"
@@ -312,7 +313,7 @@ import EImageUploader from '@/components/admin/elements/EImageUploader.vue'
 import { useNotify } from '@/composables/notify';
 import { useAdminStore } from '@/stores/admin.store';
 import { useFirestore } from '@vueuse/firebase/useFirestore';
-import { cloneDeep, isEmpty } from 'lodash';
+import { cloneDeep, isEmpty, reverse } from 'lodash';
 import md5 from 'md5';
 import { computed, ref, watchEffect } from 'vue';
 import draggable from 'vuedraggable'
@@ -410,6 +411,22 @@ const removePodcastItem = async (index: number) => {
 
 
 //  Youtube 
+
+const handleYoutubeLinkFilter = (link: string, element:any, key:string) => {
+    let youtubeId:undefined|null|string = null
+    if (link.indexOf('v=') > -1) {
+     youtubeId = new URLSearchParams((new URL(link)).search).get('v')
+    }else if(link.indexOf('youtu.be') > -1){
+        youtubeId = reverse(link.split('/'))[0] 
+    }
+    if(youtubeId){
+        element[key] =  `https://www.youtube.com/embed/${youtubeId}`
+        return ;
+    }
+    element[key] = link
+
+}
+
 const YoutubeItemDefault: YoutubeType = {
     iframeLink: '',
     watchTimes: '',
