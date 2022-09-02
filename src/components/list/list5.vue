@@ -35,8 +35,10 @@ const props = withDefaults(defineProps<Props>(), {
     background-color: #d9d9d9
     display: flex
     flex-direction: column
-    justify-content: center
-    width: calc(33.3333% - 20px)
+    justify-content: flex-start
+    width: calc(33.3333% - 10px)
+    margin-right: 15px
+    margin-bottom: 30px
     .img-block
         width: 100%
         .q-responsive
@@ -51,20 +53,31 @@ const props = withDefaults(defineProps<Props>(), {
         display: flex
         flex-direction: column
         align-items: center
+        flex: 1
         .title
             font-size: 16px
             font-weight: 700
             margin-bottom: 5px
         .intro
             color: #888787
+.list:nth-child(3n+3)
+    margin-right: 0px
 
 @media (max-width: 980px)
     .list
-        width: calc(50% - 15px)
+        width: calc(50% - 8px)
+    .list:nth-child(even)
+        margin-right: 0px
+    .list:nth-child(3n+3)
+        margin-right: 15px
 @media (max-width: 780px)
     .list
         width: 100%
         .content
             padding: 15px
             align-items: flex-start
+    .list
+        margin-right: 0px
+    .list:nth-child(3n+3)
+        margin-right: 0px
 </style>

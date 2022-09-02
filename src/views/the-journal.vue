@@ -1,6 +1,5 @@
 <template>
   <PostDB />
-
   <div class="journal">
     <Boxs :gridData="gridData"></Boxs>
     <div class="custom-container">

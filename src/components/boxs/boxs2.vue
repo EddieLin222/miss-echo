@@ -87,15 +87,14 @@ const props = withDefaults(defineProps<Props>(), {
     .boxs-container
         display: grid
         width: 100%
-        height: 100%
+        // height: 100%
         gap: 15px
-        margin-top: 30px
+        // margin-top: 30px
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
         grid-template-columns: 1fr 1fr 1fr
         .box
             background-color: #fff
             border-radius: 3px
-            overflow: hidden
             .q-responsive
                 background-color: #d2d2d2
                 width: 100%

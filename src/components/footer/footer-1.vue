@@ -14,10 +14,10 @@
         <QRouterLink class="item" to="https://www.facebook.com/misseco.tw">
           <img src="/social/fb.svg">
         </QRouterLink>
-        <QRouterLink class="item" href="https://www.instagram.com/misseco.tw/">
+        <QRouterLink class="item" to="https://www.instagram.com/misseco.tw/">
           <img src="/social/ig.svg">
         </QRouterLink>
-        <QRouterLink class="item" href="https://lin.ee/35kz9K7">
+        <QRouterLink class="item" to="https://lin.ee/35kz9K7">
           <img src="/social/line.svg">
         </QRouterLink>
       </div>

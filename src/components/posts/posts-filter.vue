@@ -109,13 +109,15 @@ const props = withDefaults(defineProps<Props>(), {
         display: flex
         flex-wrap: wrap
         margin-top: 20px
-        gap: 40px
+        // gap: 40px
         .post
             width: calc(50% - 20px)
             display: flex
-            gap: 20px
+            margin-right: 40px
+            margin-bottom: 40px
             .left
                 width: 35%
+                margin-right: 20px
                 .q-responsive
                     width: 100%
                     background-color: #D9D9D9
@@ -127,7 +129,6 @@ const props = withDefaults(defineProps<Props>(), {
                 display: flex
                 flex-direction: column
                 justify-content: space-between
-                gap: 10px
                 width: calc(65% - 20px)
                 .title
                     font-size: 18px
@@ -138,12 +139,15 @@ const props = withDefaults(defineProps<Props>(), {
                     -webkit-line-clamp: 3
                     overflow: hidden
                     color: #696969
+                    margin: 15px 0px
                 .bottom
                     display: flex
                     justify-content: space-between
                     .more
                         color: #78A780
                         font-size: 16px
+        .post:nth-child(even)
+            margin-right: 0px
 .active
     // background-color: #C8EEC8
     background-color: #d9d9d9
@@ -154,8 +158,8 @@ const props = withDefaults(defineProps<Props>(), {
         .list-container
             .post
                 width: 100%
+                margin-right: 0px
                 .right
-                    gap: 20px
                     justify-content: center
 
 @media (max-width: 625px)

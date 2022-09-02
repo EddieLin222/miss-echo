@@ -88,7 +88,6 @@ useHead({
     width: 100%
     display: flex
     flex-direction: column
-    gap: 40px
 @media (max-width: 540px)
   .about
     .custom-container

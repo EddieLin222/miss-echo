@@ -46,7 +46,6 @@ const props = withDefaults(defineProps<Props>(), {
   width: 100%
   .post-container
     display: flex
-    gap: 35px
     margin-top: 20px
     .left
       flex: 1
@@ -66,6 +65,7 @@ const props = withDefaults(defineProps<Props>(), {
       flex: 2
       border-top: solid 1px #A9A9A9
       padding-top: 10px
+      margin-left: 35px
       // border: solid 3px
       .title-block
         .title
@@ -75,4 +75,7 @@ const props = withDefaults(defineProps<Props>(), {
   .posts
     .post-container
       flex-direction: column
+      .right
+        margin-top: 30px
+        margin-left: 0px
 </style>

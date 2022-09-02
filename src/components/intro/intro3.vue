@@ -86,7 +86,6 @@ const props = withDefaults(defineProps<Props>(), {
         display: flex
         background-color: #DDEFE0
         padding: 30px
-        gap: 20px
         .left
           flex: 1
           width: 100%
@@ -101,6 +100,7 @@ const props = withDefaults(defineProps<Props>(), {
           flex-direction: column
           align-items: flex-start
           justify-content: space-between
+          margin-left: 20px
           .list-title
             background-color: #fff
             padding: 0px 20px
@@ -115,33 +115,34 @@ const props = withDefaults(defineProps<Props>(), {
             line-height: 25px
             display: flex
             justify-content: center
-            .inner-container
-              display: flex
-              justify-content: center
-              width: 100%
-              max-width: 250px
-              flex-wrap: wrap
-              .tag-container
-                display: flex
-                padding: 5px
-                width: 50%
-                .tag
-                  text-align: center
-                  white-space: nowrap
-            .tag-container:nth-child(odd)
-              justify-content: flex-start
-            .tag-container:nth-child(even)
-              justify-content: flex-start
+            // .inner-container
+            //   display: flex
+            //   justify-content: center
+            //   width: 100%
+            //   max-width: 250px
+            //   flex-wrap: wrap
+            //   .tag-container
+            //     display: flex
+            //     padding: 5px
+            //     width: 50%
+            //     .tag
+            //       text-align: center
+            //       white-space: nowrap
+            // .tag-container:nth-child(odd)
+            //   justify-content: flex-start
+            // .tag-container:nth-child(even)
+            //   justify-content: flex-start
           .list-btn
             width: 100%
             display: flex
             justify-content: flex-end
-            gap: 15px
             .btn
               background-color: #78A780
               color: #fff
               padding: 5px 15px
               border-radius: 30px
+            .btn:first-child
+              margin-right: 15px
       .list:not(:last-child)
           margin-bottom: 30px
 
@@ -157,6 +158,8 @@ const props = withDefaults(defineProps<Props>(), {
           flex-direction: column
           .right
             align-items: center
+            margin-top: 25px
+            margin-left: 0px
             .list-title, .list-content, .list-btn
               width: auto
 

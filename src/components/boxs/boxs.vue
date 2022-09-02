@@ -112,11 +112,11 @@ const props = withDefaults(defineProps<Props>(), {
         width: 100%
         flex-wrap: wrap
         justify-content: space-between
-        gap: 10px
         margin-top: 30px
         .box
             width: calc(33% - 5px)
-            background-color: #d9d9d9
+            padding: 5px
+            margin-top: 10px
         .q-responsive
             width: 100%
             position: relative
