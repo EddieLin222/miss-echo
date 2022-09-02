@@ -128,17 +128,11 @@
                                         filled
                                         v-model="element.link"
                                     />
-                                    <div class="mt-5 font-bold text-lg">第{{ index + 1 }}項標籤</div>
-                                    <q-select
-        filled
-        v-model="element.tags"
-        use-input
-        use-chips
-        multiple
-        hide-dropdown-icon
-        input-debounce="0"
-        new-value-mode="add-unique"
-      />
+                                    <div class="mt-5 font-bold text-lg">第{{ index + 1 }}項內文</div>
+                                    <q-input
+                                        filled
+                                        v-model="element.content"
+                                    />
 
                                     <e-image-uploader
                                         path="home/booking"
@@ -351,7 +345,7 @@ const serviceData = ref<ServiceDataType>(cloneDeep(ServiceDataDefault))
 // 服務介紹
 const ServiceIntroDefault: ServiceIntroType = {
     title: '',
-    tags: [],
+    content: '',
     img: '',
     link: ''
 }

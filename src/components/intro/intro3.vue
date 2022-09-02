@@ -3,26 +3,39 @@
     <div class="intro-box">
       <Title title="服務介紹"></Title>
       <div class="lists">
-        <div class="list" v-for="(item, index) in props.serviceIntro" :key="index">
-           <div class="box left">
-              <q-responsive :ratio="16/10">
-                <img :src="item.img" alt="">
-              </q-responsive>
-           </div>
-           <div class="box right">
-              <h4 class="list-title">{{item.title}}</h4>
-              <div class="list-content">
-                <div class="inner-container">
-                  <div class="tag-container" v-for="(tag, i) in item.tags" :key="i">
-                    <div class="tag">{{tag}}</div>
-                  </div>
-                </div>
-              </div>
-              <div class="list-btn">
-                <QRouterLink class="btn" to="https://forms.gle/cE73TMwrm5byNT7UA">我要預約</QRouterLink>
-                <QRouterLink class="btn" :to="item.link">了解更多</QRouterLink>
-              </div>
-           </div>
+        <div
+          class="list"
+          v-for="(item, index) in props.serviceIntro"
+          :key="index"
+        >
+          <div class="box left">
+            <q-responsive :ratio="16 / 10">
+              <img
+                :src="item.img"
+                alt=""
+              >
+            </q-responsive>
+          </div>
+          <div class="box right">
+            <h4 class="list-title">{{ item.title }}</h4>
+            <div class="list-content">
+              <!-- <div class="inner-container"> -->
+                <!-- <div class="tag-container"> -->
+                  {{ item.content }}
+                <!-- </div> -->
+              <!-- </div> -->
+            </div>
+            <div class="list-btn">
+              <QRouterLink
+                class="btn"
+                to="https://forms.gle/cE73TMwrm5byNT7UA"
+              >我要預約</QRouterLink>
+              <QRouterLink
+                class="btn"
+                :to="item.link"
+              >了解更多</QRouterLink>
+            </div>
+          </div>
         </div>
       </div>
       <!-- <h1 class="title">環保外送</h1> -->
@@ -40,7 +53,7 @@ const props = withDefaults(defineProps<Props>(), {
   serviceIntro: [
     {
       title: '',
-      tags: [''],
+      content: '',
       img: '',
       link: ''
     },

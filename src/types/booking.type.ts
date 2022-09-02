@@ -16,7 +16,7 @@ export type ServiceDataType = {
 
 export type ServiceIntroType = {  //array
     title: string;
-    tags:string[];
+    content:string;
     img: string;
     link: string;
 }
