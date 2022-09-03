@@ -111,10 +111,10 @@ const props = withDefaults(defineProps<Props>(), {
             font-family: 'Noto Serif TC', serif
           .list-content
             width: 100%
-            padding: 20px 0px
+            padding: 20px 10px
             line-height: 25px
             display: flex
-            justify-content: center
+            justify-content: flex-start
             // .inner-container
             //   display: flex
             //   justify-content: center
