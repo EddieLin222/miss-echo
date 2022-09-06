@@ -3,7 +3,7 @@
     <Title title="菜單介紹"></Title>
     <!-- <Banner :bannerData="bannerData"></Banner> -->
     <div class="custom-container">
-      <div class="main" v-viewer>
+      <div class="main" @click="setIndex(0)">
         <img :src="menuList[0].img" alt="">
       </div>
       <div class="slide-block">
@@ -11,20 +11,19 @@
           <img src="/arrow/left.svg" alt="" class="arrow">
         </div>
         <swiper
-    
           :modules="[Navigation]"
           :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
           :slides-per-view="width < 660 ? 1 : width < 960 ? 2 : width >= 960 && width < 1240 ? (smallList.length>=3 ? 3 : smallList.length) : width >= 1240 && width < 1400? (smallList.length >= 4 ? 4 : smallList.length) : (smallList.length >= 6 ? 6 : smallList.length)"
           :space-between="30"
           :scrollbar="{ draggable: true }"
+          @click="handleClick"
         >
           <swiper-slide
-          
             v-for="(list, index) in smallList"
             :key="index"
           >
             <div  class="img-block">
-              <img   :src="list.img" alt="">
+              <img :src="list.img" alt="">
             </div>
           </swiper-slide>
         </swiper>
@@ -33,21 +32,24 @@
         </div>
       </div>
     </div>
-    <div class="popup">
+    <div class="popup" :class="{show: isOpenPopup}">
+      <div class="close-btn" @click="isOpenPopup = false">
+        <q-icon name="cancel"></q-icon>
+      </div>
       <div class="pop-block">
         <div class="prev-btn">
           <img src="/arrow/left.svg" alt="" class="arrow">
         </div>
-        <swiper
-        v-viewer
+        <swiper v-if="isOpenPopup"
           :modules="[Navigation]"
           :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
-          :slides-per-view="width < 660 ? 1 : width < 960 ? 2 : width >= 960 && width < 1240 ? (smallList.length>=3 ? 3 : smallList.length) : width >= 1240 && width < 1400? (smallList.length >= 4 ? 4 : smallList.length) : (smallList.length >= 6 ? 6 : smallList.length)"
+          :slides-per-view="1"
           :space-between="30"
           :scrollbar="{ draggable: true }"
+          :initialSlide="currentIndex"
         >
           <swiper-slide
-            v-for="(list, index) in smallList"
+            v-for="(list, index) in menuList"
             :key="index"
           >
             <div class="img-block">
@@ -78,30 +80,33 @@ import { useWindowSize } from '@vueuse/core'
 
 const { width } = useWindowSize()
 
+const currentIndex = ref(0)
+const isOpenPopup = ref(false)
+
 const menuList = ref([
   {
     img: '/always/always1.png'
   },
   {
-    img: '/always/always1.png'
+    img: '/always/always2.png'
+  },
+  {
+    img: '/always/always3.png'
+  },
+  {
+    img: '/always/always4.png'
+  },
+  {
+    img: '/always/always5.png'
+  },
+  {
+    img: '/always/always6.png'
   },
   {
     img: '/always/always1.png'
   },
   {
-    img: '/always/always1.png'
-  },
-  {
-    img: '/always/always1.png'
-  },
-  {
-    img: '/always/always1.png'
-  },
-  {
-    img: '/always/always1.png'
-  },
-  {
-    img: '/always/always1.png'
+    img: '/always/always2.png'
   }
 ])
 
@@ -109,6 +114,19 @@ const smallList = computed(()=>{
   const result = menuList.value.filter((e, i)=>i!==0)
   return result
 })
+
+const setIndex = (index: number) => {
+  currentIndex.value = index
+  isOpenPopup.value = true
+  console.log(index)
+}
+
+const handleClick = (swiper: any) => {
+  currentIndex.value = swiper.clickedIndex + 1
+  isOpenPopup.value = true
+  console.log(currentIndex.value)
+} 
+
 
 // SEO
 useHead({
@@ -151,6 +169,9 @@ useHead({
   padding: 60px 100px
   position: relative
   .popup
+    display: flex
+    flex-direction: column
+    transition-duration: .3s
     position: fixed
     background-color: #DDEFE0
     height: 100vh
@@ -158,7 +179,39 @@ useHead({
     top: 0
     left: 0
     z-index: 9998
-    display: none
+    padding: 100px 60px
+    opacity: 0
+    pointer-events: none
+    .close-btn
+      display: inline-flex
+      justify-content: flex-end
+      margin-bottom: 30px
+      .q-icon
+        font-size: 40px
+    .pop-block
+      display: flex
+      height: calc(100% - 70px)
+      align-items: center
+      .swiper
+        height: 100%
+        .swiper-slide
+          display: flex
+          flex-direction: column
+          justify-content: flex-start
+          align-items: center
+          .img-block
+            display: flex
+            height: 100%
+            img
+              height: 100%
+      .prev-btn, .next-btn
+        display: flex
+        align-items: center
+        cursor: pointer
+        padding: 15px
+        .arrow
+          width: 50px
+          max-width: 50px
   .custom-container
     margin-top: 20px
     height: 100%
@@ -174,53 +227,56 @@ useHead({
         top: 50%
         left: 50%
         transform: translate(-50%, -50%)
-    .slide-block
+  .slide-block
+    display: flex
+    height: 50%
+    padding: 40px 0px
+    .prev-btn
       display: flex
-      height: 50%
-      padding: 40px 0px
-      .prev-btn
+      align-items: center
+      cursor: pointer
+      padding: 15px
+      .arrow
+        width: 50px
+        max-width: 50px
+    .next-btn
+      display: flex
+      align-items: center
+      cursor: pointer
+      padding: 15px
+      .arrow
+        width: 50px
+        max-width: 50px
+    .swiper
+      --swiper-navigation-size: 30px
+      .swiper-slide
         display: flex
+        flex-direction: column
+        justify-content: flex-start
         align-items: center
-        cursor: pointer
-        padding: 15px
-        .arrow
-          width: 50px
-          max-width: 50px
-      .next-btn
-        display: flex
-        align-items: center
-        cursor: pointer
-        padding: 15px
-        .arrow
-          width: 50px
-          max-width: 50px
-      .swiper
-        --swiper-navigation-size: 30px
-        .swiper-slide
+        .img-block
           display: flex
-          flex-direction: column
-          justify-content: flex-start
-          align-items: center
-          .img-block
-            display: flex
-            height: 100%
-            width: 100%
-            overflow: hidden
-            background-color: #d2d2d2
-            img
-              min-width: 100%
-              min-height: 100%
-              object-fit: cover
-        :deep() .swiper-button-prev
-          padding: 20px
-          color: #000
-          font-weight: 900
-        :deep() .swiper-button-disabled
-          opacity: 1
-        :deep() .swiper-button-next
-          padding: 20px
-          color: #000
-          font-weight: 900
+          height: 100%
+          width: 100%
+          overflow: hidden
+          background-color: #d2d2d2
+          img
+            min-width: 100%
+            min-height: 100%
+            object-fit: cover
+      :deep() .swiper-button-prev
+        padding: 20px
+        color: #000
+        font-weight: 900
+      :deep() .swiper-button-disabled
+        opacity: 1
+      :deep() .swiper-button-next
+        padding: 20px
+        color: #000
+        font-weight: 900
+.show
+  opacity: 1 !important
+  pointer-events: auto !important
 @media (max-width: 780px)
   .menu
     padding: 60px 15%
