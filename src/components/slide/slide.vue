@@ -125,12 +125,14 @@ const textFilter = (text: string) => {
         .prev-btn
             display: flex
             align-items: center
+            cursor: pointer
             .q-icon
                 color: #acbeaf
                 font-size: 50px
         .next-btn
             display: flex
             align-items: center
+            cursor: pointer
             .q-icon
                 color: #acbeaf
                 font-size: 50px

@@ -21,6 +21,7 @@
     "quasar": "^2.3.2",
     "safe-await": "^2.0.0",
     "swiper": "^8.3.2",
+    "v-viewer": "^3.0.10",
     "vite-plugin-package-version": "^1.0.2",
     "vue": "^3.2.16",
     "vue-router": "^4.1.3",

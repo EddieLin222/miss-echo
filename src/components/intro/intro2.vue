@@ -109,12 +109,14 @@ const props = withDefaults(defineProps<Props>(), {
       .prev-btn
         display: flex
         align-items: center
+        cursor: pointer
         .q-icon
           font-size: 35px
           transform: rotate(90deg)
       .next-btn
         display: flex
         align-items: center
+        cursor: pointer
         .q-icon
           font-size: 35px
           transform: rotate(-90deg)

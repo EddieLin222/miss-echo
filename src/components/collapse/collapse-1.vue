@@ -74,6 +74,8 @@ const props = defineProps<Props>();
     font-size: 28px
   .block
     width: 100%
+    .item
+        cursor: pointer
     .item-title
         color: #000
         padding: 5px

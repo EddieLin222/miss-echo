@@ -25,6 +25,9 @@ const head = createHead()
 import QRouterLink from '@/components//QRouterLink.vue';
 
 
+import VueViewer from 'v-viewer'
+
+
 createApp(App)
   .component('QRouterLink', QRouterLink)
   .use(Quasar, {
@@ -37,5 +40,6 @@ createApp(App)
   .use(createPinia())
   .use(router)
   .use(head)
+  .use(VueViewer)
   .mount('#app')
 

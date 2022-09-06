@@ -170,6 +170,7 @@ const props = withDefaults(defineProps<Props>(), {
                 flex-direction: column
                 .left
                     width: 100%
+                    margin-bottom: 20px
                 .right
                     width: 100%
 

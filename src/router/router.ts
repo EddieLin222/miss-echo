@@ -57,6 +57,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'post',
         component: () => import('../views/the-post.vue')
       },
+      {
+        path: `/menu`,
+        name: 'menu',
+        component: () => import('../views/the-menu.vue')
+      }
     ]
   },
   {

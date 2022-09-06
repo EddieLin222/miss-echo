@@ -134,12 +134,14 @@ const props = withDefaults(defineProps<Props>(), {
         .prev
             display: flex
             align-items: center
+            cursor: pointer
             .q-icon
                 font-size: 35px
                 color: #acbeaf
         .next
             display: flex
             align-items: center
+            cursor: pointer
             .q-icon
                 font-size: 35px
                 color: #acbeaf
