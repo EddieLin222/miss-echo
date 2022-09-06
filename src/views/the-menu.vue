@@ -5,6 +5,10 @@
     <div class="custom-container">
       <div class="main" @click="setIndex(0)">
         <img :src="menuList[0].img" alt="">
+        <div class="intro">
+          <div class="title">標題標題標題</div>
+          <div class="content">介紹介紹介紹介紹介紹介紹介紹介紹介紹介紹</div>
+        </div>
       </div>
       <div class="slide-block">
         <div class="prev-btn">
@@ -200,10 +204,16 @@ useHead({
           justify-content: flex-start
           align-items: center
           .img-block
-            display: flex
+            width: 100%
             height: 100%
+            display: flex
+            justify-content: center
+            align-items: center
             img
-              height: 100%
+              max-height: 100%
+              max-width: 100%
+
+              // object-fit: contain
       .prev-btn, .next-btn
         display: flex
         align-items: center
@@ -227,6 +237,23 @@ useHead({
         top: 50%
         left: 50%
         transform: translate(-50%, -50%)
+      .intro
+        position: absolute
+        color: #fff
+        top: 50%
+        left: 30px
+        transform: translateY(-50%)
+        max-width: calc(100% - 60px)
+        pointer-events: none
+        .title
+          font-size: 28px
+          font-weight: 700
+          margin-bottom: 5px
+          text-shadow: 1px 1px 2px black
+        .content
+          font-size: 20px
+          font-weight: 700
+          text-shadow: 1px 1px 2px black
   .slide-block
     display: flex
     height: 50%
