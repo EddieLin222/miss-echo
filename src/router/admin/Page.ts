@@ -17,6 +17,16 @@ const routes: RouteRecordRaw =
     },
     children: [
         {
+            name: 'ScriptSet',
+            path: 'setscript',
+            meta: {
+                title: '腳本設定',
+                icon: 'home',
+                showInMenu: true
+            },
+            component: () => import('@/views/admin/page/ScriptSet.vue'),
+        },
+        {
             name: 'HomeSet',
             path: 'sethome',
             meta: {
