@@ -10,6 +10,7 @@
           <div class="content">介紹介紹介紹介紹介紹介紹介紹介紹介紹介紹</div>
         </div>
       </div>
+      <div class="more">更多菜單</div>
       <div class="slide-block">
         <div class="prev-btn">
           <img src="/arrow/left.svg" alt="" class="arrow">
@@ -17,8 +18,8 @@
         <swiper
           :modules="[Navigation]"
           :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
-          :slides-per-view="width < 660 ? 1 : width < 960 ? 2 : width >= 960 && width < 1240 ? (smallList.length>=3 ? 3 : smallList.length) : width >= 1240 && width < 1400? (smallList.length >= 4 ? 4 : smallList.length) : (smallList.length >= 6 ? 6 : smallList.length)"
-          :space-between="30"
+          :slides-per-view="width < 1240 ? (smallList.length>=3 ? 3 : smallList.length) : width >= 1240 && width < 1400? (smallList.length >= 4 ? 4 : smallList.length) : (smallList.length >= 6 ? 6 : smallList.length)"
+          :space-between="10"
           :scrollbar="{ draggable: true }"
           @click="handleClick"
         >
@@ -225,6 +226,9 @@ useHead({
   .custom-container
     margin-top: 20px
     height: 100%
+    .more
+      font-size: 18px
+      margin: 20px 0px 10px 0px
     .main
       height: 50%
       overflow: hidden
@@ -254,59 +258,71 @@ useHead({
           font-size: 20px
           font-weight: 700
           text-shadow: 1px 1px 2px black
-  .slide-block
-    display: flex
-    height: 50%
-    padding: 40px 0px
-    .prev-btn
+    .slide-block
       display: flex
-      align-items: center
-      cursor: pointer
-      padding: 15px
-      .arrow
-        width: 50px
-        max-width: 50px
-    .next-btn
-      display: flex
-      align-items: center
-      cursor: pointer
-      padding: 15px
-      .arrow
-        width: 50px
-        max-width: 50px
-    .swiper
-      --swiper-navigation-size: 30px
-      .swiper-slide
+      height: calc(50% - 60px)
+      padding: 0px 0px 20px 0px
+      .prev-btn
         display: flex
-        flex-direction: column
-        justify-content: flex-start
         align-items: center
-        .img-block
+        cursor: pointer
+        padding: 15px
+        .arrow
+          width: 50px
+          max-width: 50px
+      .next-btn
+        display: flex
+        align-items: center
+        cursor: pointer
+        padding: 15px
+        .arrow
+          width: 50px
+          max-width: 50px
+      .swiper
+        --swiper-navigation-size: 30px
+        .swiper-slide
           display: flex
-          height: 100%
-          width: 100%
-          overflow: hidden
-          background-color: #d2d2d2
-          img
-            min-width: 100%
-            min-height: 100%
-            object-fit: cover
-      :deep() .swiper-button-prev
-        padding: 20px
-        color: #000
-        font-weight: 900
-      :deep() .swiper-button-disabled
-        opacity: 1
-      :deep() .swiper-button-next
-        padding: 20px
-        color: #000
-        font-weight: 900
+          flex-direction: column
+          justify-content: flex-start
+          align-items: center
+          .img-block
+            display: flex
+            height: 100%
+            width: 100%
+            overflow: hidden
+            background-color: #d2d2d2
+            img
+              min-width: 100%
+              min-height: 100%
+              object-fit: cover
+        :deep() .swiper-button-prev
+          padding: 20px
+          color: #000
+          font-weight: 900
+        :deep() .swiper-button-disabled
+          opacity: 1
+        :deep() .swiper-button-next
+          padding: 20px
+          color: #000
+          font-weight: 900
 .show
   opacity: 1 !important
   pointer-events: auto !important
+@media (max-width: 960px)
+  .menu
+    .custom-container
+      .slide-block
+        .prev-btn, .next-btn
+          display: none
+
 @media (max-width: 780px)
   .menu
-    padding: 60px 15%
+    padding: 70px 15%
+    .custom-container
+      .main
+        height: 60%
+      .slide-block
+        height: calc(40% - 60px)
     .arrow
       width: 30px !important
 @media (max-width: 580px)
