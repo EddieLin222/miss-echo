@@ -211,9 +211,9 @@ useHead({
             justify-content: center
             align-items: center
             img
+              height: 100%
               max-height: 100%
               max-width: 100%
-
               // object-fit: contain
       .prev-btn, .next-btn
         display: flex
