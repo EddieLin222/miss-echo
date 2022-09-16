@@ -4,10 +4,10 @@
     <!-- <Banner :bannerData="bannerData"></Banner> -->
     <div class="custom-container">
       <div class="main" @click="setIndex(0)">
-        <img :src="menuList[0].img" alt="">
+        <img :src="menuData.menuList[0].img" alt="">
         <div class="intro">
-          <div class="title">標題標題標題</div>
-          <div class="content">介紹介紹介紹介紹介紹介紹介紹介紹介紹介紹</div>
+          <div class="title">{{menuData.title}}</div>
+          <div class="content">{{menuData.content}}</div>
         </div>
       </div>
       <div class="more">更多菜單</div>
@@ -54,7 +54,7 @@
           :initialSlide="currentIndex"
         >
           <swiper-slide
-            v-for="(list, index) in menuList"
+            v-for="(list, index) in menuData.menuList"
             :key="index"
           >
             <div class="img-block">
@@ -66,6 +66,9 @@
           <img src="/arrow/right.svg" alt="" class="arrow">
         </div>
       </div>
+      <div class="btn-block">
+        <QRouterLink class="btn" :to="menuData.menuList[currentIndex].link">我要訂餐</QRouterLink>
+      </div>
     </div>
   </div>
 </template>
@@ -73,6 +76,7 @@
 <script setup lang="ts">
 import Title from "../components/title/title-1.vue"
 import { ref, computed, watchEffect, onMounted } from 'vue';
+import { menuType } from '@/types/menu.type';
 import { useHead } from "@vueuse/head"
 
 import { Navigation } from 'swiper';
@@ -88,35 +92,48 @@ const { width } = useWindowSize()
 const currentIndex = ref(0)
 const isOpenPopup = ref(false)
 
-const menuList = ref([
-  {
-    img: '/always/always1.png'
-  },
-  {
-    img: '/always/always2.png'
-  },
-  {
-    img: '/always/always3.png'
-  },
-  {
-    img: '/always/always4.png'
-  },
-  {
-    img: '/always/always5.png'
-  },
-  {
-    img: '/always/always6.png'
-  },
-  {
-    img: '/always/always1.png'
-  },
-  {
-    img: '/always/always2.png'
-  }
-])
+const menuData = ref<menuType>({
+  title: '標題',
+  content: '內文',
+  menuList: [
+    {
+      img: '/always/always1.png',
+      link: ''
+    },
+    {
+      img: '/always/always2.png',
+      link: ''
+    },
+    {
+      img: '/always/always3.png',
+      link: ''
+    },
+    {
+      img: '/always/always4.png',
+      link: ''
+    },
+    {
+      img: '/always/always5.png',
+      link: ''
+    },
+    {
+      img: '/always/always6.png',
+      link: ''
+    },
+    {
+      img: '/always/always1.png',
+      link: ''
+    },
+    {
+      img: '/always/always2.png',
+      link: ''
+    }
+  ]
+})
+
 
 const smallList = computed(()=>{
-  const result = menuList.value.filter((e, i)=>i!==0)
+  const result = menuData.value.menuList.filter((e, i)=>i!==0)
   return result
 })
 
@@ -137,14 +154,12 @@ const safariHacks = () => {
   const el = document.querySelector('.popup');
   if(el && el instanceof HTMLElement){
     el.style.setProperty('--vh', windowsVH + 'px')
-    window.addEventListener('resize', ()=>{
-      el.style.setProperty('--vh', windowsVH + 'px')
-    })
   }
 }
 
 onMounted(()=>{
   safariHacks()
+  window.addEventListener('resize', safariHacks)
 })
 
 
@@ -203,16 +218,26 @@ useHead({
     padding: 100px 10%
     opacity: 0
     pointer-events: none
+    .btn-block
+      display: flex
+      justify-content: center
+      .btn
+        background-color: #78A780
+        color: #fff
+        border-radius: 30px
+        padding: 5px 18px
+        font-size: 18px
     .close-btn
       display: inline-flex
       justify-content: flex-end
+      cursor: pointer
       .q-icon
         font-size: 40px
     .pop-block
       display: flex
       height: calc(100% - 70px)
       align-items: center
-      margin: 10px 0px 30px 0px 
+      margin: 10px 0px 10px 0px 
       .swiper
         height: 100%
         .swiper-slide
@@ -226,10 +251,11 @@ useHead({
             // width: 100%
             // height: 100%
             display: flex
+            flex-direction: column
             justify-content: center
             align-items: center
             img
-              max-height: 100%
+              max-height: calc(100% - 80px)
               max-width: 100%
               object-fit: contain
       .prev-btn, .next-btn
