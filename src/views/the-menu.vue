@@ -72,7 +72,7 @@
 
 <script setup lang="ts">
 import Title from "../components/title/title-1.vue"
-import { ref, computed, watchEffect } from 'vue';
+import { ref, computed, watchEffect, onMounted } from 'vue';
 import { useHead } from "@vueuse/head"
 
 import { Navigation } from 'swiper';
@@ -130,7 +130,22 @@ const handleClick = (swiper: any) => {
   currentIndex.value = swiper.clickedIndex + 1
   isOpenPopup.value = true
   console.log(currentIndex.value)
-} 
+}
+
+const safariHacks = () => {
+  let windowsVH = window.innerHeight / 100;
+  const el = document.querySelector('.popup');
+  if(el && el instanceof HTMLElement){
+    el.style.setProperty('--vh', windowsVH + 'px')
+    window.addEventListener('resize', ()=>{
+      el.style.setProperty('--vh', windowsVH + 'px')
+    })
+  }
+}
+
+onMounted(()=>{
+  safariHacks()
+})
 
 
 // SEO
@@ -180,41 +195,43 @@ useHead({
     position: fixed
     background-color: #DDEFE0
     height: 100vh
+    height: calc(var(--vh, 1vh) * 100)
     width: 100%
     top: 0
     left: 0
     z-index: 9998
-    padding: 100px 60px
+    padding: 100px 10%
     opacity: 0
     pointer-events: none
     .close-btn
       display: inline-flex
       justify-content: flex-end
-      margin-bottom: 30px
       .q-icon
         font-size: 40px
     .pop-block
       display: flex
       height: calc(100% - 70px)
       align-items: center
+      margin: 10px 0px 30px 0px 
       .swiper
         height: 100%
         .swiper-slide
           display: flex
           flex-direction: column
-          justify-content: flex-start
+          justify-content: center
           align-items: center
           .img-block
-            width: 100%
-            height: 100%
+            max-height: 100%
+            max-width: 100%
+            // width: 100%
+            // height: 100%
             display: flex
             justify-content: center
             align-items: center
             img
-              height: 100%
               max-height: 100%
               max-width: 100%
-              // object-fit: contain
+              object-fit: contain
       .prev-btn, .next-btn
         display: flex
         align-items: center
