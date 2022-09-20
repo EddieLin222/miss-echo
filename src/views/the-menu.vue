@@ -3,17 +3,27 @@
     <Title title="菜單介紹"></Title>
     <!-- <Banner :bannerData="bannerData"></Banner> -->
     <div class="custom-container">
-      <div class="main" @click="setIndex(0)">
-        <img :src="menuData.menuList[0].img" alt="">
+      <div
+        class="main"
+        @click="setIndex(0)"
+      >
+        <img
+          :src="menuData.menuList[0].img"
+          alt=""
+        >
         <div class="intro">
-          <div class="title">{{menuData.title}}</div>
-          <div class="content">{{menuData.content}}</div>
+          <div class="title">{{menuData.textArea.title}}</div>
+          <div class="content">{{menuData.textArea.content}}</div>
         </div>
       </div>
       <div class="more">更多菜單</div>
       <div class="slide-block">
         <div class="prev-btn">
-          <img src="/arrow/left.svg" alt="" class="arrow">
+          <img
+            src="/arrow/left.svg"
+            alt=""
+            class="arrow"
+          >
         </div>
         <swiper
           :modules="[Navigation]"
@@ -27,25 +37,43 @@
             v-for="(list, index) in smallList"
             :key="index"
           >
-            <div  class="img-block">
-              <img :src="list.img" alt="">
+            <div class="img-block">
+              <img
+                :src="list.img"
+                alt=""
+              >
             </div>
           </swiper-slide>
         </swiper>
         <div class="next-btn">
-          <img src="/arrow/right.svg" alt="" class="arrow">
+          <img
+            src="/arrow/right.svg"
+            alt=""
+            class="arrow"
+          >
         </div>
       </div>
     </div>
-    <div class="popup" :class="{show: isOpenPopup}">
-      <div class="close-btn" @click="isOpenPopup = false">
+    <div
+      class="popup"
+      :class="{show: isOpenPopup}"
+    >
+      <div
+        class="close-btn"
+        @click="isOpenPopup = false"
+      >
         <q-icon name="cancel"></q-icon>
       </div>
       <div class="pop-block">
         <div class="prev-btn">
-          <img src="/arrow/left.svg" alt="" class="arrow">
+          <img
+            src="/arrow/left.svg"
+            alt=""
+            class="arrow"
+          >
         </div>
-        <swiper v-if="isOpenPopup"
+        <swiper
+          v-if="isOpenPopup"
           :modules="[Navigation]"
           :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
           :slides-per-view="1"
@@ -58,22 +86,35 @@
             :key="index"
           >
             <div class="img-block">
-              <img :src="list.img" alt="">
+              <img
+                :src="list.img"
+                alt=""
+              >
             </div>
           </swiper-slide>
         </swiper>
         <div class="next-btn">
-          <img src="/arrow/right.svg" alt="" class="arrow">
+          <img
+            src="/arrow/right.svg"
+            alt=""
+            class="arrow"
+          >
         </div>
       </div>
       <div class="btn-block">
-        <QRouterLink class="btn" :to="menuData.menuList[currentIndex].link">我要訂餐</QRouterLink>
+        <QRouterLink
+          class="btn"
+          :to="menuData.menuList[currentIndex].link"
+        >我要訂餐</QRouterLink>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { db } from '@/common/firebase';
+import { useFirestore } from '@vueuse/firebase';
+
 import Title from "../components/title/title-1.vue"
 import { ref, computed, watchEffect, onMounted } from 'vue';
 import { menuType } from '@/types/menu.type';
@@ -93,8 +134,11 @@ const currentIndex = ref(0)
 const isOpenPopup = ref(false)
 
 const menuData = ref<menuType>({
-  title: '標題',
-  content: '內文',
+  textArea: {
+    title: '標題',
+    content: '內文',
+  },
+
   menuList: [
     {
       img: '/always/always1.png',
@@ -132,8 +176,8 @@ const menuData = ref<menuType>({
 })
 
 
-const smallList = computed(()=>{
-  const result = menuData.value.menuList.filter((e, i)=>i!==0)
+const smallList = computed(() => {
+  const result = menuData.value.menuList.filter((e, i) => i !== 0)
   return result
 })
 
@@ -152,14 +196,24 @@ const handleClick = (swiper: any) => {
 const safariHacks = () => {
   let windowsVH = window.innerHeight / 100;
   const el = document.querySelector('.popup');
-  if(el && el instanceof HTMLElement){
+  if (el && el instanceof HTMLElement) {
     el.style.setProperty('--vh', windowsVH + 'px')
   }
 }
 
-onMounted(()=>{
+onMounted(() => {
   safariHacks()
   window.addEventListener('resize', safariHacks)
+})
+
+// Firestore
+const pageHomeDB = db().collection('Page').doc('Menu')
+const pageHomeData = ref<menuType>((useFirestore(pageHomeDB)) as any)
+watchEffect(() => {
+  if (pageHomeData.value) {
+    menuData.value.textArea = pageHomeData.value.textArea;
+    menuData.value.menuList = pageHomeData.value.menuList;
+  }
 })
 
 

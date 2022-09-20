@@ -88,6 +88,16 @@ const routes: RouteRecordRaw =
             component: () => import('@/views/admin/page/JournalSet.vue'),
         },
         {
+            name: 'MenuSet',
+            path: 'setmenu',
+            meta: {
+                title: '菜單介紹設定',
+                icon: 'home',
+                showInMenu: true
+            },
+            component: () => import('@/views/admin/page/MenuSet.vue'),
+        },
+        {
             name: 'AdminSet',
             path: 'setAdmin',
             meta: {
