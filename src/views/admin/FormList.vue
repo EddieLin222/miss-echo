@@ -1,26 +1,10 @@
 <template>
     <div class="q-pa-md">
-        <!-- <div
-            v-if="formStore.formSetting && 'status' in formStore.formSetting"
-            class="my-3 flex gap-1"
-        >
-            <div
-                class="text-white p-3"
-                :style="current_status==='All'?`background-color: #000000;`:`background-color: #ffffff;`"
-            >
-                ALL
-            </div>
-            <template v-for="status in formStore.formSetting.status">
-                <div
-                    class="text-white p-3 border"
-                    :style="current_status===status.text?`background-color: #000000;`:`background-color: #fff000;`"
-                >
-                    {{status.text}}
-                </div>
-            </template>
-       
-
-        </div> -->
+        <q-btn
+            @click="downloadExcel()"
+            label="匯出Excel"
+            class="mb-3"
+        />
         <q-table
             :rows="formStore.forms"
             :columns="columns"
@@ -31,35 +15,6 @@
         >
             <template v-slot:header-selection="scope">
             </template>
-            <!-- <template v-slot:body-selection="scope">
-
-                <router-link :to="{ name: 'PostEdit', params: { id: scope.row.post_id } }">
-                    <q-btn
-                        class="ml-1"
-                        round
-                        color="primary"
-                        icon="edit"
-                        size="sm"
-                    >
-                        <q-tooltip>編輯</q-tooltip>
-                    </q-btn>
-
-                </router-link>
-
-                <q-btn
-                    @click="clickRemovePost(scope.row.post_id)"
-                    class="ml-1"
-                    round
-                    color="negative"
-                    icon="delete_outline"
-                    size="sm"
-                >
-                    <q-tooltip>刪除</q-tooltip>
-                </q-btn>
-
-            </template> -->
-
-
             <template v-slot:body="props">
                 <q-tr :props="props">
                     <q-td auto-width>
@@ -129,19 +84,13 @@
 </template>
 
 <script setup lang="ts">
-import { db } from '@/common/firebase';
-import { useDialog } from '@/composables/dialog';
-import { useNotify } from '@/composables/notify';
 import { useFormStore } from '@/stores/form.store';
-import { PostType } from '@/types/post.type';
-import { ref, watchEffect } from 'vue';
-import { useRouteQuery } from '@vueuse/router'
+import { ref, } from 'vue';
+import ExcelJs from "exceljs";
+import { max } from 'lodash';
 
-const Dialog = useDialog()
-const Notify = useNotify()
+
 const formStore = useFormStore();
-const current_status = ref('All')
-
 const columns = ref([
     { name: '訂餐日期', label: '訂餐日期', field: '訂餐日期' },
     { name: '訂餐單位', label: '訂餐單位', field: '訂餐單位' },
@@ -164,32 +113,81 @@ const columns = ref([
     { name: '餐食場景', label: '餐食場景', field: '餐食場景' },
 ])
 
-// const categoryKeyword = ref('all')
-// const categoryKeyword = useRouteQuery('category_id', 'all')
-// const postArray = ref<PostType[]>()
-// watchEffect(() => {
-//     postArray.value = JSON.parse(JSON.stringify(postStore.postArray))
-//     if (categoryKeyword.value != 'all') {
-//         postArray.value = postArray.value?.filter(item => (item.category_id == categoryKeyword.value))
-//     }
-// })
+
+const downloadExcel = () => {
+    const workbook = new ExcelJs.Workbook(); // 創建試算表檔案
+    const sheet = workbook.addWorksheet('工作表範例1'); //在檔案中新增工作表 參數放自訂名稱
+    const productLength = max(formStore.forms?.map((o) => (o['品項'] ?? []).length))
+    const sheetOpt = { // 在工作表裡面指定位置、格式並用columsn與rows屬性填寫內容
+        name: 'table名稱',  // 表格內看不到的，讓你之後想要針對這個table去做額外設定的時候，可以指定到這個table
+        ref: 'A1', // 從A1開始
+        columns: [
+            { name: '訂餐日期' }, { name: '訂餐單位' },
+            { name: '總餐費' }, { name: '服務費' }, { name: '總額' },
+            { name: '運費+80' }, { name: '租賃費' }, { name: '搬運費' },
+            { name: '份數' }, { name: '循環餐具需求' }, { name: '杯數' },
+            { name: '電子發票統編' }, { name: '電子發票抬頭' }, { name: '訂餐姓名' },
+            { name: 'Email' }, { name: '聯絡電話' }, { name: '外送地址' },
+            { name: '公司卸貨區' }, { name: '送餐時段' }, { name: '上樓送餐服務' },
+            { name: '送餐時段特殊需求' }, { name: '當日回收時段' }, { name: '上樓回收服務' },
+            { name: '其他備註' }, { name: '備用聯絡人' }, { name: '備用聯絡電話' },
+            { name: '餐食場景' },
+        ],
+        rows: formStore.forms?.map(o => ([
+            o['訂餐日期'], o['訂餐單位'],
+            '', '', '', '', '', '', '',
+            o['循環餐具需求'], '', o['電子發票統編'],
+            o['電子發票抬頭'], o['訂餐姓名'], o['您的email'], o['聯絡電話'],
+            o['外送地址'], o['公司卸貨區'], o['送餐時段'], o['上樓送餐服務'],
+            o['送餐時段特殊需求'], o['當日回收時段'], o['上樓回收服務'], o['其他備註'],
+            o['備用聯絡人'], o['備用聯絡電話'], o['餐食場景'],
+        ])) ?? []
+    };
+    for (let index = 0; index < productLength; index++) {
+        sheetOpt.columns.push({ name: `餐廳編號${index + 1}` })
+        sheetOpt.columns.push({ name: `品項名稱${index + 1}` })
+        sheetOpt.columns.push({ name: `訂購份數${index + 1}` })
+        sheetOpt.columns.push({ name: `特殊飲食習慣${index + 1}` })
+        sheetOpt.columns.push({ name: `金額${index + 1}` })
+    }
+
+    sheetOpt.rows.forEach((row, index) => {
+        if (formStore.forms && formStore.forms?.length > index && formStore.forms[index]['品項']) {
+            console.log(formStore.forms[index]);
+            formStore.forms[index]['品項'].forEach((item: { [x: string]: any; }) => {
+                row.push(item['餐廳編號']);
+                row.push(item['品項名稱']);
+                row.push(item['訂購份數']);
+                row.push(item['特殊飲食習慣']);
+                row.push('');
+            });
 
 
+        }
 
-const clickRemovePost = (id: string) => {
-    Dialog.create({
-        title: '刪除確認',
-        message: '是否要刪除?',
-        cancel: true,
-        persistent: true
-    }).onOk(() => {
-        db().collection('Sites/travel-tbb/Posts').doc(id).delete().then(() => {
-            Notify.handleSuccess("刪除成功")
 
-        })
+    });
 
-    })
+
+    sheet.addTable(sheetOpt);
+
+    // 表格裡面的資料都填寫完成之後，訂出下載的callback function
+    // 異步的等待他處理完之後，創建url與連結，觸發下載
+    workbook.xlsx.writeBuffer().then((content) => {
+        const link = document.createElement("a");
+        const blobData = new Blob([content], {
+            type: "application/vnd.ms-excel;charset=utf-8;"
+        });
+        link.download = '表單試算表.xlsx';
+        link.href = URL.createObjectURL(blobData);
+        link.click();
+    });
 }
+
+
+
+
+
 
 
 </script>

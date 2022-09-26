@@ -13,6 +13,7 @@
     "@vueuse/firebase": "^8.9.4",
     "@vueuse/head": "^0.7.9",
     "@vueuse/router": "^8.9.4",
+    "exceljs": "^4.3.0",
     "firebase": "^8.10.1",
     "gsap": "^3.10.4",
     "lodash": "^4.17.21",
