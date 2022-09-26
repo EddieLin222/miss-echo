@@ -3,9 +3,11 @@ import { RouteRecordRaw } from 'vue-router'
 import { getRoutesMenu } from '../menu';
 import posts from "./Post"
 import PageSettings from './Page'
+import form from "./Form"
 
 const routeChildren = [
     posts,
+    form,
     PageSettings,
 ];
 
