@@ -1,5 +1,7 @@
 <template>
   <div class="boxs">
+    <img class="cloud cloud1" src="/background/cloud1.svg" alt=""/>
+    <img class="cloud cloud2" src="/background/cloud2.svg" alt=""/>
     <div class="boxs-container" v-if="width>=840">
         <div class="box" v-for="(item, index) in props.gridData" :key="index">
             <q-responsive :ratio="(index == 0 || index == 3 || index == 4) ? 16/14 : 16/10">
@@ -84,6 +86,19 @@ const props = withDefaults(defineProps<Props>(), {
     display: flex
     flex-direction: column
     align-items: center
+    position: relative
+    .cloud
+        position: absolute
+    .cloud1
+        width: 50%
+        top: 0
+        right: 0
+        transform: translate(50%, -50%)
+    .cloud2
+        width: 35%
+        bottom: 0
+        left: 0
+        transform: translate(-80%, 40%)
     .boxs-container
         display: grid
         width: 100%
@@ -92,6 +107,7 @@ const props = withDefaults(defineProps<Props>(), {
         // margin-top: 30px
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
         grid-template-columns: 1fr 1fr 1fr
+        position: relative
         .box
             background-color: #fff
             border-radius: 3px
@@ -199,5 +215,7 @@ const props = withDefaults(defineProps<Props>(), {
                 display: none
             .swiper
                 margin: 0px
+        .cloud2
+            transform: translate(-50%, 40%)
 
 </style>

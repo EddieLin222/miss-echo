@@ -40,6 +40,7 @@
         </div>
       </div>
     </div>
+    <img class="bird" src="/intro/bird.svg" alt=""/>
   </div>
 </template>
 <script setup lang="ts">
@@ -77,12 +78,21 @@ const props = withDefaults(defineProps<Props>(), {
   padding: 0px 10% 80px 10%
   background-color: #FFFBED
   gap: 40px
+  position: relative
+  .bird
+    position: absolute
+    z-index: 1
+    bottom: 8%
+    left: 50%
+    height: 40%
+    transform: translateX(-50%)
   .intro-box
     flex: 1
     display: flex
     flex-direction: column
     align-items: flex-start
     justify-content: center
+    position: relative
     // padding: 10px 40px
     .content
       position: relative
@@ -154,6 +164,10 @@ const props = withDefaults(defineProps<Props>(), {
         :deep() .swiper-pagination-bullet-active
           width: 15px
           border-radius: 5px
+@media (max-width: 1280px)
+  .intro-container
+    .bird
+      display: none
 @media (max-width: 800px)
   .intro-container
     flex-direction: column

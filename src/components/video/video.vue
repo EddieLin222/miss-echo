@@ -1,5 +1,5 @@
 <template>
-  <div class="video-block">
+  <div class="video-block" v-if="currentVideo && currentVideo.iframeLink">
     <Title title="Youtube"></Title>
     <q-responsive class="video" :ratio="width >= 980 ? 25/11 : 12/16">
       <q-responsive :ratio="16/11" class="left">
@@ -14,7 +14,6 @@
             <q-icon name="play_arrow"></q-icon>
             <q-responsive :ratio="16/11">
               <img :src="`https://img.youtube.com/vi/${item.iframeLink}/1.jpg`" alt="">
-              <!-- <iframe :src="item.iframeLink" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
             </q-responsive>
             <div class="info">
               <div class="title">
@@ -55,7 +54,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const transList = computed(() => {
-  if(props.youtubeData[0].iframeLink != ''){
+  if(props.youtubeData.length>0 && props.youtubeData[0].iframeLink != ''){
     let newData = props.youtubeData.map((e: { iframeLink: string; link: any; title: any; person: any; date: any})=>{
       return {
         iframeLink: e.iframeLink.replace('https://www.youtube.com/embed/', ''),
@@ -70,7 +69,8 @@ const transList = computed(() => {
 })
 
 const currentVideo = computed(() => {
-  if(props.youtubeData[0].iframeLink != ''){
+
+  if(props.youtubeData.length>0 && props.youtubeData[0].iframeLink != ''){
     let video = props.youtubeData.filter((e: any, i: number)=>i==index.value)
     return video[0]
   }

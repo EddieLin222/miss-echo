@@ -37,5 +37,4 @@ const props = withDefaults(defineProps<Props>(), {
     font-size: 20px
     line-height: 20px
     letter-spacing: 1px
-
 </style>

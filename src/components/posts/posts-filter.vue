@@ -89,6 +89,7 @@ const props = withDefaults(defineProps<Props>(), {
 //   position: absolute
 .posts
     margin-top: 80px
+    position: relative
     .tags
         margin-top: 20px
         display: flex

@@ -13,6 +13,7 @@
             </div>
             <img class="sticker" src="/intro/sticker.svg" alt="">
         </div>
+        <img class="leaf" src="/intro/leaf3.svg" alt=""/>
     </div>
 </template>
 <script setup lang="ts">
@@ -42,6 +43,12 @@ const props = withDefaults(defineProps<Props>(), {
     display: flex
     justify-content: center
     padding: 0px 8% 8% 8%
+    position: relative
+    .leaf
+        position: absolute
+        left: 1.5%
+        bottom: 20%
+        height: 50%
     .item
         text-align: center
         margin: 0px 3%
@@ -65,6 +72,7 @@ const props = withDefaults(defineProps<Props>(), {
                 font-weight: 700
                 margin-bottom: 10px
                 font-size: 17px
+                text-align: left
             p
                 text-align: left
                 margin-bottom: 20px
@@ -80,6 +88,9 @@ const props = withDefaults(defineProps<Props>(), {
             top: 0
             height: 20%
             transform: translate(-30%, -30%)
+@media (max-width: 1120px)
+    .leaf
+        display: none
 
 @media(max-width: 960px)
     .list

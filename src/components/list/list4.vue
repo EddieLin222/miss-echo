@@ -6,6 +6,7 @@
                 <q-responsive class="img-block" :ratio="1">
                     <img :src="props.salonData.img" alt=""/>
                 </q-responsive>
+                <img class="flower" src="/intro/flower.svg" alt=""/>
             </div>
             <div class="right">
                 <div class="title-block">
@@ -56,6 +57,7 @@ const props = withDefaults(defineProps<Props>(), {
         .left
             flex: 1
             padding: 30px
+            position: relative
             .img-block
                 width: 100%
                 background-color: #d9d9d9
@@ -65,6 +67,12 @@ const props = withDefaults(defineProps<Props>(), {
                     object-fit: cover
                     min-height: 100%
                     min-width: 100%
+                
+            .flower
+                position: absolute
+                right: -10px
+                bottom: 20px
+                height: 50%
         .right
             flex: 2
             display: flex
@@ -104,6 +112,10 @@ const props = withDefaults(defineProps<Props>(), {
             .left
                 padding: 0px
                 margin-top: 20px
+                .flower
+                    right: -10%
+                    bottom: 0px
+                    height: 50%
             .right
                 align-items: center
 </style>

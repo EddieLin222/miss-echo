@@ -5,6 +5,8 @@
         v-if="currentPost"
         class="post"
     >
+        <img class="cloud cloud1" src="/background/cloud1.svg" alt=""/>
+        <img class="cloud cloud2" src="/background/cloud2.svg" alt=""/>
         <div class="post-container">
             <div class="title-block">
                 <div class="category">{{ currentPost.category }}</div>
@@ -42,16 +44,22 @@
                 v-show="currentPost.epilogue"
                 class="epilogue"
             >
-                <div class="symbol-left">
-                    <div class="dot">“</div>
-                </div>
-                <div class="symbol-right">
-                    <div class="dot">”</div>
+                <div class="top">
+                    <div class="symbol-left">
+                        <div class="dot">“</div>
+                    </div>
+                    <div class="line"></div>
                 </div>
                 <div
                     class="articleTextArea"
                     v-html="currentPost.epilogue"
                 ></div>
+                <div class="bottom">
+                    <div class="line"></div>
+                    <div class="symbol-right">
+                        <div class="dot">”</div>
+                    </div>
+                </div>
             </div>
             <div class="next"></div>
         </div>
@@ -176,8 +184,21 @@ useHead({
     padding: 40px 20%
     display: flex
     justify-content: center
+    position: relative
+    .cloud
+        position: absolute
+    .cloud1
+        top: 0
+        right: 0
+        width: 30%
+    .cloud2
+        bottom: 0
+        left: 0
+        width: 30%
+        transform: translateY(30%)
     .post-container
         max-width: 980px
+        position: relative
         .title-block
             .category
                 color: #9C9C9C
@@ -208,44 +229,49 @@ useHead({
             margin-bottom: 40px
         .epilogue
             line-height: 25px
-            border-top: solid 1px #78A780
-            border-bottom: solid 1px #78A780
-            padding: 20px 30px
             position: relative
-        
-            .symbol-left
-                position: absolute
-                top: 0
-                left: 0
-                background-color: #FFFBED
+            .top
+                margin-bottom: 20px
                 display: flex
-                align-items: center
-                transform: translateY(-50%)
-                padding: 0px 0px
-                .dot
-                    width: 100%
-                    height: 100%
-                    font-size: 50px
-                    transform: translate(-30px, 10px)
-                    color: #78A780
-            .symbol-right
-                position: absolute
-                bottom: 0
-                right: 0
-                background-color: #FFFBED
+                .symbol-left
+                    top: 0
+                    left: 0
+                    display: flex
+                    align-items: center
+                    padding: 0px 0px
+                    .dot
+                        width: 100%
+                        height: 100%
+                        font-size: 50px
+                        transform: translateX(-30px)
+                        color: #78A780
+                .line
+                    flex: 1
+                    border-top: solid 3px #78A780
+            .bottom
+                margin-top: 20px
                 display: flex
-                align-items: center
-                transform: translateY(50%)
-                padding: 0px 10px
-                .dot
-                    width: 100%
-                    height: 100%
-                    font-size: 50px
-                    transform: translate(30px, 10px)
-                    color: #78A780
+                .symbol-right
+                    bottom: 0
+                    right: 0
+                    display: flex
+                    align-items: center
+                    .dot
+                        width: 100%
+                        height: 100%
+                        font-size: 50px
+                        transform: translateX(30px)
+                        color: #78A780
+                .line
+                    flex: 1
+                    border-top: solid 3px #78A780
 @media (max-width: 992px)
     .post
         padding: 40px 10%
+        .cloud1
+            width: 300px
+        .cloud2
+            width: 300px
 
 .comming-soon
     width: 100%

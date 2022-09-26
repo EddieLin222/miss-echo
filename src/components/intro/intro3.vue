@@ -36,6 +36,7 @@
               >了解更多</QRouterLink>
             </div>
           </div>
+          <img class="tree" src="/intro/tree.svg" alt=""/>
         </div>
       </div>
       <!-- <h1 class="title">環保外送</h1> -->
@@ -86,6 +87,13 @@ const props = withDefaults(defineProps<Props>(), {
         display: flex
         background-color: #DDEFE0
         padding: 30px
+        position: relative
+        .tree
+          position: absolute
+          left: 0
+          bottom: 0%
+          transform: translateX(-50%)
+          height: 45%
         .left
           flex: 1
           width: 100%
@@ -149,6 +157,11 @@ const props = withDefaults(defineProps<Props>(), {
 @media (max-width: 980px)
   .intro-container
     padding: 0px 10% 80px 10%
+    .intro-box
+      .lists
+        .list
+          .tree
+            display: none
 
 @media (max-width: 840px)
   .intro-container

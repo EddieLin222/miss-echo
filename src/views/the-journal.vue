@@ -1,8 +1,9 @@
 <template>
   <PostDB />
-  <div class="journal">
+  <div class="journal">                                                                                                                 
     <Boxs :gridData="gridData"></Boxs>
     <div class="custom-container">
+      <img class="cloud cloud3" src="/background/cloud3.svg" alt=""/>
       <Posts :postsData="postsData"></Posts>
     </div>
   </div>
@@ -109,8 +110,19 @@ useHead({
 
 <style scoped lang="sass">
 .journal
-  padding: 40px 15% 40px 15%
+  padding: 80px 15% 40px 15%
   background-color: #FFFBED
+  position: relative
+  overflow: hidden
+  .custom-container
+    position: relative
+    .cloud3
+      position: absolute
+      right: 0
+      bottom: 50%
+      width: 20%
+      transform: translate(150%, 50%)
+  
 @media (max-width: 840px)
   .journal
     padding: 40px 0% 40px 0%

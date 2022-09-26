@@ -3,6 +3,7 @@
     <Title title="點滴紀錄"></Title>
     <div class="list-container">
       <List v-for="(item, index) in props.postList" :key="index" :list="item"></List>
+      <img class="butterfly" src="/intro/butterfly.svg" alt=""/>
     </div>
   </div>
 </template>
@@ -36,4 +37,11 @@ const props = withDefaults(defineProps<Props>(), {
     display: flex
     flex-wrap: wrap
     margin-top: 20px
+    position: relative
+    .butterfly
+      position: absolute
+      top: 0
+      right: 0
+      height: 50px
+      transform: translate(50%, -50%)
 </style>
