@@ -82,10 +82,12 @@
                         >
 
                         </div>
+                        {{dayjs("2022/10/21").isAfter(dayjs("2022/10/20").add(-1, 'd'))}}
                         <q-date
                             class="z-20 absolute -top-[300%] lg:-left-1/4"
                             v-if="orderDateInputFocusStatus"
                             v-model="formData['訂餐日期']"
+                            :options="dateFilter"
                         >
                             <div class="row items-center justify-end">
                                 <q-btn
@@ -205,17 +207,32 @@
                         lg:flex 
                         justify-between">
                                 <q-input
+                                    @blur="()=>item['餐廳編號']=item['餐廳編號']===undefined?'':item['餐廳編號']"
                                     class="w-full font-['Noto_Serif_TC'] "
                                     v-model="item['餐廳編號']"
                                     label-slot
                                     bottom-slots
-                                    :rules="[(val: any) => !!val || '此項必填']"
+                                    :error="item['餐廳編號'] && item['餐廳編號'].length==0"
                                 >
                                     <template v-slot:label>
                                         <div class="font-black question-text-color">餐廳編號*</div>
                                     </template>
                                     <template v-slot:hint>
                                         <div class="">
+                                            <a
+                                                style="color: var(--q-primary);"
+                                                href="menu"
+                                                target="_blank"
+                                                class="font-black underline"
+                                            >
+                                                查看菜單
+                                            </a>
+                                            ，若有確定希望訂購的店家，請填寫網站中的菜單編號
+                                        </div>
+                                    </template>
+                                    <template v-slot:error>
+                                        此項必填
+                                        <div class="mt-1">
                                             <a
                                                 style="color: var(--q-primary);"
                                                 href="menu"
@@ -249,7 +266,7 @@
 
                             </div>
                             <div class="
-                        mt-10 lg:mt-5
+                        mt-10 
                         w-full
                         lg:flex 
                         justify-between">
@@ -289,11 +306,11 @@
                 mb-10 lg:mb-16">
                     <div class="mb-5 text-lg font-black font-['Noto_Serif_TC'] flex">
                         餐食場景*
-        
+
 
                     </div>
 
-                  
+
 
                     <q-option-group
                         class="lg:w-[40%] justify-between "
@@ -391,7 +408,7 @@
                         lg:flex 
                         justify-between">
                             <q-input
-                                class="w-[48%] font-['Noto_Serif_TC'] "
+                                class="w-full lg:w-[48%] font-['Noto_Serif_TC'] "
                                 v-model="formData['您的email']"
                                 label-slot
                                 :rules="[(val: any) => !!val || '此項必填']"
@@ -517,6 +534,7 @@
                                 :options="['11:15-11:45','11:45-12:15','12:15-12:45','12:45-13:15','13:15-13:45','13:45-14:15', '14:15-14:45', '14:45-15:45']"
                                 :rules="[(val: any) => !!val || '此項必填']"
                                 label-slot
+                                inputHint="晚上送餐請填寫於『其他』唷！"
                             >
                                 <template v-slot:label>
                                     <div class="font-black question-text-color">送餐時段*</div>
@@ -685,10 +703,9 @@
                                 v-model="formData['備用聯絡人']"
                                 label-slot
                                 hint="若有需要請提供備用聯絡人之姓名"
-                                :rules="[(val: any) => !!val || '此項必填']"
                             >
                                 <template v-slot:label>
-                                    <div class="font-black question-text-color">備用聯絡人*</div>
+                                    <div class="font-black question-text-color">備用聯絡人</div>
                                 </template>
 
                             </q-input>
@@ -700,10 +717,9 @@
                                 v-model="formData['備用聯絡電話']"
                                 label-slot
                                 hint="若有需要請提供備用聯絡人之電話"
-                                :rules="[(val: any) => !!val || '此項必填']"
                             >
                                 <template v-slot:label>
-                                    <div class="font-black question-text-color">備用聯絡電話*</div>
+                                    <div class="font-black question-text-color">備用聯絡電話</div>
                                 </template>
 
                             </q-input>
@@ -739,11 +755,11 @@
 
                 <div>
                     <q-btn
-                    class="bg-[#778D7E] text-white w-full lg:w-auto"
+                        class="bg-[#778D7E] text-white w-full lg:w-auto"
                         label="送出表單 Submit"
                         type="submit"
                     />
-                  
+
                 </div>
 
             </section>
@@ -762,11 +778,17 @@ import { onMounted, ref } from 'vue';
 import qOptionWithElseGroup from '@/components/q-option-with-else-group.vue'
 import { height } from 'dom7';
 import { db } from '@/common/firebase';
+import dayjs from 'dayjs'
 setCssVar('primary', '#78A780')
 setCssVar('secondary', '#C8EEC8')
 const dialog = useDialog();
 const orderDateInputFocusStatus = ref(false);
 const PageHomeDB = db().collection('Form')
+
+// 處理時間篩選
+const dateFilter = (date: string) => {
+    return dayjs(date).isAfter(dayjs().add(-1, 'd'))
+}
 
 //跳到錯誤訊息
 const scrollToError = (elRef: any) => {
@@ -786,15 +808,15 @@ const onSubmit = () => {
         cancel: '否',
         ok: '是',
     }).onOk(() => {
-        PageHomeDB.add(formData.value).then(()=>{
+        PageHomeDB.add(formData.value).then(() => {
             dialog.create({
-                    title:'已收到您的預約',
-        message: '我們將會寄一封Email與您確認訂單內容，再麻煩查收',
-        ok: '確定',
-    })
+                title: '已收到您的預約',
+                message: '我們將會寄一封Email與您確認訂單內容，再請查收',
+                ok: '確定',
+            })
         });
     })
-    
+
 
 }
 
@@ -804,7 +826,7 @@ const formData = ref({
     '訂餐日期': '',
     // 訂購品項
     '品項': [{
-        '餐廳編號': '',
+        '餐廳編號': undefined,
         '品項名稱': '',
         '訂購份數': '',
         '特殊飲食習慣': '',
@@ -884,10 +906,10 @@ onMounted(() => window.addEventListener("load", handleRemoveBookDivDom));
     opacity: 0;
 }
 
-:deep(div.q-field__bottom.row > div > div){
-   font-size: 13px !important;
-   line-height: 18px !important;
-   color: #333;
+:deep(div.q-field__bottom.row > div > div) {
+    font-size: 13px !important;
+    line-height: 18px !important;
+    color: #333;
 
 }
 </style>

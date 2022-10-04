@@ -25,6 +25,7 @@
             v-model="_modelValue"
             :class="{'hidden-value':!!currentOpt}"
             :rules="props.rules"
+            :hint="props.inputHint"
             dense
         >
             <template #before>
@@ -75,6 +76,7 @@ import { ref, watch, watchEffect } from 'vue';
 interface Props {
     options?: string[];
     modelValue: string;
+    inputHint?: string;
     hint?: string;
     rules?: ValidationRule[];
     label?: string;
