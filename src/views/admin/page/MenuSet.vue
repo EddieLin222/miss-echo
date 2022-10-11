@@ -39,6 +39,12 @@
                 v-model="textArea.content"
                 type="textarea"
             />
+            <e-image-uploader
+                path="page/menu"
+                class="w-48"
+                v-model="textArea.image"
+                :name="`主圖片`"
+            />
             <div class="mt-3 flex items-center gap-3">
                 <div class="font-bold text-lg">列點</div>
                 <div>
@@ -64,9 +70,9 @@
 
 
                         <draggable
-                            class="flex gap-3 ml-3 flex-nowrap"
+                            class="flex gap-3 ml-3 flex-nowrap flex-col"
                             v-model="menuList"
-                            item-key="index"
+                            item-key="name"
                             handle=".handle"
                         >
                             <template #item="{ element, index }">
@@ -95,18 +101,77 @@
                                         >
                                             <q-tooltip>拖曳移動</q-tooltip>
                                         </q-btn>
-                                        第{{ index + 1 }}項連結
+                                        第{{ index + 1 }}類菜單名稱
+                                        <q-input
+                                            debounce="1000"
+                                            filled
+                                            v-model="element.name"
+                                        />
+                                        <div class="mt-3 mb-2 flex items-center gap-3">
+                                            <div class="font-bold text-lg">第{{ index + 1 }}類菜單列點</div>
+                                            <div>
+                                                <q-btn
+                                                    @click="addMenuChildListItem(element['menu'])"
+                                                    round
+                                                    color="primary"
+                                                    icon="add"
+                                                    size="sm"
+                                                />
+                                            </div>
+                                        </div>
+                                        <draggable
+                                            class="flex gap-3 ml-10 flex-nowrap"
+                                            v-model="element['menu']"
+                                            item-key="img"
+                                            handle=".handle"
+                                        >
+                                            <template #item="{ element, index }">
+
+                                                <div class="relative mt-1 w-[30vw] max-w-[500px]">
+
+                                                    <q-btn
+                                                        @click="removeMenuChildListItem(element['menu'],index)"
+                                                        class="absolute right-0 -top-[1px]"
+                                                        color="red"
+                                                        size="xs"
+                                                        icon="close"
+                                                        round
+                                                    >
+                                                        <q-tooltip>刪除第{{ index + 1 }}項</q-tooltip>
+                                                    </q-btn>
+
+
+
+                                                    <div class="font-bold text-lg">
+                                                        <q-btn
+                                                            class="handle -mt-2"
+                                                            size="xs"
+                                                            icon="drag_handle"
+                                                            round
+                                                        >
+                                                            <q-tooltip>拖曳移動</q-tooltip>
+                                                        </q-btn>
+                                                        第{{ index + 1 }}像連結
+                                                    </div>
+                                                    <q-input
+                                                        filled
+                                                        v-model="element.link"
+                                                    />
+
+                                                    <e-image-uploader
+                                                        path="page/menu"
+                                                        class="w-48"
+                                                        v-model="element.img"
+                                                        :name="`第${index + 1}項圖片`"
+                                                    />
+
+                                                </div>
+                                            </template>
+                                        </draggable>
+
                                     </div>
-                                    <q-input
-                                        filled
-                                        v-model="element.link"
-                                    />
-                                    <e-image-uploader
-                                        path="page/menu"
-                                        class="w-48"
-                                        v-model="element.img"
-                                        :name="`第${index + 1}項圖片`"
-                                    />
+
+
                                 </div>
                             </template>
                         </draggable>
@@ -135,7 +200,7 @@ import { cloneDeep, isEmpty } from 'lodash';
 import md5 from 'md5';
 import { computed, ref, watchEffect } from 'vue';
 import draggable from 'vuedraggable'
-import { TextAreaType, MenuListItem } from "@/types/menu.type";
+import { BannerAreaType, MenuListItem, MenuItem } from "@/types/menu.type";
 
 const Notify = useNotify()
 const adminStore = useAdminStore()
@@ -194,17 +259,20 @@ const handleSave = () => {
 
 
 // 標題內文
-const TextAreaDefault: TextAreaType = {
+const TextAreaDefault: BannerAreaType = {
     title: '',
-    content: ''
+    content: '',
+    image: ''
 }
-const textArea = ref<TextAreaType>(TextAreaDefault)
+const textArea = ref<BannerAreaType>(TextAreaDefault)
 
 
-// 外送種類
+
+
+// 菜單類
 const MenuItemDefault: MenuListItem = {
-    img: '',
-    link: ''
+    name: '',
+    menu: []
 }
 const menuList = ref<MenuListItem[]>([])
 const addMenuListItem = () => {
@@ -212,7 +280,7 @@ const addMenuListItem = () => {
 }
 const removeMenuListItem = async (index: number) => {
     try {
-        await removeStorage(menuList.value[index].img)
+        // await removeStorage(menuList.value[index].img)
         menuList.value.splice(index, 1)
         Notify.handleSuccess('刪除成功')
     } catch (error) {
@@ -222,6 +290,24 @@ const removeMenuListItem = async (index: number) => {
 
 
 
+// 菜單子類
+const MenuChildItemDefault: MenuItem = {
+    img: '',
+    link: ''
+}
+const menuChildList = ref<MenuItem[]>([])
+const addMenuChildListItem = (childArray: MenuItem[]) => {
+    childArray.push(cloneDeep(MenuChildItemDefault))
+}
+const removeMenuChildListItem = async (childArray: MenuItem[], index: number) => {
+    try {
+        await removeStorage(childArray[index].img)
+        childArray.splice(index, 1)
+        Notify.handleSuccess('刪除成功')
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 
 

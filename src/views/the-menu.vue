@@ -126,14 +126,14 @@ onMounted(() => {
 })
 
 // Firestore
-// const pageHomeDB = db().collection('Page').doc('Menu')
-// const pageHomeData = ref<menuType>((useFirestore(pageHomeDB)) as any)
-// watchEffect(() => {
-//   if (pageHomeData.value) {
-//     menuData.value.textArea = pageHomeData.value.textArea;
-//     menuData.value.menuList = pageHomeData.value.menuList;
-//   }
-// })
+const pageHomeDB = db().collection('Page').doc('Menu')
+const pageHomeData = ref<menuType>((useFirestore(pageHomeDB)) as any)
+watchEffect(() => {
+  if (pageHomeData.value) {
+    menuData.value.textArea = pageHomeData.value.textArea;
+    menuData.value.menuList = pageHomeData.value.menuList;
+  }
+})
 
 
 // SEO
