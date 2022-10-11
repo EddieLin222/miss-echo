@@ -3,71 +3,16 @@
     <Title title="菜單介紹"></Title>
     <!-- <Banner :bannerData="bannerData"></Banner> -->
     <div class="custom-container">
-      <div class="main" @click="setIndex(0)">
+      <div class="main">
         <img :src="menuData.textArea.image" alt="">
         <div class="intro">
           <div class="title">{{menuData.textArea.title}}</div>
           <div class="content">{{menuData.textArea.content}}</div>
         </div>
       </div>
-
-      <div class="menu-area" v-for="(list, index) in menuData.menuList" >
-        <div class="more">{{list.name}}</div>
-        <div class="slide-block">
-          <div class="prev-btn">
-            <img src="/arrow/left.svg" alt="" class="arrow">
-          </div>
-          <swiper
-            :modules="[Navigation]"
-            :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
-            :slides-per-view="width < 1240 ? (list.menu.length>=3 ? 3 : list.menu.length) : width >= 1240 && width < 1400? (list.menu.length >= 4 ? 4 : list.menu.length) : (list.menu.length >= 6 ? 6 : list.menu.length)"
-            :space-between="20"
-            :scrollbar="{ draggable: true }"
-            @click="handleClick"
-          >
-            <swiper-slide v-for="(item, index) in list.menu" :key="index">
-              <div class="img-block">
-                <img :src="item.img" alt="">
-              </div>
-            </swiper-slide>
-          </swiper>
-          <div class="next-btn">
-            <img src="/arrow/right.svg" alt="" class="arrow">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="popup" :class="{show: isOpenPopup}">
-      <div class="close-btn" @click="isOpenPopup = false">
-        <q-icon name="cancel"></q-icon>
-      </div>
-      <div class="pop-block">
-        <div class="prev-btn">
-          <img src="/arrow/left.svg" alt="" class="arrow">
-        </div>
-        <swiper
-          v-if="isOpenPopup"
-          :modules="[Navigation]"
-          :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
-          :slides-per-view="1"
-          :space-between="30"
-          :scrollbar="{ draggable: true }"
-          :initialSlide="currentIndex"
-        >
-          <!-- <swiper-slide v-for="(list, index) in menuData.menuList" :key="index">
-            <div class="img-block">
-              <img :src="list.img" alt="">
-            </div>
-          </swiper-slide> -->
-        </swiper>
-        <div class="next-btn">
-          <img src="/arrow/right.svg" alt="" class="arrow">
-        </div>
-      </div>
-      <!-- <div class="btn-block">
-        <QRouterLink class="btn" :to="menuData.menuList[currentIndex].link">我要訂餐</QRouterLink>
-      </div> -->
+      <template v-for="(list, index) in menuData.menuList">
+        <MenuList :listData="list"></MenuList>
+      </template>
     </div>
   </div>
 </template>
@@ -81,24 +26,13 @@ import { ref, computed, watchEffect, onMounted } from 'vue';
 import { menuType } from '@/types/menu.type';
 import { useHead } from "@vueuse/head"
 
-import { Navigation } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
-import { useWindowSize } from '@vueuse/core'
-
-const { width } = useWindowSize()
-
-const currentIndex = ref(0)
-const isOpenPopup = ref(false)
+import MenuList from "../components/menu/menu-list.vue"
 
 const menuData = ref<menuType>({
   textArea: {
     title: '標題',
     content: '內文',
-    image: ''
+    image: '/always/always1.png'
   },
   menuList: [
     {
@@ -137,58 +71,46 @@ const menuData = ref<menuType>({
           link: ''
         }
       ]
+    },
+    {
+      name: '測試菜單',
+      menu:[
+        {
+          img: '/always/always2.png',
+          link: ''
+        },
+        {
+          img: '/always/always3.png',
+          link: ''
+        },
+        {
+          img: '/always/always4.png',
+          link: ''
+        },
+        {
+          img: '/always/always5.png',
+          link: ''
+        },
+        {
+          img: '/always/always6.png',
+          link: ''
+        },
+        {
+          img: '/always/always1.png',
+          link: ''
+        },
+        {
+          img: '/always/always2.png',
+          link: ''
+        },
+        {
+          img: '/always/always3.png',
+          link: ''
+        }
+      ]
     }
   ]
-  // menuList: [
-  //   {
-  //     img: '/always/always1.png',
-  //     link: ''
-  //   },
-  //   {
-  //     img: '/always/always2.png',
-  //     link: ''
-  //   },
-  //   {
-  //     img: '/always/always3.png',
-  //     link: ''
-  //   },
-  //   {
-  //     img: '/always/always4.png',
-  //     link: ''
-  //   },
-  //   {
-  //     img: '/always/always5.png',
-  //     link: ''
-  //   },
-  //   {
-  //     img: '/always/always6.png',
-  //     link: ''
-  //   },
-  //   {
-  //     img: '/always/always1.png',
-  //     link: ''
-  //   },
-  //   {
-  //     img: '/always/always2.png',
-  //     link: ''
-  //   }
-  // ]
 })
-
-
-const smallList = computed(() => {
-  return menuData.value.menuList.filter((e, i) => i !== 0)
-})
-
-const setIndex = (index: number) => {
-  currentIndex.value = index
-  isOpenPopup.value = true
-}
-
-const handleClick = (swiper: any) => {
-  currentIndex.value = swiper.clickedIndex + 1
-  isOpenPopup.value = true
-}
 
 const safariHacks = () => {
   let windowsVH = window.innerHeight / 100;
@@ -204,14 +126,14 @@ onMounted(() => {
 })
 
 // Firestore
-const pageHomeDB = db().collection('Page').doc('Menu')
-const pageHomeData = ref<menuType>((useFirestore(pageHomeDB)) as any)
-watchEffect(() => {
-  if (pageHomeData.value) {
-    menuData.value.textArea = pageHomeData.value.textArea;
-    menuData.value.menuList = pageHomeData.value.menuList;
-  }
-})
+// const pageHomeDB = db().collection('Page').doc('Menu')
+// const pageHomeData = ref<menuType>((useFirestore(pageHomeDB)) as any)
+// watchEffect(() => {
+//   if (pageHomeData.value) {
+//     menuData.value.textArea = pageHomeData.value.textArea;
+//     menuData.value.menuList = pageHomeData.value.menuList;
+//   }
+// })
 
 
 // SEO
@@ -251,82 +173,15 @@ useHead({
 <style scoped lang="sass">
 .menu
   background-color: #FFFBED
-  height: calc(100vh - 56px)
+  height: 100%
+  min-height: calc(100vh - 56px)
   padding: 60px 100px
   position: relative
-  .popup
-    display: flex
-    flex-direction: column
-    transition-duration: .3s
-    position: fixed
-    background-color: #DDEFE0
-    height: 100vh
-    height: calc(var(--vh, 1vh) * 100)
-    width: 100%
-    top: 0
-    left: 0
-    z-index: 9998
-    padding: 100px 10%
-    opacity: 0
-    pointer-events: none
-    .btn-block
-      display: flex
-      justify-content: center
-      .btn
-        background-color: #78A780
-        color: #fff
-        border-radius: 30px
-        padding: 5px 18px
-        font-size: 18px
-    .close-btn
-      display: inline-flex
-      justify-content: flex-end
-      cursor: pointer
-      .q-icon
-        font-size: 40px
-    .pop-block
-      display: flex
-      height: calc(100% - 70px)
-      align-items: center
-      margin: 10px 0px 10px 0px 
-      .swiper
-        height: 100%
-        .swiper-slide
-          display: flex
-          flex-direction: column
-          justify-content: center
-          align-items: center
-          .img-block
-            max-height: 100%
-            max-width: 100%
-            // width: 100%
-            // height: 100%
-            display: flex
-            flex-direction: column
-            justify-content: center
-            align-items: center
-            img
-              max-height: calc(100% - 80px)
-              max-width: 100%
-              object-fit: contain
-      .prev-btn, .next-btn
-        display: flex
-        align-items: center
-        cursor: pointer
-        padding: 15px
-        .arrow
-          width: 50px
-          max-width: 50px
   .custom-container
     margin-top: 20px
     height: 100%
-    .menu-area
-      border: solid 3px red
-    .more
-      font-size: 18px
-      margin: 20px 0px 10px 0px
     .main
-      height: 50%
+      height: 40vh
       overflow: hidden
       position: relative
       img
@@ -354,78 +209,15 @@ useHead({
           font-size: 20px
           font-weight: 700
           text-shadow: 1px 1px 2px black
-    .slide-block
-      display: flex
-      height: calc(50% - 60px)
-      padding: 0px 0px 20px 0px
-      .prev-btn
-        display: flex
-        align-items: center
-        cursor: pointer
-        padding: 15px
-        .arrow
-          width: 50px
-          max-width: 50px
-      .next-btn
-        display: flex
-        align-items: center
-        cursor: pointer
-        padding: 15px
-        .arrow
-          width: 50px
-          max-width: 50px
-      .swiper
-        --swiper-navigation-size: 30px
-        .swiper-slide
-          display: flex
-          flex-direction: column
-          justify-content: flex-start
-          align-items: center
-          .img-block
-            display: flex
-            height: 100%
-            width: 100%
-            overflow: hidden
-            background-color: #d2d2d2
-            img
-              min-width: 100%
-              min-height: 100%
-              object-fit: cover
-        :deep() .swiper-button-prev
-          padding: 20px
-          color: #000
-          font-weight: 900
-        :deep() .swiper-button-disabled
-          opacity: 1
-        :deep() .swiper-button-next
-          padding: 20px
-          color: #000
-          font-weight: 900
-.show
-  opacity: 1 !important
-  pointer-events: auto !important
-@media (max-width: 960px)
-  .menu
-    .custom-container
-      .slide-block
-        .prev-btn, .next-btn
-          display: none
 
 @media (max-width: 780px)
   .menu
     padding: 70px 15%
     .custom-container
       .main
-        height: 60%
-      .slide-block
-        height: calc(40% - 60px)
-    .arrow
-      width: 30px !important
+        height: 60vh
+
 @media (max-width: 580px)
   .menu
     padding: 60px 10%
-@media (max-width: 440px)
-  .menu
-    .prev-btn, .next-btn
-      display: none !important
 </style>
