@@ -20,10 +20,10 @@
     </q-page-sticky>
 
 
-    <!-- 外送種類 -->
+    <!-- 菜單介紹 -->
     <div class="p-3 border-b ">
         <div class="flex items-center gap-3">
-            <div class="font-bold text-2xl">外送種類</div>
+            <div class="font-bold text-2xl">菜單介紹</div>
         </div>
         <div class="p-3 w-full ">
 
