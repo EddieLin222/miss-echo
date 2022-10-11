@@ -1,10 +1,6 @@
 <template>
   <div class="menu">
     <Title title="菜單介紹"></Title>
-    <div class="test1">
-      text
-      <div class="test">test1</div>
-    </div>
     <div class="custom-container">
       <div class="main">
         <img :src="menuData.textArea.image" alt="">
@@ -174,10 +170,6 @@ useHead({
 </script>
 
 <style scoped lang="sass">
-.test1
-  &:hover
-    & .test
-      background: #000
 .menu
   background-color: #FFFBED
   height: 100%
