@@ -3,74 +3,48 @@
     <Title title="菜單介紹"></Title>
     <!-- <Banner :bannerData="bannerData"></Banner> -->
     <div class="custom-container">
-      <div
-        class="main"
-        @click="setIndex(0)"
-      >
-        <img
-          :src="menuData.menuList[0].img"
-          alt=""
-        >
+      <div class="main" @click="setIndex(0)">
+        <img :src="menuData.textArea.image" alt="">
         <div class="intro">
           <div class="title">{{menuData.textArea.title}}</div>
           <div class="content">{{menuData.textArea.content}}</div>
         </div>
       </div>
-      <div class="more">更多菜單</div>
-      <div class="slide-block">
-        <div class="prev-btn">
-          <img
-            src="/arrow/left.svg"
-            alt=""
-            class="arrow"
+
+      <div class="menu-area" v-for="(list, index) in menuData.menuList" >
+        <div class="more">{{list.name}}</div>
+        <div class="slide-block">
+          <div class="prev-btn">
+            <img src="/arrow/left.svg" alt="" class="arrow">
+          </div>
+          <swiper
+            :modules="[Navigation]"
+            :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
+            :slides-per-view="width < 1240 ? (list.menu.length>=3 ? 3 : list.menu.length) : width >= 1240 && width < 1400? (list.menu.length >= 4 ? 4 : list.menu.length) : (list.menu.length >= 6 ? 6 : list.menu.length)"
+            :space-between="20"
+            :scrollbar="{ draggable: true }"
+            @click="handleClick"
           >
-        </div>
-        <swiper
-          :modules="[Navigation]"
-          :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
-          :slides-per-view="width < 1240 ? (smallList.length>=3 ? 3 : smallList.length) : width >= 1240 && width < 1400? (smallList.length >= 4 ? 4 : smallList.length) : (smallList.length >= 6 ? 6 : smallList.length)"
-          :space-between="10"
-          :scrollbar="{ draggable: true }"
-          @click="handleClick"
-        >
-          <swiper-slide
-            v-for="(list, index) in smallList"
-            :key="index"
-          >
-            <div class="img-block">
-              <img
-                :src="list.img"
-                alt=""
-              >
-            </div>
-          </swiper-slide>
-        </swiper>
-        <div class="next-btn">
-          <img
-            src="/arrow/right.svg"
-            alt=""
-            class="arrow"
-          >
+            <swiper-slide v-for="(item, index) in list.menu" :key="index">
+              <div class="img-block">
+                <img :src="item.img" alt="">
+              </div>
+            </swiper-slide>
+          </swiper>
+          <div class="next-btn">
+            <img src="/arrow/right.svg" alt="" class="arrow">
+          </div>
         </div>
       </div>
     </div>
-    <div
-      class="popup"
-      :class="{show: isOpenPopup}"
-    >
-      <div
-        class="close-btn"
-        @click="isOpenPopup = false"
-      >
+
+    <div class="popup" :class="{show: isOpenPopup}">
+      <div class="close-btn" @click="isOpenPopup = false">
         <q-icon name="cancel"></q-icon>
       </div>
       <div class="pop-block">
         <div class="prev-btn">
-          <img
-            src="/arrow/left.svg"
-            alt=""
-            class="arrow"
-          >
+          <img src="/arrow/left.svg" alt="" class="arrow">
         </div>
         <swiper
           v-if="isOpenPopup"
@@ -81,32 +55,19 @@
           :scrollbar="{ draggable: true }"
           :initialSlide="currentIndex"
         >
-          <swiper-slide
-            v-for="(list, index) in menuData.menuList"
-            :key="index"
-          >
+          <!-- <swiper-slide v-for="(list, index) in menuData.menuList" :key="index">
             <div class="img-block">
-              <img
-                :src="list.img"
-                alt=""
-              >
+              <img :src="list.img" alt="">
             </div>
-          </swiper-slide>
+          </swiper-slide> -->
         </swiper>
         <div class="next-btn">
-          <img
-            src="/arrow/right.svg"
-            alt=""
-            class="arrow"
-          >
+          <img src="/arrow/right.svg" alt="" class="arrow">
         </div>
       </div>
-      <div class="btn-block">
-        <QRouterLink
-          class="btn"
-          :to="menuData.menuList[currentIndex].link"
-        >我要訂餐</QRouterLink>
-      </div>
+      <!-- <div class="btn-block">
+        <QRouterLink class="btn" :to="menuData.menuList[currentIndex].link">我要訂餐</QRouterLink>
+      </div> -->
     </div>
   </div>
 </template>
@@ -137,60 +98,96 @@ const menuData = ref<menuType>({
   textArea: {
     title: '標題',
     content: '內文',
+    image: ''
   },
-
   menuList: [
     {
-      img: '/always/always1.png',
-      link: ''
-    },
-    {
-      img: '/always/always2.png',
-      link: ''
-    },
-    {
-      img: '/always/always3.png',
-      link: ''
-    },
-    {
-      img: '/always/always4.png',
-      link: ''
-    },
-    {
-      img: '/always/always5.png',
-      link: ''
-    },
-    {
-      img: '/always/always6.png',
-      link: ''
-    },
-    {
-      img: '/always/always1.png',
-      link: ''
-    },
-    {
-      img: '/always/always2.png',
-      link: ''
+      name: '更多菜單',
+      menu:[
+        {
+          img: '/always/always1.png',
+          link: ''
+        },
+        {
+          img: '/always/always2.png',
+          link: ''
+        },
+        {
+          img: '/always/always3.png',
+          link: ''
+        },
+        {
+          img: '/always/always4.png',
+          link: ''
+        },
+        {
+          img: '/always/always5.png',
+          link: ''
+        },
+        {
+          img: '/always/always6.png',
+          link: ''
+        },
+        {
+          img: '/always/always1.png',
+          link: ''
+        },
+        {
+          img: '/always/always2.png',
+          link: ''
+        }
+      ]
     }
   ]
+  // menuList: [
+  //   {
+  //     img: '/always/always1.png',
+  //     link: ''
+  //   },
+  //   {
+  //     img: '/always/always2.png',
+  //     link: ''
+  //   },
+  //   {
+  //     img: '/always/always3.png',
+  //     link: ''
+  //   },
+  //   {
+  //     img: '/always/always4.png',
+  //     link: ''
+  //   },
+  //   {
+  //     img: '/always/always5.png',
+  //     link: ''
+  //   },
+  //   {
+  //     img: '/always/always6.png',
+  //     link: ''
+  //   },
+  //   {
+  //     img: '/always/always1.png',
+  //     link: ''
+  //   },
+  //   {
+  //     img: '/always/always2.png',
+  //     link: ''
+  //   }
+  // ]
 })
 
 
 const smallList = computed(() => {
-  const result = menuData.value.menuList.filter((e, i) => i !== 0)
-  return result
+  return menuData.value.menuList.filter((e, i) => i !== 0)
 })
 
 const setIndex = (index: number) => {
   currentIndex.value = index
   isOpenPopup.value = true
-  console.log(index)
 }
 
 const handleClick = (swiper: any) => {
   currentIndex.value = swiper.clickedIndex + 1
   isOpenPopup.value = true
-  console.log(currentIndex.value)
 }
 
 const safariHacks = () => {
@@ -323,6 +320,8 @@ useHead({
   .custom-container
     margin-top: 20px
     height: 100%
+    .menu-area
+      border: solid 3px red
     .more
       font-size: 18px
       margin: 20px 0px 10px 0px
