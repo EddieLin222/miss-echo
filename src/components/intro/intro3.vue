@@ -28,7 +28,7 @@
             <div class="list-btn">
               <QRouterLink
                 class="btn"
-                to="https://forms.gle/cE73TMwrm5byNT7UA"
+                to="/form"
               >我要預約</QRouterLink>
               <QRouterLink
                 class="btn"

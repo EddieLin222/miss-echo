@@ -45,7 +45,7 @@ const bubbles = ref([
     },
     {
         name: '企業合作',
-        link: 'https://forms.gle/cE73TMwrm5byNT7UA'
+        link: '/form'
     }
 ])
 </script>

@@ -39,6 +39,7 @@
           :space-between="20"
           :scrollbar="{ draggable: true }"
           :initialSlide="currentIndex"
+          @active-index-change="handleChange"
         >
           <swiper-slide v-for="(list, index) in props.listData.menu" :key="index">
             <div class="img-block">
@@ -50,7 +51,7 @@
           <img src="/arrow/right.svg" alt="" class="arrow">
         </div>
       </div>
-      <div class="btn-block">
+      <div class="btn-block" v-if="currentIndex>=0">
         <QRouterLink class="btn" :to="props.listData.menu[currentIndex].link">我要訂餐</QRouterLink>
       </div>
     </div>
@@ -72,12 +73,16 @@ const next = 'next'+nanoid();
 const { width } = useWindowSize()
 
 
-const currentIndex = ref(0)
+const currentIndex = ref(-1)
 const isOpenPopup = ref(false)
 
 const handleClick = (swiper: any) => {
   currentIndex.value = swiper.clickedIndex
   isOpenPopup.value = true
+}
+
+const handleChange = (swiper: any) => {
+  currentIndex.value = swiper.realIndex
 }
 
 interface Props {
@@ -105,6 +110,7 @@ const props = withDefaults(defineProps<Props>(), {
   .slide-block
     display: flex
     padding: 15px 0px 20px 0px
+    max-height: 40vh
     .prev-btn
       display: flex
       align-items: center
@@ -166,6 +172,7 @@ const props = withDefaults(defineProps<Props>(), {
     .btn-block
       display: flex
       justify-content: center
+      margin-top: 15px
       .btn
         background-color: #78A780
         color: #fff
@@ -180,7 +187,7 @@ const props = withDefaults(defineProps<Props>(), {
         font-size: 40px
     .pop-block
       display: flex
-      height: calc(100% - 70px)
+      height: calc(100% - 80px)
       align-items: center
       margin: 10px 0px 10px 0px
       .swiper

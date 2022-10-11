@@ -4,7 +4,7 @@
         <QRouterLink class="img-shape" to="https://misseco-customer.web.app">
             <img src="/book/book_left.png" alt="">
         </QRouterLink>
-        <QRouterLink class="img-shape" to="https://forms.gle/cE73TMwrm5byNT7UA">
+        <QRouterLink class="img-shape" to="/form">
             <img src="/book/book_right.png" alt="">
         </QRouterLink>
     </div>
