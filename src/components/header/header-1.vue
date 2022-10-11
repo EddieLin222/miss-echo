@@ -1,29 +1,85 @@
 <template>
   <div class="header">
     <div class="brand">
-      <QRouterLink class="img-box" to="/" @click="openMenu = false">
-        <img src="/logo/logo.png" alt="" v-if="width>992">
-        <img src="/logo/logo-m.png" alt="" v-else>
+      <QRouterLink
+        class="img-box"
+        to="/"
+        @click="openMenu = false"
+      >
+        <img
+          src="/logo/logo.png"
+          alt=""
+          v-if="width>992"
+        >
+        <img
+          src="/logo/logo-m.png"
+          alt=""
+          v-else
+        >
       </QRouterLink>
     </div>
-    <div class="toggle-btn" @click="openMenu = !openMenu" :class="{show: openMenu}">
+    <div
+      class="toggle-btn"
+      @click="openMenu = !openMenu"
+      :class="{show: openMenu}"
+    >
       <div class="line top-line"></div>
       <div class="line center-line"></div>
       <div class="line bottom-line"></div>
     </div>
-    <div class="nav" :class="{show: openMenu}">
+    <div
+      class="nav"
+      :class="{show: openMenu}"
+    >
       <div class="nav-menu">
-        <QRouterLink class="item" v-for="(item, index) in navItems" :to="item.link" @click="openMenu = false">{{ item.name }}</QRouterLink>
+        <template v-for="(item, index) in navItems">
+          <div
+            v-if="item.children && item.children.length>0"
+            class="item nest-item flex flex-col justify-center items-center  "
+          >
+            {{ item.name }}
+            <ul class="relative  lg:absolute bg-white lg:shadow top-3 lg:top-12 lg:h-0 overflow-hidden transition-all">
+              <li
+                class="py-3 px-4  ml-7 sm:ml-0 text-left lg:text-center"
+                v-for="childItem in item.children"
+              >
+                <span class="lg:hidden ">> </span>
+                <QRouterLink
+                
+                  :to="childItem.link"
+                  @click="openMenu = false"
+                >{{ childItem.name }}</QRouterLink>
+
+              </li>
+            </ul>
+          </div>
+          <QRouterLink
+            v-else
+            class="item"
+            :to="item.link"
+            @click="openMenu = false"
+          >{{ item.name }}</QRouterLink>
+        </template>
+
       </div>
       <div class="s-block">
         <div class="social-block">
-          <QRouterLink class="item" to="https://www.facebook.com/misseco.tw">
+          <QRouterLink
+            class="item"
+            to="https://www.facebook.com/misseco.tw"
+          >
             <img src="/social/fb.svg">
           </QRouterLink>
-          <QRouterLink class="item" to="https://www.instagram.com/misseco.tw/">
+          <QRouterLink
+            class="item"
+            to="https://www.instagram.com/misseco.tw/"
+          >
             <img src="/social/ig.svg">
           </QRouterLink>
-          <QRouterLink class="item" to="https://lin.ee/35kz9K7">
+          <QRouterLink
+            class="item"
+            to="https://lin.ee/35kz9K7"
+          >
             <img src="/social/line.svg">
           </QRouterLink>
         </div>
@@ -37,6 +93,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useWindowSize } from '@vueuse/core'
+import { useElementHover } from '@vueuse/core'
 
 const openMenu = ref(false)
 const { width } = useWindowSize()
@@ -48,7 +105,17 @@ const navItems = [
   },
   {
     name: '活動訂餐',
-    link: '/booking'
+    children: [
+      {
+        name: '服務介紹',
+        link: '/booking'
+      },
+      {
+        name: '看菜單',
+        link: '/menu'
+      },
+    ]
+
   },
   {
     name: '有意識生活',
@@ -97,7 +164,14 @@ const social = [
 // }>();
 </script>
 
+
+
 <style scoped lang="sass">
+
+.nest-item:hover
+  & ul
+    height:100px
+
 .header
   background-color: #fff
   display: flex
