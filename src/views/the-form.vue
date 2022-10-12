@@ -956,7 +956,7 @@ const onSubmit = async () => {
             PageHomeDB.add(formData.value).then(() => {
                 dialog.create({
                     title: '已收到您的預約',
-                    message: '我們將會寄一封Email與您確認訂單內容，再請查收',
+                    message: '我們將會寄一封Email與您確認訂單內容，再請查收😊',
                     ok: '確定',
                 })
             });
