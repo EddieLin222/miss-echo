@@ -123,7 +123,10 @@
 
 
 <script lang="ts">
-
+const fbChatElement = document.querySelector('div#fb-root') as HTMLElement
+if (fbChatElement && fbChatElement.style.display != "none") {
+    fbChatElement.style.display = "none"
+}
 
 
 
@@ -196,8 +199,8 @@ setCssVar('primary', '#78A780')
 
 // SEO
 useHead({
-  // Can be static or computed
-  title:'Miss Eco｜管理後台'
+    // Can be static or computed
+    title: 'Miss Eco｜管理後台'
 })
 
 

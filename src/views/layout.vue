@@ -16,6 +16,10 @@ import { useScriptStore } from "@/stores/script.store";
 import { computed, nextTick, onMounted, ref, watchEffect } from "vue";
 import { Head, useHead } from "@vueuse/head"
 
+const fbChatElement = document.querySelector('div#fb-root') as HTMLElement
+if(fbChatElement && fbChatElement.style.display=="none"){
+  fbChatElement.style.display=""
+}
 
 const scriptStore = useScriptStore()
 const scriptText = ref('');
