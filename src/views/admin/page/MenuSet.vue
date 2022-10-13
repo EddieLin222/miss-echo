@@ -125,19 +125,19 @@
                                             item-key="img"
                                             handle=".handle"
                                         >
-                                            <template #item="{ element, index }">
+                                            <template #item="ChildListChildList">
 
                                                 <div class="relative mt-1 w-[30vw] max-w-[500px]">
 
                                                     <q-btn
-                                                        @click="removeMenuChildListItem(element['menu'],index)"
+                                                        @click="removeMenuChildListItem(element['menu'],ChildListChildList.index)"
                                                         class="absolute right-0 -top-[1px]"
                                                         color="red"
                                                         size="xs"
                                                         icon="close"
                                                         round
                                                     >
-                                                        <q-tooltip>刪除第{{ index + 1 }}項</q-tooltip>
+                                                        <q-tooltip>刪除第{{ ChildListChildList.index + 1 }}項</q-tooltip>
                                                     </q-btn>
 
 
@@ -151,18 +151,18 @@
                                                         >
                                                             <q-tooltip>拖曳移動</q-tooltip>
                                                         </q-btn>
-                                                        第{{ index + 1 }}像連結
+                                                        第{{ ChildListChildList.index + 1 }}像連結
                                                     </div>
                                                     <q-input
                                                         filled
-                                                        v-model="element.link"
+                                                        v-model="ChildListChildList.element.link"
                                                     />
 
                                                     <e-image-uploader
                                                         path="page/menu"
                                                         class="w-48"
-                                                        v-model="element.img"
-                                                        :name="`第${index + 1}項圖片`"
+                                                        v-model="ChildListChildList.element.img"
+                                                        :name="`第${ChildListChildList.index + 1}項圖片`"
                                                     />
 
                                                 </div>
@@ -299,7 +299,8 @@ const menuChildList = ref<MenuItem[]>([])
 const addMenuChildListItem = (childArray: MenuItem[]) => {
     childArray.push(cloneDeep(MenuChildItemDefault))
 }
-const removeMenuChildListItem = async (childArray: MenuItem[], index: number) => {
+const removeMenuChildListItem = async (childArray: any, index: number) => {
+    console.log("🚀 ~ file: MenuSet.vue ~ line 303 ~ removeMenuChildListItem ~ childArray", childArray)
     try {
         await removeStorage(childArray[index].img)
         childArray.splice(index, 1)
