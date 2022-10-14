@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "firebase": "vue-tsc --noEmit && vite build && firebase deploy --only hosting"
   },
   "dependencies": {
     "@quasar/extras": "^1.12.0",

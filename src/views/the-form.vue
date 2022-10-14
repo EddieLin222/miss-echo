@@ -898,7 +898,9 @@ import { height } from 'dom7';
 import { db } from '@/common/firebase';
 import dayjs from 'dayjs'
 import { useStorage } from '@vueuse/core';
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
 
 onMounted(() => {
     window.onbeforeunload = function () {
@@ -958,6 +960,8 @@ const onSubmit = async () => {
                     title: '已收到您的預約',
                     message: '我們將會寄一封Email與您確認訂單內容，再請查收😊',
                     ok: '確定',
+                }).onOk(() => {
+                    router.push('/')
                 })
             });
         })
