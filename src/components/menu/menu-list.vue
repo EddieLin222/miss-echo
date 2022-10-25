@@ -229,7 +229,12 @@ const props = withDefaults(defineProps<Props>(), {
 @media (max-width: 780px)
   .menu-area
     .arrow
-      width: 30px !important
+      width: 20px !important
+    .slide-block
+      .prev-btn
+        padding: 0px 7px 0px 0px
+      .next-btn
+        padding: 0px 0px 0px 7px
     .popup
       .pop-block
         .prev-arrow, .next-arrow
