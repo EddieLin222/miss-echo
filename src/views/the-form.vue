@@ -8,7 +8,7 @@
             ref="formRef"
         >
 
-            <template v-if="currentPage===1">
+            <template v-if="currentPage === 1">
 
 
                 <!-- Ｍiss Eco 企業服務預約 -->
@@ -26,25 +26,17 @@
         font-['Noto_Serif_TC'] font-black
         mt-5 lg:mt-8
         lg:flex">
-                            <li>滿20份餐點即享服務</li>
-                            <li class="lg:ml-5">至少5天前預約訂餐</li>
+                            <li>📌滿20份餐點即享服務</li>
+                            <li class="lg:ml-5">📌至少3天前預約訂餐</li>
+                            <li class="lg:ml-5">📌服務範圍為桃園以北</li>
                         </ul>
 
-                        <ul class="
-        font-['Noto_Serif_TC'] font-black
-        mt-4
-        lg:flex 
-        lg:whitespace-nowrap">
-                            <li>*循環餐盒環保外送</li>
-                            <li class="lg:ml-5">*客製化餐點設計</li>
-                            <li class="lg:ml-5">*免清洗當日回收服務</li>
-                            <li class="lg:ml-5">*PREMIUM歡迎洽詢</li>
-                        </ul>
+
 
                         <ul class="
         font-['Noto_Serif_TC'] font-black
         mt-4">
-                            <li>訂單需求填寫完畢後，請加入Line官方帳號將由專人聯繫您！</li>
+                            <li>👉訂單填寫完畢後，請加入Line官方帳號將由專人為您服務！</li>
                         </ul>
                     </div>
                     <!-- 訂餐單位 -->
@@ -54,9 +46,9 @@
         lg:flex 
         justify-between">
                         <q-input
-                            :ref="(item: any)=>formDataRef['訂餐單位'] = item"
-                            @blur="()=>formData['訂餐單位']=formData['訂餐單位']===undefined?'':formData['訂餐單位']"
-                            :error="formData['訂餐單位'] && formData['訂餐單位'].length==0"
+                            :ref="(item: any) => formDataRef['訂餐單位'] = item"
+                            @blur="() => formData['訂餐單位'] = formData['訂餐單位'] === undefined ? '' : formData['訂餐單位']"
+                            :error="formData['訂餐單位'] && formData['訂餐單位'].length == 0"
                             class="w-full font-['Noto_Serif_TC'] "
                             v-model="formData['訂餐單位']"
                             label-slot
@@ -79,7 +71,7 @@
                         <div class="h-1 w-[10%]"></div>
                         <div class="mt-5 lg:mt-0 relative w-full">
                             <q-input
-                                @focus="orderDateInputFocusStatus=true; formData['訂餐日期']='';"
+                                @focus="orderDateInputFocusStatus = true; formData['訂餐日期'] = '';"
                                 class=" font-['Noto_Serif_TC'] "
                                 v-model="formData['訂餐日期']"
                                 clearable
@@ -92,7 +84,7 @@
                             </q-input>
                             <div
                                 v-if="orderDateInputFocusStatus"
-                                @click="orderDateInputFocusStatus=false;"
+                                @click="orderDateInputFocusStatus = false;"
                                 class="fixed top-0 left-0 w-screen h-screen !bg-black !bg-opacity-50 z-10"
                             >
 
@@ -105,13 +97,13 @@
                             >
                                 <div class="row items-center justify-end">
                                     <q-btn
-                                        @click="formData['訂餐日期']='';orderDateInputFocusStatus=false;"
+                                        @click="formData['訂餐日期'] = ''; orderDateInputFocusStatus = false;"
                                         label="取消"
                                         color="primary"
                                         flat
                                     />
                                     <q-btn
-                                        @click="orderDateInputFocusStatus=false;"
+                                        @click="orderDateInputFocusStatus = false;"
                                         label="確定"
                                         color="primary"
                                     />
@@ -168,7 +160,7 @@
                             </div>
                             <p class="mt-5 mb-10">
                                 訂購不同品項或不同餐廳請按『新增品項+』點餐唷‼️
-                        </p>
+                            </p>
 
                         </div>
                         <template
@@ -182,7 +174,7 @@
                                 <q-btn
                                     @click="handleRemoveFormDataItem(index)"
                                     square
-                                    v-if="index!=formData['品項'].length-1"
+                                    v-if="index != formData['品項'].length - 1"
                                     dense
                                     flat
                                     class=" w-15 h-15
@@ -228,13 +220,13 @@
                         lg:flex 
                         justify-between">
                                     <q-input
-                                        :ref="(item: any)=>formDataRef[`品項${index}餐廳編號`] = item"
-                                        @blur="()=>item['餐廳編號']=item['餐廳編號']===undefined?'':item['餐廳編號']"
+                                        :ref="(item: any) => formDataRef[`品項${index}餐廳編號`] = item"
+                                        @blur="() => item['餐廳編號'] = item['餐廳編號'] === undefined ? '' : item['餐廳編號']"
                                         class="w-full font-['Noto_Serif_TC'] "
                                         v-model="item['餐廳編號']"
                                         label-slot
                                         bottom-slots
-                                        :error="item['餐廳編號'] && item['餐廳編號'].length==0"
+                                        :error="item['餐廳編號'] && item['餐廳編號'].length == 0"
                                     >
                                         <template v-slot:label>
                                             <div class="font-black question-text-color">餐廳編號*</div>
@@ -297,9 +289,9 @@
                                         v-model="item['訂購份數']"
                                         label-slot
                                         hint="請注意「餐點總份數須滿20份」才享辦公室客製化訂單服務唷！"
-                                        :ref="(item: any)=>formDataRef[`品項${index}訂購份數`]= item"
-                                        @blur="()=>item['訂購份數']=item['訂購份數']===undefined?'':item['訂購份數']"
-                                        :error="item['訂購份數'] && item['訂購份數'].length==0"
+                                        :ref="(item: any) => formDataRef[`品項${index}訂購份數`] = item"
+                                        @blur="() => item['訂購份數'] = item['訂購份數'] === undefined ? '' : item['訂購份數']"
+                                        :error="item['訂購份數'] && item['訂購份數'].length == 0"
                                     >
                                         <template v-slot:label>
                                             <div class="font-black question-text-color">訂購份數*</div>
@@ -348,7 +340,7 @@
                         <q-option-group
                             class="lg:w-[40%] justify-between "
                             v-model="formData['餐食場景']"
-                            :options="['會議盒餐','活動餐敘','無肉日響應','午茶點心','精緻 Buffet','工作坊'].map((o)=>({'label':o,'value':o}))"
+                            :options="['會議盒餐', '活動餐敘', '無肉日響應', '午茶點心', '精緻 Buffet', '工作坊'].map((o) => ({ 'label': o, 'value': o }))"
                             color="primary"
                             inline
                         />
@@ -403,7 +395,7 @@
                 </section>
             </template>
 
-            <template v-if="currentPage===2">
+            <template v-if="currentPage === 2">
 
 
 
@@ -414,7 +406,7 @@
     bg-[#FFFBED] ">
                     <div>
                         <q-btn
-                            @click="currentPage-=1"
+                            @click="currentPage -= 1"
                             class="bg-[#778D7E] text-white w-auto"
                             icon="arrow_back"
                             label="返回"
@@ -488,9 +480,9 @@
                                     v-model="formData['電子發票抬頭']"
                                     label-slot
                                     hint="請提供公司抬頭，電子發票將於訂單當天開立，無則填寫無。"
-                                    :ref="(item: any)=>formDataRef['電子發票抬頭'] = item"
-                                    @blur="()=>formData['電子發票抬頭']=formData['電子發票抬頭']===undefined?'':formData['電子發票抬頭']"
-                                    :error="formData['電子發票抬頭'] && formData['電子發票抬頭'].length==0"
+                                    :ref="(item: any) => formDataRef['電子發票抬頭'] = item"
+                                    @blur="() => formData['電子發票抬頭'] = formData['電子發票抬頭'] === undefined ? '' : formData['電子發票抬頭']"
+                                    :error="formData['電子發票抬頭'] && formData['電子發票抬頭'].length == 0"
                                     bottom-slots
                                 >
                                     <template v-slot:label>
@@ -511,9 +503,9 @@
                                     v-model="formData['電子發票統編']"
                                     label-slot
                                     hint="請提供公司統一編號，電子發票將於訂單當天開立，無則填寫無。"
-                                    :ref="(item: any)=>formDataRef['電子發票統編'] = item"
-                                    @blur="()=>formData['電子發票統編']=formData['電子發票統編']===undefined?'':formData['電子發票統編']"
-                                    :error="formData['電子發票統編'] && formData['電子發票統編'].length==0"
+                                    :ref="(item: any) => formDataRef['電子發票統編'] = item"
+                                    @blur="() => formData['電子發票統編'] = formData['電子發票統編'] === undefined ? '' : formData['電子發票統編']"
+                                    :error="formData['電子發票統編'] && formData['電子發票統編'].length == 0"
                                     bottom-slots
                                 >
                                     <template v-slot:label>
@@ -562,9 +554,9 @@
                                     bottom-slots
                                     type="textarea"
                                     autogrow
-                                    :ref="(item: any)=>formDataRef['外送地址'] = item"
-                                    @blur="()=>formData['外送地址']=formData['外送地址']===undefined?'':formData['外送地址']"
-                                    :error="formData['外送地址'] && formData['外送地址'].length==0"
+                                    :ref="(item: any) => formDataRef['外送地址'] = item"
+                                    @blur="() => formData['外送地址'] = formData['外送地址'] === undefined ? '' : formData['外送地址']"
+                                    :error="formData['外送地址'] && formData['外送地址'].length == 0"
                                 >
                                     <template v-slot:label>
                                         <div class="font-black question-text-color">外送地址*</div>
@@ -593,9 +585,9 @@
                                     label-slot
                                     bottom-slots
                                     autogrow
-                                    :ref="(item: any)=>formDataRef['公司卸貨區'] = item"
-                                    @blur="()=>formData['公司卸貨區']=formData['公司卸貨區']===undefined?'':formData['公司卸貨區']"
-                                    :error="formData['公司卸貨區'] && formData['公司卸貨區'].length==0"
+                                    :ref="(item: any) => formDataRef['公司卸貨區'] = item"
+                                    @blur="() => formData['公司卸貨區'] = formData['公司卸貨區'] === undefined ? '' : formData['公司卸貨區']"
+                                    :error="formData['公司卸貨區'] && formData['公司卸貨區'].length == 0"
                                 >
                                     <template v-slot:label>
                                         <div class="font-black question-text-color">公司卸貨區*</div>
@@ -625,7 +617,7 @@
                                 <q-option-with-else-group
                                     class="w-full font-['Noto_Serif_TC'] "
                                     v-model="formData['送餐時段']"
-                                    :options="['11:15-11:45','11:45-12:15','12:15-12:45','12:45-13:15','13:15-13:45','13:45-14:15', '14:15-14:45', '14:45-15:45']"
+                                    :options="['11:15-11:45', '11:45-12:15', '12:15-12:45', '12:45-13:15', '13:15-13:45', '13:45-14:15', '14:15-14:45', '14:45-15:45']"
                                     :rules="[(val: any) => !!val || '此項必填']"
                                     label-slot
                                     inputHint="晚上送餐請填寫於『其他』唷！"
@@ -664,9 +656,9 @@
                                     bottom-slots
                                     type="textarea"
                                     autogrow
-                                    :ref="(item: any)=>formDataRef['上樓送餐服務'] = item"
-                                    @blur="()=>formData['上樓送餐服務']=formData['上樓送餐服務']===undefined?'':formData['上樓送餐服務']"
-                                    :error="formData['上樓送餐服務'] && formData['上樓送餐服務'].length==0"
+                                    :ref="(item: any) => formDataRef['上樓送餐服務'] = item"
+                                    @blur="() => formData['上樓送餐服務'] = formData['上樓送餐服務'] === undefined ? '' : formData['上樓送餐服務']"
+                                    :error="formData['上樓送餐服務'] && formData['上樓送餐服務'].length == 0"
                                 >
                                     <template v-slot:label>
                                         <div class="font-black question-text-color">上樓送餐服務 (每次費用$150)*</div>
@@ -690,9 +682,9 @@
                                     hint="平台不主動提供餐具，邀請大家自備環保筷或湯匙，若有需要環保餐具請填寫數量，若不需要則填『無』。"
                                     class="mt-20 lg:mt-0 w-full font-['Noto_Serif_TC'] "
                                     v-model="formData['循環餐具需求']"
-                                    :ref="(item: any)=>formDataRef['循環餐具需求'] = item"
-                                    @blur="()=>formData['循環餐具需求']=formData['循環餐具需求']===undefined?'':formData['循環餐具需求']"
-                                    :error="formData['循環餐具需求'] && formData['循環餐具需求'].length==0"
+                                    :ref="(item: any) => formDataRef['循環餐具需求'] = item"
+                                    @blur="() => formData['循環餐具需求'] = formData['循環餐具需求'] === undefined ? '' : formData['循環餐具需求']"
+                                    :error="formData['循環餐具需求'] && formData['循環餐具需求'].length == 0"
                                     label-slot
                                     bottom-slots
                                 >
@@ -740,7 +732,7 @@
                                     <q-option-with-else-group
                                         class="w-full font-['Noto_Serif_TC'] "
                                         v-model="formData['當日回收時段']"
-                                        :options="['14:00-15:00','15:00-16:00', '16:00-17:00']"
+                                        :options="['14:00-15:00', '15:00-16:00', '16:00-17:00']"
                                         :rules="[(val: any) => !!val || '此項必填']"
                                         label-slot
                                         hint="餐盒不需清洗，只需「淨空廚餘及殘渣」。用餐完畢後請將餐盒全數收齊，由外送夥伴到場核對數量並回收"
@@ -760,16 +752,16 @@
                         mt-7 lg:mt-0
                          w-full font-['Noto_Serif_TC'] "
                                     :style="{
-                                     height:formData['上樓回收服務']?`${5+1.2*(formData['上樓回收服務'].split('\n').length-1)}rem`:'5rem'  
+                                        height: formData['上樓回收服務'] ? `${5 + 1.2 * (formData['上樓回收服務'].split('\n').length - 1)}rem` : '5rem'
                                     }"
                                     v-model="formData['上樓回收服務']"
                                     label-slot
                                     bottom-slots
                                     type="textarea"
                                     autogrow
-                                    :ref="(item: any)=>formDataRef['上樓回收服務'] = item"
-                                    @blur="()=>formData['上樓回收服務']=formData['上樓回收服務']===undefined?'':formData['上樓回收服務']"
-                                    :error="formData['上樓回收服務'] && formData['上樓回收服務'].length==0"
+                                    :ref="(item: any) => formDataRef['上樓回收服務'] = item"
+                                    @blur="() => formData['上樓回收服務'] = formData['上樓回收服務'] === undefined ? '' : formData['上樓回收服務']"
+                                    :error="formData['上樓回收服務'] && formData['上樓回收服務'].length == 0"
                                 >
                                     <template v-slot:label>
                                         <div class="font-black question-text-color">上樓回收服務 (每次費用$150)*</div>
