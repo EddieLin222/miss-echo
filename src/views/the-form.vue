@@ -166,6 +166,10 @@
                                 </q-btn>
                                 <span class="text-lg font-black font-['Noto_Serif_TC']">新增品項</span>
                             </div>
+                            <p class="mt-5 mb-10">
+                                訂購不同品項或不同餐廳請按『新增品項+』點餐唷‼️
+                        </p>
+
                         </div>
                         <template
                             v-for="(item, index) in formData['品項']"
