@@ -45,7 +45,7 @@
                 v-model="textArea.image"
                 :name="`主圖片`"
             />
-            <div class="mt-3 flex items-center gap-3">
+            <div class="mt-10 flex items-center gap-3">
                 <div class="font-bold text-lg">列點</div>
                 <div>
                     <q-btn
@@ -65,8 +65,8 @@
             </div>
             <template v-else>
 
-                <div class="p-3 w-full overflow-y-auto">
-                    <q-scroll-area class="h-[30rem] max-w-[100vw]">
+                <div class="p-3 w-full bg-white">
+               
 
 
                         <draggable
@@ -107,7 +107,7 @@
                                             filled
                                             v-model="element.name"
                                         />
-                                        <div class="mt-3 mb-2 flex items-center gap-3">
+                                        <div class="mt-3 mb-2 flex items-center gap-3 bg-white w-full">
                                             <div class="font-bold text-lg">第{{ index + 1 }}類菜單列點</div>
                                             <div>
                                                 <q-btn
@@ -119,6 +119,7 @@
                                                 />
                                             </div>
                                         </div>
+                                        <q-scroll-area class="h-[30rem] w-[100vw]">
                                         <draggable
                                             class="flex gap-3 ml-10 flex-nowrap"
                                             v-model="element['menu']"
@@ -168,6 +169,7 @@
                                                 </div>
                                             </template>
                                         </draggable>
+                                    </q-scroll-area>
 
                                     </div>
 
@@ -175,8 +177,6 @@
                                 </div>
                             </template>
                         </draggable>
-
-                    </q-scroll-area>
 
                 </div>
 
