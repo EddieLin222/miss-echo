@@ -44,7 +44,7 @@ const bubbles = ref([
         link: 'https://misseco-customer.web.app'
     },
     {
-        name: '企業合作',
+        name: '活動訂餐',
         link: '/form'
     }
 ])
