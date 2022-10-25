@@ -13,7 +13,7 @@
           <div class="list" v-for="(item, i) in transList" :index="i" @click="listClick(i)" :class="{active: index===i}">
             <q-icon name="play_arrow"></q-icon>
             <q-responsive :ratio="16/11">
-              <img :src="`https://img.youtube.com/vi/${item.iframeLink}/1.jpg`" alt="">
+              <img :src="`https://img.youtube.com/vi/${item.iframeLink}/0.jpg`" alt="">
             </q-responsive>
             <div class="info">
               <div class="title">
