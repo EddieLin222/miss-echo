@@ -221,11 +221,11 @@ const props = withDefaults(defineProps<Props>(), {
   opacity: 1 !important
   pointer-events: auto !important
 
-@media (max-width: 960px)
-  .menu-area
-    .slide-block
-      .prev-btn, .next-btn
-        display: none
+// @media (max-width: 960px)
+//   .menu-area
+//     .slide-block
+//       .prev-btn, .next-btn
+//         display: none
 @media (max-width: 780px)
   .menu-area
     .arrow
