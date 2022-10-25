@@ -114,6 +114,10 @@ const navItems = [
         name: '看菜單',
         link: '/menu'
       },
+      {
+        name:'服務預約',
+        link: '/form'
+      }
     ]
 
   },
@@ -170,7 +174,7 @@ const social = [
 
 .nest-item:hover
   & ul
-    height:100px
+    height:145px
 
 .header
   background-color: #fff
