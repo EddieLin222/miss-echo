@@ -1,10 +1,10 @@
 <template>
   <div class="book">
     <div class="book-container">
-        <QRouterLink class="img-shape" to="https://misseco-customer.web.app">
+        <QRouterLink class="img-shape" to="/form">
             <img src="/book/book_left.png" alt="">
         </QRouterLink>
-        <QRouterLink class="img-shape" to="/form">
+        <QRouterLink class="img-shape" to="/menu">
             <img src="/book/book_right.png" alt="">
         </QRouterLink>
     </div>

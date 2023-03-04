@@ -41,11 +41,11 @@ import { ref } from 'vue';
 const bubbles = ref([
     {
         name: '我要訂餐',
-        link: 'https://misseco-customer.web.app'
+        link: '/form'
     },
     {
         name: '活動訂餐',
-        link: '/form'
+        link: '/menu'
     }
 ])
 </script>

@@ -135,7 +135,7 @@ const navItems = [
   },
   {
     name: '我要訂餐',
-    link: 'https://misseco-customer.web.app'
+    link: '/form'
   }
 
 ]
