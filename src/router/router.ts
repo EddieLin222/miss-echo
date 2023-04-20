@@ -23,6 +23,11 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/the-home.vue')
       },
       {
+        path: `/landing-page`,
+        name: 'landing-page',
+        component: () => import('../views/the-landing-page.vue')
+      },
+      {
         path: `/delivery`,
         name: 'delivery',
         component: () => import('../views/the-delivery.vue')

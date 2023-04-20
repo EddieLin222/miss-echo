@@ -1,6 +1,6 @@
 <template>
   <div class="faq">
-    <Title title="常見問題"></Title>
+    <Title :title="props.title"></Title>
     <Collapse :faqData="props.faqData"></Collapse>
   </div>
 </template>
@@ -10,9 +10,11 @@ import Collapse from "../collapse/collapse-1.vue"
 import { ref, onMounted } from 'vue';
 
 interface Props {
+  title?: string;
   faqData?: any;
 }
 const props = withDefaults(defineProps<Props>(), {
+  title: '常見問題',
   faqData: [
     {
       title: '',
@@ -36,4 +38,5 @@ const props = withDefaults(defineProps<Props>(), {
   padding: 60px 10%
   font-weight: 900
   background-color: #FFFBED
+  width: 100%
 </style>

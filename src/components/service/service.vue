@@ -1,7 +1,7 @@
 <template>
   <div class="service">
-    <Title title="服務簡介"></Title>
-    <div class="second-title">
+    <Title :title="props.showTitle"></Title>
+    <div class="second-title" v-if="props.showDescription">
       <span class="symbol">
         <img src="/symbol/left.svg" alt="">
       </span>
@@ -45,9 +45,13 @@
 import Title from '../title/title-1.vue'
 import { ref, onMounted } from 'vue';
 interface Props {
+  showTitle?: string; 
+  showDescription?: boolean;
   serviceData?: any;
 }
 const props = withDefaults(defineProps<Props>(), {
+  showTitle: '服務簡介',
+  showDescription: true,
   serviceData: {
     introduction: '',
     partner: {

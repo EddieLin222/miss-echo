@@ -1,0 +1,38 @@
+[debug] [2023-03-04T06:16:40.234Z] ----------------------------------------------------------------------
+[debug] [2023-03-04T06:16:40.236Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy --only hosting
+[debug] [2023-03-04T06:16:40.236Z] CLI Version:   11.19.0
+[debug] [2023-03-04T06:16:40.237Z] Platform:      darwin
+[debug] [2023-03-04T06:16:40.237Z] Node Version:  v16.17.0
+[debug] [2023-03-04T06:16:40.240Z] Time:          Sat Mar 04 2023 14:16:40 GMT+0800 (台北標準時間)
+[debug] [2023-03-04T06:16:40.240Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-04T06:16:40.243Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-03-04T06:16:40.308Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-04T06:16:40.308Z] > authorizing via signed-in user (bgm.mackiller@gmail.com)
+[debug] [2023-03-04T06:16:40.308Z] [iam] checking project miss-echo for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-03-04T06:16:40.309Z] > refreshing access token with scopes: []
+[debug] [2023-03-04T06:16:40.310Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-03-04T06:16:40.310Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-03-04T06:16:40.398Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-03-04T06:16:40.398Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-03-04T06:16:40.449Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/miss-echo:testIamPermissions [none]
+[debug] [2023-03-04T06:16:40.449Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/miss-echo:testIamPermissions x-goog-quota-user=projects/miss-echo
+[debug] [2023-03-04T06:16:40.450Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/miss-echo:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-03-04T06:16:40.700Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-03-04T06:16:40.700Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-03-04T06:16:41.377Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/miss-echo:testIamPermissions 200
+[debug] [2023-03-04T06:16:41.377Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/miss-echo:testIamPermissions {}
+[debug] [2023-03-04T06:16:41.377Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project miss-echo:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2023-03-04T06:16:41.378Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/miss-echo [none]
+[debug] [2023-03-04T06:16:41.788Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/miss-echo 403
+[debug] [2023-03-04T06:16:41.788Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/miss-echo {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2023-03-04T06:16:41.789Z] HTTP Error: 403, The caller does not have permission
+[debug] [2023-03-04T06:16:41.841Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at responseToError (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
+    at RetryOperation._fn (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:288:77)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to get Firebase project miss-echo. Please make sure the project exists and your account has permission to access it.

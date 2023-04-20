@@ -2,7 +2,7 @@
   <div v-html="htmlFilter(scriptText)"></div>
   <Header></Header>
   <router-view />
-  <Book></Book>
+  <Book v-if="hideBookArea"></Book>
   <Bubbles></Bubbles>
   <Footer></Footer>
 </template>
@@ -15,6 +15,16 @@ import { useScriptTag, watchOnce } from "@vueuse/core";
 import { useScriptStore } from "@/stores/script.store";
 import { computed, nextTick, onMounted, ref, watchEffect } from "vue";
 import { Head, useHead } from "@vueuse/head"
+import {useRoute} from 'vue-router'
+
+const route = useRoute()
+const hideBookArea = computed(()=>{
+  if(route.path === '/landing-page'){
+    return false
+  }else{
+    return true
+  }
+})
 
 const fbChatElement = document.querySelector('div#fb-root') as HTMLElement
 if(fbChatElement && fbChatElement.style.display=="none"){
