@@ -49,7 +49,7 @@
                 <img class="dot" :src="Dot" alt="">
                 <img class="dot scale-x-[-1]" :src="Dot" alt="">
               </div>
-              <p>我們相信人們不是不環保、不愛海龜、討厭北極熊，而是忙碌生活中，缺少兼顧便利又環保的新選擇！</p>
+              <p>Miss Eco透過循環餐盒外送餐點，活動餐點不會產生任何一次性垃圾，打造永續新日常，讓環保再也不麻煩！</p>
             </div>  
 
           </div>
@@ -65,7 +65,7 @@
                 <img class="dot" :src="Dot" alt="">
                 <img class="dot scale-x-[-1]" :src="Dot" alt="">
               </div>
-              <p>Miss Eco 讓您輕鬆擁有零垃圾的活動饗宴！與雙北70間健康永續的餐廳合作，透過循環餐盒外送餐點，減少大量一次性垃圾產生，讓環保不再麻煩，共同打造永續新日常！</p>
+              <p>我們相信人們不是不環保、不愛海龜、討厭北極熊，而是忙碌生活中，缺少便利又環保的新選擇！</p>
             </div>
           </div>
         </div>
@@ -82,21 +82,21 @@
               <img :src="Light1" alt="">
               <div class="word-area">
                 <h5 class="title">零垃圾</h5>
-                <p>使用循環餐盒外送，過程沒有任何一次性垃圾</p>
+                <p>使用循環餐盒外送<br>過程沒有任何一次性垃圾</p>
               </div>
             </div>
             <div class="item">
               <img :src="Light2" alt="">
               <div class="word-area">
                 <h5 class="title">減碳永續</h5>
-                <p>減少免洗餐具的碳排與健康永續的低碳美食</p>
+                <p>減少免洗餐具的碳排<br>推廣健康永續的低碳美食</p>
               </div>
             </div>
             <div class="item">
               <img :src="Light3" alt="">
               <div class="word-area">
-                <h5 class="title">友善服務</h5>
-                <p>溫馨客服陪同下單到回收，一站式便利又安心</p>
+                <h5 class="title">友善客服</h5>
+                <p>溫馨客服陪同下單到回收<br>LINE一站式便利又安心</p>
               </div>
             </div>
           </div>
@@ -111,7 +111,7 @@
           </div>
           <div class="main-area">
             <div class="item">
-              <div class="title">用餐時間的三天前</div>
+              <div class="title">用餐三天前</div>
               <div class="date">2023/04/19</div>
               <div class="item-block">
                 <div class="dash"></div>
@@ -121,14 +121,14 @@
                       <img class="sticker" :src="Sticker" alt="">
                       <h3>訂餐</h3>
                     </div>
-                    <p class="description">請於至少三天前訂餐，餐點滿$2000即送</p>
+                    <p class="description">請於至少三天前訂餐<br>餐點滿$2000即送</p>
                   </div> 
                   <div class="main-img">
                     <img :src="Tt1" alt="">
                   </div>
                 </div>
                
-                <p class="description">請於至少三天前訂餐，餐點滿$2000即送</p>
+                <p class="description">請於至少三天前訂餐<br>餐點滿$2000即送</p>
                 <q-btn class="main" unelevated rounded>
                   <q-icon>
                     <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -140,7 +140,7 @@
               </div>
             </div>
             <div class="item">
-              <div class="title">用餐前一天</div>
+              <div class="title">用餐一天前</div>
               <div class="date">2023/04/21</div>
               <div class="item-block">
                 <div class="dash"></div>
@@ -150,14 +150,14 @@
                       <img class="sticker" :src="Sticker" alt="">
                       <h3>付款</h3>
                     </div>
-                    <p class="description">請於一天前匯款，並可持續作餐點份數微調(10%內)</p>
+                    <p class="description">請於一天前匯款<br>餐點份數可微調(10%內)</p>
                   </div>
                   <div class="main-img">
                     <img :src="Tt2" alt="">
                   </div>
                 </div>
                 
-                <p class="description">請於一天前匯款，並可持續作餐點份數微調(10%內)</p>
+                <p class="description">請於一天前匯款<br>餐點份數可微調(10%內)</p>
                 <q-btn class="main" unelevated rounded @click="handlePopup(2)">
                   <q-icon>
                     <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -169,7 +169,7 @@
               </div>
             </div>
             <div class="item">
-              <div class="title">當天</div>
+              <div class="title">用餐當天</div>
               <div class="date">2023/04/22</div>
               <div class="item-block">
                 <div class="dash"></div>
@@ -179,14 +179,14 @@
                       <img class="sticker" :src="Sticker" alt="">
                       <h3>送餐</h3>
                     </div>
-                    <p class="description">當日外送夥伴會使用循環餐盒送給您，並於傍晚開立電子發票</p>
+                    <p class="description">夥伴使用循環餐盒外送<br>並於傍晚開立電子發票</p>
                   </div>
                   <div class="main-img">
                     <img :src="Tt3" alt="">
                   </div>
                 </div>
                 
-                <p class="description">當日外送夥伴會使用循環餐盒送給您，並於傍晚開立電子發票</p>
+                <p class="description">夥伴使用循環餐盒外送<br>並於傍晚開立電子發票</p>
                 <q-btn class="main" unelevated rounded @click="handlePopup(3)">
                   <q-icon>
                     <svg width="15" height="20" viewBox="0 0 15 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -198,8 +198,8 @@
               </div>
             </div>
             <div class="item">
-              <div class="title">指定時間</div>
-              <div class="date">2023/04/23</div>
+              <div class="title">用餐完畢</div>
+              <div class="date">2023/04/22</div>
               <div class="item-block">
                 <div class="dash"></div>
                 <div class="outer">
@@ -208,14 +208,14 @@
                       <img class="sticker" :src="Sticker" alt="">
                       <h3>回收</h3>
                     </div>
-                    <p class="description">當日夥伴會在指定時間前往回收，您只需清空廚餘，不需清洗餐盒$2000即送</p>
+                    <p class="description">夥伴於約定時間回收餐盒<br>您需清空餐盒廚餘、垃圾</p>
                   </div>
                   <div class="main-img">
                     <img :src="Tt4" alt="">
                   </div>
                 </div>
                 
-                <p class="description">當日夥伴會在指定時間前往回收，您只需清空廚餘，不需清洗餐盒$2000即送</p>
+                <p class="description">夥伴於約定時間回收餐盒<br>您需清空餐盒廚餘、垃圾</p>
                 <q-btn class="main" unelevated rounded @click="handlePopup(4)">
                   <q-icon>
                     <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
