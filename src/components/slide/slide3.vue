@@ -8,9 +8,10 @@
             <q-icon name="chevron_left"/>
         </div>
         <swiper
+            ref="el"
             :modules="[Navigation]"
             :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn'}"
-            :slides-per-view="$q.screen.lt.sm ? 1 : $q.screen.lt.md ? 2 : 3"
+            :slides-per-view="width>680 ? 3 : width>430 ? 2 : 1"
             :space-between="30"
             :scrollbar="{ draggable: true }"
         >
@@ -19,7 +20,7 @@
                     <img :src="item['img']" alt="">
                 </div>
                 <div class="intro">
-                    <div class="title">{{item['name']}}</div>
+                    <div class="slide-title">{{item['name']}}</div>
                     <div class="content">
                         <div v-for="(word, index) in item['text']" :key="index">
                             <span>{{word}}</span>
@@ -36,6 +37,7 @@
 </template>
 <script setup lang="ts">
 import Title from "../title/title-1.vue"
+import { useElementSize } from '@vueuse/core'
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
@@ -60,6 +62,9 @@ const dataList = ref([])
 onMounted(()=>{
     dataList.value = props.list
 })
+
+const el = ref(null)
+const { width } = useElementSize(el)
 
 // const text = ref('推薦文字推薦文字推薦文字推薦文字')
 // const emit = defineEmits<{
@@ -118,7 +123,7 @@ onMounted(()=>{
                     flex-direction: column
                     justify-content: center
                     align-items: center
-                    .title
+                    .slide-title
                         font-size: 18px
                         margin-bottom: 15px
                         font-weight: 700
@@ -145,5 +150,5 @@ onMounted(()=>{
                 font-weight: 900
 @media (max-width: 840px)
     .slide
-        padding: 30px 10%
+        padding: 30px 2%
 </style>

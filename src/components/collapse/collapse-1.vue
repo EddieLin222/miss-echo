@@ -70,6 +70,7 @@ const props = defineProps<Props>();
   flex-direction: column
   font-weight: 700
   margin-top: 15px
+  width: 100%
   .title
     font-size: 28px
   .block

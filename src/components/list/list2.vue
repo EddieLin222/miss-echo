@@ -116,8 +116,9 @@ const props = withDefaults(defineProps<Props>(), {
 @media (max-width: 840px)
   .list
     padding: 0px 0% 0px 0%
-@media (max-width: 600px)
+@media (max-width: 480px)
   .list
+    padding: 0px 0% 0px 0% !important
     // .list-block
     //   flex-direction: column
     //   .list-item
