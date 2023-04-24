@@ -3,11 +3,12 @@
         <div class="block">
             <div
                 class="item"
-                v-for="(list, index) in props.faqData"
+                v-for="(list, index) in faq"
                 :key="index"
-                @click="list.open = !list.open"
+                @click="list.isOpen = !list.isOpen"
             >
                 <div class="item-title">
+
                     <h4>{{ list.title }}</h4>
                     <span class="material-icons">
                         expand_more
@@ -16,9 +17,8 @@
                 <div
                     class="item-content"
                     :ref="(el) => { setCollapse(index, el) }"
-                    :style="
-                        list.open ? `height:${collapseHeight[index]}px` : 'height:0px'
-                    "
+                    :style="list.isOpen ? `height:${collapseHeight[index]}px` : 'height:0px'
+                        "
                 >
                     <div
                         class="text"
@@ -30,7 +30,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, watch, computed } from 'vue';
 
 // const collapseHeight = ref<any>(0);
 const collapseRefs = ref<any[]>([]);
@@ -56,6 +56,18 @@ interface Props {
     faqData?: any;
 }
 const props = defineProps<Props>();
+const faq = ref();
+watch(() => props.faqData, () => {
+    faq.value = props.faqData.filter((e: any) => e.open === true).map((j: any) => {
+        return {
+            ...j,
+            isOpen: false
+        }
+    }, {
+        deep: true,
+        immediate: true
+    })
+})
 
 // const emit = defineEmits<{
 //   (e: 'update:modelValue', value: string): void;

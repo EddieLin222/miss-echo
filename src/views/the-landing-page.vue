@@ -1,6 +1,7 @@
 <template>
   <div class="landing-page">
     <div class="banner">
+      <img class="cloud-right" :src="cloudRight" alt="">
       <div class="max-width">
         <div class="normal-padding">
           <h1 class="title">全台首創環保外送，Miss Eco外送美食零垃圾</h1>
@@ -8,14 +9,14 @@
           <div class="main-area">
             <div class="left">
               <!-- <q-btn unelevated rounded color="primary" label="Unelevated Rounded" :icon="`img:${carIcon}`"/> -->
-              <q-btn class="main" unelevated rounded>
+              <q-btn class="main banner-main" unelevated rounded>
                 <q-icon>
                   <svg width="31" height="30" viewBox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 24C7.35 24 6.015 25.35 6.015 27C6.015 28.65 7.35 30 9 30C10.65 30 12 28.65 12 27C12 25.35 10.65 24 9 24ZM0 1.5C0 2.325 0.675 3 1.5 3H3L8.4 14.385L6.375 18.045C5.28 20.055 6.72 22.5 9 22.5H25.5C26.325 22.5 27 21.825 27 21C27 20.175 26.325 19.5 25.5 19.5H9L10.65 16.5H21.825C22.95 16.5 23.94 15.885 24.45 14.955L29.82 5.22C30.375 4.23 29.655 3 28.515 3H6.315L5.31 0.855C5.07 0.33 4.53 0 3.96 0H1.5C0.675 0 0 0.675 0 1.5ZM24 24C22.35 24 21.015 25.35 21.015 27C21.015 28.65 22.35 30 24 30C25.65 30 27 28.65 27 27C27 25.35 25.65 24 24 24Z"/>
                   </svg>
                 </q-icon>
                 <p>我要訂餐</p>
-                <img :src="ButterFly" alt="">
+                <img class="butterfly" :src="ButterFly" alt="">
               </q-btn>
               <q-btn class="how" flat>
                 <q-icon>
@@ -34,6 +35,7 @@
       </div>
     </div>
     <div class="service">
+      <img class="cloud-left" :src="cloudLeft" alt="">
       <div class="max-width">
         <div class="title-area">
           <Title :title="`Miss Eco 服務介紹`"></Title>
@@ -129,7 +131,7 @@
                 </div>
                
                 <p class="description">請於至少三天前訂餐<br>餐點滿$2000即送</p>
-                <q-btn class="main" unelevated rounded>
+                <q-btn class="main" unelevated rounded @click="routeTo()">
                   <q-icon>
                     <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M5.6 10.34L8.43 7.50999L2.24 1.32999C1.76 0.849988 0.930002 0.979988 0.630002 1.59999C-0.0799976 3.08999 0.180002 4.91999 1.41 6.15999L5.6 10.34ZM12.38 8.52999C13.91 9.23999 16.06 8.73999 17.65 7.14999C19.56 5.23999 19.93 2.49999 18.46 1.02999C17 -0.430012 14.26 -0.070012 12.34 1.83999C10.75 3.42999 10.25 5.57999 10.96 7.10999L1.9 16.17C1.51 16.56 1.51 17.19 1.9 17.58C2.29 17.97 2.92 17.97 3.31 17.58L9.5 11.41L15.68 17.59C16.07 17.98 16.7 17.98 17.09 17.59C17.48 17.2 17.48 16.57 17.09 16.18L10.91 9.99999L12.38 8.52999Z" fill="white"/>
@@ -244,6 +246,20 @@
     </div>
     <div class="bg-custom">
       <div class="max-width">
+        <div class="tableware">
+          <Boxs3 :showTitle="`環保餐盒`"></Boxs3>
+        </div>
+      </div>
+    </div>
+    <div class="bg-custom">
+      <div class="max-width">
+        <div class="shared">
+          <Boxs :showTitle="`實拍分享`" :list="list"></Boxs>
+        </div>
+      </div>
+    </div>
+    <div class="bg-custom">
+      <div class="max-width">
         <List :companyList="companyList"></List>
       </div>
     </div>
@@ -253,6 +269,8 @@
 
 <script setup lang="ts">
 import { ref, computed, watchEffect, onMounted } from 'vue';
+import Boxs from "../components/boxs/boxs.vue"
+import Boxs3 from "../components/boxs/boxs3.vue"
 import ButterFly from '../assets/image/butterfly.png'
 import Blfbox from '../assets/image/elfbox.png'
 import LeftLand from '../assets/image/left_land.png'
@@ -269,25 +287,37 @@ import Tt2 from '../assets/image/tt2.png'
 import Tt3 from '../assets/image/tt3.png'
 import Tt4 from '../assets/image/tt4.png'
 
+import Money from '../assets/image/money.svg'
+import Car from '../assets/image/car.svg'
+import Recycle from '../assets/image/recycle.svg'
+
+import cloudLeft from '../assets/image/cloudL.png'
+import cloudRight from '../assets/image/cloudR.png'
+
 import Service from "../components/service/service.vue"
 import Faq from "../components/faq/faq.vue"
 import List from "../components/list/list2.vue"
-import { FaqType } from '@/types/delivery.type';
+import { FaqType, PromotionType } from '@/types/delivery.type';
 import { db } from '@/common/firebase';
 import { useFirestore } from '@vueuse/firebase/useFirestore'
 import { CompanyType, ServiceDataType } from '@/types/booking.type';
+// import { useElementSize, useWindowSize } from '@vueuse/core'
 
 import CustomDialog from '../components/custom-dialog.vue';
+import router from '@/router/router';
 
 const faqData = ref<FaqType[]>([])
+const list = ref<PromotionType[]>([])
 
 const pageHomeDB = db().collection('Page').doc('Delivery')
 const pageHomeData = ref<{
     faqList: FaqType[],
+    promotionList: PromotionType[]
 }>((useFirestore(pageHomeDB)) as any)
 watchEffect(() => {
   if (pageHomeData.value) {
     faqData.value = pageHomeData.value.faqList;
+    list.value = pageHomeData.value.promotionList;
   }
 })
 
@@ -327,26 +357,85 @@ function handlePopup(index: number){
   currentIndex.value = index
 }
 
+const routeTo = ()=>{
+  router.push('/menu')
+}
+
 const currentIndex = ref(0)
 const popupData = computed(()=>{
   if(currentIndex.value === 2){
     return{
-      title: '費用說明'
+      title: '費用說明',
+      img: Money,
+      listArr: [
+        {
+          value: '餐點費用：訂購的餐點總金額'
+        },
+        {
+          value: '運費：依照您的訂餐地點與餐廳距離計算'
+        },
+        {
+          value: '清消費：餐盒3元/個、杯子3元/個，依據您訂購的餐點份數計算唷'
+        },
+        {
+          value: '其他加值服務',
+          items: [
+            {
+              value: '指定位置送餐 $150'
+            },
+            {
+              value: '指定位置回收 $150'
+            },
+            {
+              value: '廚餘處理 $1000'
+            }
+          ]
+        },
+        {
+          value: '匯款帳戶：',
+          items: [
+            {
+              value: '戶名：一口覓食股份有限公司'
+            },
+            {
+              value: '銀行：永豐銀行 城中分行 807'
+            },
+            {
+              value: '帳號：126-018-0005320-9'
+            }
+          ]
+        }
+      ]
     }
   }
   if(currentIndex.value === 3){
     return{
-      title: '運送範圍'
+      title: '運送範圍',
+      img: Car,
+      listArr: [
+        {
+          value: '桃園以北。台北全區，與新北汐止、板橋、中和、永和、新莊、樹林、土城、蘆洲、三重以外的地區，會需要加收遠距服務費唷 !'
+        }
+      ]
     }
   }
   if(currentIndex.value === 4){
     return{
       title: '回收方式',
+      img: Recycle,
       listArr: [
-        '餐盒需清空廚餘，丟掉垃圾，淨空餐盒內部',
-        '餐盒闔上蓋子，將餐盒裝入「循環袋/箱」中疊放',
-        '餐具如湯匙、叉子，統一收入「餐具盒」中',
-        '杯子.........'
+        {
+          value: '餐盒需清空廚餘，丟掉垃圾，淨空餐盒內部'
+        },
+        {
+          value: '餐盒闔上蓋子，將餐盒裝入「循環袋/箱」中疊放'
+        },
+        {
+          value:  '餐具如湯匙、叉子，統一收入「餐具盒」中'
+        },
+        {
+          value: '杯子.........'
+        }
       ]
     }
   }
@@ -354,6 +443,7 @@ const popupData = computed(()=>{
 })
 
 const dialog = ref(false)
+
 </script>
 
 <style scoped lang="sass">
@@ -372,6 +462,11 @@ const dialog = ref(false)
     .title
       font-size: 34px
       line-height: 34px
+:deep()
+  .boxs
+    .title
+      font-size: 34px
+      line-height: 34px
 .bg-custom
   background-color: #FFFBED
   width: 100%
@@ -382,7 +477,7 @@ const dialog = ref(false)
 .q-btn.main
   background-color: #749279
   position: relative
-  padding: 20px 50px
+  padding: 40px 100px
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25)
   svg
     path
@@ -390,9 +485,9 @@ const dialog = ref(false)
   p
     margin-left: 10px
     font-size: 24px
-  img
+  img.butterfly
     position: absolute
-    width: 60px
+    width: 120px
     top: 0
     right: 0
     transform: translate(40%, -40%)
@@ -429,23 +524,36 @@ const dialog = ref(false)
     display: flex
     justify-content: center
     padding: 60px 0px
+    position: relative
+    overflow-x: hidden
+    .cloud-right
+      position: absolute
+      right: 0
+      top: 0
+      transform: translateX(60%)
+      width: 60%
+      max-width: 700px
   h1.title
     font-weight: 700
     font-family: 'Noto Serif TC', serif
     font-size: 56px
     line-height: 70px
+    display: inline-block
+    position: relative
   h4
     font-family: 'Noto Serif TC', serif
     color: #749279
     font-weight: 700
     font-size: 32px
     margin-top: 10px
+    position: relative
   p
     color: #fff
     font-weight: 700
   .main-area
     display: flex
     margin-top: 30px
+    position: relative
   .left
     display: flex
     flex-direction: column
@@ -468,11 +576,20 @@ const dialog = ref(false)
     display: flex
     justify-content: center
     padding: 60px 0px
+    position: relative
+    .cloud-left
+      position: absolute
+      transform: translate(-50%, -70%)
+      width: 40%
+      top: 0
+      left: 0
+      max-width: 600px
     .top, .bottom
       display: flex
       align-items: stretch
       // height: 100%
       margin: 50px 0px 0px 0px
+      position: relative
       .left
         width: 50%
         overflow-x: hidden
@@ -544,7 +661,7 @@ const dialog = ref(false)
           font-size: 20px
           color: #888787
           text-align: center
-          width: 70%
+          width: 100%
   .sop
     background-color: #FFFBEE
     display: flex
@@ -625,6 +742,7 @@ const dialog = ref(false)
           margin: 30px 0px
           width: 60%
           flex: 1
+          text-align: center
         .q-btn
           padding: 15px 50px
           p
@@ -645,6 +763,12 @@ const dialog = ref(false)
             border-top: solid 1px #B6DAB6
             width: 50%
             left: 0
+  .shared, .tableware
+    width: 100%
+    :deep()
+      .boxs
+        padding: 40px 10% 100px 10%
+
 :deep()
   .list
     padding: 50px 10% 80px 10%
@@ -657,8 +781,6 @@ const dialog = ref(false)
         .item
           width: 50%
           margin-top: 70px
-
-
     
 @media (max-width: 890px)
   .landing-page
@@ -735,6 +857,10 @@ const dialog = ref(false)
       p
         font-size: 16px
     .banner
+      .normal-padding
+        display: flex
+        flex-direction: column
+        align-items: center
       h1.title
         font-size: 24px
         line-height: 38px
@@ -742,6 +868,10 @@ const dialog = ref(false)
         font-size: 16px
         margin-top: 10px
         line-height: 24px
+      .q-btn.main
+        padding: 20px 60px
+        .butterfly
+          width: 70px
     .sop
       padding-bottom: 0px
       .main-area
@@ -819,6 +949,16 @@ const dialog = ref(false)
             height: 100%
             top: 0
             left: 0
+    .shared
+      :deep()
+        .boxs
+          padding: 40px 0% 100px 0%
+@media (max-width: 475px)
+  .landing-page
+    .shared, .tableware
+      :deep()
+        .boxs
+          padding: 40px 5% 100px 5%
 @media (max-width: 440px)
   .landing-page
     .sop

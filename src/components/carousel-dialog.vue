@@ -1,0 +1,92 @@
+<template>
+  <q-dialog class="carousel-dialog" :style="{'z-index': 9999}" >
+    <div class="content bg-white !rounded-[10px]">
+      <div class="q-pa-md">
+        <q-responsive :ratio="16/9" :style="[carouselSize.height, carouselSize.width]">
+          <q-carousel
+            animated
+            v-model="slide"
+            arrows
+            navigation
+            infinite
+          >
+            <q-carousel-slide :name="1" img-src="https://cdn.quasar.dev/img/mountains.jpg" />
+            <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+            <q-carousel-slide :name="3" img-src="https://cdn.quasar.dev/img/parallax2.jpg" />
+            <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg" />
+          </q-carousel>
+        </q-responsive>
+        <q-btn class="bottom" v-close-popup>
+          關閉
+        </q-btn>
+      </div>
+    </div>
+  </q-dialog>
+</template>
+<script setup lang="ts">
+import Title from '../components/title/title-1.vue'
+import { useWindowSize } from '@vueuse/core'
+import { computed, ref } from 'vue';
+interface Props {
+  data?: any;
+}
+const props = defineProps<Props>();
+const slide = ref(1)
+const { width: windowWidth, height: windowHeight } = useWindowSize();
+const carouselSize = computed(()=>{
+  if(windowWidth.value/16 > windowHeight.value/9 ) {
+    return {
+      height: `height: ${windowHeight.value - windowHeight.value/5 - 60}px`,
+      width: `width: ${(windowHeight.value - windowHeight.value/5 - 60)/9*16}px`
+    }
+  }else{
+    return {
+      width: `width: ${windowWidth.value - windowWidth.value/5}px`,
+      height: `height: ${(windowWidth.value - windowWidth.value/5)/16*9}px`
+    }
+  }
+  
+})
+</script>
+<style lang="sass">
+.carousel-dialog
+  background-color: rgba(0, 0, 0, .7)
+  .q-dialog__inner--minimized > div
+    max-width: none !important
+    max-height: calc(100vh - 40px) !important
+  .bottom
+    width: 100%
+    background-color: #749279
+    color: #fff
+    font-size: 16px
+  .title-area
+    display: flex
+    justify-content: center
+    padding: 30px 0px
+  .title-block
+    position: relative
+    display: inline-block !important
+    margin-bottom: 5px
+    font-weight: 900
+    font-family: 'Noto Serif TC', serif
+    width: auto !important
+    .bg
+      background-color: #C8EEC8
+      position: absolute
+      width: 100%
+      height: 50%
+      bottom: 0
+    .title
+      position: relative
+      font-size: 24px
+      line-height: 24px
+      letter-spacing: 1px
+  .text-content
+    padding: 0px 50px
+  ol
+    list-style: decimal !important
+    li
+      font-size: 16px
+      font-weight: 500
+      margin: 5px 0px
+</style>

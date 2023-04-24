@@ -1,6 +1,6 @@
 <template>
     <div class="boxs">
-        <Title title="環保外送"></Title>
+        <Title :title="props.showTitle"></Title>
         <div class="boxs-container" v-if="width >= 840">
             <div class="box" v-for="(item, index) in props.list" :key="index">
                 <QRouterLink :to="item.link" v-if="item.link != ''">
@@ -86,12 +86,14 @@ const data = ref([
     }
 ])
 interface Props {
+    showTitle?: string;
     list?: {
         img: string,
         link: string
     }[];
 }
 const props = withDefaults(defineProps<Props>(), {
+    showTitle: '環保外送',
     list: () => []
 });
 
@@ -107,6 +109,7 @@ const props = withDefaults(defineProps<Props>(), {
     display: flex
     flex-direction: column
     align-items: center
+    // width: 100%
     .boxs-container
         display: flex
         width: 100%
