@@ -13,21 +13,22 @@
             <img :src="props.data.img" alt="">
           </div>
           <div class="text-content">
-            <template v-if="props.data.listArr.length>1">
-              <ol>
-                <li v-for="item in props.data.listArr">{{ item.value }}
-                  <template v-if="item.items">
-                    <ol :style="{'padding-left': '20px', 'list-style': 'upper-roman !important'}">
-                      <li v-for="deepItem in item.items">{{ deepItem.value }}</li>
-                    </ol>
-                  </template>
-                </li>
-              </ol>
-            </template>
-            <template v-else>
-              <div class="font-normal" v-for="item in props.data.listArr">{{ item.value }}</div>
-            </template>
-           
+            <div class="place">
+              <template v-if="props.data.listArr.length>1">
+                <ol>
+                  <li v-for="item in props.data.listArr">{{ item.value }}
+                    <template v-if="item.items">
+                      <ol :style="{'padding-left': '20px', 'list-style': 'upper-roman !important'}">
+                        <li v-for="deepItem in item.items">{{ deepItem.value }}</li>
+                      </ol>
+                    </template>
+                  </li>
+                </ol>
+              </template>
+              <template v-else>
+                <div class="font-normal" v-for="item in props.data.listArr">{{ item.value }}</div>
+              </template>
+            </div>
           </div>
         </q-scroll-area>
       </div>

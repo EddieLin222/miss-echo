@@ -19,7 +19,7 @@ import {useRoute} from 'vue-router'
 
 const route = useRoute()
 const hideBookArea = computed(()=>{
-  if(route.path === '/landing-page'){
+  if(route.path.includes('/landing-page')){
     return false
   }else{
     return true

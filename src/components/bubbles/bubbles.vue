@@ -1,12 +1,22 @@
 <template>
-    <div class="bubbles">
-        <a class="bubble" v-for="(item, index) in bubbles" :key="index" :href="item.link" target="_blank">
-            <q-responsive :ratio="1">
-                <p>
-                    {{item.name}}
-                </p>
-            </q-responsive>
-        </a>
+    <div class="bubbles" >
+        <template v-for="(item, index) in bubbles" :key="index">
+            <a  class="bubble" v-if="item.link.includes('http')" :href="item.link" target="_blank">
+                <q-responsive :ratio="1">
+                    <p>
+                        {{item.name}}
+                    </p>
+                </q-responsive>
+            </a>
+            <router-link v-else class="bubble"  :to="item.link" >
+                <q-responsive :ratio="1">
+                    <p>
+                        {{item.name}}
+                    </p>
+                </q-responsive>
+            </router-link>
+        </template>
+        
         <a class="bubble" href="https://line.me/R/ti/p/@595oomwf" target="_blank">
             <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M30.8417 13.2973C30.8417 6.41711 23.9442 0.81958 15.4658 0.81958C6.98731 0.81958 0.0898438 6.41711 0.0898438 13.2973C0.0898438 19.4655 5.56631 24.6321 12.948 25.6078C13.4495 25.7159 14.1312 25.9378 14.3027 26.3659C14.4584 26.755 14.405 27.3646 14.3532 27.7566C14.3532 27.7566 14.173 28.8418 14.1341 29.0724C14.0664 29.4615 13.8243 30.5928 15.4658 29.9025C17.1073 29.2122 24.3203 24.6883 27.5457 20.9744C29.7738 18.5316 30.8417 16.0471 30.8417 13.2973Z" fill="white"/>
@@ -59,11 +69,11 @@ import { ref } from 'vue';
 const bubbles = ref([
     {
         name: '如何訂餐',
-        link: '/landing-page'
+        link: '/landing-page/#sop'
     },
     {
         name: '我要訂餐',
-        link: '/menu'
+        link: 'https://shop.missecotw.com/'
     }
 ])
 </script>

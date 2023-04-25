@@ -4,28 +4,32 @@
       <img class="cloud-right" :src="cloudRight" alt="">
       <div class="max-width">
         <div class="normal-padding">
-          <h1 class="title">全台首創環保外送，Miss Eco外送美食零垃圾</h1>
+          <h1 class="title">全台首創環保外送<br>Miss Eco外送美食零垃圾</h1>
           <h4>讓環保與便利兼顧，打造永續新日常 💚</h4>
           <div class="main-area">
             <div class="left">
               <!-- <q-btn unelevated rounded color="primary" label="Unelevated Rounded" :icon="`img:${carIcon}`"/> -->
-              <q-btn class="main banner-main" unelevated rounded>
-                <q-icon>
-                  <svg width="31" height="30" viewBox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 24C7.35 24 6.015 25.35 6.015 27C6.015 28.65 7.35 30 9 30C10.65 30 12 28.65 12 27C12 25.35 10.65 24 9 24ZM0 1.5C0 2.325 0.675 3 1.5 3H3L8.4 14.385L6.375 18.045C5.28 20.055 6.72 22.5 9 22.5H25.5C26.325 22.5 27 21.825 27 21C27 20.175 26.325 19.5 25.5 19.5H9L10.65 16.5H21.825C22.95 16.5 23.94 15.885 24.45 14.955L29.82 5.22C30.375 4.23 29.655 3 28.515 3H6.315L5.31 0.855C5.07 0.33 4.53 0 3.96 0H1.5C0.675 0 0 0.675 0 1.5ZM24 24C22.35 24 21.015 25.35 21.015 27C21.015 28.65 22.35 30 24 30C25.65 30 27 28.65 27 27C27 25.35 25.65 24 24 24Z"/>
-                  </svg>
-                </q-icon>
-                <p>我要訂餐</p>
-                <img class="butterfly" :src="ButterFly" alt="">
-              </q-btn>
-              <q-btn class="how" flat>
-                <q-icon>
-                  <svg width="24" height="30" viewBox="0 0 24 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15.885 0.885C15.315 0.315 14.55 0 13.755 0H3C1.35 0 0 1.35 0 3V27C0 28.65 1.335 30 2.985 30H21C22.65 30 24 28.65 24 27V10.245C24 9.45 23.685 8.685 23.115 8.13L15.885 0.885ZM16.5 24H7.5C6.675 24 6 23.325 6 22.5C6 21.675 6.675 21 7.5 21H16.5C17.325 21 18 21.675 18 22.5C18 23.325 17.325 24 16.5 24ZM16.5 18H7.5C6.675 18 6 17.325 6 16.5C6 15.675 6.675 15 7.5 15H16.5C17.325 15 18 15.675 18 16.5C18 17.325 17.325 18 16.5 18ZM13.5 9V2.25L21.75 10.5H15C14.175 10.5 13.5 9.825 13.5 9Z" fill="#749279"/>
-                  </svg>
-                </q-icon>
-                <p>如何訂餐</p>
-              </q-btn>
+              <a href="https://shop.missecotw.com/" target="_blank">
+                <q-btn class="main banner-main" unelevated rounded>
+                  <q-icon>
+                    <svg width="31" height="30" viewBox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 24C7.35 24 6.015 25.35 6.015 27C6.015 28.65 7.35 30 9 30C10.65 30 12 28.65 12 27C12 25.35 10.65 24 9 24ZM0 1.5C0 2.325 0.675 3 1.5 3H3L8.4 14.385L6.375 18.045C5.28 20.055 6.72 22.5 9 22.5H25.5C26.325 22.5 27 21.825 27 21C27 20.175 26.325 19.5 25.5 19.5H9L10.65 16.5H21.825C22.95 16.5 23.94 15.885 24.45 14.955L29.82 5.22C30.375 4.23 29.655 3 28.515 3H6.315L5.31 0.855C5.07 0.33 4.53 0 3.96 0H1.5C0.675 0 0 0.675 0 1.5ZM24 24C22.35 24 21.015 25.35 21.015 27C21.015 28.65 22.35 30 24 30C25.65 30 27 28.65 27 27C27 25.35 25.65 24 24 24Z"/>
+                    </svg>
+                  </q-icon>
+                  <p>我要訂餐</p>
+                  <img class="butterfly" :src="ButterFly" alt="">
+                </q-btn>
+              </a>
+              <router-link to="/landing-page/#sop" >
+                <q-btn class="how" flat rounded>
+                  <q-icon>
+                    <svg width="24" height="30" viewBox="0 0 24 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M15.885 0.885C15.315 0.315 14.55 0 13.755 0H3C1.35 0 0 1.35 0 3V27C0 28.65 1.335 30 2.985 30H21C22.65 30 24 28.65 24 27V10.245C24 9.45 23.685 8.685 23.115 8.13L15.885 0.885ZM16.5 24H7.5C6.675 24 6 23.325 6 22.5C6 21.675 6.675 21 7.5 21H16.5C17.325 21 18 21.675 18 22.5C18 23.325 17.325 24 16.5 24ZM16.5 18H7.5C6.675 18 6 17.325 6 16.5C6 15.675 6.675 15 7.5 15H16.5C17.325 15 18 15.675 18 16.5C18 17.325 17.325 18 16.5 18ZM13.5 9V2.25L21.75 10.5H15C14.175 10.5 13.5 9.825 13.5 9Z" fill="#749279"/>
+                    </svg>
+                  </q-icon>
+                  <p>如何訂餐</p>
+                </q-btn>
+              </router-link>
             </div>
             <div class="right">
               <img :src="Blfbox" alt="">
@@ -51,7 +55,7 @@
                 <img class="dot" :src="Dot" alt="">
                 <img class="dot scale-x-[-1]" :src="Dot" alt="">
               </div>
-              <p>Miss Eco透過循環餐盒外送餐點，活動餐點不會產生任何一次性垃圾，打造永續新日常，讓環保再也不麻煩！</p>
+              <p>Miss Eco透過循環餐盒外送餐點，<br>活動餐點不會產生任何一次性垃圾，<br>打造永續新日常，讓環保再也不麻煩！</p>
             </div>  
 
           </div>
@@ -67,7 +71,7 @@
                 <img class="dot" :src="Dot" alt="">
                 <img class="dot scale-x-[-1]" :src="Dot" alt="">
               </div>
-              <p>我們相信人們不是不環保、不愛海龜、討厭北極熊，而是忙碌生活中，缺少便利又環保的新選擇！</p>
+              <p>我們相信人們<br>不是不環保不愛海龜、討厭北極熊<br>而是忙碌生活中，缺少便利又環保的新選擇！</p>
             </div>
           </div>
         </div>
@@ -97,7 +101,7 @@
             <div class="item">
               <img :src="Light3" alt="">
               <div class="word-area">
-                <h5 class="title">友善客服</h5>
+                <h5 class="title">即時客服</h5>
                 <p>溫馨客服陪同下單到回收<br>LINE一站式便利又安心</p>
               </div>
             </div>
@@ -105,7 +109,7 @@
         </div>
       </div>
     </div>
-    <div class="sop">
+    <div class="sop" id="sop">
       <div class="max-width">
         <div class="normal-padding">
           <div class="title-area">
@@ -131,14 +135,16 @@
                 </div>
                
                 <p class="description">請於至少三天前訂餐<br>餐點滿$2000即送</p>
-                <q-btn class="main" unelevated rounded @click="routeTo()">
-                  <q-icon>
-                    <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5.6 10.34L8.43 7.50999L2.24 1.32999C1.76 0.849988 0.930002 0.979988 0.630002 1.59999C-0.0799976 3.08999 0.180002 4.91999 1.41 6.15999L5.6 10.34ZM12.38 8.52999C13.91 9.23999 16.06 8.73999 17.65 7.14999C19.56 5.23999 19.93 2.49999 18.46 1.02999C17 -0.430012 14.26 -0.070012 12.34 1.83999C10.75 3.42999 10.25 5.57999 10.96 7.10999L1.9 16.17C1.51 16.56 1.51 17.19 1.9 17.58C2.29 17.97 2.92 17.97 3.31 17.58L9.5 11.41L15.68 17.59C16.07 17.98 16.7 17.98 17.09 17.59C17.48 17.2 17.48 16.57 17.09 16.18L10.91 9.99999L12.38 8.52999Z" fill="white"/>
-                    </svg>
-                  </q-icon>
-                  <p>點我看菜單</p>
-                </q-btn>
+                <a href="https://shop.missecotw.com/" target="_blank">
+                  <q-btn class="main" unelevated rounded>
+                    <q-icon>
+                      <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.6 10.34L8.43 7.50999L2.24 1.32999C1.76 0.849988 0.930002 0.979988 0.630002 1.59999C-0.0799976 3.08999 0.180002 4.91999 1.41 6.15999L5.6 10.34ZM12.38 8.52999C13.91 9.23999 16.06 8.73999 17.65 7.14999C19.56 5.23999 19.93 2.49999 18.46 1.02999C17 -0.430012 14.26 -0.070012 12.34 1.83999C10.75 3.42999 10.25 5.57999 10.96 7.10999L1.9 16.17C1.51 16.56 1.51 17.19 1.9 17.58C2.29 17.97 2.92 17.97 3.31 17.58L9.5 11.41L15.68 17.59C16.07 17.98 16.7 17.98 17.09 17.59C17.48 17.2 17.48 16.57 17.09 16.18L10.91 9.99999L12.38 8.52999Z" fill="white"/>
+                      </svg>
+                    </q-icon>
+                    <p>點我看菜單</p>
+                  </q-btn>
+                </a>
               </div>
             </div>
             <div class="item">
@@ -245,14 +251,14 @@
       </div>
     </div>
     <div class="bg-custom">
-      <div class="max-width">
+      <div class="max-width flex justify-center">
         <div class="tableware">
           <Boxs3 :showTitle="`環保餐盒`"></Boxs3>
         </div>
       </div>
     </div>
     <div class="bg-custom">
-      <div class="max-width">
+      <div class="max-width flex justify-center">
         <div class="shared">
           <Boxs :showTitle="`實拍分享`" :list="list"></Boxs>
         </div>
@@ -261,6 +267,41 @@
     <div class="bg-custom">
       <div class="max-width">
         <List :companyList="companyList"></List>
+      </div>
+    </div>
+    <div class="bg-custom cta">
+      <img class="cloud" :src="Cloud" alt="">
+      <div class="max-width">
+        <div class="area">
+          <div class="left">
+            <img class="fish" :src="Fish" alt="">
+          </div>
+          <div class="right">
+            <div class="box">
+              <a href="https://shop.missecotw.com/" target="_blank">
+                <q-btn class="main banner-main" unelevated rounded>
+                  <q-icon>
+                    <svg width="31" height="30" viewBox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 24C7.35 24 6.015 25.35 6.015 27C6.015 28.65 7.35 30 9 30C10.65 30 12 28.65 12 27C12 25.35 10.65 24 9 24ZM0 1.5C0 2.325 0.675 3 1.5 3H3L8.4 14.385L6.375 18.045C5.28 20.055 6.72 22.5 9 22.5H25.5C26.325 22.5 27 21.825 27 21C27 20.175 26.325 19.5 25.5 19.5H9L10.65 16.5H21.825C22.95 16.5 23.94 15.885 24.45 14.955L29.82 5.22C30.375 4.23 29.655 3 28.515 3H6.315L5.31 0.855C5.07 0.33 4.53 0 3.96 0H1.5C0.675 0 0 0.675 0 1.5ZM24 24C22.35 24 21.015 25.35 21.015 27C21.015 28.65 22.35 30 24 30C25.65 30 27 28.65 27 27C27 25.35 25.65 24 24 24Z"/>
+                    </svg>
+                  </q-icon>
+                  <p>我要訂餐</p>
+                  <img class="butterfly" :src="ButterFly" alt="">
+                </q-btn>
+              </a>
+              <router-link to="/landing-page/#sop" >
+                <q-btn class="how" flat rounded>
+                  <q-icon>
+                    <svg width="24" height="30" viewBox="0 0 24 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M15.885 0.885C15.315 0.315 14.55 0 13.755 0H3C1.35 0 0 1.35 0 3V27C0 28.65 1.335 30 2.985 30H21C22.65 30 24 28.65 24 27V10.245C24 9.45 23.685 8.685 23.115 8.13L15.885 0.885ZM16.5 24H7.5C6.675 24 6 23.325 6 22.5C6 21.675 6.675 21 7.5 21H16.5C17.325 21 18 21.675 18 22.5C18 23.325 17.325 24 16.5 24ZM16.5 18H7.5C6.675 18 6 17.325 6 16.5C6 15.675 6.675 15 7.5 15H16.5C17.325 15 18 15.675 18 16.5C18 17.325 17.325 18 16.5 18ZM13.5 9V2.25L21.75 10.5H15C14.175 10.5 13.5 9.825 13.5 9Z" fill="#749279"/>
+                    </svg>
+                  </q-icon>
+                  <p>如何訂餐</p>
+                </q-btn>
+              </router-link>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -293,6 +334,9 @@ import Recycle from '../assets/image/recycle.svg'
 
 import cloudLeft from '../assets/image/cloudL.png'
 import cloudRight from '../assets/image/cloudR.png'
+
+import Cloud from '../assets/image/cloud.png'
+import Fish from '../assets/image/fish.png'
 
 import Service from "../components/service/service.vue"
 import Faq from "../components/faq/faq.vue"
@@ -369,6 +413,12 @@ const popupData = computed(()=>{
       img: Money,
       listArr: [
         {
+          value: '費用總金額為「餐點費用」加上「運費」與「清消費」，以及「其他加值服務」之金額總和'
+        },
+        {
+          value: '費用總金額請於下單後，加入官方LINE與客服做最終確認，沒問題再依客服指示匯款付費'
+        },
+        {
           value: '餐點費用：訂購的餐點總金額'
         },
         {
@@ -414,7 +464,7 @@ const popupData = computed(()=>{
       img: Car,
       listArr: [
         {
-          value: '桃園以北。台北全區，與新北汐止、板橋、中和、永和、新莊、樹林、土城、蘆洲、三重以外的地區，會需要加收遠距服務費唷 !'
+          value: 'Miss Eco服務範圍為桃園以北。包含台北市全區，與新北市部分區域 (汐止、板橋、中和、永和、新莊、樹林、土城、蘆洲、三重)，上述以外位於桃園以北的地區會另外加收遠距服務費，詳請洽官方LINE🙌🏻'
         }
       ]
     }
@@ -428,13 +478,13 @@ const popupData = computed(()=>{
           value: '餐盒需清空廚餘，丟掉垃圾，淨空餐盒內部'
         },
         {
-          value: '餐盒闔上蓋子，將餐盒裝入「循環袋/箱」中疊放'
+          value: '餐盒闔上蓋子，裝入「循環袋/循環箱」中疊放'
         },
         {
-          value:  '餐具如湯匙、叉子，統一收入「餐具盒」中'
+          value:  '杯子闔上蓋子，裝入「循環袋/循環箱」中疊放'
         },
         {
-          value: '杯子.........'
+          value: '餐具如湯匙、叉子，統一收入「餐具盒」中'
         }
       ]
     }
@@ -485,6 +535,7 @@ const dialog = ref(false)
   p
     margin-left: 10px
     font-size: 24px
+    color: #fff
   img.butterfly
     position: absolute
     width: 120px
@@ -493,7 +544,8 @@ const dialog = ref(false)
     transform: translate(40%, -40%)
 .q-btn.how
   position: relative
-  padding: 10px 40px
+  padding: 40px 100px
+  // padding: 10px 40px
   margin-top: 15px
   svg
     path
@@ -577,6 +629,8 @@ const dialog = ref(false)
     justify-content: center
     padding: 60px 0px
     position: relative
+    .max-width
+      max-width: 1650px
     .cloud-left
       position: absolute
       transform: translate(-50%, -70%)
@@ -597,6 +651,7 @@ const dialog = ref(false)
         flex-direction: row
         justify-content: flex-end
         img
+          // max-width: 400px
           min-width: 820px
       .right
         width: 50%
@@ -608,6 +663,7 @@ const dialog = ref(false)
           flex-direction: column
           justify-content: center
           height: 100%
+          width: 100%
           padding: 0px 30px
         p
           color: #000
@@ -616,6 +672,7 @@ const dialog = ref(false)
           position: relative
           padding: 0px 40px
           transform: translateY(-10px)
+          text-align: center
         img
           position: relative
         .text-bg
@@ -732,9 +789,9 @@ const dialog = ref(false)
             position: relative
           .sticker
             position: absolute
-            top: 0
+            top: 50%
             left: 50%
-            transform: translateX(-50%)
+            transform: translate(-50%, -50%)
         .description
           color: #000
           font-size: 16px
@@ -765,10 +822,53 @@ const dialog = ref(false)
             left: 0
   .shared, .tableware
     width: 100%
+    max-width: 1180px !important
     :deep()
       .boxs
         padding: 40px 10% 100px 10%
-
+  .cta
+    // border: solid 1px red
+    width: 100%
+    display: flex
+    justify-content: center
+    position: relative
+    overflow: hidden
+    .cloud
+      position: absolute
+      height: 150%
+      object-fit: contain
+      bottom: 0
+      transform: translate(-10%, 50%)
+      max-width: 1200px
+    // .max-width
+    //   max-width: 1400px
+    .area
+      // border: solid 1px green
+      display: flex
+      position: relative
+      .left
+        // border: solid 1px red
+        position: relative
+        .fish
+          // border: solid 1px red
+          position: absolute
+          height: 100%
+          right: 30px
+          transform: translateY(20%)
+          object-fit: contain
+      .right
+        padding: 40px 30px 160px 30px
+        // border: solid 1px red
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: flex-start
+        .box
+          // border: solid 1px red
+          display: flex
+          flex-direction: column
+          .how
+            margin-top: 30px
 :deep()
   .list
     padding: 50px 10% 80px 10%
@@ -792,7 +892,7 @@ const dialog = ref(false)
           padding: 0px
           .inner
             // height: 100%
-            padding: 90px 0px
+            padding: 90px 40px
             overflow: hidden
             .text-bg
               min-width: 500px
@@ -811,6 +911,25 @@ const dialog = ref(false)
             transform: translateY(-80px)
         .left, .right
           width: 100%
+    .cta
+      // border: solid 1px green
+      .area
+        // border: solid 1px red
+        display: flex
+        flex-direction: column-reverse
+        align-items: center
+        .right
+          align-items: center
+          padding: 30px
+          width: 100%
+        .left
+          height: 250px
+          // border: solid 1px red
+          width: 100%
+          img.fish
+            right: auto
+            left: 0
+            transform: translate(-10%, 15%)
 @media (max-width: 780px)
   .landing-page
     .high-light
@@ -850,12 +969,25 @@ const dialog = ref(false)
         .title
           font-size: 24px !important
     :deep()
-      .faq, .service, .list
+      .faq, .service, .list, .boxs
         .title
           font-size: 24px !important
     .q-btn
-      p
-        font-size: 16px
+      :deep() .q-btn__content
+        flex-wrap: nowrap
+        p
+          font-size: 24px
+          white-space: nowrap
+    .banner
+      .left
+        gap: 4px
+        margin-bottom: 10px !important
+      .q-btn
+        :deep() .q-btn__content
+          p
+            font-size: 16px
+      .q-btn.how
+        margin-top: 0px
     .banner
       .normal-padding
         display: flex
@@ -872,6 +1004,8 @@ const dialog = ref(false)
         padding: 20px 60px
         .butterfly
           width: 70px
+      .q-btn.how
+        padding: 20px 60px
     .sop
       padding-bottom: 0px
       .main-area
@@ -988,12 +1122,16 @@ const dialog = ref(false)
               font-size: 14px
 
     .service
+      .top, .bottom
+        .right
+          .inner
+            padding: 90px 10px
       .bottom
         margin-top: 0px
       .top, .bottom
         .right
           p
-            font-size: 16px
+            font-size: 14px
       .top
         .left
           img
@@ -1004,4 +1142,18 @@ const dialog = ref(false)
           img
             min-width: 450px
             transform: translate(40px, -80px)
+@media (max-width: 375px)
+  .cta
+    .q-btn.main
+      padding: 30px 70px
+      img.butterfly
+        width: 90px
+    .q-btn.how
+      padding: 30px 80px
+    .area
+      .right
+        .box
+          align-items: center
+      .left
+        height: 190px !important
 </style>
