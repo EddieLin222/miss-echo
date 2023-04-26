@@ -77,6 +77,8 @@ const props = defineProps<Props>();
     padding-bottom: 40px
   .text-content
     padding: 0px 50px
+    display: flex
+    justify-content: center
   .q-btn
     padding: 25px 0px
     background-color: #749279
