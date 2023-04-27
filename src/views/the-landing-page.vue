@@ -109,7 +109,7 @@
                 <img :src="Light3" alt="">
                 <div class="word-area">
                   <h5 class="title">即時客服</h5>
-                  <p>溫馨客服陪同下單到回收<br>LINE一站式便利又安心</p>
+                  <p>LINE 客服陪同下訂到回收<br>專人外送追蹤便利又安心</p>
                 </div>
               </div>
             </a>
@@ -135,7 +135,7 @@
                       <img class="sticker" :src="Sticker" alt="">
                       <h3>訂餐</h3>
                     </div>
-                    <p class="description">請於至少三天前訂餐<br>餐點滿$2000即送</p>
+                    <p class="description">請於至少 3 天前訂餐<br>餐點滿 $2000 即送<br>加入 LINE 客服確認訂單</p>
                   </div> 
                   <div class="main-img">
                     <a href="https://line.me/R/ti/p/@595oomwf" target="_blank">
@@ -150,7 +150,7 @@
                   </div>
                 </div>
                
-                <p class="description">請於至少三天前訂餐<br>餐點滿$2000即送</p>
+                <p class="description">請於至少 3 天前訂餐<br>餐點滿 $2000 即送<br>加入 LINE 客服確認訂單</p>
                 <a href="https://shop.missecotw.com/" target="_blank">
                   <q-btn class="main" unelevated rounded>
                     <q-icon>
