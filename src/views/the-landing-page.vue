@@ -52,12 +52,11 @@
             <div class="inner">
               <img class="text-bg" :src="TextBg" alt="">
               <div class="dot-area">
-                <img class="dot" :src="Dot" alt="">
-                <img class="dot scale-x-[-1]" :src="Dot" alt="">
+                <img class="dot translate-y-[-100%]" :src="Dot" alt="">
+                <p>Miss Eco透過循環餐盒外送餐點，<br>活動餐點不會產生任何一次性垃圾，<br>打造永續新日常，讓環保再也不麻煩！</p>
+                <img class="dot scale-x-[-1] translate-y-[-100%]" :src="Dot" alt="">
               </div>
-              <p>Miss Eco透過循環餐盒外送餐點，<br>活動餐點不會產生任何一次性垃圾，<br>打造永續新日常，讓環保再也不麻煩！</p>
-            </div>  
-
+            </div>
           </div>
         </div>
         <div class="bottom">
@@ -68,10 +67,11 @@
             <div class="inner">
               <img class="text-bg" :src="TextBg" alt="">
               <div class="dot-area">
-                <img class="dot" :src="Dot" alt="">
-                <img class="dot scale-x-[-1]" :src="Dot" alt="">
+                <img class="dot translate-y-[-100%]" :src="Dot" alt="">
+                <p>我們相信人們<br>不是不環保不愛海龜、討厭北極熊<br>而是忙碌生活中，缺少便利又環保的新選擇！</p>
+                <img class="dot scale-x-[-1] translate-y-[-100%]" :src="Dot" alt="">
               </div>
-              <p>我們相信人們<br>不是不環保不愛海龜、討厭北極熊<br>而是忙碌生活中，缺少便利又環保的新選擇！</p>
+              <!-- <p>我們相信人們<br>不是不環保不愛海龜、討厭北極熊<br>而是忙碌生活中，缺少便利又環保的新選擇！</p> -->
             </div>
           </div>
         </div>
@@ -98,13 +98,21 @@
                 <p>減少免洗餐具的碳排<br>推廣健康永續的低碳美食</p>
               </div>
             </div>
-            <div class="item">
-              <img :src="Light3" alt="">
-              <div class="word-area">
-                <h5 class="title">即時客服</h5>
-                <p>溫馨客服陪同下單到回收<br>LINE一站式便利又安心</p>
+            <a href="https://line.me/R/ti/p/@595oomwf" target="_blank">
+              <div class="item">
+                <q-tooltip
+                  anchor="center middle"
+                  :style="{'font-size': '14px'}"
+                >
+                  點我加入官方Line@
+                </q-tooltip>
+                <img :src="Light3" alt="">
+                <div class="word-area">
+                  <h5 class="title">即時客服</h5>
+                  <p>溫馨客服陪同下單到回收<br>LINE一站式便利又安心</p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -130,7 +138,15 @@
                     <p class="description">請於至少三天前訂餐<br>餐點滿$2000即送</p>
                   </div> 
                   <div class="main-img">
-                    <img :src="Tt1" alt="">
+                    <a href="https://line.me/R/ti/p/@595oomwf" target="_blank">
+                      <img :src="Tt1" alt="">
+                      <q-tooltip
+                        anchor="center middle"
+                        :style="{'font-size': '14px'}"
+                      >
+                        點我加入官方Line@
+                      </q-tooltip>
+                    </a>
                   </div>
                 </div>
                
@@ -684,7 +700,11 @@ const dialog = ref(false)
           top: 0
         .dot-area
           display: flex
-          justify-content: space-between
+          justify-content: center
+          align-items: flex-start
+          // border: solid 10px green
+          p
+            padding: 0px 10px
         .dot
           width: 30px
     .bottom
@@ -900,7 +920,7 @@ const dialog = ref(false)
               padding: 0px 15px
             p
               transform: translateY(0px)
-              padding: 0px 50px
+              padding: 0px 20px
         .left
           position: relative
           // overflow-y: hidden
@@ -1132,6 +1152,7 @@ const dialog = ref(false)
         .right
           p
             font-size: 14px
+            padding: 0px 10px !important
       .top
         .left
           img
