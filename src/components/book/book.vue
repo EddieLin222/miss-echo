@@ -1,12 +1,15 @@
 <template>
   <div class="book">
     <div class="book-container">
-        <QRouterLink class="img-shape" to="/form">
-            <img src="/book/book_left.png" alt="">
+        <QRouterLink class="img-shape" to="/landing-page">
+            <img src="/book/left.png" alt="">
         </QRouterLink>
-        <QRouterLink class="img-shape" to="/menu">
-            <img src="/book/book_right.png" alt="">
-        </QRouterLink>
+        <a class="img-shape" href="https://shop.missecotw.com" target="_blank">
+            <img src="/book/right.png" alt="">
+        </a>
+        <!-- <QRouterLink class="img-shape" to="/menu">
+            <img src="/book/right.png" alt="">
+        </QRouterLink> -->
     </div>
   </div>
 </template>

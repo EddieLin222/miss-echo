@@ -40,12 +40,16 @@
             @click="toggleActive(index)"
           >{{ item.name }}</QRouterLink> -->
           <QRouterLink
+            v-if="!item.link.includes('http')"
             :hasSticker="index!==navItems.length-1"
             :showSticker="index === 1"
             class="item"
             :to="item.link"
             @click="closeMenu()"
           >{{ item.name }}</QRouterLink>
+          <a v-else class="item" href="https://shop.missecotw.com/home" target="_blank">
+            {{ item.name }}
+          </a>
         </template>
       </div>
       <div class="s-block">
@@ -122,7 +126,7 @@ const navItems = ref([
   },
   {
     name: '我要訂餐',
-    link: '/menu'
+    link: 'https://shop.missecotw.com/home'
   }
 
 ])
