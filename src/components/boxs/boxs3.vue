@@ -10,9 +10,11 @@
             <div class="space"></div>
             <h4>{{ item.subTitle }}</h4>
             <h3>{{ item.mainTitle }}</h3>
-            <div class="btn">
+            <div class="btn" v-if="index !== data.length-1">
               <img :src="ImageIcon" alt="">
               <p>more</p>
+            </div>
+            <div v-else class="space">
             </div>
           </div>
         </q-responsive>
@@ -24,7 +26,7 @@
       </div>
     </div>
   </div>
-  <carousel-dialog :data="currentData" v-model="dialog"></carousel-dialog>
+  <carousel-dialog :data="currentData" v-model="dialog" ></carousel-dialog>
 </template>
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
@@ -42,6 +44,12 @@ import Tableware6 from '../../assets/image/tableware-6.png'
 
 import ImageIcon from '../../assets/image/image.svg'
 
+import Popup1 from '../../assets/image/1.png'
+import Popup2 from '../../assets/image/2.png'
+import Popup3 from '../../assets/image/3.png'
+import Popup4 from '../../assets/image/4.png'
+import Popup5 from '../../assets/image/5.png'
+
 const { width } = useWindowSize()
 
 const currentIndex = ref(0)
@@ -51,8 +59,11 @@ const currentData = computed(()=>{
 })
 
 const handlePopup = (index: number)=>{
-  currentIndex.value = index
-  // dialog.value = true
+  if(index !== 5){
+    currentIndex.value = index
+    dialog.value = true
+  }
+
 }
 
 const data = ref([
@@ -62,7 +73,7 @@ const data = ref([
     mainTitle: '單格餐盒',
     subTitle: '復古款',
     imgs: [
-      ''
+      Popup1
     ]
   },
   {
@@ -71,7 +82,7 @@ const data = ref([
     mainTitle: '三格餐盒',
     subTitle: '極簡款',
     imgs: [
-      ''
+      Popup2
     ]
   },
   {
@@ -80,7 +91,7 @@ const data = ref([
     mainTitle: '不鏽鋼餐盒',
     subTitle: '奢華款',
     imgs: [
-      ''
+      Popup3
     ]
   },
   {
@@ -89,7 +100,7 @@ const data = ref([
     mainTitle: '循環杯',
     subTitle: '霧面感',
     imgs: [
-      ''
+      Popup4
     ]
   },
   {
@@ -98,7 +109,7 @@ const data = ref([
     mainTitle: '餐具',
     subTitle: '糖果色',
     imgs: [
-      ''
+      Popup5
     ]
   },
   {

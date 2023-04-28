@@ -50,9 +50,6 @@ a
         width: 100%
         opacity: 0
         transition-duration: .5s
-    &:hover
-        .sticker
-            opacity: 1
     .front
         position: relative
 </style>

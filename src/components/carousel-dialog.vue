@@ -7,13 +7,13 @@
             animated
             v-model="slide"
             arrows
-            navigation
+            :navigation="props.data.length>1?true : false"
             infinite
           >
-            <q-carousel-slide :name="1" img-src="https://cdn.quasar.dev/img/mountains.jpg" />
-            <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
-            <q-carousel-slide :name="3" img-src="https://cdn.quasar.dev/img/parallax2.jpg" />
-            <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg" />
+            <template v-for="img, i in props.data">
+              <q-carousel-slide :name="1" :img-src="img" />
+            </template>
+
           </q-carousel>
         </q-responsive>
         <q-btn class="bottom" v-close-popup>

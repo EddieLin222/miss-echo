@@ -32,12 +32,19 @@
     >
       <div class="nav-menu">
         <template v-for="(item, index) in navItems">
-          <QRouterLink
+          <!-- <QRouterLink
             :hasSticker="index!==navItems.length-1"
             :showSticker="currentActive === index && path.path === item.link"
             class="item"
             :to="item.link"
             @click="toggleActive(index)"
+          >{{ item.name }}</QRouterLink> -->
+          <QRouterLink
+            :hasSticker="index!==navItems.length-1"
+            :showSticker="index === 1"
+            class="item"
+            :to="item.link"
+            @click="closeMenu()"
           >{{ item.name }}</QRouterLink>
         </template>
       </div>
@@ -82,6 +89,10 @@ const toggleActive = (index: number)=>{
   openMenu.value = false
 }
 
+const closeMenu = () => {
+  openMenu.value = false
+}
+
 const path = useRoute()
 
 const openMenu = ref(false)
@@ -94,7 +105,7 @@ const navItems = ref([
     link: '/home'
   },
   {
-    name: '活動訂餐',
+    name: '如何訂餐',
     link: '/landing-page'
   },
   {

@@ -7,7 +7,7 @@
   <Footer></Footer>
 </template>
 <script setup lang="ts">
-import Header from "../components/header/header-1.vue"
+import Header from "../components/header/header-2.vue"
 import Book from "../components/book/book.vue"
 import Bubbles from "../components/bubbles/bubbles.vue"
 import Footer from "../components/footer/footer-1.vue"
