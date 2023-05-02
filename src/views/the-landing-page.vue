@@ -209,7 +209,6 @@
                     <img :src="Tt3" alt="">
                   </div>
                 </div>
-                
                 <p class="description">夥伴使用循環餐盒外送<br>並於傍晚開立電子發票</p>
                 <q-btn class="main" unelevated rounded @click="handlePopup(3)">
                   <q-icon>
@@ -359,6 +358,7 @@ import Faq from "../components/faq/faq.vue"
 import List from "../components/list/list2.vue"
 import { FaqType, PromotionType } from '@/types/delivery.type';
 import { db } from '@/common/firebase';
+import { useHead } from '@vueuse/head';
 import { useFirestore } from '@vueuse/firebase/useFirestore'
 import { CompanyType, ServiceDataType } from '@/types/booking.type';
 // import { useElementSize, useWindowSize } from '@vueuse/core'
@@ -509,6 +509,40 @@ const popupData = computed(()=>{
 })
 
 const dialog = ref(false)
+
+// SEO
+useHead({
+  // Can be static or computed
+  title: computed(() => {
+    return 'Miss Eco 環保外送｜如何訂餐'
+  }),
+  meta: [
+    {
+      property: `og:title`,
+      content: computed(() => {
+        return 'Miss Eco 環保外送｜如何訂餐'
+      }),
+    },
+    {
+      property: `og:type`,
+      content: 'website',
+    },
+    {
+      name: `description`,
+      content: computed(() => {
+        const introduction = 'Miss Eco是全台首創零廢棄環保外送服務，與健康永續的餐飲業者合作，透過循環餐具外送餐點，減少外送製造的大量一次性垃圾。'
+        return introduction
+      }),
+    },
+    {
+      property: `og:image`,
+      content: computed(() => {
+        return 'https://missecotw.com/logo/logo.png'
+      }),
+    },
+  ],
+})
+
 
 </script>
 
@@ -848,11 +882,13 @@ const dialog = ref(false)
         padding: 40px 10% 100px 10%
   .cta
     // border: solid 1px red
+    padding-top: 50px
     width: 100%
     display: flex
     justify-content: center
     position: relative
     overflow: hidden
+    // border: solid 1px red
     .cloud
       position: absolute
       height: 150%
@@ -1107,6 +1143,22 @@ const dialog = ref(false)
       :deep()
         .boxs
           padding: 40px 0% 100px 0%
+    .cta
+      a
+        display: flex
+        justify-content: center
+      .q-btn.main
+        padding: 20px 60px
+        .butterfly
+          width: 70px
+        :deep() .q-btn__content
+          p
+            font-size: 16px
+      .q-btn.how
+        padding: 20px 60px
+        :deep() .q-btn__content
+          p
+            font-size: 16px
 @media (max-width: 475px)
   .landing-page
     .shared, .tableware

@@ -21,6 +21,10 @@
           <img src="/social/line.svg">
         </QRouterLink>
       </div>
+      <div class="company">
+        <p>統編：90704867</p>
+        <p>一口覓食股份有限公司</p>
+      </div>
     </div>
   </div>
 </template>
@@ -67,7 +71,7 @@ import { ref, onMounted } from 'vue';
     .mail
       font-size: 18px
       color: #778D7E
-      margin-bottom: 30px
+      margin-bottom: 15px
       font-family: 'Times New Roman'
     .social-block
       display: flex
@@ -76,6 +80,13 @@ import { ref, onMounted } from 'vue';
         width: 35px
         height: 35px
         margin: 0px 10px
+    .company
+      color: #778D7E
+      display: flex
+      flex-direction: column
+      align-items: center
+      margin-top: 20px
+      font-size: 12px
 @media (max-width: 580px)
   .footer
     flex-direction: column
