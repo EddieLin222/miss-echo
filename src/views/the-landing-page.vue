@@ -68,7 +68,7 @@
               <img class="text-bg" :src="TextBg" alt="">
               <div class="dot-area">
                 <img class="dot translate-y-[-100%]" :src="Dot" alt="">
-                <p>我們相信人們<br>不是不環保不愛海龜、討厭北極熊<br>而是忙碌生活中，缺少便利又環保的新選擇！</p>
+                <p>我們相信人們<br>不是不環保，不愛海龜、討厭北極熊<br>而是忙碌生活中，缺少便利又環保的新選擇！</p>
                 <img class="dot scale-x-[-1] translate-y-[-100%]" :src="Dot" alt="">
               </div>
               <!-- <p>我們相信人們<br>不是不環保不愛海龜、討厭北極熊<br>而是忙碌生活中，缺少便利又環保的新選擇！</p> -->
