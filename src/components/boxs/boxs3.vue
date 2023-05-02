@@ -26,7 +26,7 @@
       </div>
     </div>
   </div>
-  <carousel-dialog :data="currentData" v-model="dialog" ></carousel-dialog>
+  <carousel-dialog :data="currentData" :mobileData="currentMobileData" v-model="dialog" ></carousel-dialog>
 </template>
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
@@ -50,12 +50,22 @@ import Popup3 from '../../assets/image/3.png'
 import Popup4 from '../../assets/image/4.png'
 import Popup5 from '../../assets/image/5.png'
 
+import MPopup1 from '../../assets/image/1L.png'
+import MPopup2 from '../../assets/image/2L.png'
+import MPopup3 from '../../assets/image/3L.png'
+import MPopup4 from '../../assets/image/4L.png'
+import MPopup5 from '../../assets/image/5L.png'
+
 const { width } = useWindowSize()
 
 const currentIndex = ref(0)
 
 const currentData = computed(()=>{
   return data.value[currentIndex.value].imgs
+})
+
+const currentMobileData = computed(()=>{
+  return data.value[currentIndex.value].mobileImg
 })
 
 const handlePopup = (index: number)=>{
@@ -74,6 +84,9 @@ const data = ref([
     subTitle: '復古款',
     imgs: [
       Popup1
+    ],
+    mobileImg: [
+      MPopup1
     ]
   },
   {
@@ -83,6 +96,9 @@ const data = ref([
     subTitle: '極簡款',
     imgs: [
       Popup2
+    ],
+    mobileImg: [
+      MPopup2
     ]
   },
   {
@@ -92,6 +108,9 @@ const data = ref([
     subTitle: '奢華款',
     imgs: [
       Popup3
+    ],
+    mobileImg: [
+      MPopup3
     ]
   },
   {
@@ -101,6 +120,9 @@ const data = ref([
     subTitle: '霧面感',
     imgs: [
       Popup4
+    ],
+    mobileImg: [
+      MPopup4
     ]
   },
   {
@@ -110,6 +132,9 @@ const data = ref([
     subTitle: '糖果色',
     imgs: [
       Popup5
+    ],
+    mobileImg: [
+      MPopup5
     ]
   },
   {
@@ -118,6 +143,9 @@ const data = ref([
     mainTitle: '',
     subTitle: '更多餐具 \n 敬請期待',
     imgs: [
+      ''
+    ],
+    mobileImg: [
       ''
     ]
   }
