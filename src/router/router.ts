@@ -59,8 +59,9 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: `/form`,
-        name: 'form',
-        component: () => import('../views/the-form.vue')
+        redirect: '/landing-page'
+        // name: 'form',
+        // component: () => import('../views/the-form.vue')
       },
       {
         path: '/post/:postId',

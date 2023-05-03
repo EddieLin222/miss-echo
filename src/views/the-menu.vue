@@ -27,6 +27,8 @@ import { useHead } from "@vueuse/head"
 
 import MenuList from "../components/menu/menu-list.vue"
 
+window.location.href = 'https://shop.missecotw.com/'
+
 const menuData = ref<menuType>({
   textArea: {
     title: '標題',
