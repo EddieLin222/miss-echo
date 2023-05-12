@@ -72,6 +72,8 @@ import { ref, onMounted } from 'vue';
     p
       font-size: 14px
       margin-bottom: 4px
+    a
+      font-size: 12px
   .l-block
     display: flex
     flex-direction: column
